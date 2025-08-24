@@ -2,12 +2,8 @@ import { Plugin } from "@play-co/astro";
 import { User } from "../../module_bindings";
 import { app } from "../utils/app";
 
-const SEND_UPDATES_PER_SEC = 20;
-const SEND_UPDATES_FREQUENCY = 1 / SEND_UPDATES_PER_SEC;
-
-export class PlayerPlugin extends Plugin {
+export class PlayerControllerPlugin extends Plugin {
   private tick = 0;
-
   private readonly movement = {
     up: false,
     down: false,
@@ -15,21 +11,20 @@ export class PlayerPlugin extends Plugin {
     right: false,
   };
 
-  private get spacetimeDB() {
-    return app().spacetimeDB;
-  }
-
-  private get content() {
-    return app().content;
+  private get identity() {
+    return app().spacetimeDB.self;
   }
 
   private get player() {
-    if (!this.spacetimeDB.self) return undefined;
-    return this.content.getUser(this.spacetimeDB.self);
+    if (!this.identity) return undefined;
+    return app().players.getUser(this.identity);
   }
 
-  public async init() {
-    // Key up
+  /**
+   * Astro plugin lifecycle: initialize keyboard bindings and subscribe to SpacetimeDB events if needed
+   */
+  public init() {
+    // Keyboard bindings
     app().keyboard.bindKeyDown("ArrowUp", () => {
       this.movement.up = true;
       this.movement.down = false;
@@ -37,8 +32,6 @@ export class PlayerPlugin extends Plugin {
     app().keyboard.bindKeyUp("ArrowUp", () => {
       this.movement.up = false;
     });
-
-    // Key down
     app().keyboard.bindKeyDown("ArrowDown", () => {
       this.movement.down = true;
       this.movement.up = false;
@@ -46,8 +39,6 @@ export class PlayerPlugin extends Plugin {
     app().keyboard.bindKeyUp("ArrowDown", () => {
       this.movement.down = false;
     });
-
-    // Key left
     app().keyboard.bindKeyDown("ArrowLeft", () => {
       this.movement.left = true;
       this.movement.right = false;
@@ -55,8 +46,6 @@ export class PlayerPlugin extends Plugin {
     app().keyboard.bindKeyUp("ArrowLeft", () => {
       this.movement.left = false;
     });
-
-    // Key right
     app().keyboard.bindKeyDown("ArrowRight", () => {
       this.movement.right = true;
       this.movement.left = false;
@@ -67,12 +56,12 @@ export class PlayerPlugin extends Plugin {
   }
 
   public isSelf(user: User): boolean {
-    return user.identity.toHexString() === this.spacetimeDB.self?.toHexString();
+    return user.identity.toHexString() === this.identity?.toHexString();
   }
 
   public getMessages() {
-    if (!this.spacetimeDB.self) return [];
-    return this.content.getUserMessages(this.spacetimeDB.self);
+    if (!this.identity) return [];
+    // return app().messages.getMessages(app().spacetimeDB.self);
   }
 
   public getPosition() {
@@ -85,17 +74,17 @@ export class PlayerPlugin extends Plugin {
   }
 
   public setName(name: string) {
-    this.spacetimeDB.reducers?.setName(name);
+    app().spacetimeDB.reducers?.setName(name);
   }
 
   public sendMessage(message: string) {
-    this.spacetimeDB.reducers?.sendMessage(message);
+    app().spacetimeDB.reducers?.sendMessage(message);
   }
 
   public update(dt: number): void {
     if (!this.player) return;
     this.tick += dt / 60;
-    if (this.tick < SEND_UPDATES_FREQUENCY) return;
+    if (this.tick < 1 / 20) return;
     this.tick = 0;
 
     const { up, down, left, right } = this.movement;
@@ -107,9 +96,6 @@ export class PlayerPlugin extends Plugin {
     if (left) dx = -1;
     if (right) dx = 1;
 
-    this.spacetimeDB.reducers?.updatePlayerInput({
-      x: dx,
-      y: dy,
-    });
+    app().spacetimeDB.reducers?.updatePlayerInput(dx, dy);
   }
 }

@@ -92,7 +92,7 @@ export class ChatBar extends LayoutContainer {
     if (text.trim() === "") return;
 
     // Handle sending the message
-    app().content.sendMessage(text);
+    app().playerController.sendMessage(text);
     this.textInput.value = "";
   }
 

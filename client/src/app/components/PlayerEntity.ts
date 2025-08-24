@@ -15,7 +15,7 @@ export class PlayerEntity extends Container {
   private tick = 0;
 
   private get isSelf() {
-    return app().player.isSelf(this.user);
+    return app().playerController.isSelf(this.user);
   }
 
   constructor(user: User) {
@@ -80,7 +80,8 @@ export class PlayerEntity extends Container {
   }
 
   public syncDirection(): void {
-    this.view.scale.x = this.user.direction.x > 0 ? -1 : 1;
+    if (this.user.direction.x > 0) this.view.scale.x = -1;
+    else if (this.user.direction.x < 0) this.view.scale.x = 1;
   }
 
   public syncPosition(): void {
@@ -90,22 +91,20 @@ export class PlayerEntity extends Container {
   }
 
   public animateWalk(dt: number): void {
-    // console.log("__direction__", this.user.direction);
-
     if (this.user.direction.x === 0 && this.user.direction.y === 0) {
       this.tick = 0;
-      this.view.y = lerp(this.view.y, 0, 0.1);
+      this.view.y = lerp(this.view.y, 0, 0.5);
       return;
     }
 
     this.tick += dt / 60;
-    const y = Math.sin(this.tick * 20) * 10;
+    const y = -Math.sin(this.tick * 20) * 10;
     this.view.y = y;
   }
 
   public syncMessages(): void {
-    const messages = app().player.getMessages();
-    messages.forEach((message) => this.addMessage(message));
+    const messages = app().playerController.getMessages();
+    messages?.forEach((message) => this.addMessage(message));
   }
 
   private addMessage(message: Message): void {

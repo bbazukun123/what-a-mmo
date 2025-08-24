@@ -59,8 +59,8 @@ export class SpacetimeDBPlugin extends Plugin {
       "Connected to SpacetimeDB with identity:",
       identity.toHexString(),
     );
-    conn.reducers.onSendMessage(() => {
-      console.log("Message sent.");
+    conn.reducers.onSendMessage((_, text) => {
+      console.log("Message sent:", text);
     });
 
     this.subscribeToQueries(conn, [

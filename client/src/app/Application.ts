@@ -10,10 +10,12 @@ import {
 import { appConfig } from "./defs/app";
 import { screens } from "./defs/screens";
 import { setApp } from "./utils/app";
-import { ControllerPlugin } from "./plugins/ControllerPlugin";
 import { SpacetimeDBPlugin } from "./plugins/SpacetimeDBPlugin";
-import { ContentPlugin } from "./plugins/ContentPlugin";
-import { PlayerPlugin } from "./plugins/PlayerPlugin";
+import { PlayersPlugin } from "./plugins/PlayersPlugin";
+import { MessagesPlugin } from "./plugins/MessagesPlugin";
+import { MonstersPlugin } from "./plugins/MonstersPlugin";
+import { PlayerControllerPlugin } from "./plugins/PlayerControllerPlugin";
+import { GameControllerPlugin } from "./plugins/GameControllerPlugin";
 
 export class Application extends AstroApplication {
   public stagePlugin!: StagePlugin;
@@ -21,9 +23,11 @@ export class Application extends AstroApplication {
   public screens!: ScreensPlugin<typeof screens>;
   public busy!: BusyPlugin;
   public spacetimeDB!: SpacetimeDBPlugin;
-  public content!: ContentPlugin;
-  public player!: PlayerPlugin;
-  public controller!: ControllerPlugin;
+  public players!: PlayersPlugin;
+  public messages!: MessagesPlugin;
+  public monsters!: MonstersPlugin;
+  public playerController!: PlayerControllerPlugin;
+  public gameController!: GameControllerPlugin;
   public keyboard!: KeyboardPlugin;
 
   constructor() {
@@ -60,14 +64,12 @@ export class Application extends AstroApplication {
     // Set up SpacetimeDB plugin.
     this.spacetimeDB = this.add(SpacetimeDBPlugin);
 
-    // Set up content plugin.
-    this.content = this.add(ContentPlugin);
-
-    // Set up player plugin.
-    this.player = this.add(PlayerPlugin);
-
-    // Set up game controller.
-    this.controller = this.add(ControllerPlugin);
+    // Set up players, messages, monsters, player controller, and game controller plugins.
+    this.players = this.add(PlayersPlugin);
+    this.messages = this.add(MessagesPlugin);
+    this.monsters = this.add(MonstersPlugin);
+    this.playerController = this.add(PlayerControllerPlugin);
+    this.gameController = this.add(GameControllerPlugin);
 
     // Set up keyboard input handling.
     this.keyboard = this.add(KeyboardPlugin);

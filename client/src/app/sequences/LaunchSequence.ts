@@ -5,7 +5,7 @@ import { toCreation, toMain } from "../utils/navigation";
 export async function runLaunchSequence() {
   await waitFor(250);
 
-  if (!app().player.getName()) {
+  if (!app().playerController.getName()) {
     await toCreation();
     return;
   }

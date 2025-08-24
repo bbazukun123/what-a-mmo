@@ -133,7 +133,7 @@ export class CreationScreen extends LayoutScreen {
     if (text.trim() === "") return;
 
     // Handle setting the player name
-    app().player.setName(text);
+    app().playerController.setName(text);
 
     // Navigate to the main screen
     toMain();

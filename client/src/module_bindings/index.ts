@@ -52,6 +52,8 @@ import { ConfigTableHandle } from "./config_table.ts";
 export { ConfigTableHandle };
 import { MessageTableHandle } from "./message_table.ts";
 export { MessageTableHandle };
+import { MonsterTableHandle } from "./monster_table.ts";
+export { MonsterTableHandle };
 import { MoveAllPlayersTimerTableHandle } from "./move_all_players_timer_table.ts";
 export { MoveAllPlayersTimerTableHandle };
 import { UserTableHandle } from "./user_table.ts";
@@ -64,6 +66,8 @@ import { DbVector2 } from "./db_vector_2_type.ts";
 export { DbVector2 };
 import { Message } from "./message_type.ts";
 export { Message };
+import { Monster } from "./monster_type.ts";
+export { Monster };
 import { MoveAllPlayersTimer } from "./move_all_players_timer_type.ts";
 export { MoveAllPlayersTimer };
 import { User } from "./user_type.ts";
@@ -83,6 +87,15 @@ const REMOTE_MODULE = {
     message: {
       tableName: "message",
       rowType: Message.getTypeScriptAlgebraicType(),
+    },
+    monster: {
+      tableName: "monster",
+      rowType: Monster.getTypeScriptAlgebraicType(),
+      primaryKey: "identity",
+      primaryKeyInfo: {
+        colName: "identity",
+        colType: Monster.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
     },
     move_all_players_timer: {
       tableName: "move_all_players_timer",
@@ -233,19 +246,19 @@ export class RemoteReducers {
     this.connection.offReducer("set_name", callback);
   }
 
-  updatePlayerInput(direction: DbVector2) {
-    const __args = { direction };
+  updatePlayerInput(x: number, y: number) {
+    const __args = { x, y };
     let __writer = new BinaryWriter(1024);
     UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(__writer, __args);
     let __argsBuffer = __writer.getBuffer();
     this.connection.callReducer("update_player_input", __argsBuffer, this.setCallReducerFlags.updatePlayerInputFlags);
   }
 
-  onUpdatePlayerInput(callback: (ctx: ReducerEventContext, direction: DbVector2) => void) {
+  onUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
     this.connection.onReducer("update_player_input", callback);
   }
 
-  removeOnUpdatePlayerInput(callback: (ctx: ReducerEventContext, direction: DbVector2) => void) {
+  removeOnUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
     this.connection.offReducer("update_player_input", callback);
   }
 
@@ -283,6 +296,10 @@ export class RemoteTables {
 
   get message(): MessageTableHandle {
     return new MessageTableHandle(this.connection.clientCache.getOrCreateTable<Message>(REMOTE_MODULE.tables.message));
+  }
+
+  get monster(): MonsterTableHandle {
+    return new MonsterTableHandle(this.connection.clientCache.getOrCreateTable<Monster>(REMOTE_MODULE.tables.monster));
   }
 
   get moveAllPlayersTimer(): MoveAllPlayersTimerTableHandle {

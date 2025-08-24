@@ -32,34 +32,42 @@ import {
   type ReducerEventContextInterface,
   type SubscriptionEventContextInterface,
 } from "@clockworklabs/spacetimedb-sdk";
+import { DbVector2 as __DbVector2 } from "./db_vector_2_type";
 
-export type UpdatePlayerInput = {
-  x: number,
-  y: number,
+export type Monster = {
+  identity: Identity,
+  position: __DbVector2,
+  direction: __DbVector2,
+  speed: number,
+  health: number,
 };
 
 /**
  * A namespace for generated helper functions.
  */
-export namespace UpdatePlayerInput {
+export namespace Monster {
   /**
   * A function which returns this type represented as an AlgebraicType.
   * This function is derived from the AlgebraicType used to generate this type.
   */
   export function getTypeScriptAlgebraicType(): AlgebraicType {
     return AlgebraicType.createProductType([
-      new ProductTypeElement("x", AlgebraicType.createI32Type()),
-      new ProductTypeElement("y", AlgebraicType.createI32Type()),
+      new ProductTypeElement("identity", AlgebraicType.createIdentityType()),
+      new ProductTypeElement("position", __DbVector2.getTypeScriptAlgebraicType()),
+      new ProductTypeElement("direction", __DbVector2.getTypeScriptAlgebraicType()),
+      new ProductTypeElement("speed", AlgebraicType.createF32Type()),
+      new ProductTypeElement("health", AlgebraicType.createF32Type()),
     ]);
   }
 
-  export function serialize(writer: BinaryWriter, value: UpdatePlayerInput): void {
-    UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(writer, value);
+  export function serialize(writer: BinaryWriter, value: Monster): void {
+    Monster.getTypeScriptAlgebraicType().serialize(writer, value);
   }
 
-  export function deserialize(reader: BinaryReader): UpdatePlayerInput {
-    return UpdatePlayerInput.getTypeScriptAlgebraicType().deserialize(reader);
+  export function deserialize(reader: BinaryReader): Monster {
+    return Monster.getTypeScriptAlgebraicType().deserialize(reader);
   }
 
 }
+
 

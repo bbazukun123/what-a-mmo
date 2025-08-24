@@ -8,11 +8,7 @@ import { LayoutContainer } from "@pixi/layout/components";
 export class MainScreen extends LayoutScreen {
   private container!: LayoutContainer;
   private chatBar!: ChatBar;
-  private playersMap: Map<string, PlayerEntity> = new Map();
-
-  private get content() {
-    return app().content;
-  }
+  private playerEntityMap: Map<string, PlayerEntity> = new Map();
 
   public async preload() {
     //
@@ -45,34 +41,33 @@ export class MainScreen extends LayoutScreen {
     this.chatBar = this.view.addChild(new ChatBar());
 
     // Initialize content
-    this.content.getUsers().forEach((user) => this.onUserAdded(user));
+    app()
+      .players.getUsers()
+      .forEach((user) => this.onUserAdded(user));
 
-    // Listen for new content
-    const {
-      onUserAdded,
-      onUserUpdated,
-      onUserRemoved,
-      onMessageAdded,
-      onMessageRemoved,
-    } = this.content.signals;
+    // Listen for users update
+    const { onUserAdded, onUserUpdated, onUserRemoved } = app().players.signals;
     onUserAdded.connect((user) => this.onUserAdded(user));
     onUserUpdated.connect((user) => this.onUserUpdated(user));
     onUserRemoved.connect((user) => this.onUserRemoved(user));
+
+    // Listen for messages update
+    const { onMessageAdded, onMessageRemoved } = app().messages.signals;
     onMessageAdded.connect((message) => this.onMessageUpdated(message));
     onMessageRemoved.connect((message) => this.onMessageUpdated(message));
   }
 
   private onUserAdded(user: User) {
     // Skip if user is already added
-    if (this.playersMap.has(user.identity.toHexString())) return;
+    if (this.playerEntityMap.has(user.identity.toHexString())) return;
 
     // Skip if user is offline
     if (!user.online) return;
 
-    const userEntity = this.container.addChild(new PlayerEntity(user));
+    const playerEntity = this.container.addChild(new PlayerEntity(user));
 
     // Store the user view
-    this.playersMap.set(user.identity.toHexString(), userEntity);
+    this.playerEntityMap.set(user.identity.toHexString(), playerEntity);
   }
 
   private onUserUpdated(user: User) {
@@ -85,22 +80,22 @@ export class MainScreen extends LayoutScreen {
     this.onUserAdded(user);
 
     // Sync user data
-    this.playersMap.get(user.identity.toHexString())?.syncName();
+    this.playerEntityMap.get(user.identity.toHexString())?.syncName();
   }
 
   private onUserRemoved(user: User) {
     // Find the user entity
-    const userEntity = this.playersMap.get(user.identity.toHexString());
-    if (!userEntity) return;
+    const playerEntity = this.playerEntityMap.get(user.identity.toHexString());
+    if (!playerEntity) return;
 
     // Remove the user entity from the container
-    this.container.removeChild(userEntity);
-    this.playersMap.delete(user.identity.toHexString());
+    this.container.removeChild(playerEntity);
+    this.playerEntityMap.delete(user.identity.toHexString());
   }
 
   private onMessageUpdated(message: Message) {
-    const userEntity = this.playersMap.get(message.sender.toHexString());
-    userEntity?.syncMessages();
+    const playerEntity = this.playerEntityMap.get(message.sender.toHexString());
+    playerEntity?.syncMessages();
   }
 
   public async show(): Promise<void> {
@@ -116,6 +111,6 @@ export class MainScreen extends LayoutScreen {
   }
 
   public update(dt: number): void {
-    this.playersMap.forEach((player) => player.update(dt));
+    this.playerEntityMap.forEach((player) => player.update(dt));
   }
 }
