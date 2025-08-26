@@ -63,7 +63,7 @@ use spacetimedb::reducer;
 use crate::models::{Message};
 use crate::models::{config, user, message};
 
-const PLAYER_SIZE: u32 = 150;
+const PLAYER_SIZE: u32 = 100;
 const MAX_PLAYER_SPEED: u32 = 10;
 
 /// Timer table for scheduled player movement.
@@ -88,15 +88,55 @@ pub fn move_all_players(ctx: &ReducerContext, _timer: MoveAllPlayersTimer) -> Re
         .ok_or("Config not found")?
         .world_size;
 
-    // Handle player input
-    for mut player in ctx.db.user().iter() {
+    // Handle player input with axis-by-axis collision cap
+    let online_players: Vec<_> = ctx.db.user().iter().filter(|p| p.online).collect();
+    let mut updated_positions = Vec::new();
+    for player in online_players.iter() {
         let direction = player.direction * player.speed;
-        let new_pos = player.position + direction * MAX_PLAYER_SPEED as f32;
+        let mut new_x = player.position.x + direction.x * MAX_PLAYER_SPEED as f32;
+        let mut new_y = player.position.y + direction.y * MAX_PLAYER_SPEED as f32;
         let min = PLAYER_SIZE as f32 / 2.0;
         let max = world_size as f32 - PLAYER_SIZE as f32 / 2.0;
-        player.position.x = new_pos.x.clamp(min, max);
-        player.position.y = new_pos.y.clamp(PLAYER_SIZE as f32, max);
-        ctx.db.user().identity().update(player);
+        // Clamp X
+        new_x = new_x.clamp(min, max);
+        // Check X collision (only online players)
+        let mut x_collides = false;
+        for other in online_players.iter() {
+            if other.identity == player.identity { continue; }
+            let dx = new_x - other.position.x;
+            let dy = player.position.y - other.position.y;
+            let dist = (dx * dx + dy * dy).sqrt();
+            if dist < PLAYER_SIZE as f32 {
+                x_collides = true;
+                break;
+            }
+        }
+        let final_x = if x_collides { player.position.x } else { new_x };
+
+        // Clamp Y
+        new_y = new_y.clamp(PLAYER_SIZE as f32, world_size as f32);
+        // Check Y collision (only online players)
+        let mut y_collides = false;
+        for other in online_players.iter() {
+            if other.identity == player.identity { continue; }
+            let dx = final_x - other.position.x;
+            let dy = new_y - other.position.y;
+            let dist = (dx * dx + dy * dy).sqrt();
+            if dist < PLAYER_SIZE as f32 {
+                y_collides = true;
+                break;
+            }
+        }
+        let final_y = if y_collides { player.position.y } else { new_y };
+
+        updated_positions.push((player.identity, DbVector2 { x: final_x, y: final_y }));
+    }
+    // Update all online player positions after checking collisions
+    for (identity, pos) in updated_positions {
+        if let Some(mut player) = ctx.db.user().identity().find(identity) {
+            player.position = pos;
+            ctx.db.user().identity().update(player);
+        }
     }
 
     Ok(())

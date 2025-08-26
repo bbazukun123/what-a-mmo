@@ -98,7 +98,7 @@ export class PlayerEntity extends Container {
     }
 
     this.tick += dt / 60;
-    const y = -Math.sin(this.tick * 20) * 10;
+    const y = -(Math.sin(this.tick * 20) + 1) * 0.5 * 15;
     this.view.y = y;
   }
 

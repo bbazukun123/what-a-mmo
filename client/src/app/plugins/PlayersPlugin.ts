@@ -61,8 +61,6 @@ export class PlayersPlugin extends Plugin {
     this.users[index].direction = user.direction;
     this.users[index].speed = user.speed;
 
-    console.log("__speed__", user.speed, user.direction);
-
     this.signals.onUserUpdated.emit(user);
   }
 
