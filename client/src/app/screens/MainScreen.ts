@@ -5,7 +5,7 @@ import { PlayerEntity } from '../components/PlayerEntity';
 import { GameScene } from '../game/GameScene';
 import { app } from '../utils/app';
 import { LayoutScreen } from './LayoutScreen';
-import { LayoutContainer, LayoutSprite } from '@pixi/layout/components';
+import { LayoutContainer } from '@pixi/layout/components';
 
 export class MainScreen extends LayoutScreen {
     private scene!: GameScene;

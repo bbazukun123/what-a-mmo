@@ -1,8 +1,8 @@
-import { QueriesObject, QueryResults, SkyboxEntityFactory, System, View3DComponent } from '@play-co/odie';
+import { QueriesObject, QueryResults, System, View3DComponent } from '@play-co/odie';
 import { GroundEntityTag } from '../defs/tags';
 import { GameScene } from '../GameScene';
 import { createGroundEntity } from '../entities/GroundEntity';
-import { Cache, Texture, TextureSource } from 'pixi.js';
+import { Texture } from 'pixi.js';
 import { worldSizeRatio } from '../defs/world';
 import { app } from '../../utils/app';
 import { createSeaEntity } from '../entities/SeaEntity';

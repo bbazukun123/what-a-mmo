@@ -1,5 +1,5 @@
 import { OrbitalCameraSystem, Scene, Scene3D, ShadowSystem, SystemClass } from '@play-co/odie';
-import { RenderTexture, Sprite, type Container, type Renderer } from 'pixi.js';
+import { type Container, type Renderer } from 'pixi.js';
 import { app } from '../utils/app';
 import { SpawnSystem } from './systems/SpawnSystem';
 import { CameraControllerSystem } from './systems/CameraControllerSystem';
