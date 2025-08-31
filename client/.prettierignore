@@ -1,0 +1,8 @@
+# Ignore manifest.json files from formatting
+**/manifest.json
+
+# Other files that shouldn't be formatted
+libs/**/*
+dist/**/*
+build/**/*
+node_modules/**/*

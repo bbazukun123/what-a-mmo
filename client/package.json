@@ -8,8 +8,8 @@
         "build": "npm run lint && tsc && vite build",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format": "prettier --write . --ignore-path .prettierignore",
+        "format:check": "prettier --check . --ignore-path .prettierignore",
         "prepare": "husky install",
         "dev": "vite"
     },
@@ -42,7 +42,8 @@
         "vite": "^6.2.0"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,json,css,scss,md}": "prettier --write",
+        "*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write",
+        "*.json": "prettier --write --ignore-path .prettierignore",
         "*.{js,jsx,ts,tsx}": "eslint --fix"
     }
 }
