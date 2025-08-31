@@ -12,14 +12,11 @@ export declare class RenderGroupSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem];
-        readonly name: "renderGroup";
+        readonly name: 'renderGroup';
     };
     private readonly _renderer;
     constructor(renderer: Renderer);
-    protected render({ container, transform }: {
-        container: Container;
-        transform: Matrix;
-    }): void;
+    protected render({ container, transform }: { container: Container; transform: Matrix }): void;
     destroy(): void;
     private _updateCachedRenderGroups;
     private _updateRenderGroups;

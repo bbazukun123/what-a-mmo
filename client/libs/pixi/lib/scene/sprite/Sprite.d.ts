@@ -19,8 +19,7 @@ export interface SpriteOptions extends PixiMixins.SpriteOptions, ViewContainerOp
     /** Whether or not to round the x/y position. */
     roundPixels?: boolean;
 }
-export interface Sprite extends PixiMixins.Sprite, ViewContainer {
-}
+export interface Sprite extends PixiMixins.Sprite, ViewContainer {}
 /**
  * The Sprite object is one of the most important objects in PixiJS. It is a
  * drawing item that can be added to a scene and rendered to the screen.

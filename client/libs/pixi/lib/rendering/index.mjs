@@ -20,11 +20,27 @@ export { compileInputs } from './high-shader/compiler/utils/compileInputs.mjs';
 export { compileOutputs } from './high-shader/compiler/utils/compileOutputs.mjs';
 export { formatShader } from './high-shader/compiler/utils/formatShader.mjs';
 export { injectBits } from './high-shader/compiler/utils/injectBits.mjs';
-export { fragmentGPUTemplate, fragmentGlTemplate, vertexGPUTemplate, vertexGlTemplate } from './high-shader/defaultProgramTemplate.mjs';
+export {
+    fragmentGPUTemplate,
+    fragmentGlTemplate,
+    vertexGPUTemplate,
+    vertexGlTemplate,
+} from './high-shader/defaultProgramTemplate.mjs';
 export { colorBit, colorBitGl } from './high-shader/shader-bits/colorBit.mjs';
-export { generateTextureBatchBit, generateTextureBatchBitGl } from './high-shader/shader-bits/generateTextureBatchBit.mjs';
-export { globalUniformsBit, globalUniformsBitGl, globalUniformsUBOBitGl } from './high-shader/shader-bits/globalUniformsBit.mjs';
-export { localUniformBit, localUniformBitGl, localUniformBitGroup2 } from './high-shader/shader-bits/localUniformBit.mjs';
+export {
+    generateTextureBatchBit,
+    generateTextureBatchBitGl,
+} from './high-shader/shader-bits/generateTextureBatchBit.mjs';
+export {
+    globalUniformsBit,
+    globalUniformsBitGl,
+    globalUniformsUBOBitGl,
+} from './high-shader/shader-bits/globalUniformsBit.mjs';
+export {
+    localUniformBit,
+    localUniformBitGl,
+    localUniformBitGroup2,
+} from './high-shader/shader-bits/localUniformBit.mjs';
 export { roundPixelsBit, roundPixelsBitGl } from './high-shader/shader-bits/roundPixelsBit.mjs';
 export { textureBit, textureBitGl } from './high-shader/shader-bits/textureBit.mjs';
 export { AlphaMask } from './mask/alpha/AlphaMask.mjs';
@@ -84,7 +100,10 @@ export { WGSL_TO_STD40_SIZE, createUboElementsSTD40 } from './renderers/gl/shade
 export { createUboSyncFunctionSTD40 } from './renderers/gl/shader/utils/createUboSyncSTD40.mjs';
 export { generateArraySyncSTD40 } from './renderers/gl/shader/utils/generateArraySyncSTD40.mjs';
 export { generateUniformsSync } from './renderers/gl/shader/utils/generateUniformsSync.mjs';
-export { UNIFORM_TO_ARRAY_SETTERS, UNIFORM_TO_SINGLE_SETTERS } from './renderers/gl/shader/utils/generateUniformsSyncTypes.mjs';
+export {
+    UNIFORM_TO_ARRAY_SETTERS,
+    UNIFORM_TO_SINGLE_SETTERS,
+} from './renderers/gl/shader/utils/generateUniformsSyncTypes.mjs';
 export { GlStateSystem } from './renderers/gl/state/GlStateSystem.mjs';
 export { mapWebGLBlendModesToPixi } from './renderers/gl/state/mapWebGLBlendModesToPixi.mjs';
 export { GL_FORMATS, GL_TARGETS, GL_TYPES, GL_WRAP_MODES } from './renderers/gl/texture/const.mjs';
@@ -100,7 +119,12 @@ export { getSupportedGlCompressedTextureFormats } from './renderers/gl/texture/u
 export { mapFormatToGlFormat } from './renderers/gl/texture/utils/mapFormatToGlFormat.mjs';
 export { mapFormatToGlInternalFormat } from './renderers/gl/texture/utils/mapFormatToGlInternalFormat.mjs';
 export { mapFormatToGlType } from './renderers/gl/texture/utils/mapFormatToGlType.mjs';
-export { compareModeToGlCompare, mipmapScaleModeToGlFilter, scaleModeToGlFilter, wrapModeToGlAddress } from './renderers/gl/texture/utils/pixiToGlMaps.mjs';
+export {
+    compareModeToGlCompare,
+    mipmapScaleModeToGlFilter,
+    scaleModeToGlFilter,
+    wrapModeToGlAddress,
+} from './renderers/gl/texture/utils/pixiToGlMaps.mjs';
 export { unpremultiplyAlpha } from './renderers/gl/texture/utils/unpremultiplyAlpha.mjs';
 export { WebGLRenderer } from './renderers/gl/WebGLRenderer.mjs';
 export { BindGroupSystem } from './renderers/gpu/BindGroupSystem.mjs';
@@ -136,7 +160,10 @@ export { GpuStencilModesToPixi } from './renderers/gpu/state/GpuStencilModesToPi
 export { GpuTextureSystem } from './renderers/gpu/texture/GpuTextureSystem.mjs';
 import './renderers/gpu/texture/uploaders/GpuTextureUploader.mjs';
 export { gpuUploadBufferImageResource } from './renderers/gpu/texture/uploaders/gpuUploadBufferImageResource.mjs';
-export { blockDataMap, gpuUploadCompressedTextureResource } from './renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs';
+export {
+    blockDataMap,
+    gpuUploadCompressedTextureResource,
+} from './renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs';
 export { gpuUploadImageResource } from './renderers/gpu/texture/uploaders/gpuUploadImageSource.mjs';
 export { gpuUploadVideoResource } from './renderers/gpu/texture/uploaders/gpuUploadVideoSource.mjs';
 export { getSupportedGPUCompressedTextureFormats } from './renderers/gpu/texture/utils/getSupportedGPUCompressedTextureFormats.mjs';
@@ -187,7 +214,13 @@ import './renderers/shared/system/System.mjs';
 export { SystemRunner } from './renderers/shared/system/SystemRunner.mjs';
 import './renderers/shared/system/utils/typeUtils.mjs';
 export { CanvasPool, CanvasPoolClass } from './renderers/shared/texture/CanvasPool.mjs';
-export { DEPRECATED_SCALE_MODES, DEPRECATED_WRAP_MODES, MSAA_QUALITY, SCALE_MODES, WRAP_MODES } from './renderers/shared/texture/const.mjs';
+export {
+    DEPRECATED_SCALE_MODES,
+    DEPRECATED_WRAP_MODES,
+    MSAA_QUALITY,
+    SCALE_MODES,
+    WRAP_MODES,
+} from './renderers/shared/texture/const.mjs';
 import './renderers/shared/texture/GenerateCanvas.mjs';
 export { RenderableGCSystem } from './renderers/shared/texture/RenderableGCSystem.mjs';
 export { RenderTexture } from './renderers/shared/texture/RenderTexture.mjs';
@@ -206,7 +239,10 @@ export { TextureUvs } from './renderers/shared/texture/TextureUvs.mjs';
 export { generateUID } from './renderers/shared/texture/utils/generateUID.mjs';
 export { getCanvasTexture, hasCachedCanvasTexture } from './renderers/shared/texture/utils/getCanvasTexture.mjs';
 export { getSupportedCompressedTextureFormats } from './renderers/shared/texture/utils/getSupportedCompressedTextureFormats.mjs';
-export { getSupportedTextureFormats, nonCompressedFormats } from './renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
+export {
+    getSupportedTextureFormats,
+    nonCompressedFormats,
+} from './renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
 export { autoDetectSource, resourceToTexture, textureFrom } from './renderers/shared/texture/utils/textureFrom.mjs';
 export { createIdFromString } from './renderers/shared/utils/createIdFromString.mjs';
 export { parseFunctionBody } from './renderers/shared/utils/parseFunctionBody.mjs';
@@ -214,5 +250,5 @@ import './renderers/shared/view/View.mjs';
 export { ViewSystem } from './renderers/shared/view/ViewSystem.mjs';
 export { RendererType } from './renderers/types.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

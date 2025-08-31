@@ -1,7 +1,6 @@
 import type { PointData } from './PointData';
 import type { PointLike } from './PointLike';
-export interface ObservablePoint extends PixiMixins.ObservablePoint {
-}
+export interface ObservablePoint extends PixiMixins.ObservablePoint {}
 /**
  * Observer used to listen for observable point changes.
  * @memberof maths

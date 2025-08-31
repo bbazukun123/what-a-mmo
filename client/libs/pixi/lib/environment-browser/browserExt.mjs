@@ -1,16 +1,16 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 
-"use strict";
+('use strict');
 const browserExt = {
-  extension: {
-    type: ExtensionType.Environment,
-    name: "browser",
-    priority: -1
-  },
-  test: () => true,
-  load: async () => {
-    await import('./browserAll.mjs');
-  }
+    extension: {
+        type: ExtensionType.Environment,
+        name: 'browser',
+        priority: -1,
+    },
+    test: () => true,
+    load: async () => {
+        await import('./browserAll.mjs');
+    },
 };
 
 export { browserExt };

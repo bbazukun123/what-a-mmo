@@ -1,14 +1,14 @@
 'use strict';
 
-"use strict";
+'use strict';
 function definedProps(obj) {
-  const result = {};
-  for (const key in obj) {
-    if (obj[key] !== void 0) {
-      result[key] = obj[key];
+    const result = {};
+    for (const key in obj) {
+        if (obj[key] !== void 0) {
+            result[key] = obj[key];
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 exports.definedProps = definedProps;

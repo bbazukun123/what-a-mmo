@@ -11,7 +11,7 @@ export declare class GlGraphicsAdaptor implements GraphicsAdaptor {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipesAdaptor];
-        readonly name: "graphics";
+        readonly name: 'graphics';
     };
     shader: Shader;
     init(): void;

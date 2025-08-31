@@ -3,12 +3,12 @@
 var Extensions = require('../extensions/Extensions.js');
 var BlendModeFilter = require('../filters/blend-modes/BlendModeFilter.js');
 
-"use strict";
+('use strict');
 class ColorBurnBlend extends BlendModeFilter.BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float colorBurn(float base, float blend)
                 {
                     return max((1.0 - ((1.0 - base) / blend)), 0.0);
@@ -25,12 +25,12 @@ class ColorBurnBlend extends BlendModeFilter.BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 finalColor = vec4(blendColorBurn(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-            `
-      },
-      gpu: {
-        functions: `
+            `,
+            },
+            gpu: {
+                functions: `
                 fn colorBurn(base:f32, blend:f32) -> f32
                 {
                     return max((1.0-((1.0-base)/blend)),0.0);
@@ -47,17 +47,17 @@ class ColorBurnBlend extends BlendModeFilter.BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 out = vec4<f32>(blendColorBurn(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-            `
-      }
-    });
-  }
+            `,
+            },
+        });
+    }
 }
 /** @ignore */
 ColorBurnBlend.extension = {
-  name: "color-burn",
-  type: Extensions.ExtensionType.BlendMode
+    name: 'color-burn',
+    type: Extensions.ExtensionType.BlendMode,
 };
 
 exports.ColorBurnBlend = ColorBurnBlend;

@@ -10,4 +10,9 @@ import type { HTMLTextStyle } from '../HTMLTextStyle';
  * @param htmlTextRenderData - The HTMLTextRenderData to write the SVG to
  * @returns - The size of the text
  */
-export declare function measureHtmlText(text: string, style: HTMLTextStyle, fontStyleCSS?: string, htmlTextRenderData?: HTMLTextRenderData): Size;
+export declare function measureHtmlText(
+    text: string,
+    style: HTMLTextStyle,
+    fontStyleCSS?: string,
+    htmlTextRenderData?: HTMLTextRenderData,
+): Size;

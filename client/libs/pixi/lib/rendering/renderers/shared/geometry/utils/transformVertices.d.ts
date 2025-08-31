@@ -8,4 +8,10 @@ import type { Matrix } from '../../../../../maths/matrix/Matrix';
  * @param size - the size of the vertices (defaults to vertices.length / stride - offset)
  * @memberof rendering
  */
-export declare function transformVertices(vertices: number[], m: Matrix, offset?: number, stride?: number, size?: number): void;
+export declare function transformVertices(
+    vertices: number[],
+    m: Matrix,
+    offset?: number,
+    stride?: number,
+    size?: number,
+): void;

@@ -19,21 +19,21 @@ import { GpuShaderSystem } from './shader/GpuShaderSystem.mjs';
 import { GpuStateSystem } from './state/GpuStateSystem.mjs';
 import { GpuTextureSystem } from './texture/GpuTextureSystem.mjs';
 
-"use strict";
+('use strict');
 const DefaultWebGPUSystems = [
-  ...SharedSystems,
-  GpuUboSystem,
-  GpuEncoderSystem,
-  GpuDeviceSystem,
-  GpuBufferSystem,
-  GpuTextureSystem,
-  GpuRenderTargetSystem,
-  GpuShaderSystem,
-  GpuStateSystem,
-  PipelineSystem,
-  GpuColorMaskSystem,
-  GpuStencilSystem,
-  BindGroupSystem
+    ...SharedSystems,
+    GpuUboSystem,
+    GpuEncoderSystem,
+    GpuDeviceSystem,
+    GpuBufferSystem,
+    GpuTextureSystem,
+    GpuRenderTargetSystem,
+    GpuShaderSystem,
+    GpuStateSystem,
+    PipelineSystem,
+    GpuColorMaskSystem,
+    GpuStencilSystem,
+    BindGroupSystem,
 ];
 const DefaultWebGPUPipes = [...SharedRenderPipes, GpuUniformBatchPipe];
 const DefaultWebGPUAdapters = [GpuBatchAdaptor, GpuMeshAdapter, GpuGraphicsAdaptor];
@@ -45,16 +45,16 @@ extensions.handleByNamedList(ExtensionType.WebGPUPipes, renderPipes);
 extensions.handleByNamedList(ExtensionType.WebGPUPipesAdaptor, renderPipeAdaptors);
 extensions.add(...DefaultWebGPUSystems, ...DefaultWebGPUPipes, ...DefaultWebGPUAdapters);
 class WebGPURenderer extends AbstractRenderer {
-  constructor() {
-    const systemConfig = {
-      name: "webgpu",
-      type: RendererType.WEBGPU,
-      systems,
-      renderPipes,
-      renderPipeAdaptors
-    };
-    super(systemConfig);
-  }
+    constructor() {
+        const systemConfig = {
+            name: 'webgpu',
+            type: RendererType.WEBGPU,
+            systems,
+            renderPipes,
+            renderPipeAdaptors,
+        };
+        super(systemConfig);
+    }
 }
 
 export { WebGPURenderer };

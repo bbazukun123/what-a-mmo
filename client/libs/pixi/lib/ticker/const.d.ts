@@ -31,5 +31,5 @@ export declare enum UPDATE_PRIORITY {
      * Lowest priority used for {@link BasePrepare} utility.
      * @default -50
      */
-    UTILITY = -50
+    UTILITY = -50,
 }

@@ -28,49 +28,54 @@ export type RenderSurface = ICanvas | BindableTexture | RenderTarget;
  */
 export interface RenderTargetAdaptor<RENDER_TARGET extends GlRenderTarget | GpuRenderTarget> {
     init(
-    /** the renderer */
-    renderer: Renderer, 
-    /** the render target system */
-    renderTargetSystem: RenderTargetSystem<RENDER_TARGET>): void;
+        /** the renderer */
+        renderer: Renderer,
+        /** the render target system */
+        renderTargetSystem: RenderTargetSystem<RENDER_TARGET>,
+    ): void;
     /** A function copies the contents of a render surface to a texture */
     copyToTexture(
-    /** the render surface to copy from  */
-    sourceRenderSurfaceTexture: RenderTarget, 
-    /** the texture to copy to */
-    destinationTexture: Texture, 
-    /** the origin of the copy */
-    originSrc: {
-        x: number;
-        y: number;
-    }, 
-    /** the size of the copy */
-    size: {
-        width: number;
-        height: number;
-    }, 
-    /** the destination origin (top left to paste from!) */
-    originDest?: {
-        x: number;
-        y: number;
-    }): Texture;
+        /** the render surface to copy from  */
+        sourceRenderSurfaceTexture: RenderTarget,
+        /** the texture to copy to */
+        destinationTexture: Texture,
+        /** the origin of the copy */
+        originSrc: {
+            x: number;
+            y: number;
+        },
+        /** the size of the copy */
+        size: {
+            width: number;
+            height: number;
+        },
+        /** the destination origin (top left to paste from!) */
+        originDest?: {
+            x: number;
+            y: number;
+        },
+    ): Texture;
     /** starts a render pass on the render target */
     startRenderPass(
-    /** the render target to start the render pass on */
-    renderTarget: RenderTarget, clear: CLEAR_OR_BOOL, 
-    /** the color to clear to */
-    clearColor?: RgbaArray, 
-    /** the viewport to use */
-    viewport?: Rectangle): void;
+        /** the render target to start the render pass on */
+        renderTarget: RenderTarget,
+        clear: CLEAR_OR_BOOL,
+        /** the color to clear to */
+        clearColor?: RgbaArray,
+        /** the viewport to use */
+        viewport?: Rectangle,
+    ): void;
     /** clears the current render target to the specified color */
     clear(
-    /** the render target to clear */
-    renderTarget: RenderTarget, 
-    /** the clear mode to use. Can be true or a CLEAR number 'COLOR | DEPTH | STENCIL' 0b111 */
-    clear: CLEAR_OR_BOOL, 
-    /** the color to clear to   */
-    clearColor?: RgbaArray, 
-    /** the viewport to use */
-    viewport?: Rectangle): void;
+        /** the render target to clear */
+        renderTarget: RenderTarget,
+        /** the clear mode to use. Can be true or a CLEAR number 'COLOR | DEPTH | STENCIL' 0b111 */
+        clear: CLEAR_OR_BOOL,
+        /** the color to clear to   */
+        clearColor?: RgbaArray,
+        /** the viewport to use */
+        viewport?: Rectangle,
+    ): void;
     /** finishes the current render pass */
     finishRenderPass(renderTarget: RenderTarget): void;
     /** called after the render pass is finished */
@@ -82,16 +87,19 @@ export interface RenderTargetAdaptor<RENDER_TARGET extends GlRenderTarget | GpuR
      * Its different type of object depending on the renderer.
      */
     initGpuRenderTarget(
-    /** the render target to initialize */
-    renderTarget: RenderTarget): RENDER_TARGET;
+        /** the render target to initialize */
+        renderTarget: RenderTarget,
+    ): RENDER_TARGET;
     /** called when a render target is resized */
     resizeGpuRenderTarget(
-    /** the render target to resize */
-    renderTarget: RenderTarget): void;
+        /** the render target to resize */
+        renderTarget: RenderTarget,
+    ): void;
     /** destroys the gpu render target */
     destroyGpuRenderTarget(
-    /** the render target to destroy */
-    gpuRenderTarget: RENDER_TARGET): void;
+        /** the render target to destroy */
+        gpuRenderTarget: RENDER_TARGET,
+    ): void;
 }
 /**
  * A system that manages render targets. A render target is essentially a place where the shaders can color in the pixels.
@@ -168,7 +176,12 @@ export declare class RenderTargetSystem<RENDER_TARGET extends GlRenderTarget | G
      * @param options.clearColor - the color to clear to
      * @param options.frame - the frame to render to
      */
-    renderStart({ target, clear, clearColor, frame }: {
+    renderStart({
+        target,
+        clear,
+        clearColor,
+        frame,
+    }: {
         target: RenderSurface;
         clear: CLEAR_OR_BOOL;
         clearColor: RgbaArray;
@@ -197,7 +210,12 @@ export declare class RenderTargetSystem<RENDER_TARGET extends GlRenderTarget | G
      * @param clearColor - the color to clear to
      * @param frame - the frame to use when rendering to the render surface
      */
-    push(renderSurface: RenderSurface, clear?: CLEAR | boolean, clearColor?: RgbaArray, frame?: Rectangle): RenderTarget;
+    push(
+        renderSurface: RenderSurface,
+        clear?: CLEAR | boolean,
+        clearColor?: RgbaArray,
+        frame?: Rectangle,
+    ): RenderTarget;
     /** Pops the current render target from the renderer and restores the previous render target. */
     pop(): void;
     /**
@@ -247,16 +265,22 @@ export declare class RenderTargetSystem<RENDER_TARGET extends GlRenderTarget | G
      * @param originDest.x - the x origin of the paste
      * @param originDest.y - the y origin of the paste
      */
-    copyToTexture(sourceRenderSurfaceTexture: RenderTarget, destinationTexture: Texture, originSrc: {
-        x: number;
-        y: number;
-    }, size: {
-        width: number;
-        height: number;
-    }, originDest: {
-        x: number;
-        y: number;
-    }): Texture<TextureSource<any>>;
+    copyToTexture(
+        sourceRenderSurfaceTexture: RenderTarget,
+        destinationTexture: Texture,
+        originSrc: {
+            x: number;
+            y: number;
+        },
+        size: {
+            width: number;
+            height: number;
+        },
+        originDest: {
+            x: number;
+            y: number;
+        },
+    ): Texture<TextureSource<any>>;
     /**
      * ensures that we have a depth stencil buffer available to render to
      * This is used by the mask system to make sure we have a stencil buffer.

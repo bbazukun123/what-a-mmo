@@ -22,5 +22,23 @@ type Matrix3x3 = ArrayFixed<number, 9>;
  * @returns - The computed 2D projection matrix
  * @private
  */
-export declare function compute2DProjection(out: Matrix3x3, x1s: number, y1s: number, x1d: number, y1d: number, x2s: number, y2s: number, x2d: number, y2d: number, x3s: number, y3s: number, x3d: number, y3d: number, x4s: number, y4s: number, x4d: number, y4d: number): Matrix3x3;
+export declare function compute2DProjection(
+    out: Matrix3x3,
+    x1s: number,
+    y1s: number,
+    x1d: number,
+    y1d: number,
+    x2s: number,
+    y2s: number,
+    x2d: number,
+    y2d: number,
+    x3s: number,
+    y3s: number,
+    x3d: number,
+    y3d: number,
+    x4s: number,
+    y4s: number,
+    x4d: number,
+    y4d: number,
+): Matrix3x3;
 export {};

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 let uidCount = 0;
 function generateUID() {
-  return uidCount++;
+    return uidCount++;
 }
 
 export { generateUID };

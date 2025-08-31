@@ -8,7 +8,10 @@ import type { ConvertedFillStyle, ConvertedStrokeStyle, FillInput, StrokeInput }
  * @param defaultStyle - The default fill style to use
  * @private
  */
-export declare function toFillStyle<T extends FillInput>(value: T, defaultStyle: ConvertedFillStyle): ConvertedFillStyle;
+export declare function toFillStyle<T extends FillInput>(
+    value: T,
+    defaultStyle: ConvertedFillStyle,
+): ConvertedFillStyle;
 /**
  * Converts a value to a stroke style, similar to `toFillStyle` but for strokes
  * @param value - The value to convert to a stroke style

@@ -1,16 +1,16 @@
-import { defineConfig, Plugin, type ResolvedConfig } from "vite";
-import { execSync } from "child_process";
-import { AssetPack, type AssetPackConfig  } from '@assetpack/core';
-import { pixiPipes } from "@assetpack/core/pixi";
+import { defineConfig, Plugin, type ResolvedConfig } from 'vite';
+import { execSync } from 'child_process';
+import { AssetPack, type AssetPackConfig } from '@assetpack/core';
+import { pixiPipes } from '@assetpack/core/pixi';
 
 function assetpackPlugin(): Plugin {
     const apConfig: AssetPackConfig = {
         entry: './assets',
         pipes: [
             pixiPipes({
-              manifest: {
-                output: './src/manifest.json',
-              },
+                manifest: {
+                    output: './src/manifest.json',
+                },
             }),
         ],
     };
@@ -45,29 +45,29 @@ function assetpackPlugin(): Plugin {
 }
 
 function runSlOnBuildStart(): Plugin {
-  return {
-    name: "vite-plugin-sl",
-    buildStart() {
-      execSync("rm -rf ./node_modules/.vite/deps");
+    return {
+        name: 'vite-plugin-sl',
+        buildStart() {
+            execSync('rm -rf ./node_modules/.vite/deps');
 
-      try {
-        execSync("npx sl libs/pixi", { stdio: "inherit" });
+            try {
+                execSync('npx sl libs/pixi', { stdio: 'inherit' });
 
-        // for mats local builds..
-        // execSync('npx sl ../pixijs', { stdio: 'inherit' });
-        // execSync('npx sl ../odie', { stdio: 'inherit' });
-      } catch (error: any) {
-        console.error(`Error executing command: ${error.message}`);
-      }
-    },
-  };
+                // for mats local builds..
+                // execSync('npx sl ../pixijs', { stdio: 'inherit' });
+                // execSync('npx sl ../odie', { stdio: 'inherit' });
+            } catch (error: any) {
+                console.error(`Error executing command: ${error.message}`);
+            }
+        },
+    };
 }
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [assetpackPlugin(), runSlOnBuildStart()],
-  server: {
-    port: 8080,
-    open: true,
-  },
+    plugins: [assetpackPlugin(), runSlOnBuildStart()],
+    server: {
+        port: 8080,
+        open: true,
+    },
 });

@@ -14,8 +14,11 @@ import type { Container } from '../Container';
  * @param previousData.index - the index of the data array
  * @param previousData.didChange - did the data change
  */
-export declare function checkChildrenDidChange(container: Container, previousData: {
-    data: number[];
-    index: number;
-    didChange: boolean;
-}): boolean;
+export declare function checkChildrenDidChange(
+    container: Container,
+    previousData: {
+        data: number[];
+        index: number;
+        didChange: boolean;
+    },
+): boolean;

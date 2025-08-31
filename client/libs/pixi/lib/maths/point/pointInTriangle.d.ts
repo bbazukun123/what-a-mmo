@@ -10,4 +10,13 @@
  * @param y3 - y coordinate of the third vertex of the triangle
  * @returns `true` if the point is inside the triangle, `false` otherwise
  */
-export declare function pointInTriangle(px: number, py: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): boolean;
+export declare function pointInTriangle(
+    px: number,
+    py: number,
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    x3: number,
+    y3: number,
+): boolean;

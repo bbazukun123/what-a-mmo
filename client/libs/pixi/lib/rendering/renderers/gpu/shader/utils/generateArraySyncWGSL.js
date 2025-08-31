@@ -2,14 +2,14 @@
 
 var createUboElementsWGSL = require('./createUboElementsWGSL.js');
 
-"use strict";
+('use strict');
 function generateArraySyncWGSL(uboElement, offsetToAdd) {
-  const { size, align } = createUboElementsWGSL.WGSL_ALIGN_SIZE_DATA[uboElement.data.type];
-  const remainder = (align - size) / 4;
-  const data = uboElement.data.type.indexOf("i32") >= 0 ? "dataInt32" : "data";
-  return `
+    const { size, align } = createUboElementsWGSL.WGSL_ALIGN_SIZE_DATA[uboElement.data.type];
+    const remainder = (align - size) / 4;
+    const data = uboElement.data.type.indexOf('i32') >= 0 ? 'dataInt32' : 'data';
+    return `
          v = uv.${uboElement.data.name};
-         ${offsetToAdd !== 0 ? `offset += ${offsetToAdd};` : ""}
+         ${offsetToAdd !== 0 ? `offset += ${offsetToAdd};` : ''}
 
          arrayOffset = offset;
 
@@ -21,7 +21,7 @@ function generateArraySyncWGSL(uboElement, offsetToAdd) {
              {
                  ${data}[arrayOffset++] = v[t++];
              }
-             ${remainder !== 0 ? `arrayOffset += ${remainder};` : ""}
+             ${remainder !== 0 ? `arrayOffset += ${remainder};` : ''}
          }
      `;
 }

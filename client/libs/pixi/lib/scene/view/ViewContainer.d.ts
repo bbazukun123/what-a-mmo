@@ -6,10 +6,8 @@ import { type IRenderLayer } from '../layers/RenderLayer';
 import type { PointData } from '../../maths/point/PointData';
 import type { View } from '../../rendering/renderers/shared/view/View';
 import type { DestroyOptions } from '../container/destroyTypes';
-export interface ViewContainerOptions extends ContainerOptions, PixiMixins.ViewContainerOptions {
-}
-export interface ViewContainer extends PixiMixins.ViewContainer, Container {
-}
+export interface ViewContainerOptions extends ContainerOptions, PixiMixins.ViewContainerOptions {}
+export interface ViewContainer extends PixiMixins.ViewContainer, Container {}
 /**
  * A ViewContainer is a type of container that represents a view.
  * This view can be a Sprite, a Graphics object, or any other object that can be rendered.

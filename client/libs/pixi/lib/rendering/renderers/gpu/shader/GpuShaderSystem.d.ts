@@ -15,7 +15,7 @@ export declare class GpuShaderSystem implements ShaderSystem {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "shader";
+        readonly name: 'shader';
     };
     maxTextures: number;
     private _gpu;

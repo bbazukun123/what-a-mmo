@@ -1,11 +1,11 @@
 'use strict';
 
-"use strict";
+'use strict';
 const particleData = {
-  vertex: {
-    attributeName: "aVertex",
-    format: "float32x2",
-    code: `
+    vertex: {
+        attributeName: 'aVertex',
+        format: 'float32x2',
+        code: `
             const texture = p.texture;
             const sx = p.scaleX;
             const sy = p.scaleY;
@@ -43,13 +43,13 @@ const particleData = {
             f32v[offset + (stride * 3)] = w1 * sx;
             f32v[offset + (stride * 3) + 1] = h0 * sy;
         `,
-    dynamic: false
-  },
-  // positionData
-  position: {
-    attributeName: "aPosition",
-    format: "float32x2",
-    code: `
+        dynamic: false,
+    },
+    // positionData
+    position: {
+        attributeName: 'aPosition',
+        format: 'float32x2',
+        code: `
             var x = p.x;
             var y = p.y;
 
@@ -65,13 +65,13 @@ const particleData = {
             f32v[offset + (stride * 3)] = x;
             f32v[offset + (stride * 3) + 1] = y;
         `,
-    dynamic: true
-  },
-  // rotationData
-  rotation: {
-    attributeName: "aRotation",
-    format: "float32",
-    code: `
+        dynamic: true,
+    },
+    // rotationData
+    rotation: {
+        attributeName: 'aRotation',
+        format: 'float32',
+        code: `
             var rotation = p.rotation;
 
             f32v[offset] = rotation;
@@ -79,13 +79,13 @@ const particleData = {
             f32v[offset + (stride * 2)] = rotation;
             f32v[offset + (stride * 3)] = rotation;
         `,
-    dynamic: false
-  },
-  // uvsData
-  uvs: {
-    attributeName: "aUV",
-    format: "float32x2",
-    code: `
+        dynamic: false,
+    },
+    // uvsData
+    uvs: {
+        attributeName: 'aUV',
+        format: 'float32x2',
+        code: `
             var uvs = p.texture.uvs;
 
             f32v[offset] = uvs.x0;
@@ -100,13 +100,13 @@ const particleData = {
             f32v[offset + (stride * 3)] = uvs.x3;
             f32v[offset + (stride * 3) + 1] = uvs.y3;
         `,
-    dynamic: false
-  },
-  // tintData
-  color: {
-    attributeName: "aColor",
-    format: "unorm8x4",
-    code: `
+        dynamic: false,
+    },
+    // tintData
+    color: {
+        attributeName: 'aColor',
+        format: 'unorm8x4',
+        code: `
             const c = p.color;
 
             u32v[offset] = c;
@@ -114,8 +114,8 @@ const particleData = {
             u32v[offset + (stride * 2)] = c;
             u32v[offset + (stride * 3)] = c;
         `,
-    dynamic: false
-  }
+        dynamic: false,
+    },
 };
 
 exports.particleData = particleData;

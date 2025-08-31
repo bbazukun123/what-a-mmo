@@ -1,7 +1,6 @@
 import type { PointData } from './PointData';
 import type { PointLike } from './PointLike';
-export interface Point extends PixiMixins.Point {
-}
+export interface Point extends PixiMixins.Point {}
 /**
  * The Point object represents a location in a two-dimensional coordinate system, where `x` represents
  * the position on the horizontal axis and `y` represents the position on the vertical axis.

@@ -12,7 +12,7 @@ export declare class GpuBatchAdaptor implements BatcherAdaptor {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUPipesAdaptor];
-        readonly name: "batch";
+        readonly name: 'batch';
     };
     private _shader;
     private _geometry;

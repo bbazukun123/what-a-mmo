@@ -6,30 +6,30 @@ import { CompressedSource } from '../../rendering/renderers/shared/texture/sourc
 import { getSupportedTextureFormats } from '../../rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
 import { loadKTX2onWorker } from './worker/loadKTX2onWorker.mjs';
 
-"use strict";
+('use strict');
 const loadKTX2 = {
-  extension: {
-    type: ExtensionType.LoadParser,
-    priority: LoaderParserPriority.High,
-    name: "loadKTX2"
-  },
-  name: "loadKTX2",
-  test(url) {
-    return checkExtension(url, ".ktx2");
-  },
-  async load(url, _asset, loader) {
-    const supportedTextures = await getSupportedTextureFormats();
-    const textureOptions = await loadKTX2onWorker(url, supportedTextures);
-    const compressedTextureSource = new CompressedSource(textureOptions);
-    return createTexture(compressedTextureSource, loader, url);
-  },
-  async unload(texture) {
-    if (Array.isArray(texture)) {
-      texture.forEach((t) => t.destroy(true));
-    } else {
-      texture.destroy(true);
-    }
-  }
+    extension: {
+        type: ExtensionType.LoadParser,
+        priority: LoaderParserPriority.High,
+        name: 'loadKTX2',
+    },
+    name: 'loadKTX2',
+    test(url) {
+        return checkExtension(url, '.ktx2');
+    },
+    async load(url, _asset, loader) {
+        const supportedTextures = await getSupportedTextureFormats();
+        const textureOptions = await loadKTX2onWorker(url, supportedTextures);
+        const compressedTextureSource = new CompressedSource(textureOptions);
+        return createTexture(compressedTextureSource, loader, url);
+    },
+    async unload(texture) {
+        if (Array.isArray(texture)) {
+            texture.forEach((t) => t.destroy(true));
+        } else {
+            texture.destroy(true);
+        }
+    },
 };
 
 export { loadKTX2 };

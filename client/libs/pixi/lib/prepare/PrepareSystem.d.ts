@@ -36,7 +36,7 @@ export declare class PrepareSystem extends PrepareUpload implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "prepare";
+        readonly name: 'prepare';
     };
     /** Destroys the plugin, don't use after this. */
     destroy(): void;

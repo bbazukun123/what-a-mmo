@@ -8,4 +8,7 @@ import type { WebGLExtensions } from '../../context/WebGLExtensions';
  * @param extensions - The WebGL extensions.
  * @returns Lookup table.
  */
-export declare function mapFormatToGlInternalFormat(gl: GlRenderingContext, extensions: WebGLExtensions): Record<string, number>;
+export declare function mapFormatToGlInternalFormat(
+    gl: GlRenderingContext,
+    extensions: WebGLExtensions,
+): Record<string, number>;

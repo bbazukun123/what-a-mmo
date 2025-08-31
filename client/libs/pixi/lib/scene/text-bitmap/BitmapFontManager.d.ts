@@ -103,7 +103,11 @@ declare class BitmapFontManagerClass {
      * @param style - The style to use
      * @param trimEnd - Whether to ignore whitespaces at the end of each line
      */
-    measureText(text: string, style: TextStyle, trimEnd?: boolean): {
+    measureText(
+        text: string,
+        style: TextStyle,
+        trimEnd?: boolean,
+    ): {
         width: number;
         height: number;
         scale: number;

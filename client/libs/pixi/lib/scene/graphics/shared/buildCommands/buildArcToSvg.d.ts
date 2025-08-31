@@ -1,1 +1,12 @@
-export declare function buildArcToSvg(points: number[], px: number, py: number, cx: number, cy: number, rx: number, ry: number, xAxisRotation?: number, largeArcFlag?: number, sweepFlag?: number): void;
+export declare function buildArcToSvg(
+    points: number[],
+    px: number,
+    py: number,
+    cx: number,
+    cy: number,
+    rx: number,
+    ry: number,
+    xAxisRotation?: number,
+    largeArcFlag?: number,
+    sweepFlag?: number,
+): void;

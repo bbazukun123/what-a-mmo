@@ -5,7 +5,7 @@ export declare class GpuParticleContainerPipe extends ParticleContainerPipe {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUPipes];
-        readonly name: "particle";
+        readonly name: 'particle';
     };
     constructor(renderer: WebGPURenderer);
 }

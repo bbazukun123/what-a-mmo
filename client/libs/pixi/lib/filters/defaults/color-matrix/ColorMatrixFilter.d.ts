@@ -162,7 +162,13 @@ export declare class ColorMatrixFilter extends Filter {
      * @param multiply - if true, current matrix and matrix are multiplied. If false,
      *  just set the current matrix with @param matrix
      */
-    colorTone(desaturation: number, toned: number, lightColor: ColorSource, darkColor: ColorSource, multiply: boolean): void;
+    colorTone(
+        desaturation: number,
+        toned: number,
+        lightColor: ColorSource,
+        darkColor: ColorSource,
+        multiply: boolean,
+    ): void;
     /**
      * Night effect
      * @param intensity - The intensity of the night effect.

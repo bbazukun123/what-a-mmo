@@ -3,8 +3,7 @@ import { TextStyle } from './TextStyle';
 import type { View } from '../../rendering/renderers/shared/view/View';
 import type { TextOptions, TextString } from './AbstractText';
 import type { TextStyleOptions } from './TextStyle';
-export interface Text extends PixiMixins.Text, AbstractText<TextStyle, TextStyleOptions> {
-}
+export interface Text extends PixiMixins.Text, AbstractText<TextStyle, TextStyleOptions> {}
 /**
  * A Text Object will create a line or multiple lines of text.
  *

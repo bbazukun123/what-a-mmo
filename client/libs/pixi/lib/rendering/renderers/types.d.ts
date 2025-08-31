@@ -13,8 +13,7 @@ export type RenderPipes = WebGLPipes | WebGPUPipes;
  * @extends rendering.WebGLOptions
  * @extends rendering.WebGPUOptions
  */
-export interface RendererOptions extends WebGLOptions, WebGPUOptions {
-}
+export interface RendererOptions extends WebGLOptions, WebGPUOptions {}
 /**
  * Ids for the different render types.
  * The idea is that you can use bitwise operations to filter whether or not you want to do something
@@ -27,6 +26,6 @@ export interface RendererOptions extends WebGLOptions, WebGPUOptions {
 export declare enum RendererType {
     WEBGL = 1,
     WEBGPU = 2,
-    BOTH = 3
+    BOTH = 3,
 }
 export type GpuPowerPreference = 'low-power' | 'high-performance';

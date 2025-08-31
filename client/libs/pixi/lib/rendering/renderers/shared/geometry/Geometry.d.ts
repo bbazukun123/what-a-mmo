@@ -37,9 +37,13 @@ export interface Attribute {
  * extends {@link rendering.Attribute} but allows for the buffer to be a typed or number array
  * @memberof rendering
  */
-type AttributeOption = Omit<Attribute, 'buffer'> & {
-    buffer: Buffer | TypedArray | number[];
-} | Buffer | TypedArray | number[];
+type AttributeOption =
+    | (Omit<Attribute, 'buffer'> & {
+          buffer: Buffer | TypedArray | number[];
+      })
+    | Buffer
+    | TypedArray
+    | number[];
 export type AttributeOptions = Record<string, AttributeOption>;
 /**
  * the interface that describes the structure of the geometry

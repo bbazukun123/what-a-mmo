@@ -3,7 +3,7 @@
 var Spritesheet = require('./Spritesheet.js');
 var spritesheetAsset = require('./spritesheetAsset.js');
 
-"use strict";
+('use strict');
 
 exports.Spritesheet = Spritesheet.Spritesheet;
 exports.spritesheetAsset = spritesheetAsset.spritesheetAsset;

@@ -12,7 +12,7 @@ var FederatedMouseEvent = require('./FederatedMouseEvent.js');
 var FederatedPointerEvent = require('./FederatedPointerEvent.js');
 var FederatedWheelEvent = require('./FederatedWheelEvent.js');
 
-"use strict";
+('use strict');
 
 exports.EventBoundary = EventBoundary.EventBoundary;
 exports.EventSystem = EventSystem.EventSystem;

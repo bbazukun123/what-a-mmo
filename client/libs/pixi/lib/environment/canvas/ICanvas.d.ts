@@ -1,15 +1,29 @@
 /// <reference types="@webgpu/types" />
 import type { ICanvasRenderingContext2D } from './ICanvasRenderingContext2D';
-export type ContextIds = '2d' | 'bitmaprenderer' | 'webgl' | 'experimental-webgl' | 'webgl2' | 'experimental-webgl2' | 'webgpu';
+export type ContextIds =
+    | '2d'
+    | 'bitmaprenderer'
+    | 'webgl'
+    | 'experimental-webgl'
+    | 'webgl2'
+    | 'experimental-webgl2'
+    | 'webgpu';
 export type PredefinedColorSpace = 'srgb' | 'display-p3';
-export type RenderingContext = ICanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
+export type RenderingContext =
+    | ICanvasRenderingContext2D
+    | ImageBitmapRenderingContext
+    | WebGLRenderingContext
+    | WebGL2RenderingContext;
 export interface ICanvasRenderingContext2DSettings {
     alpha?: boolean;
     colorSpace?: PredefinedColorSpace;
     desynchronized?: boolean;
     willReadFrequently?: boolean;
 }
-export type ContextSettings = ICanvasRenderingContext2DSettings | ImageBitmapRenderingContextSettings | WebGLContextAttributes;
+export type ContextSettings =
+    | ICanvasRenderingContext2DSettings
+    | ImageBitmapRenderingContextSettings
+    | WebGLContextAttributes;
 export interface ICanvasParentNode {
     /** Adds a node to the end of the list of children of the parent node. */
     appendChild(element: HTMLElement): void;
@@ -32,8 +46,8 @@ export interface ICanvasRect {
     height: number;
 }
 export interface WebGLContextEventMap {
-    'webglcontextlost': WebGLContextEvent;
-    'webglcontextrestore': WebGLContextEvent;
+    webglcontextlost: WebGLContextEvent;
+    webglcontextrestore: WebGLContextEvent;
 }
 /**
  * Common interface for HTMLCanvasElement, OffscreenCanvas, and other custom canvas classes.
@@ -53,9 +67,18 @@ export interface ICanvas extends PixiMixins.ICanvas, Partial<EventTarget> {
      * @returns {RenderingContext | null} The created context, or null if contextId is not supported.
      */
     getContext(contextId: '2d', options?: ICanvasRenderingContext2DSettings): ICanvasRenderingContext2D | null;
-    getContext(contextId: 'bitmaprenderer', options?: ImageBitmapRenderingContextSettings): ImageBitmapRenderingContext | null;
-    getContext(contextId: 'webgl' | 'experimental-webgl', options?: WebGLContextAttributes): WebGLRenderingContext | null;
-    getContext(contextId: 'webgl2' | 'experimental-webgl2', options?: WebGLContextAttributes): WebGL2RenderingContext | null;
+    getContext(
+        contextId: 'bitmaprenderer',
+        options?: ImageBitmapRenderingContextSettings,
+    ): ImageBitmapRenderingContext | null;
+    getContext(
+        contextId: 'webgl' | 'experimental-webgl',
+        options?: WebGLContextAttributes,
+    ): WebGLRenderingContext | null;
+    getContext(
+        contextId: 'webgl2' | 'experimental-webgl2',
+        options?: WebGLContextAttributes,
+    ): WebGL2RenderingContext | null;
     getContext(contextId: 'webgpu'): GPUCanvasContext | null;
     getContext(contextId: ContextIds, options?: ContextSettings): RenderingContext | null;
     /**
@@ -93,10 +116,7 @@ export interface ICanvas extends PixiMixins.ICanvas, Partial<EventTarget> {
      *      is outside the allowed range.
      * @returns {Promise<Blob>} A `Promise` returning a Blob object representing the image contained in the canvas.
      */
-    convertToBlob?(options?: {
-        type?: string;
-        quality?: number;
-    }): Promise<Blob>;
+    convertToBlob?(options?: { type?: string; quality?: number }): Promise<Blob>;
     /**
      * Adds the listener for the specified event.
      * @method
@@ -107,7 +127,11 @@ export interface ICanvas extends PixiMixins.ICanvas, Partial<EventTarget> {
      */
     addEventListener?: {
         (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        <K extends keyof WebGLContextEventMap>(type: K, listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        <K extends keyof WebGLContextEventMap>(
+            type: K,
+            listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any,
+            options?: boolean | AddEventListenerOptions,
+        ): void;
     };
     /**
      * Removes the listener for the specified event.
@@ -119,7 +143,11 @@ export interface ICanvas extends PixiMixins.ICanvas, Partial<EventTarget> {
      */
     removeEventListener?: {
         (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-        <K extends keyof WebGLContextEventMap>(type: K, listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        <K extends keyof WebGLContextEventMap>(
+            type: K,
+            listener: (this: ICanvas, ev: WebGLContextEventMap[K]) => any,
+            options?: boolean | EventListenerOptions,
+        ): void;
     };
     /**
      * Dispatches a event.

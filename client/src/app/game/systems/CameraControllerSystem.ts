@@ -1,4 +1,16 @@
-import { CameraEntity, CameraSystem, createEntity, Entity3D, lerp, PROJECTION_TYPE, QueriesObject, QueryResults, System, Vector3, View3DComponent } from '@play-co/odie';
+import {
+    CameraEntity,
+    CameraSystem,
+    createEntity,
+    Entity3D,
+    lerp,
+    PROJECTION_TYPE,
+    QueriesObject,
+    QueryResults,
+    System,
+    Vector3,
+    View3DComponent,
+} from '@play-co/odie';
 import { PlayerEntityTag } from '../defs/tags';
 import { GameScene } from '../GameScene';
 
@@ -28,8 +40,8 @@ export class CameraControllerSystem implements System<void, GameScene> {
                 lookAtTarget: new Vector3(),
             },
             transform: {
-                scale: { x: 1, y: -1, z: 1}
-            }
+                scale: { x: 1, y: -1, z: 1 },
+            },
         });
         this.scene.getSystem(CameraSystem).setCamera(this.camera);
     }

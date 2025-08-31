@@ -120,5 +120,4 @@ export class GameLightSystem implements System {
         renderGroup.toRender.remove(entity);
         renderGroup._renderNeedsUpdate = true;
     }
-
 }

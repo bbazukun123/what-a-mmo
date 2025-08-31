@@ -10,7 +10,11 @@ import type { Loader } from '../../Loader';
  * @param crossorigin - Cross origin value to use
  * @memberof assets
  */
-export declare function crossOrigin(element: HTMLImageElement | HTMLVideoElement, url: string, crossorigin?: boolean | string): void;
+export declare function crossOrigin(
+    element: HTMLImageElement | HTMLVideoElement,
+    url: string,
+    crossorigin?: boolean | string,
+): void;
 /**
  * Preload a video element
  * @param element - Video element to preload

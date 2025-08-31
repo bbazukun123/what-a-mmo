@@ -36,5 +36,5 @@ export { default as maskFrag } from './mask/mask.frag.mjs';
 export { default as maskVert } from './mask/mask.vert.mjs';
 export { default as maskWgsl } from './mask/mask.wgsl.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

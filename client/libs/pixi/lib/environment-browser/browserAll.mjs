@@ -13,5 +13,5 @@ import '../scene/sprite-tiling/init.mjs';
 import '../scene/sprite-nine-slice/init.mjs';
 import '../filters/init.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=browserAll.mjs.map

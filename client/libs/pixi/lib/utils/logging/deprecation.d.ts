@@ -2,8 +2,8 @@
  * deprecation name for version 8.0.0
  * @ignore
  */
-export declare const v8_0_0 = "8.0.0";
-export declare const v8_3_4 = "8.3.4";
+export declare const v8_0_0 = '8.0.0';
+export declare const v8_3_4 = '8.3.4';
 /**
  * Helper for warning developers about deprecated features & settings.
  * A stack track for warnings is given; useful for tracking-down where

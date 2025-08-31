@@ -15,20 +15,20 @@ export declare class MeshPipe implements RenderPipe<Mesh>, InstructionPipe<Mesh>
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "mesh";
+        readonly name: 'mesh';
     };
     localUniforms: UniformGroup<{
         uTransformMatrix: {
             value: Matrix;
-            type: "mat3x3<f32>";
+            type: 'mat3x3<f32>';
         };
         uColor: {
             value: Float32Array;
-            type: "vec4<f32>";
+            type: 'vec4<f32>';
         };
         uRound: {
             value: number;
-            type: "f32";
+            type: 'f32';
         };
     }>;
     localUniformsBindGroup: BindGroup;

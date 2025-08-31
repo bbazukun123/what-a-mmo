@@ -112,10 +112,13 @@ export type TextureSourceLike = TextureSource | TextureResourceOrOptions | strin
  * @memberof rendering
  * @class
  */
-export declare class Texture<TextureSourceType extends TextureSource = TextureSource> extends EventEmitter<{
-    update: Texture;
-    destroy: Texture;
-}> implements BindableTexture {
+export declare class Texture<TextureSourceType extends TextureSource = TextureSource>
+    extends EventEmitter<{
+        update: Texture;
+        destroy: Texture;
+    }>
+    implements BindableTexture
+{
     /**
      * Helper function that creates a returns Texture based on the source you provide.
      * The source should be loaded and ready to go. If not its best to grab the asset using Assets.
@@ -196,7 +199,17 @@ export declare class Texture<TextureSourceType extends TextureSource = TextureSo
     /**
      * @param {rendering.TextureOptions} options - Options for the texture
      */
-    constructor({ source, label, frame, orig, trim, defaultAnchor, defaultBorders, rotate, dynamic }?: TextureOptions<TextureSourceType>);
+    constructor({
+        source,
+        label,
+        frame,
+        orig,
+        trim,
+        defaultAnchor,
+        defaultBorders,
+        rotate,
+        dynamic,
+    }?: TextureOptions<TextureSourceType>);
     set source(value: TextureSourceType);
     /** the underlying source of the texture (equivalent of baseTexture in v7) */
     get source(): TextureSourceType;

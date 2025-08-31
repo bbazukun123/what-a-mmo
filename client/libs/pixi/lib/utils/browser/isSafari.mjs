@@ -1,9 +1,9 @@
 import { DOMAdapter } from '../../environment/adapter.mjs';
 
-"use strict";
+('use strict');
 function isSafari() {
-  const { userAgent } = DOMAdapter.get().getNavigator();
-  return /^((?!chrome|android).)*safari/i.test(userAgent);
+    const { userAgent } = DOMAdapter.get().getNavigator();
+    return /^((?!chrome|android).)*safari/i.test(userAgent);
 }
 
 export { isSafari };

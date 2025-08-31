@@ -45,7 +45,7 @@ export declare class GpuDeviceSystem implements System<GpuContextOptions> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "device";
+        readonly name: 'device';
     };
     /** The default options for the GpuDeviceSystem. */
     static defaultOptions: GpuContextOptions;

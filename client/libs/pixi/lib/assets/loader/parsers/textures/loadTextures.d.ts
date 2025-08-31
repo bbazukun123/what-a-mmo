@@ -35,7 +35,10 @@ export interface LoadTextureConfig {
  * @param url - The image to load an image bitmap for
  * @ignore
  */
-export declare function loadImageBitmap(url: string, asset?: ResolvedAsset<TextureSourceOptions<any>>): Promise<ImageBitmap>;
+export declare function loadImageBitmap(
+    url: string,
+    asset?: ResolvedAsset<TextureSourceOptions<any>>,
+): Promise<ImageBitmap>;
 /**
  * A simple plugin to load our textures!
  * This makes use of imageBitmaps where available.

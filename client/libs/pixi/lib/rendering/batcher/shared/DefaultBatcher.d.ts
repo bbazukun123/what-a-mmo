@@ -33,14 +33,12 @@ export interface DefaultBatchElements {
  * Represents a batchable quad element with default batch properties.
  * @memberof rendering
  */
-export interface DefaultBatchableQuadElement extends BatchableQuadElement, DefaultBatchElements {
-}
+export interface DefaultBatchableQuadElement extends BatchableQuadElement, DefaultBatchElements {}
 /**
  * Represents a batchable mesh element with default batch properties.
  * @memberof rendering
  */
-export interface DefaultBatchableMeshElement extends BatchableMeshElement, DefaultBatchElements {
-}
+export interface DefaultBatchableMeshElement extends BatchableMeshElement, DefaultBatchElements {}
 /**
  * The default batcher is used to batch quads and meshes. This batcher will batch the following elements:
  * - tints
@@ -53,11 +51,11 @@ export declare class DefaultBatcher extends Batcher {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.Batcher];
-        readonly name: "default";
+        readonly name: 'default';
     };
     geometry: BatchGeometry;
     shader: Shader;
-    name: "default";
+    name: 'default';
     /** The size of one attribute. 1 = 32 bit. x, y, u, v, color, textureIdAndRound -> total = 6 */
     vertexSize: number;
     /**
@@ -68,7 +66,13 @@ export declare class DefaultBatcher extends Batcher {
      * @param index - The starting index in the views.
      * @param textureId - The texture ID to use.
      */
-    packAttributes(element: DefaultBatchableMeshElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number): void;
+    packAttributes(
+        element: DefaultBatchableMeshElement,
+        float32View: Float32Array,
+        uint32View: Uint32Array,
+        index: number,
+        textureId: number,
+    ): void;
     /**
      * Packs the attributes of a DefaultBatchableQuadElement into the provided views.
      * @param element - The DefaultBatchableQuadElement to pack.
@@ -77,5 +81,11 @@ export declare class DefaultBatcher extends Batcher {
      * @param index - The starting index in the views.
      * @param textureId - The texture ID to use.
      */
-    packQuadAttributes(element: DefaultBatchableQuadElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number): void;
+    packQuadAttributes(
+        element: DefaultBatchableQuadElement,
+        float32View: Float32Array,
+        uint32View: Uint32Array,
+        index: number,
+        textureId: number,
+    ): void;
 }

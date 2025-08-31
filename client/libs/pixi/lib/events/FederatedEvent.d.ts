@@ -130,7 +130,13 @@ export declare class FederatedEvent<N extends UIEvent | PixiTouch = UIEvent | Pi
      * @param _viewArg
      * @param _detailArg
      */
-    initUIEvent(_typeArg: string, _bubblesArg?: boolean, _cancelableArg?: boolean, _viewArg?: Window | null, _detailArg?: number): void;
+    initUIEvent(
+        _typeArg: string,
+        _bubblesArg?: boolean,
+        _cancelableArg?: boolean,
+        _viewArg?: Window | null,
+        _detailArg?: number,
+    ): void;
     /** Prevent default behavior of PixiJS and the user agent. */
     preventDefault(): void;
     /**

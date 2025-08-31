@@ -1,12 +1,12 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 
-"use strict";
+('use strict');
 class LinearBurnBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float linearBurn(float base, float blend)
                 {
                     return max(0.0, base + blend - 1.0);
@@ -23,12 +23,12 @@ class LinearBurnBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 finalColor = vec4(blendLinearBurn(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-                `
-      },
-      gpu: {
-        functions: `
+                `,
+            },
+            gpu: {
+                functions: `
                 fn linearBurn(base: f32, blend: f32) -> f32
                 {
                     return max(0.0, base + blend - 1.0);
@@ -45,17 +45,17 @@ class LinearBurnBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 out = vec4<f32>(blendLinearBurn(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-                `
-      }
-    });
-  }
+                `,
+            },
+        });
+    }
 }
 /** @ignore */
 LinearBurnBlend.extension = {
-  name: "linear-burn",
-  type: ExtensionType.BlendMode
+    name: 'linear-burn',
+    type: ExtensionType.BlendMode,
 };
 
 export { LinearBurnBlend };

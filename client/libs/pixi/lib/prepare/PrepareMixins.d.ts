@@ -1,9 +1,6 @@
-declare global
-{
-    namespace PixiMixins
-    {
-        interface RendererSystems
-        {
+declare global {
+    namespace PixiMixins {
+        interface RendererSystems {
             prepare: import('./PrepareBase').PrepareBase;
         }
     }

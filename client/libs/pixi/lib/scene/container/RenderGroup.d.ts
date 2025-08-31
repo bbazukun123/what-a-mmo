@@ -45,10 +45,13 @@ export declare class RenderGroup implements Instruction {
     worldColorAlpha: number;
     worldColor: number;
     worldAlpha: number;
-    readonly childrenToUpdate: Record<number, {
-        list: Container[];
-        index: number;
-    }>;
+    readonly childrenToUpdate: Record<
+        number,
+        {
+            list: Container[];
+            index: number;
+        }
+    >;
     updateTick: number;
     gcTick: number;
     readonly childrenRenderablesToUpdate: {

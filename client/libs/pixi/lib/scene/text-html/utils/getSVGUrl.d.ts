@@ -9,4 +9,10 @@ import type { HTMLTextStyle } from '../HTMLTextStyle';
  * @param htmlTextData - The HTMLTextRenderData to write the SVG to
  * @returns - The SVG as a url string
  */
-export declare function getSVGUrl(text: string, style: HTMLTextStyle, resolution: number, fontCSS: string, htmlTextData: HTMLTextRenderData): string;
+export declare function getSVGUrl(
+    text: string,
+    style: HTMLTextStyle,
+    resolution: number,
+    fontCSS: string,
+    htmlTextData: HTMLTextRenderData,
+): string;

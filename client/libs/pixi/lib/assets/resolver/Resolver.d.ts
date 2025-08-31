@@ -284,7 +284,9 @@ export declare class Resolver {
      * @param bundleIds - The bundle ids to resolve
      * @returns All the bundles assets or a hash of assets for each bundle specified
      */
-    resolveBundle(bundleIds: ArrayOr<string>): Record<string, ResolvedAsset> | Record<string, Record<string, ResolvedAsset>>;
+    resolveBundle(
+        bundleIds: ArrayOr<string>,
+    ): Record<string, ResolvedAsset> | Record<string, Record<string, ResolvedAsset>>;
     /**
      * Does exactly what resolve does, but returns just the URL rather than the whole asset object
      * @param key - The key or keys to resolve

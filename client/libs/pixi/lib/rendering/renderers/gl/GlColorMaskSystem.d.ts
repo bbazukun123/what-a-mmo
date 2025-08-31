@@ -9,7 +9,7 @@ export declare class GlColorMaskSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "colorMask";
+        readonly name: 'colorMask';
     };
     private readonly _renderer;
     private _colorMaskCache;

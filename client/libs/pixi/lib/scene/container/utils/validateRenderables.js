@@ -1,20 +1,20 @@
 'use strict';
 
-"use strict";
+'use strict';
 function validateRenderables(renderGroup, renderPipes) {
-  const { list, index } = renderGroup.childrenRenderablesToUpdate;
-  let rebuildRequired = false;
-  for (let i = 0; i < index; i++) {
-    const container = list[i];
-    const renderable = container;
-    const pipe = renderPipes[renderable.renderPipeId];
-    rebuildRequired = pipe.validateRenderable(container);
-    if (rebuildRequired) {
-      break;
+    const { list, index } = renderGroup.childrenRenderablesToUpdate;
+    let rebuildRequired = false;
+    for (let i = 0; i < index; i++) {
+        const container = list[i];
+        const renderable = container;
+        const pipe = renderPipes[renderable.renderPipeId];
+        rebuildRequired = pipe.validateRenderable(container);
+        if (rebuildRequired) {
+            break;
+        }
     }
-  }
-  renderGroup.structureDidChange = rebuildRequired;
-  return rebuildRequired;
+    renderGroup.structureDidChange = rebuildRequired;
+    return rebuildRequired;
 }
 
 exports.validateRenderables = validateRenderables;

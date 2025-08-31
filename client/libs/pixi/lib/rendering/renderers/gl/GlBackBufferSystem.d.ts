@@ -37,7 +37,7 @@ export declare class GlBackBufferSystem implements System<GlBackBufferOptions> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "backBuffer";
+        readonly name: 'backBuffer';
         readonly priority: 1;
     };
     /** default options for the back buffer system */

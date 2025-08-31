@@ -19,7 +19,7 @@ import type { RenderContainer } from './RenderContainer';
 export declare class CustomRenderPipe implements InstructionPipe<RenderContainer>, RenderPipe<RenderContainer> {
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "customRender";
+        readonly name: 'customRender';
     };
     private _renderer;
     constructor(renderer: Renderer);

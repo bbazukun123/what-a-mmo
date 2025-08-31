@@ -2,8 +2,7 @@ import type { Bounds } from '../../scene/container/bounds/Bounds';
 import type { Matrix } from '../matrix/Matrix';
 import type { SHAPE_PRIMITIVE } from '../misc/const';
 import type { ShapePrimitive } from './ShapePrimitive';
-export interface Rectangle extends PixiMixins.Rectangle {
-}
+export interface Rectangle extends PixiMixins.Rectangle {}
 /**
  * The `Rectangle` object is an area defined by its position, as indicated by its top-left corner
  * point (`x`, `y`) and by its `width` and its `height`.

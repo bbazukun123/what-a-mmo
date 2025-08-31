@@ -19,7 +19,14 @@ export declare const buildEllipse: {
         priority?: number;
     };
     build(shape: RoundedShape, points: number[]): void;
-    triangulate(points: number[], vertices: number[], verticesStride: number, verticesOffset: number, indices: number[], indicesOffset: number): void;
+    triangulate(
+        points: number[],
+        vertices: number[],
+        verticesStride: number,
+        verticesOffset: number,
+        indices: number[],
+        indicesOffset: number,
+    ): void;
 };
 export declare const buildRoundedRectangle: {
     extension: {
@@ -28,6 +35,13 @@ export declare const buildRoundedRectangle: {
         priority?: number;
     };
     build(shape: RoundedShape, points: number[]): void;
-    triangulate(points: number[], vertices: number[], verticesStride: number, verticesOffset: number, indices: number[], indicesOffset: number): void;
+    triangulate(
+        points: number[],
+        vertices: number[],
+        verticesStride: number,
+        verticesOffset: number,
+        indices: number[],
+        indicesOffset: number,
+    ): void;
 };
 export {};

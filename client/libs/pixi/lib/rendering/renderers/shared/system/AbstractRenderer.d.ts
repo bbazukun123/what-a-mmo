@@ -58,8 +58,20 @@ export interface ClearOptions {
     clear?: CLEAR_OR_BOOL;
 }
 export type RendererDestroyOptions = TypeOrBool<ViewSystemDestroyOptions>;
-declare const defaultRunners: readonly ["init", "destroy", "contextChange", "resolutionChange", "resetState", "renderEnd", "renderStart", "render", "update", "postrender", "prerender"];
-type DefaultRunners = typeof defaultRunners[number];
+declare const defaultRunners: readonly [
+    'init',
+    'destroy',
+    'contextChange',
+    'resolutionChange',
+    'resetState',
+    'renderEnd',
+    'renderStart',
+    'render',
+    'update',
+    'postrender',
+    'prerender',
+];
+type DefaultRunners = (typeof defaultRunners)[number];
 type Runners = {
     [key in DefaultRunners]: SystemRunner;
 } & {
@@ -112,7 +124,11 @@ type Runners = {
  * @property {rendering.PrepareSystem} prepare - PrepareSystem instance. Requires `import 'pixi.js/prepare'`.
  * @property {rendering.AccessibilitySystem} accessibility - AccessibilitySystem instance. Requires `import 'pixi.js/accessibility'`.
  */
-export declare class AbstractRenderer<PIPES, OPTIONS extends SharedRendererOptions, CANVAS extends ICanvas = HTMLCanvasElement> extends EventEmitter<{
+export declare class AbstractRenderer<
+    PIPES,
+    OPTIONS extends SharedRendererOptions,
+    CANVAS extends ICanvas = HTMLCanvasElement,
+> extends EventEmitter<{
     resize: [screenWidth: number, screenHeight: number, resolution: number];
 }> {
     /** The default options for the renderer. */
@@ -186,9 +202,12 @@ export declare class AbstractRenderer<PIPES, OPTIONS extends SharedRendererOptio
      */
     render(options: RenderOptions | Container): void;
     /** @deprecated since 8.0.0 */
-    render(container: Container, options: {
-        renderTexture: any;
-    }): void;
+    render(
+        container: Container,
+        options: {
+            renderTexture: any;
+        },
+    ): void;
     /**
      * Resizes the WebGL view to the specified width and height.
      * @param desiredScreenWidth - The desired width of the screen.

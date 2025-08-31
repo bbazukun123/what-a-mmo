@@ -7,7 +7,7 @@ export declare class GpuUniformBatchPipe {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUPipes];
-        readonly name: "uniformBatch";
+        readonly name: 'uniformBatch';
     };
     private _renderer;
     private _bindGroupHash;

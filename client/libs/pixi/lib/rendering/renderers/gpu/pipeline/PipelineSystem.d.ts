@@ -30,7 +30,7 @@ export declare class PipelineSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "pipeline";
+        readonly name: 'pipeline';
     };
     private readonly _renderer;
     protected CONTEXT_UID: number;

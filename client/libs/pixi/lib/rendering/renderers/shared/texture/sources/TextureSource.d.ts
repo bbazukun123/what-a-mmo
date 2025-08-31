@@ -63,16 +63,19 @@ export interface TextureSourceOptions<T extends Record<string, any> = any> exten
  * @memberof rendering
  * @typeParam T - The TextureSource's Resource type.
  */
-export declare class TextureSource<T extends Record<string, any> = any> extends EventEmitter<{
-    change: BindResource;
-    update: TextureSource;
-    unload: TextureSource;
-    destroy: TextureSource;
-    resize: TextureSource;
-    styleChange: TextureSource;
-    updateMipmaps: TextureSource;
-    error: Error;
-}> implements BindResource {
+export declare class TextureSource<T extends Record<string, any> = any>
+    extends EventEmitter<{
+        change: BindResource;
+        update: TextureSource;
+        unload: TextureSource;
+        destroy: TextureSource;
+        resize: TextureSource;
+        styleChange: TextureSource;
+        updateMipmaps: TextureSource;
+        error: Error;
+    }>
+    implements BindResource
+{
     protected readonly options: TextureSourceOptions<T>;
     /** The default options used when creating a new TextureSource. override these to add your own defaults */
     static defaultOptions: TextureSourceOptions;
@@ -86,7 +89,7 @@ export declare class TextureSource<T extends Record<string, any> = any> extends 
      * @ignore
      * @internal
      */
-    readonly _resourceType = "textureSource";
+    readonly _resourceType = 'textureSource';
     /**
      * i unique resource id, used by the bind group systems.
      * This can change if the texture is resized or its resource changes

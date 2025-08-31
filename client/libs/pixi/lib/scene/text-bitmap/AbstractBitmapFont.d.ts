@@ -71,7 +71,10 @@ interface BitmapFontEvents<Type> {
  * An abstract representation of a bitmap font.
  * @memberof text
  */
-export declare abstract class AbstractBitmapFont<FontType> extends EventEmitter<BitmapFontEvents<FontType>> implements Omit<BitmapFontData, 'chars' | 'pages' | 'fontSize'> {
+export declare abstract class AbstractBitmapFont<FontType>
+    extends EventEmitter<BitmapFontEvents<FontType>>
+    implements Omit<BitmapFontData, 'chars' | 'pages' | 'fontSize'>
+{
     /** The map of characters by character code. */
     readonly chars: Record<string, CharData>;
     /**

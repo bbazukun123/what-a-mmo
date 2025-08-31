@@ -26,7 +26,7 @@ var loadKTX2onWorker = require('./ktx2/worker/loadKTX2onWorker.js');
 var detectCompressed = require('./shared/detectCompressed.js');
 var resolveCompressedTextureUrl = require('./shared/resolveCompressedTextureUrl.js');
 
-"use strict";
+('use strict');
 
 exports.detectBasis = detectBasis.detectBasis;
 exports.loadBasis = loadBasis.loadBasis;

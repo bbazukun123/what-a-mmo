@@ -3,7 +3,7 @@ import { detectCompressed } from '../shared/detectCompressed.mjs';
 import { resolveCompressedTextureUrl } from '../shared/resolveCompressedTextureUrl.mjs';
 import { loadKTX2 } from './loadKTX2.mjs';
 
-"use strict";
+('use strict');
 extensions.add(loadKTX2);
 extensions.add(resolveCompressedTextureUrl);
 extensions.add(detectCompressed);

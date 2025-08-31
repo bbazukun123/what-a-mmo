@@ -13,10 +13,16 @@ export declare enum LoaderParserPriority {
     /** PixiJS assets with generic extensions: spritesheets, bitmapfonts  */
     Normal = 1,
     /** Specific texture types: svg, png, ktx, dds, basis */
-    High = 2
+    High = 2,
 }
 /** A more verbose version of the LoaderParser, allowing you to set the loaded, parsed, and unloaded asset separately */
-export interface LoaderParserAdvanced<ASSET = any, PARSED_ASSET = ASSET, UNLOAD_ASSET = ASSET, META_DATA = any, CONFIG = Record<string, any>> {
+export interface LoaderParserAdvanced<
+    ASSET = any,
+    PARSED_ASSET = ASSET,
+    UNLOAD_ASSET = ASSET,
+    META_DATA = any,
+    CONFIG = Record<string, any>,
+> {
     /** Should be ExtensionType.LoaderParser */
     extension?: ExtensionMetadata;
     /** A config to adjust the parser */
@@ -82,5 +88,5 @@ export interface LoaderParserAdvanced<ASSET = any, PARSED_ASSET = ASSET, UNLOAD_
  * Some loaders may only be used for parsing, some only for loading, and some for both!
  * @memberof assets
  */
-export interface LoaderParser<ASSET = any, META_DATA = any, CONFIG = Record<string, any>> extends LoaderParserAdvanced<ASSET, ASSET, ASSET, META_DATA, CONFIG> {
-}
+export interface LoaderParser<ASSET = any, META_DATA = any, CONFIG = Record<string, any>>
+    extends LoaderParserAdvanced<ASSET, ASSET, ASSET, META_DATA, CONFIG> {}

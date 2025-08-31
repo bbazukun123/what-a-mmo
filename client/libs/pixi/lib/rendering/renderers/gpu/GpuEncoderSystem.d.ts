@@ -19,7 +19,7 @@ export declare class GpuEncoderSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "encoder";
+        readonly name: 'encoder';
         readonly priority: 1;
     };
     commandEncoder: GPUCommandEncoder;
@@ -37,7 +37,12 @@ export declare class GpuEncoderSystem implements System {
     beginRenderPass(gpuRenderTarget: GpuRenderTarget): void;
     endRenderPass(): void;
     setViewport(viewport: Rectangle): void;
-    setPipelineFromGeometryProgramAndState(geometry: Geometry, program: GpuProgram, state: any, topology?: Topology): void;
+    setPipelineFromGeometryProgramAndState(
+        geometry: Geometry,
+        program: GpuProgram,
+        state: any,
+        topology?: Topology,
+    ): void;
     setPipeline(pipeline: GPURenderPipeline): void;
     private _setVertexBuffer;
     private _setIndexBuffer;

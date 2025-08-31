@@ -27,11 +27,16 @@ type SystemsWithExtensionList = System[];
 type InstanceType<T extends new (...args: any) => any> = T extends new (...args: any) => infer R ? R : any;
 type NameType<T extends SystemsWithExtensionList> = T[number]['extension']['name'];
 export type ExtractSystemTypes<T extends SystemsWithExtensionList> = {
-    [K in NameType<T>]: InstanceType<Extract<T[number], {
-        extension: {
-            name: K;
-        };
-    }>>;
+    [K in NameType<T>]: InstanceType<
+        Extract<
+            T[number],
+            {
+                extension: {
+                    name: K;
+                };
+            }
+        >
+    >;
 };
 /**
  *   TS for extracting the init options based on a list of systems
@@ -45,22 +50,27 @@ export type ExtractSystemTypes<T extends SystemsWithExtensionList> = {
  *
  *   type Options = ExtractRendererOptions<typeof list> // { foo: 1 } & { bar: 2 } & { baz: 3 }
  */
-type NotUnknown<T> = T extends unknown ? keyof T extends never ? never : T : T;
+type NotUnknown<T> = T extends unknown ? (keyof T extends never ? never : T) : T;
 type KnownProperties<T> = {
     [K in keyof T as NotUnknown<T[K]> extends never ? never : K]: T[K];
 };
 type FlattenOptions<T> = T extends {
     [K: string]: infer U;
-} ? U : never;
+}
+    ? U
+    : never;
 type OptionsUnion<T extends SystemsWithExtensionList> = FlattenOptions<SeparateOptions<T>>;
 type DefaultOptionsTypes<T extends SystemsWithExtensionList> = {
-    [K in NameType<T>]: Extract<T[number], {
-        extension: {
-            name: K;
-        };
-    }>['defaultOptions'];
+    [K in NameType<T>]: Extract<
+        T[number],
+        {
+            extension: {
+                name: K;
+            };
+        }
+    >['defaultOptions'];
 };
 type SeparateOptions<T extends SystemsWithExtensionList> = KnownProperties<DefaultOptionsTypes<T>>;
-type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
 export type ExtractRendererOptions<T extends SystemsWithExtensionList> = UnionToIntersection<OptionsUnion<T>>;
 export {};

@@ -12,5 +12,14 @@ import type { Matrix } from '../../../../../maths/matrix/Matrix';
  * @param matrix - the matrix to apply to the uvs
  * @memberof rendering
  */
-export declare function buildUvs(vertices: number[], verticesStride: number, verticesOffset: number, uvs: number[], uvsOffset: number, uvsStride: number, size: number, matrix?: Matrix): void;
+export declare function buildUvs(
+    vertices: number[],
+    verticesStride: number,
+    verticesOffset: number,
+    uvs: number[],
+    uvsOffset: number,
+    uvsStride: number,
+    size: number,
+    matrix?: Matrix,
+): void;
 export declare function buildSimpleUvs(uvs: number[], uvsOffset: number, uvsStride: number, size: number): void;

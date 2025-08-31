@@ -3,23 +3,20 @@
 var Extensions = require('../extensions/Extensions.js');
 var PrepareUpload = require('./PrepareUpload.js');
 
-"use strict";
+('use strict');
 class PrepareSystem extends PrepareUpload.PrepareUpload {
-  /** Destroys the plugin, don't use after this. */
-  destroy() {
-    clearTimeout(this.timeout);
-    this.renderer = null;
-    this.queue = null;
-    this.resolves = null;
-  }
+    /** Destroys the plugin, don't use after this. */
+    destroy() {
+        clearTimeout(this.timeout);
+        this.renderer = null;
+        this.queue = null;
+        this.resolves = null;
+    }
 }
 /** @ignore */
 PrepareSystem.extension = {
-  type: [
-    Extensions.ExtensionType.WebGLSystem,
-    Extensions.ExtensionType.WebGPUSystem
-  ],
-  name: "prepare"
+    type: [Extensions.ExtensionType.WebGLSystem, Extensions.ExtensionType.WebGPUSystem],
+    name: 'prepare',
 };
 
 exports.PrepareSystem = PrepareSystem;

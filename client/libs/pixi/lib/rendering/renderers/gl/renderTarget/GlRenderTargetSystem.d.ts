@@ -11,7 +11,7 @@ export declare class GlRenderTargetSystem extends RenderTargetSystem<GlRenderTar
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "renderTarget";
+        readonly name: 'renderTarget';
     };
     adaptor: GlRenderTargetAdaptor;
     constructor(renderer: WebGLRenderer);

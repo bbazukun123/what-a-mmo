@@ -5,7 +5,7 @@ export declare class GlParticleContainerPipe extends ParticleContainerPipe {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes];
-        readonly name: "particle";
+        readonly name: 'particle';
     };
     constructor(renderer: WebGLRenderer);
 }

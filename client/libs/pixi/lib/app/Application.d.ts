@@ -65,10 +65,8 @@ export interface ApplicationPlugin {
  *    sharedTicker: true,
  * });
  */
-export interface ApplicationOptions extends AutoDetectOptions, PixiMixins.ApplicationOptions {
-}
-export interface Application extends PixiMixins.Application {
-}
+export interface ApplicationOptions extends AutoDetectOptions, PixiMixins.ApplicationOptions {}
+export interface Application extends PixiMixins.Application {}
 /**
  * Convenience class to create a new PixiJS application.
  *

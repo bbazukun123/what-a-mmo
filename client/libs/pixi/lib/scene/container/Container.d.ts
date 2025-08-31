@@ -85,8 +85,9 @@ export interface ContainerOptions<C extends ContainerChild = ContainerChild> ext
     /** @see scene.Container#boundArea */
     boundsArea?: Rectangle;
 }
-export interface Container<C extends ContainerChild> extends PixiMixins.Container<C>, EventEmitter<ContainerEvents<C> & AnyEvent> {
-}
+export interface Container<C extends ContainerChild>
+    extends PixiMixins.Container<C>,
+        EventEmitter<ContainerEvents<C> & AnyEvent> {}
 /**
  * Container is a general-purpose display object that holds children. It also adds built-in support for advanced
  * rendering features like masking and filtering.
@@ -278,7 +279,9 @@ export interface Container<C extends ContainerChild> extends PixiMixins.Containe
  * </details>
  * @memberof scene
  */
-export declare class Container<C extends ContainerChild = ContainerChild> extends EventEmitter<ContainerEvents<C> & AnyEvent> {
+export declare class Container<C extends ContainerChild = ContainerChild> extends EventEmitter<
+    ContainerEvents<C> & AnyEvent
+> {
     /**
      * Mixes all enumerable properties and methods from a source object to Container.
      * @param source - The source of properties and methods to mix in.

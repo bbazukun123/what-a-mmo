@@ -2,15 +2,15 @@ import { GlProgram } from '../../../../rendering/renderers/gl/shader/GlProgram.m
 import { generateBlurFragSource } from './generateBlurFragSource.mjs';
 import { generateBlurVertSource } from './generateBlurVertSource.mjs';
 
-"use strict";
+('use strict');
 function generateBlurGlProgram(horizontal, kernelSize) {
-  const vertex = generateBlurVertSource(kernelSize, horizontal);
-  const fragment = generateBlurFragSource(kernelSize);
-  return GlProgram.from({
-    vertex,
-    fragment,
-    name: `blur-${horizontal ? "horizontal" : "vertical"}-pass-filter`
-  });
+    const vertex = generateBlurVertSource(kernelSize, horizontal);
+    const fragment = generateBlurFragSource(kernelSize);
+    return GlProgram.from({
+        vertex,
+        fragment,
+        name: `blur-${horizontal ? 'horizontal' : 'vertical'}-pass-filter`,
+    });
 }
 
 export { generateBlurGlProgram };

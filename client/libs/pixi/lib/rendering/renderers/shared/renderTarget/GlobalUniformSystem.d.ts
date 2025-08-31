@@ -55,7 +55,7 @@ export declare class GlobalUniformSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem];
-        readonly name: "globalUniforms";
+        readonly name: 'globalUniforms';
     };
     private readonly _renderer;
     private _stackIndex;
@@ -68,7 +68,7 @@ export declare class GlobalUniformSystem implements System {
     constructor(renderer: GlobalUniformRenderer);
     reset(): void;
     start(options: GlobalUniformOptions): void;
-    bind({ size, projectionMatrix, worldTransformMatrix, worldColor, offset, }: GlobalUniformOptions): void;
+    bind({ size, projectionMatrix, worldTransformMatrix, worldColor, offset }: GlobalUniformOptions): void;
     push(options: GlobalUniformOptions): void;
     pop(): void;
     get bindGroup(): BindGroup;

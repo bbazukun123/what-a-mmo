@@ -7,7 +7,20 @@ export type TextStyleAlign = 'left' | 'center' | 'right' | 'justify';
 export type TextStyleFill = string | string[] | number | number[] | CanvasGradient | CanvasPattern;
 export type TextStyleFontStyle = 'normal' | 'italic' | 'oblique';
 export type TextStyleFontVariant = 'normal' | 'small-caps';
-export type TextStyleFontWeight = 'normal' | 'bold' | 'bolder' | 'lighter' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+export type TextStyleFontWeight =
+    | 'normal'
+    | 'bold'
+    | 'bolder'
+    | 'lighter'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
 export type TextStyleLineJoin = 'miter' | 'round' | 'bevel';
 export type TextStyleTextBaseline = 'alphabetic' | 'top' | 'hanging' | 'middle' | 'ideographic' | 'bottom';
 export type TextStyleWhiteSpace = 'normal' | 'pre' | 'pre-line';

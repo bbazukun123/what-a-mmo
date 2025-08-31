@@ -22,7 +22,7 @@ var SoftLightBlend = require('./SoftLightBlend.js');
 var SubtractBlend = require('./SubtractBlend.js');
 var VividLightBlend = require('./VividLightBlend.js');
 
-"use strict";
+('use strict');
 
 exports.ColorBlend = ColorBlend.ColorBlend;
 exports.ColorBurnBlend = ColorBurnBlend.ColorBurnBlend;

@@ -9,7 +9,7 @@ export declare class HTMLTextPipe implements RenderPipe<HTMLText> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "htmlText";
+        readonly name: 'htmlText';
     };
     private _renderer;
     private _gpuText;
@@ -27,7 +27,7 @@ export declare class HTMLTextPipe implements RenderPipe<HTMLText> {
     initGpuText(htmlText: HTMLText): {
         textureNeedsUploading: boolean;
         generatingTexture: boolean;
-        texture: Texture<import("../..").TextureSource<any>>;
+        texture: Texture<import('../..').TextureSource<any>>;
         currentKey: string;
         batchableSprite: BatchableSprite;
     };

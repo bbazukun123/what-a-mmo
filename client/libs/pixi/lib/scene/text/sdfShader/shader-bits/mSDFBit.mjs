@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 const mSDFBit = {
-  name: "msdf-bit",
-  fragment: {
-    header: (
-      /* wgsl */
-      `
+    name: 'msdf-bit',
+    fragment: {
+        header:
+            /* wgsl */
+            `
             fn calculateMSDFAlpha(msdfColor:vec4<f32>, shapeColor:vec4<f32>, distance:f32) -> f32 {
                 
                 // MSDF
@@ -31,16 +31,15 @@ const mSDFBit = {
                 return coverage;
              
             }
-        `
-    )
-  }
+        `,
+    },
 };
 const mSDFBitGl = {
-  name: "msdf-bit",
-  fragment: {
-    header: (
-      /* glsl */
-      `
+    name: 'msdf-bit',
+    fragment: {
+        header:
+            /* glsl */
+            `
             float calculateMSDFAlpha(vec4 msdfColor, vec4 shapeColor, float distance) {
                 
                 // MSDF
@@ -67,9 +66,8 @@ const mSDFBitGl = {
               
                 return coverage;
             }
-        `
-    )
-  }
+        `,
+    },
 };
 
 export { mSDFBit, mSDFBitGl };

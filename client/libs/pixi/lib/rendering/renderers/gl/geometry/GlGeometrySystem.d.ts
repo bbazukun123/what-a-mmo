@@ -13,7 +13,7 @@ export declare class GlGeometrySystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "geometry";
+        readonly name: 'geometry';
     };
     /**
      * `true` if we has `*_vertex_array_object` extension.

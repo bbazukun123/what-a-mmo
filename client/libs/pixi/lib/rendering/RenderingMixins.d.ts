@@ -1,80 +1,43 @@
-declare global
-{
-    namespace PixiMixins
-    {
-
+declare global {
+    namespace PixiMixins {
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface ICanvas
-        {
+        interface ICanvas {}
 
-        }
-
-        interface RendererOptions
-        {
+        interface RendererOptions {
             resolution?: number;
             failIfMajorPerformanceCaveat?: boolean;
             roundPixels?: boolean;
         }
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGLOptions
-        {
-
-        }
+        interface WebGLOptions {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGPUOptions
-        {
-
-        }
+        interface WebGPUOptions {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface RendererSystems
-        {
-
-        }
+        interface RendererSystems {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGLSystems
-        {
-
-        }
+        interface WebGLSystems {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGPUSystems
-        {
-
-        }
+        interface WebGPUSystems {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface CanvasSystems
-        {
-
-        }
+        interface CanvasSystems {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface RendererPipes
-        {
-
-        }
+        interface RendererPipes {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGLPipes
-        {
-
-        }
+        interface WebGLPipes {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface WebGPUPipes
-        {
-
-        }
+        interface WebGPUPipes {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-        interface CanvasPipes
-        {
-
-        }
+        interface CanvasPipes {}
     }
 }
 

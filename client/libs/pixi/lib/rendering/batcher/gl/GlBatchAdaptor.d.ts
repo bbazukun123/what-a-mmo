@@ -12,7 +12,7 @@ export declare class GlBatchAdaptor implements BatcherAdaptor {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipesAdaptor];
-        readonly name: "batch";
+        readonly name: 'batch';
     };
     private readonly _tempState;
     /**

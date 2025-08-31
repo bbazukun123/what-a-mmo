@@ -6,7 +6,7 @@ require('./index.js');
 var GifSource = require('./GifSource.js');
 var GifSprite = require('./GifSprite.js');
 
-"use strict";
+('use strict');
 Extensions.extensions.add(GifAsset.GifAsset);
 
 exports.GifAsset = GifAsset.GifAsset;

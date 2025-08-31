@@ -7,7 +7,7 @@ export declare class SpritePipe implements RenderPipe<Sprite> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "sprite";
+        readonly name: 'sprite';
     };
     private _renderer;
     private _gpuSpriteHash;

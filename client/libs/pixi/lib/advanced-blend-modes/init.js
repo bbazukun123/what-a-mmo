@@ -23,28 +23,28 @@ var SoftLightBlend = require('./SoftLightBlend.js');
 var SubtractBlend = require('./SubtractBlend.js');
 var VividLightBlend = require('./VividLightBlend.js');
 
-"use strict";
+('use strict');
 Extensions.extensions.add(
-  ColorBlend.ColorBlend,
-  ColorBurnBlend.ColorBurnBlend,
-  ColorDodgeBlend.ColorDodgeBlend,
-  DarkenBlend.DarkenBlend,
-  DifferenceBlend.DifferenceBlend,
-  DivideBlend.DivideBlend,
-  ExclusionBlend.ExclusionBlend,
-  HardLightBlend.HardLightBlend,
-  HardMixBlend.HardMixBlend,
-  LightenBlend.LightenBlend,
-  LinearBurnBlend.LinearBurnBlend,
-  LinearLightBlend.LinearLightBlend,
-  LinearDodgeBlend.LinearDodgeBlend,
-  LuminosityBlend.LuminosityBlend,
-  NegationBlend.NegationBlend,
-  OverlayBlend.OverlayBlend,
-  PinLightBlend.PinLightBlend,
-  SaturationBlend.SaturationBlend,
-  SoftLightBlend.SoftLightBlend,
-  SubtractBlend.SubtractBlend,
-  VividLightBlend.VividLightBlend
+    ColorBlend.ColorBlend,
+    ColorBurnBlend.ColorBurnBlend,
+    ColorDodgeBlend.ColorDodgeBlend,
+    DarkenBlend.DarkenBlend,
+    DifferenceBlend.DifferenceBlend,
+    DivideBlend.DivideBlend,
+    ExclusionBlend.ExclusionBlend,
+    HardLightBlend.HardLightBlend,
+    HardMixBlend.HardMixBlend,
+    LightenBlend.LightenBlend,
+    LinearBurnBlend.LinearBurnBlend,
+    LinearLightBlend.LinearLightBlend,
+    LinearDodgeBlend.LinearDodgeBlend,
+    LuminosityBlend.LuminosityBlend,
+    NegationBlend.NegationBlend,
+    OverlayBlend.OverlayBlend,
+    PinLightBlend.PinLightBlend,
+    SaturationBlend.SaturationBlend,
+    SoftLightBlend.SoftLightBlend,
+    SubtractBlend.SubtractBlend,
+    VividLightBlend.VividLightBlend,
 );
 //# sourceMappingURL=init.js.map

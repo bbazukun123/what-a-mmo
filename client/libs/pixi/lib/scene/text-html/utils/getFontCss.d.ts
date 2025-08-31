@@ -10,7 +10,11 @@ export declare const FontStylePromiseCache: Map<string, Promise<string>>;
  * @param defaultOptions.fontStyle - The default font style
  * @returns - The css string
  */
-export declare function getFontCss(fontFamilies: string[], style: FontCSSStyleOptions, defaultOptions: {
-    fontWeight: string;
-    fontStyle: string;
-}): Promise<string>;
+export declare function getFontCss(
+    fontFamilies: string[],
+    style: FontCSSStyleOptions,
+    defaultOptions: {
+        fontWeight: string;
+        fontStyle: string;
+    },
+): Promise<string>;

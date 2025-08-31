@@ -7,33 +7,33 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-  AlgebraicType,
-  AlgebraicValue,
-  BinaryReader,
-  BinaryWriter,
-  ConnectionId,
-  DbConnectionBuilder,
-  DbConnectionImpl,
-  Identity,
-  ProductType,
-  ProductTypeElement,
-  SubscriptionBuilderImpl,
-  SumType,
-  SumTypeVariant,
-  TableCache,
-  TimeDuration,
-  Timestamp,
-  deepEqual,
-  type CallReducerFlags,
-  type DbContext,
-  type ErrorContextInterface,
-  type Event,
-  type EventContextInterface,
-  type ReducerEventContextInterface,
-  type SubscriptionEventContextInterface,
-} from "@clockworklabs/spacetimedb-sdk";
-import { Message } from "./message_type";
-import { type EventContext, type Reducer, RemoteReducers, RemoteTables } from ".";
+    AlgebraicType,
+    AlgebraicValue,
+    BinaryReader,
+    BinaryWriter,
+    ConnectionId,
+    DbConnectionBuilder,
+    DbConnectionImpl,
+    Identity,
+    ProductType,
+    ProductTypeElement,
+    SubscriptionBuilderImpl,
+    SumType,
+    SumTypeVariant,
+    TableCache,
+    TimeDuration,
+    Timestamp,
+    deepEqual,
+    type CallReducerFlags,
+    type DbContext,
+    type ErrorContextInterface,
+    type Event,
+    type EventContextInterface,
+    type ReducerEventContextInterface,
+    type SubscriptionEventContextInterface,
+} from '@clockworklabs/spacetimedb-sdk';
+import { Message } from './message_type';
+import { type EventContext, type Reducer, RemoteReducers, RemoteTables } from '.';
 
 /**
  * Table handle for the table `message`.
@@ -46,33 +46,33 @@ import { type EventContext, type Reducer, RemoteReducers, RemoteTables } from ".
  * like `ctx.db.message.on_insert(...)`.
  */
 export class MessageTableHandle {
-  tableCache: TableCache<Message>;
+    tableCache: TableCache<Message>;
 
-  constructor(tableCache: TableCache<Message>) {
-    this.tableCache = tableCache;
-  }
+    constructor(tableCache: TableCache<Message>) {
+        this.tableCache = tableCache;
+    }
 
-  count(): number {
-    return this.tableCache.count();
-  }
+    count(): number {
+        return this.tableCache.count();
+    }
 
-  iter(): Iterable<Message> {
-    return this.tableCache.iter();
-  }
+    iter(): Iterable<Message> {
+        return this.tableCache.iter();
+    }
 
-  onInsert = (cb: (ctx: EventContext, row: Message) => void) => {
-    return this.tableCache.onInsert(cb);
-  }
+    onInsert = (cb: (ctx: EventContext, row: Message) => void) => {
+        return this.tableCache.onInsert(cb);
+    };
 
-  removeOnInsert = (cb: (ctx: EventContext, row: Message) => void) => {
-    return this.tableCache.removeOnInsert(cb);
-  }
+    removeOnInsert = (cb: (ctx: EventContext, row: Message) => void) => {
+        return this.tableCache.removeOnInsert(cb);
+    };
 
-  onDelete = (cb: (ctx: EventContext, row: Message) => void) => {
-    return this.tableCache.onDelete(cb);
-  }
+    onDelete = (cb: (ctx: EventContext, row: Message) => void) => {
+        return this.tableCache.onDelete(cb);
+    };
 
-  removeOnDelete = (cb: (ctx: EventContext, row: Message) => void) => {
-    return this.tableCache.removeOnDelete(cb);
-  }
+    removeOnDelete = (cb: (ctx: EventContext, row: Message) => void) => {
+        return this.tableCache.removeOnDelete(cb);
+    };
 }

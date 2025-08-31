@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const hslgpu = `
 	fn getLuminosity(c: vec3<f32>) -> f32
 	{

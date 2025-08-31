@@ -571,7 +571,7 @@ var PoolGroup = require('./utils/pool/PoolGroup.js');
 var sayHello = require('./utils/sayHello.js');
 var earcut = require('earcut');
 
-"use strict";
+('use strict');
 Extensions.extensions.add(browserExt.browserExt, webworkerExt.webworkerExt);
 
 exports.browserExt = browserExt.browserExt;
@@ -870,7 +870,8 @@ exports.glUploadCompressedTextureResource = glUploadCompressedTextureResource.gl
 exports.glUploadImageResource = glUploadImageResource.glUploadImageResource;
 exports.glUploadVideoResource = glUploadVideoResource.glUploadVideoResource;
 exports.applyStyleParams = applyStyleParams.applyStyleParams;
-exports.getSupportedGlCompressedTextureFormats = getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats;
+exports.getSupportedGlCompressedTextureFormats =
+    getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats;
 exports.mapFormatToGlFormat = mapFormatToGlFormat.mapFormatToGlFormat;
 exports.mapFormatToGlInternalFormat = mapFormatToGlInternalFormat.mapFormatToGlInternalFormat;
 exports.mapFormatToGlType = mapFormatToGlType.mapFormatToGlType;
@@ -916,7 +917,8 @@ exports.blockDataMap = gpuUploadCompressedTextureResource.blockDataMap;
 exports.gpuUploadCompressedTextureResource = gpuUploadCompressedTextureResource.gpuUploadCompressedTextureResource;
 exports.gpuUploadImageResource = gpuUploadImageSource.gpuUploadImageResource;
 exports.gpuUploadVideoResource = gpuUploadVideoSource.gpuUploadVideoResource;
-exports.getSupportedGPUCompressedTextureFormats = getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats;
+exports.getSupportedGPUCompressedTextureFormats =
+    getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats;
 exports.GpuMipmapGenerator = GpuMipmapGenerator.GpuMipmapGenerator;
 exports.WebGPURenderer = WebGPURenderer.WebGPURenderer;
 exports.BackgroundSystem = BackgroundSystem.BackgroundSystem;
@@ -987,7 +989,8 @@ exports.TextureUvs = TextureUvs.TextureUvs;
 exports.generateUID = generateUID.generateUID;
 exports.getCanvasTexture = getCanvasTexture.getCanvasTexture;
 exports.hasCachedCanvasTexture = getCanvasTexture.hasCachedCanvasTexture;
-exports.getSupportedCompressedTextureFormats = getSupportedCompressedTextureFormats.getSupportedCompressedTextureFormats;
+exports.getSupportedCompressedTextureFormats =
+    getSupportedCompressedTextureFormats.getSupportedCompressedTextureFormats;
 exports.getSupportedTextureFormats = getSupportedTextureFormats.getSupportedTextureFormats;
 exports.nonCompressedFormats = getSupportedTextureFormats.nonCompressedFormats;
 exports.autoDetectSource = textureFrom.autoDetectSource;
@@ -1099,7 +1102,8 @@ exports.RenderLayer = RenderLayer.RenderLayer;
 exports.RenderLayerClass = RenderLayer.RenderLayerClass;
 exports.PerspectiveMesh = PerspectiveMesh.PerspectiveMesh;
 exports.PerspectivePlaneGeometry = PerspectivePlaneGeometry.PerspectivePlaneGeometry;
-exports.applyProjectiveTransformationToPlane = applyProjectiveTransformationToPlane.applyProjectiveTransformationToPlane;
+exports.applyProjectiveTransformationToPlane =
+    applyProjectiveTransformationToPlane.applyProjectiveTransformationToPlane;
 exports.compute2DProjection = compute2DProjections.compute2DProjection;
 exports.MeshPlane = MeshPlane.MeshPlane;
 exports.PlaneGeometry = PlaneGeometry.PlaneGeometry;

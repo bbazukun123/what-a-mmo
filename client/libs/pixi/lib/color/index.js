@@ -2,7 +2,7 @@
 
 var Color = require('./Color.js');
 
-"use strict";
+('use strict');
 
 exports.Color = Color.Color;
 //# sourceMappingURL=index.js.map

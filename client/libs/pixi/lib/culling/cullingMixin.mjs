@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 const cullingMixin = {
-  cullArea: null,
-  cullable: false,
-  cullableChildren: true
+    cullArea: null,
+    cullable: false,
+    cullableChildren: true,
 };
 
 export { cullingMixin };

@@ -11,7 +11,7 @@ export declare class GpuRenderTargetSystem extends RenderTargetSystem<GpuRenderT
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "renderTarget";
+        readonly name: 'renderTarget';
     };
     adaptor: GpuRenderTargetAdaptor;
     constructor(renderer: WebGPURenderer);

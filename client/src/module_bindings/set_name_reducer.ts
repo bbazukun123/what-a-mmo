@@ -7,57 +7,53 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-  AlgebraicType,
-  AlgebraicValue,
-  BinaryReader,
-  BinaryWriter,
-  ConnectionId,
-  DbConnectionBuilder,
-  DbConnectionImpl,
-  Identity,
-  ProductType,
-  ProductTypeElement,
-  SubscriptionBuilderImpl,
-  SumType,
-  SumTypeVariant,
-  TableCache,
-  TimeDuration,
-  Timestamp,
-  deepEqual,
-  type CallReducerFlags,
-  type DbContext,
-  type ErrorContextInterface,
-  type Event,
-  type EventContextInterface,
-  type ReducerEventContextInterface,
-  type SubscriptionEventContextInterface,
-} from "@clockworklabs/spacetimedb-sdk";
+    AlgebraicType,
+    AlgebraicValue,
+    BinaryReader,
+    BinaryWriter,
+    ConnectionId,
+    DbConnectionBuilder,
+    DbConnectionImpl,
+    Identity,
+    ProductType,
+    ProductTypeElement,
+    SubscriptionBuilderImpl,
+    SumType,
+    SumTypeVariant,
+    TableCache,
+    TimeDuration,
+    Timestamp,
+    deepEqual,
+    type CallReducerFlags,
+    type DbContext,
+    type ErrorContextInterface,
+    type Event,
+    type EventContextInterface,
+    type ReducerEventContextInterface,
+    type SubscriptionEventContextInterface,
+} from '@clockworklabs/spacetimedb-sdk';
 
 export type SetName = {
-  name: string,
+    name: string;
 };
 
 /**
  * A namespace for generated helper functions.
  */
 export namespace SetName {
-  /**
-  * A function which returns this type represented as an AlgebraicType.
-  * This function is derived from the AlgebraicType used to generate this type.
-  */
-  export function getTypeScriptAlgebraicType(): AlgebraicType {
-    return AlgebraicType.createProductType([
-      new ProductTypeElement("name", AlgebraicType.createStringType()),
-    ]);
-  }
+    /**
+     * A function which returns this type represented as an AlgebraicType.
+     * This function is derived from the AlgebraicType used to generate this type.
+     */
+    export function getTypeScriptAlgebraicType(): AlgebraicType {
+        return AlgebraicType.createProductType([new ProductTypeElement('name', AlgebraicType.createStringType())]);
+    }
 
-  export function serialize(writer: BinaryWriter, value: SetName): void {
-    SetName.getTypeScriptAlgebraicType().serialize(writer, value);
-  }
+    export function serialize(writer: BinaryWriter, value: SetName): void {
+        SetName.getTypeScriptAlgebraicType().serialize(writer, value);
+    }
 
-  export function deserialize(reader: BinaryReader): SetName {
-    return SetName.getTypeScriptAlgebraicType().deserialize(reader);
-  }
-
+    export function deserialize(reader: BinaryReader): SetName {
+        return SetName.getTypeScriptAlgebraicType().deserialize(reader);
+    }
 }
-

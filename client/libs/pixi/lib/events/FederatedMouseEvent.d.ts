@@ -7,7 +7,10 @@ import type { PixiTouch } from './FederatedEvent';
  * A {@link FederatedEvent} for mouse events.
  * @memberof events
  */
-export declare class FederatedMouseEvent extends FederatedEvent<MouseEvent | PointerEvent | PixiTouch> implements MouseEvent {
+export declare class FederatedMouseEvent
+    extends FederatedEvent<MouseEvent | PointerEvent | PixiTouch>
+    implements MouseEvent
+{
     /** Whether the "alt" key was pressed when this mouse event occurred. */
     altKey: boolean;
     /** The specific button that was pressed in this mouse event. */
@@ -109,5 +112,21 @@ export declare class FederatedMouseEvent extends FederatedEvent<MouseEvent | Poi
      * @param _relatedTargetArg
      * @deprecated since 7.0.0
      */
-    initMouseEvent(_typeArg: string, _canBubbleArg: boolean, _cancelableArg: boolean, _viewArg: Window, _detailArg: number, _screenXArg: number, _screenYArg: number, _clientXArg: number, _clientYArg: number, _ctrlKeyArg: boolean, _altKeyArg: boolean, _shiftKeyArg: boolean, _metaKeyArg: boolean, _buttonArg: number, _relatedTargetArg: EventTarget): void;
+    initMouseEvent(
+        _typeArg: string,
+        _canBubbleArg: boolean,
+        _cancelableArg: boolean,
+        _viewArg: Window,
+        _detailArg: number,
+        _screenXArg: number,
+        _screenYArg: number,
+        _clientXArg: number,
+        _clientYArg: number,
+        _ctrlKeyArg: boolean,
+        _altKeyArg: boolean,
+        _shiftKeyArg: boolean,
+        _metaKeyArg: boolean,
+        _buttonArg: number,
+        _relatedTargetArg: EventTarget,
+    ): void;
 }

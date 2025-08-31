@@ -3,6 +3,6 @@
 var Extensions = require('../extensions/Extensions.js');
 var PrepareSystem = require('./PrepareSystem.js');
 
-"use strict";
+('use strict');
 Extensions.extensions.add(PrepareSystem.PrepareSystem);
 //# sourceMappingURL=init.js.map

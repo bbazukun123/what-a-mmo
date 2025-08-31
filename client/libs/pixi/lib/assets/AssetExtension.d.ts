@@ -8,7 +8,13 @@ import type { ResolveURLParser } from './resolver/types';
  * allowing you to set the cached, loaded, parsed, and unloaded asset separately
  * @memberof assets
  */
-interface AssetExtensionAdvanced<ASSET = any, PARSED_ASSET = ASSET, UNLOAD_ASSET = ASSET, CACHE_ASSET = ASSET, META_DATA = any> {
+interface AssetExtensionAdvanced<
+    ASSET = any,
+    PARSED_ASSET = ASSET,
+    UNLOAD_ASSET = ASSET,
+    CACHE_ASSET = ASSET,
+    META_DATA = any,
+> {
     /** The type of extension */
     extension: ExtensionType.Asset;
     /** the asset loader */
@@ -75,6 +81,5 @@ interface AssetExtensionAdvanced<ASSET = any, PARSED_ASSET = ASSET, UNLOAD_ASSET
  * }
  * @memberof assets
  */
-interface AssetExtension<ASSET = any, META_DATA = any> extends AssetExtensionAdvanced<ASSET, META_DATA> {
-}
+interface AssetExtension<ASSET = any, META_DATA = any> extends AssetExtensionAdvanced<ASSET, META_DATA> {}
 export type { AssetExtension, AssetExtensionAdvanced };

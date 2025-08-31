@@ -42,9 +42,11 @@ export type ResolvedSrc = Pick<ResolvedAsset, 'src' | 'format' | 'loadParser' | 
  * or an array of either.
  * @memberof assets
  */
-export type AssetSrc = ArrayOr<string> | (ArrayOr<ResolvedSrc> & {
-    [key: string]: any;
-});
+export type AssetSrc =
+    | ArrayOr<string>
+    | (ArrayOr<ResolvedSrc> & {
+          [key: string]: any;
+      });
 /**
  * An asset that has not been resolved yet.
  * @memberof assets

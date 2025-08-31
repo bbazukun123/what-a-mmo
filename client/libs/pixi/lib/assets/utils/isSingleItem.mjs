@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const isSingleItem = (item) => !Array.isArray(item);
 
 export { isSingleItem };

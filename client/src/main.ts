@@ -1,6 +1,6 @@
 // import the library before creating your pixi application to ensure all mixins are applied
-import "@pixi/layout";
-import { Application } from "./app/Application";
+import '@pixi/layout';
+import { Application } from './app/Application';
 
 // Create a new application.
 const app = new Application();

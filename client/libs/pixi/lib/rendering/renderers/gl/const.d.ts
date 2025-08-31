@@ -6,7 +6,7 @@ export declare enum CLEAR {
     COLOR_DEPTH = 16640,
     COLOR_STENCIL = 17408,
     DEPTH_STENCIL = 1280,
-    ALL = 17664
+    ALL = 17664,
 }
 /** Used for clearing render textures. true is the same as `ALL` false is the same as `NONE` */
 export type CLEAR_OR_BOOL = CLEAR | boolean;

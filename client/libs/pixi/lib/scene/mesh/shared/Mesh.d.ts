@@ -29,7 +29,9 @@ export interface TextureShader extends Shader {
 /**
  * @memberof scene
  */
-export interface MeshOptions<GEOMETRY extends Geometry = MeshGeometry, SHADER extends Shader = TextureShader> extends PixiMixins.MeshOptions, ContainerOptions {
+export interface MeshOptions<GEOMETRY extends Geometry = MeshGeometry, SHADER extends Shader = TextureShader>
+    extends PixiMixins.MeshOptions,
+        ContainerOptions {
     /**
      * Includes vertex positions, face indices, colors, UVs, and
      * custom attributes within buffers, reducing the cost of passing all
@@ -48,8 +50,7 @@ export interface MeshOptions<GEOMETRY extends Geometry = MeshGeometry, SHADER ex
     /** Whether or not to round the x/y position. */
     roundPixels?: boolean;
 }
-export interface Mesh extends PixiMixins.Mesh, ViewContainer {
-}
+export interface Mesh extends PixiMixins.Mesh, ViewContainer {}
 /**
  * Base mesh class.
  *
@@ -65,7 +66,10 @@ export interface Mesh extends PixiMixins.Mesh, ViewContainer {
  * Through a combination of the above elements you can render anything you want, 2D or 3D!
  * @memberof scene
  */
-export declare class Mesh<GEOMETRY extends Geometry = MeshGeometry, SHADER extends Shader = TextureShader> extends ViewContainer implements View, Instruction {
+export declare class Mesh<GEOMETRY extends Geometry = MeshGeometry, SHADER extends Shader = TextureShader>
+    extends ViewContainer
+    implements View, Instruction
+{
     readonly renderPipeId: string;
     state: State;
     /** @ignore */
@@ -103,7 +107,7 @@ export declare class Mesh<GEOMETRY extends Geometry = MeshGeometry, SHADER exten
      * The local bounds of the mesh.
      * @type {rendering.Bounds}
      */
-    get bounds(): import("../..").Bounds;
+    get bounds(): import('../..').Bounds;
     /**
      * Update local bounds of the mesh.
      * @private

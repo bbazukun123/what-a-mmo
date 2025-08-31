@@ -17,7 +17,7 @@ export declare class GpuTextureSystem implements System, CanvasGenerator {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "texture";
+        readonly name: 'texture';
     };
     readonly managedTextures: TextureSource[];
     protected CONTEXT_UID: number;

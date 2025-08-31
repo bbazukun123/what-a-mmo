@@ -33,7 +33,7 @@ export declare class GlShaderSystem implements ShaderSystem {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "shader";
+        readonly name: 'shader';
     };
     maxTextures: number;
     /**

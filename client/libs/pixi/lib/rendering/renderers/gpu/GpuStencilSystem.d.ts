@@ -11,7 +11,7 @@ export declare class GpuStencilSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "stencil";
+        readonly name: 'stencil';
     };
     private readonly _renderer;
     private _renderTargetStencilState;

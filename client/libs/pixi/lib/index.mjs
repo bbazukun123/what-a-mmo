@@ -69,7 +69,12 @@ export { loadTxt } from './assets/loader/parsers/loadTxt.mjs';
 export { getFontFamilyName, loadWebFont } from './assets/loader/parsers/loadWebFont.mjs';
 export { loadSvg } from './assets/loader/parsers/textures/loadSVG.mjs';
 export { loadImageBitmap, loadTextures } from './assets/loader/parsers/textures/loadTextures.mjs';
-export { crossOrigin, determineCrossOrigin, loadVideoTextures, preloadVideo } from './assets/loader/parsers/textures/loadVideoTextures.mjs';
+export {
+    crossOrigin,
+    determineCrossOrigin,
+    loadVideoTextures,
+    preloadVideo,
+} from './assets/loader/parsers/textures/loadVideoTextures.mjs';
 export { createTexture } from './assets/loader/parsers/textures/utils/createTexture.mjs';
 export { WorkerManager } from './assets/loader/workers/WorkerManager.mjs';
 export { resolveJsonUrl } from './assets/resolver/parsers/resolveJsonUrl.mjs';
@@ -86,9 +91,20 @@ export { detectBasis } from './compressed-textures/basis/detectBasis.mjs';
 export { loadBasis } from './compressed-textures/basis/loadBasis.mjs';
 export { createLevelBuffers } from './compressed-textures/basis/utils/createLevelBuffers.mjs';
 export { gpuFormatToBasisTranscoderFormat } from './compressed-textures/basis/utils/gpuFormatToBasisTranscoderFormat.mjs';
-export { basisTranscoderUrls, setBasisTranscoderPath } from './compressed-textures/basis/utils/setBasisTranscoderPath.mjs';
+export {
+    basisTranscoderUrls,
+    setBasisTranscoderPath,
+} from './compressed-textures/basis/utils/setBasisTranscoderPath.mjs';
 export { loadBasisOnWorker } from './compressed-textures/basis/worker/loadBasisOnWorker.mjs';
-export { D3D10_RESOURCE_DIMENSION, D3DFMT, DDS, DXGI_FORMAT, DXGI_TO_TEXTURE_FORMAT, FOURCC_TO_TEXTURE_FORMAT, TEXTURE_FORMAT_BLOCK_SIZE } from './compressed-textures/dds/const.mjs';
+export {
+    D3D10_RESOURCE_DIMENSION,
+    D3DFMT,
+    DDS,
+    DXGI_FORMAT,
+    DXGI_TO_TEXTURE_FORMAT,
+    FOURCC_TO_TEXTURE_FORMAT,
+    TEXTURE_FORMAT_BLOCK_SIZE,
+} from './compressed-textures/dds/const.mjs';
 export { loadDDS } from './compressed-textures/dds/loadDDS.mjs';
 export { parseDDS } from './compressed-textures/dds/parseDDS.mjs';
 export { loadKTX } from './compressed-textures/ktx/loadKTX.mjs';
@@ -104,7 +120,10 @@ export { ktxTranscoderUrls, setKTXTranscoderPath } from './compressed-textures/k
 export { vkFormatToGPUFormat } from './compressed-textures/ktx2/utils/vkFormatToGPUFormat.mjs';
 export { loadKTX2onWorker } from './compressed-textures/ktx2/worker/loadKTX2onWorker.mjs';
 export { detectCompressed } from './compressed-textures/shared/detectCompressed.mjs';
-export { resolveCompressedTextureUrl, validFormats } from './compressed-textures/shared/resolveCompressedTextureUrl.mjs';
+export {
+    resolveCompressedTextureUrl,
+    validFormats,
+} from './compressed-textures/shared/resolveCompressedTextureUrl.mjs';
 export { Culler } from './culling/Culler.mjs';
 export { CullerPlugin } from './culling/CullerPlugin.mjs';
 export { cullingMixin } from './culling/cullingMixin.mjs';
@@ -188,7 +207,10 @@ export { BatchGeometry } from './rendering/batcher/shared/BatchGeometry.mjs';
 export { BatchTextureArray } from './rendering/batcher/shared/BatchTextureArray.mjs';
 export { DefaultBatcher } from './rendering/batcher/shared/DefaultBatcher.mjs';
 export { DefaultShader } from './rendering/batcher/shared/DefaultShader.mjs';
-export { compileHighShaderGlProgram, compileHighShaderGpuProgram } from './rendering/high-shader/compileHighShaderToProgram.mjs';
+export {
+    compileHighShaderGlProgram,
+    compileHighShaderGpuProgram,
+} from './rendering/high-shader/compileHighShaderToProgram.mjs';
 export { compileHighShader, compileHighShaderGl } from './rendering/high-shader/compiler/compileHighShader.mjs';
 export { addBits } from './rendering/high-shader/compiler/utils/addBits.mjs';
 export { compileHooks, findHooksRx } from './rendering/high-shader/compiler/utils/compileHooks.mjs';
@@ -196,11 +218,27 @@ export { compileInputs } from './rendering/high-shader/compiler/utils/compileInp
 export { compileOutputs } from './rendering/high-shader/compiler/utils/compileOutputs.mjs';
 export { formatShader } from './rendering/high-shader/compiler/utils/formatShader.mjs';
 export { injectBits } from './rendering/high-shader/compiler/utils/injectBits.mjs';
-export { fragmentGPUTemplate, fragmentGlTemplate, vertexGPUTemplate, vertexGlTemplate } from './rendering/high-shader/defaultProgramTemplate.mjs';
+export {
+    fragmentGPUTemplate,
+    fragmentGlTemplate,
+    vertexGPUTemplate,
+    vertexGlTemplate,
+} from './rendering/high-shader/defaultProgramTemplate.mjs';
 export { colorBit, colorBitGl } from './rendering/high-shader/shader-bits/colorBit.mjs';
-export { generateTextureBatchBit, generateTextureBatchBitGl } from './rendering/high-shader/shader-bits/generateTextureBatchBit.mjs';
-export { globalUniformsBit, globalUniformsBitGl, globalUniformsUBOBitGl } from './rendering/high-shader/shader-bits/globalUniformsBit.mjs';
-export { localUniformBit, localUniformBitGl, localUniformBitGroup2 } from './rendering/high-shader/shader-bits/localUniformBit.mjs';
+export {
+    generateTextureBatchBit,
+    generateTextureBatchBitGl,
+} from './rendering/high-shader/shader-bits/generateTextureBatchBit.mjs';
+export {
+    globalUniformsBit,
+    globalUniformsBitGl,
+    globalUniformsUBOBitGl,
+} from './rendering/high-shader/shader-bits/globalUniformsBit.mjs';
+export {
+    localUniformBit,
+    localUniformBitGl,
+    localUniformBitGroup2,
+} from './rendering/high-shader/shader-bits/localUniformBit.mjs';
 export { roundPixelsBit, roundPixelsBitGl } from './rendering/high-shader/shader-bits/roundPixelsBit.mjs';
 export { textureBit, textureBitGl } from './rendering/high-shader/shader-bits/textureBit.mjs';
 export { AlphaMask } from './rendering/mask/alpha/AlphaMask.mjs';
@@ -253,11 +291,17 @@ export { ensurePrecision } from './rendering/renderers/gl/shader/program/preproc
 export { insertVersion } from './rendering/renderers/gl/shader/program/preprocessors/insertVersion.mjs';
 export { setProgramName } from './rendering/renderers/gl/shader/program/preprocessors/setProgramName.mjs';
 export { stripVersion } from './rendering/renderers/gl/shader/program/preprocessors/stripVersion.mjs';
-export { WGSL_TO_STD40_SIZE, createUboElementsSTD40 } from './rendering/renderers/gl/shader/utils/createUboElementsSTD40.mjs';
+export {
+    WGSL_TO_STD40_SIZE,
+    createUboElementsSTD40,
+} from './rendering/renderers/gl/shader/utils/createUboElementsSTD40.mjs';
 export { createUboSyncFunctionSTD40 } from './rendering/renderers/gl/shader/utils/createUboSyncSTD40.mjs';
 export { generateArraySyncSTD40 } from './rendering/renderers/gl/shader/utils/generateArraySyncSTD40.mjs';
 export { generateUniformsSync } from './rendering/renderers/gl/shader/utils/generateUniformsSync.mjs';
-export { UNIFORM_TO_ARRAY_SETTERS, UNIFORM_TO_SINGLE_SETTERS } from './rendering/renderers/gl/shader/utils/generateUniformsSyncTypes.mjs';
+export {
+    UNIFORM_TO_ARRAY_SETTERS,
+    UNIFORM_TO_SINGLE_SETTERS,
+} from './rendering/renderers/gl/shader/utils/generateUniformsSyncTypes.mjs';
 export { GlStateSystem } from './rendering/renderers/gl/state/GlStateSystem.mjs';
 export { mapWebGLBlendModesToPixi } from './rendering/renderers/gl/state/mapWebGLBlendModesToPixi.mjs';
 export { GL_FORMATS, GL_TARGETS, GL_TYPES, GL_WRAP_MODES } from './rendering/renderers/gl/texture/const.mjs';
@@ -272,7 +316,12 @@ export { getSupportedGlCompressedTextureFormats } from './rendering/renderers/gl
 export { mapFormatToGlFormat } from './rendering/renderers/gl/texture/utils/mapFormatToGlFormat.mjs';
 export { mapFormatToGlInternalFormat } from './rendering/renderers/gl/texture/utils/mapFormatToGlInternalFormat.mjs';
 export { mapFormatToGlType } from './rendering/renderers/gl/texture/utils/mapFormatToGlType.mjs';
-export { compareModeToGlCompare, mipmapScaleModeToGlFilter, scaleModeToGlFilter, wrapModeToGlAddress } from './rendering/renderers/gl/texture/utils/pixiToGlMaps.mjs';
+export {
+    compareModeToGlCompare,
+    mipmapScaleModeToGlFilter,
+    scaleModeToGlFilter,
+    wrapModeToGlAddress,
+} from './rendering/renderers/gl/texture/utils/pixiToGlMaps.mjs';
 export { unpremultiplyAlpha } from './rendering/renderers/gl/texture/utils/unpremultiplyAlpha.mjs';
 export { WebGLRenderer } from './rendering/renderers/gl/WebGLRenderer.mjs';
 export { BindGroupSystem } from './rendering/renderers/gpu/BindGroupSystem.mjs';
@@ -293,7 +342,10 @@ export { GpuRenderTargetSystem } from './rendering/renderers/gpu/renderTarget/Gp
 export { BindGroup } from './rendering/renderers/gpu/shader/BindGroup.mjs';
 export { GpuProgram } from './rendering/renderers/gpu/shader/GpuProgram.mjs';
 export { GpuShaderSystem } from './rendering/renderers/gpu/shader/GpuShaderSystem.mjs';
-export { WGSL_ALIGN_SIZE_DATA, createUboElementsWGSL } from './rendering/renderers/gpu/shader/utils/createUboElementsWGSL.mjs';
+export {
+    WGSL_ALIGN_SIZE_DATA,
+    createUboElementsWGSL,
+} from './rendering/renderers/gpu/shader/utils/createUboElementsWGSL.mjs';
 export { createUboSyncFunctionWGSL } from './rendering/renderers/gpu/shader/utils/createUboSyncFunctionWGSL.mjs';
 export { extractAttributesFromGpuProgram } from './rendering/renderers/gpu/shader/utils/extractAttributesFromGpuProgram.mjs';
 export { extractStructAndGroups } from './rendering/renderers/gpu/shader/utils/extractStructAndGroups.mjs';
@@ -306,7 +358,10 @@ export { GpuStateSystem } from './rendering/renderers/gpu/state/GpuStateSystem.m
 export { GpuStencilModesToPixi } from './rendering/renderers/gpu/state/GpuStencilModesToPixi.mjs';
 export { GpuTextureSystem } from './rendering/renderers/gpu/texture/GpuTextureSystem.mjs';
 export { gpuUploadBufferImageResource } from './rendering/renderers/gpu/texture/uploaders/gpuUploadBufferImageResource.mjs';
-export { blockDataMap, gpuUploadCompressedTextureResource } from './rendering/renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs';
+export {
+    blockDataMap,
+    gpuUploadCompressedTextureResource,
+} from './rendering/renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs';
 export { gpuUploadImageResource } from './rendering/renderers/gpu/texture/uploaders/gpuUploadImageSource.mjs';
 export { gpuUploadVideoResource } from './rendering/renderers/gpu/texture/uploaders/gpuUploadVideoSource.mjs';
 export { getSupportedGPUCompressedTextureFormats } from './rendering/renderers/gpu/texture/utils/getSupportedGPUCompressedTextureFormats.mjs';
@@ -341,7 +396,10 @@ export { UboSystem } from './rendering/renderers/shared/shader/UboSystem.mjs';
 export { UniformGroup } from './rendering/renderers/shared/shader/UniformGroup.mjs';
 export { createUboSyncFunction } from './rendering/renderers/shared/shader/utils/createUboSyncFunction.mjs';
 export { getDefaultUniformValue } from './rendering/renderers/shared/shader/utils/getDefaultUniformValue.mjs';
-export { uboSyncFunctionsSTD40, uboSyncFunctionsWGSL } from './rendering/renderers/shared/shader/utils/uboSyncFunctions.mjs';
+export {
+    uboSyncFunctionsSTD40,
+    uboSyncFunctionsWGSL,
+} from './rendering/renderers/shared/shader/utils/uboSyncFunctions.mjs';
 export { uniformParsers } from './rendering/renderers/shared/shader/utils/uniformParsers.mjs';
 export { HelloSystem } from './rendering/renderers/shared/startup/HelloSystem.mjs';
 export { BLEND_TO_NPM, STENCIL_MODES } from './rendering/renderers/shared/state/const.mjs';
@@ -351,7 +409,13 @@ export { AbstractRenderer } from './rendering/renderers/shared/system/AbstractRe
 export { SharedRenderPipes, SharedSystems } from './rendering/renderers/shared/system/SharedSystems.mjs';
 export { SystemRunner } from './rendering/renderers/shared/system/SystemRunner.mjs';
 export { CanvasPool, CanvasPoolClass } from './rendering/renderers/shared/texture/CanvasPool.mjs';
-export { DEPRECATED_SCALE_MODES, DEPRECATED_WRAP_MODES, MSAA_QUALITY, SCALE_MODES, WRAP_MODES } from './rendering/renderers/shared/texture/const.mjs';
+export {
+    DEPRECATED_SCALE_MODES,
+    DEPRECATED_WRAP_MODES,
+    MSAA_QUALITY,
+    SCALE_MODES,
+    WRAP_MODES,
+} from './rendering/renderers/shared/texture/const.mjs';
 export { RenderableGCSystem } from './rendering/renderers/shared/texture/RenderableGCSystem.mjs';
 export { RenderTexture } from './rendering/renderers/shared/texture/RenderTexture.mjs';
 export { BufferImageSource } from './rendering/renderers/shared/texture/sources/BufferImageSource.mjs';
@@ -367,10 +431,20 @@ export { TexturePool, TexturePoolClass } from './rendering/renderers/shared/text
 export { TextureStyle } from './rendering/renderers/shared/texture/TextureStyle.mjs';
 export { TextureUvs } from './rendering/renderers/shared/texture/TextureUvs.mjs';
 export { generateUID } from './rendering/renderers/shared/texture/utils/generateUID.mjs';
-export { getCanvasTexture, hasCachedCanvasTexture } from './rendering/renderers/shared/texture/utils/getCanvasTexture.mjs';
+export {
+    getCanvasTexture,
+    hasCachedCanvasTexture,
+} from './rendering/renderers/shared/texture/utils/getCanvasTexture.mjs';
 export { getSupportedCompressedTextureFormats } from './rendering/renderers/shared/texture/utils/getSupportedCompressedTextureFormats.mjs';
-export { getSupportedTextureFormats, nonCompressedFormats } from './rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
-export { autoDetectSource, resourceToTexture, textureFrom } from './rendering/renderers/shared/texture/utils/textureFrom.mjs';
+export {
+    getSupportedTextureFormats,
+    nonCompressedFormats,
+} from './rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
+export {
+    autoDetectSource,
+    resourceToTexture,
+    textureFrom,
+} from './rendering/renderers/shared/texture/utils/textureFrom.mjs';
 export { createIdFromString } from './rendering/renderers/shared/utils/createIdFromString.mjs';
 export { parseFunctionBody } from './rendering/renderers/shared/utils/parseFunctionBody.mjs';
 export { ViewSystem } from './rendering/renderers/shared/view/ViewSystem.mjs';
@@ -380,7 +454,11 @@ export { default as particlesVert } from './scene/particle-container/shared/shad
 export { default as particlesWgsl } from './scene/particle-container/shared/shader/particles.wgsl.mjs';
 export { Bounds } from './scene/container/bounds/Bounds.mjs';
 export { getFastGlobalBounds } from './scene/container/bounds/getFastGlobalBounds.mjs';
-export { _getGlobalBounds, getGlobalBounds, updateTransformBackwards } from './scene/container/bounds/getGlobalBounds.mjs';
+export {
+    _getGlobalBounds,
+    getGlobalBounds,
+    updateTransformBackwards,
+} from './scene/container/bounds/getGlobalBounds.mjs';
 export { getLocalBounds, getParent } from './scene/container/bounds/getLocalBounds.mjs';
 export { getGlobalRenderableBounds } from './scene/container/bounds/getRenderableBounds.mjs';
 export { boundsPool, matrixPool } from './scene/container/bounds/utils/matrixAndBoundsPool.mjs';
@@ -395,7 +473,13 @@ export { measureMixin } from './scene/container/container-mixins/measureMixin.mj
 export { onRenderMixin } from './scene/container/container-mixins/onRenderMixin.mjs';
 export { sortMixin } from './scene/container/container-mixins/sortMixin.mjs';
 export { toLocalGlobalMixin } from './scene/container/container-mixins/toLocalGlobalMixin.mjs';
-export { Container, UPDATE_BLEND, UPDATE_COLOR, UPDATE_TRANSFORM, UPDATE_VISIBLE } from './scene/container/Container.mjs';
+export {
+    Container,
+    UPDATE_BLEND,
+    UPDATE_COLOR,
+    UPDATE_TRANSFORM,
+    UPDATE_VISIBLE,
+} from './scene/container/Container.mjs';
 export { CustomRenderPipe } from './scene/container/CustomRenderPipe.mjs';
 export { RenderContainer } from './scene/container/RenderContainer.mjs';
 export { RenderGroup } from './scene/container/RenderGroup.mjs';
@@ -411,7 +495,11 @@ export { mixHexColors } from './scene/container/utils/mixHexColors.mjs';
 export { multiplyColors } from './scene/container/utils/multiplyColors.mjs';
 export { multiplyHexColors } from './scene/container/utils/multiplyHexColors.mjs';
 export { updateLocalTransform } from './scene/container/utils/updateLocalTransform.mjs';
-export { updateRenderGroupTransform, updateRenderGroupTransforms, updateTransformAndChildren } from './scene/container/utils/updateRenderGroupTransforms.mjs';
+export {
+    updateRenderGroupTransform,
+    updateRenderGroupTransforms,
+    updateTransformAndChildren,
+} from './scene/container/utils/updateRenderGroupTransforms.mjs';
 export { updateWorldTransform } from './scene/container/utils/updateWorldTransform.mjs';
 export { validateRenderables } from './scene/container/utils/validateRenderables.mjs';
 export { GlGraphicsAdaptor } from './scene/graphics/gl/GlGraphicsAdaptor.mjs';
@@ -423,7 +511,11 @@ export { buildAdaptiveQuadratic } from './scene/graphics/shared/buildCommands/bu
 export { buildArc } from './scene/graphics/shared/buildCommands/buildArc.mjs';
 export { buildArcTo } from './scene/graphics/shared/buildCommands/buildArcTo.mjs';
 export { buildArcToSvg } from './scene/graphics/shared/buildCommands/buildArcToSvg.mjs';
-export { buildCircle, buildEllipse, buildRoundedRectangle } from './scene/graphics/shared/buildCommands/buildCircle.mjs';
+export {
+    buildCircle,
+    buildEllipse,
+    buildRoundedRectangle,
+} from './scene/graphics/shared/buildCommands/buildCircle.mjs';
 export { buildLine } from './scene/graphics/shared/buildCommands/buildLine.mjs';
 export { buildPixelLine } from './scene/graphics/shared/buildCommands/buildPixelLine.mjs';
 export { buildPolygon } from './scene/graphics/shared/buildCommands/buildPolygon.mjs';
@@ -434,7 +526,11 @@ export { FillGradient } from './scene/graphics/shared/fill/FillGradient.mjs';
 export { FillPattern } from './scene/graphics/shared/fill/FillPattern.mjs';
 export { Graphics } from './scene/graphics/shared/Graphics.mjs';
 export { GraphicsContext } from './scene/graphics/shared/GraphicsContext.mjs';
-export { GpuGraphicsContext, GraphicsContextRenderData, GraphicsContextSystem } from './scene/graphics/shared/GraphicsContextSystem.mjs';
+export {
+    GpuGraphicsContext,
+    GraphicsContextRenderData,
+    GraphicsContextSystem,
+} from './scene/graphics/shared/GraphicsContextSystem.mjs';
 export { GraphicsPipe } from './scene/graphics/shared/GraphicsPipe.mjs';
 export { GraphicsPath } from './scene/graphics/shared/path/GraphicsPath.mjs';
 export { roundedShapeArc, roundedShapeQuadraticCurve } from './scene/graphics/shared/path/roundShape.mjs';
@@ -570,7 +666,7 @@ export { BigPool, PoolGroupClass } from './utils/pool/PoolGroup.mjs';
 export { sayHello } from './utils/sayHello.mjs';
 export { default as earcut } from 'earcut';
 
-"use strict";
+('use strict');
 extensions.add(browserExt, webworkerExt);
 
 export { browserExt, extensions, webworkerExt };

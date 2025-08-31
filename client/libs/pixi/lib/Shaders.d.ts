@@ -1,21 +1,18 @@
 /// <reference types="@webgpu/types" />
 
-declare module '*.wgsl'
-{
+declare module '*.wgsl' {
     const shader: 'string';
 
     export default shader;
 }
 
-declare module '*.vert'
-{
+declare module '*.vert' {
     const shader: 'string';
 
     export default shader;
 }
 
-declare module '*.frag'
-{
+declare module '*.frag' {
     const shader: 'string';
 
     export default shader;

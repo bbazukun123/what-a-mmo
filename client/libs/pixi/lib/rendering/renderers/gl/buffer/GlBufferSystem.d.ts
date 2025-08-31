@@ -24,7 +24,7 @@ export declare class GlBufferSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "buffer";
+        readonly name: 'buffer';
     };
     private _gl;
     private _gpuBuffers;

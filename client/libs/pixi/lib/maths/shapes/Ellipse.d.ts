@@ -35,7 +35,7 @@ export declare class Ellipse implements ShapePrimitive {
      * The type of the object, mainly used to avoid `instanceof` checks
      * @default 'ellipse'
      */
-    readonly type = "ellipse";
+    readonly type = 'ellipse';
     /**
      * @param x - The X coordinate of the center of this ellipse
      * @param y - The Y coordinate of the center of this ellipse

@@ -3,7 +3,16 @@ import EventEmitter from 'eventemitter3';
 import { BufferUsage } from './const';
 import type { BindResource } from '../../gpu/shader/BindResource';
 /** All the various typed arrays that exist in js */
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array;
+export type TypedArray =
+    | Int8Array
+    | Uint8Array
+    | Int16Array
+    | Uint16Array
+    | Int32Array
+    | Uint32Array
+    | Uint8ClampedArray
+    | Float32Array
+    | Float64Array;
 /** Options for creating a buffer */
 export interface BufferOptions {
     /**
@@ -64,11 +73,14 @@ export interface BufferDescriptor {
  * });
  * @memberof rendering
  */
-export declare class Buffer extends EventEmitter<{
-    change: BindResource;
-    update: Buffer;
-    destroy: Buffer;
-}> implements BindResource {
+export declare class Buffer
+    extends EventEmitter<{
+        change: BindResource;
+        update: Buffer;
+        destroy: Buffer;
+    }>
+    implements BindResource
+{
     /**
      * emits when the underlying buffer has changed shape (i.e. resized)
      * letting the renderer know that it needs to discard the old buffer on the GPU and create a new one
@@ -90,7 +102,7 @@ export declare class Buffer extends EventEmitter<{
      * @internal
      * @ignore
      */
-    readonly _resourceType = "buffer";
+    readonly _resourceType = 'buffer';
     /**
      * the resource id used internally by the renderer to build bind group keys
      * @internal

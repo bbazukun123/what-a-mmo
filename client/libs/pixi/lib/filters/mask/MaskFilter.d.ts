@@ -6,10 +6,12 @@ import type { FilterSystem } from '../FilterSystem';
 export interface MaskFilterOptions extends FilterOptions {
     sprite: Sprite;
     inverse?: boolean;
-    scale?: number | {
-        x: number;
-        y: number;
-    };
+    scale?:
+        | number
+        | {
+              x: number;
+              y: number;
+          };
 }
 export declare class MaskFilter extends Filter {
     sprite: Sprite;

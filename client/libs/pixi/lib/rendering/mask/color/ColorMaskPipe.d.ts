@@ -13,7 +13,7 @@ export declare class ColorMaskPipe implements InstructionPipe<ColorMaskInstructi
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "colorMask";
+        readonly name: 'colorMask';
     };
     private readonly _renderer;
     private _colorStack;

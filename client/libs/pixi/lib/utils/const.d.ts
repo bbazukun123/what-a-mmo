@@ -14,4 +14,4 @@ import EventEmitter from 'eventemitter3';
 export declare const DATA_URI: RegExp;
 export { EventEmitter };
 /** The current version of PixiJS. This is automatically replaced by the build process. */
-export declare const VERSION = "$_VERSION";
+export declare const VERSION = '$_VERSION';

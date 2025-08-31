@@ -38,7 +38,7 @@ var copySearchParams = require('./utils/copySearchParams.js');
 var createStringVariations = require('./utils/createStringVariations.js');
 var isSingleItem = require('./utils/isSingleItem.js');
 
-"use strict";
+('use strict');
 
 exports.Assets = Assets.Assets;
 exports.AssetsClass = Assets.AssetsClass;

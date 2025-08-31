@@ -11,6 +11,14 @@ var VideoSource = require('./renderers/shared/texture/sources/VideoSource.js');
 require('./renderers/shared/texture/utils/textureFrom.js');
 require('./mask/MaskEffectManager.js');
 
-"use strict";
-Extensions.extensions.add(AlphaMask.AlphaMask, ColorMask.ColorMask, StencilMask.StencilMask, VideoSource.VideoSource, ImageSource.ImageSource, CanvasSource.CanvasSource, BufferImageSource.BufferImageSource);
+('use strict');
+Extensions.extensions.add(
+    AlphaMask.AlphaMask,
+    ColorMask.ColorMask,
+    StencilMask.StencilMask,
+    VideoSource.VideoSource,
+    ImageSource.ImageSource,
+    CanvasSource.CanvasSource,
+    BufferImageSource.BufferImageSource,
+);
 //# sourceMappingURL=init.js.map

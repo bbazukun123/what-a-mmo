@@ -30,7 +30,7 @@ export declare enum GL_FORMATS {
     LUMINANCE = 6409,
     LUMINANCE_ALPHA = 6410,
     DEPTH_COMPONENT = 6402,
-    DEPTH_STENCIL = 34041
+    DEPTH_STENCIL = 34041,
 }
 /**
  * Various GL target types.
@@ -56,7 +56,7 @@ export declare enum GL_TARGETS {
     TEXTURE_CUBE_MAP_POSITIVE_Y = 34071,
     TEXTURE_CUBE_MAP_NEGATIVE_Y = 34072,
     TEXTURE_CUBE_MAP_POSITIVE_Z = 34073,
-    TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074
+    TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074,
 }
 /**
  * The wrap modes that are supported by pixi.
@@ -77,7 +77,7 @@ export declare enum GL_TARGETS {
 export declare enum GL_WRAP_MODES {
     CLAMP = 33071,
     REPEAT = 10497,
-    MIRRORED_REPEAT = 33648
+    MIRRORED_REPEAT = 33648,
 }
 export declare enum GL_TYPES {
     /**
@@ -147,5 +147,5 @@ export declare enum GL_TYPES {
     /**
      * @default 36193
      */
-    HALF_FLOAT = 36193
+    HALF_FLOAT = 36193,
 }

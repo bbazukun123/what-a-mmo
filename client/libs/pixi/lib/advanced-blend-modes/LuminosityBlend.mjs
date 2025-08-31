@@ -3,12 +3,12 @@ import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 import { hslgl } from '../filters/blend-modes/hls/GLhls.mjs';
 import { hslgpu } from '../filters/blend-modes/hls/GPUhls.mjs';
 
-"use strict";
+('use strict');
 class LuminosityBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 ${hslgl}
 
                 vec3 blendLuminosity(vec3 base, vec3 blend,  float opacity)
@@ -17,12 +17,12 @@ class LuminosityBlend extends BlendModeFilter {
                     return (blendLuminosity * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 finalColor = vec4(blendLuminosity(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-                `
-      },
-      gpu: {
-        functions: `
+                `,
+            },
+            gpu: {
+                functions: `
                 ${hslgpu}
 
                 fn blendLuminosity(base:vec3<f32>,  blend:vec3<f32>,  opacity:f32) -> vec3<f32>
@@ -31,17 +31,17 @@ class LuminosityBlend extends BlendModeFilter {
                     return (blendLuminosity * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 out = vec4<f32>(blendLuminosity(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-            `
-      }
-    });
-  }
+            `,
+            },
+        });
+    }
 }
 /** @ignore */
 LuminosityBlend.extension = {
-  name: "luminosity",
-  type: ExtensionType.BlendMode
+    name: 'luminosity',
+    type: ExtensionType.BlendMode,
 };
 
 export { LuminosityBlend };

@@ -36,7 +36,7 @@ export declare class GraphicsContextRenderData {
      * Use `batcher.geometry` instead.
      * @see {Batcher#geometry}
      */
-    get geometry(): import("../../..").Geometry;
+    get geometry(): import('../../..').Geometry;
 }
 /**
  * Options for the GraphicsContextSystem.
@@ -54,7 +54,7 @@ export declare class GraphicsContextSystem implements System<GraphicsContextSyst
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem];
-        readonly name: "graphicsContext";
+        readonly name: 'graphicsContext';
     };
     /** The default options for the GraphicsContextSystem. */
     static readonly defaultOptions: GraphicsContextSystemOptions;

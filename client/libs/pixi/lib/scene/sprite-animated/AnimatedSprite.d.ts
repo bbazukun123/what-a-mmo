@@ -30,8 +30,7 @@ export interface AnimatedSpriteOptions extends PixiMixins.AnimatedSpriteOptions,
     /** Update anchor to [Texture's defaultAnchor]{@link Texture#defaultAnchor} when frame changes. */
     updateAnchor?: boolean;
 }
-export interface AnimatedSprite extends PixiMixins.AnimatedSprite, Sprite {
-}
+export interface AnimatedSprite extends PixiMixins.AnimatedSprite, Sprite {}
 /**
  * An AnimatedSprite is a simple way to display an animation depicted by a list of textures.
  *

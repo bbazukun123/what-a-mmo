@@ -1,7 +1,6 @@
 /** Type definitions for parse-svg-path module This module parses SVG path data strings into an array of commands */
 
-declare module 'parse-svg-path'
-{
+declare module 'parse-svg-path' {
     /**
      * Represents a single SVG path command
      * First element is the command letter (e.g. 'M' for moveto, 'L' for lineto, etc)

@@ -1,5 +1,5 @@
 export { Spritesheet } from './Spritesheet.mjs';
 export { spritesheetAsset } from './spritesheetAsset.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

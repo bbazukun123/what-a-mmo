@@ -24,7 +24,7 @@ export declare class GraphicsPipe implements RenderPipe<Graphics> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "graphics";
+        readonly name: 'graphics';
     };
     renderer: GraphicsSystem;
     state: State;

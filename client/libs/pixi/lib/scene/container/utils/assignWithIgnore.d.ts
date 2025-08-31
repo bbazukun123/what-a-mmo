@@ -4,4 +4,8 @@
  * @param options - The object to assign properties from.
  * @param ignore - An object of property names to ignore ({ propToIgnore: true }).
  */
-export declare function assignWithIgnore<T extends Record<string, any>>(target: T, options: T, ignore?: Record<string, boolean>): void;
+export declare function assignWithIgnore<T extends Record<string, any>>(
+    target: T,
+    options: T,
+    ignore?: Record<string, boolean>,
+): void;

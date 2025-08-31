@@ -11,9 +11,12 @@ import type { TextStyle, TextStyleOptions } from './TextStyle';
  * A string or number that can be used as text.
  * @memberof text
  */
-export type TextString = string | number | {
-    toString: () => string;
-};
+export type TextString =
+    | string
+    | number
+    | {
+          toString: () => string;
+      };
 /**
  * A union of all text styles, including HTML, Bitmap and Canvas text styles.
  * @memberof text
@@ -42,7 +45,11 @@ export type AnyTextStyleOptions = TextStyleOptions | HTMLTextStyleOptions;
  * });
  * @memberof text
  */
-export interface TextOptions<TEXT_STYLE extends TextStyle = TextStyle, TEXT_STYLE_OPTIONS extends TextStyleOptions = TextStyleOptions> extends PixiMixins.TextOptions, ViewContainerOptions {
+export interface TextOptions<
+    TEXT_STYLE extends TextStyle = TextStyle,
+    TEXT_STYLE_OPTIONS extends TextStyleOptions = TextStyleOptions,
+> extends PixiMixins.TextOptions,
+        ViewContainerOptions {
     /** The anchor point of the text. */
     anchor?: PointData | number;
     /** The copy for the text object. To split a line you can use '\n'. */
@@ -71,7 +78,13 @@ export interface TextOptions<TEXT_STYLE extends TextStyle = TextStyle, TEXT_STYL
  * @see scene.HTMLText
  * @memberof scene
  */
-export declare abstract class AbstractText<TEXT_STYLE extends TextStyle = TextStyle, TEXT_STYLE_OPTIONS extends TextStyleOptions = TextStyleOptions> extends ViewContainer implements View {
+export declare abstract class AbstractText<
+        TEXT_STYLE extends TextStyle = TextStyle,
+        TEXT_STYLE_OPTIONS extends TextStyleOptions = TextStyleOptions,
+    >
+    extends ViewContainer
+    implements View
+{
     batched: boolean;
     _anchor: ObservablePoint;
     _resolution: number;
@@ -80,7 +93,10 @@ export declare abstract class AbstractText<TEXT_STYLE extends TextStyle = TextSt
     _didTextUpdate: boolean;
     protected _text: string;
     private readonly _styleClass;
-    constructor(options: TextOptions<TEXT_STYLE, TEXT_STYLE_OPTIONS>, styleClass: new (options: TEXT_STYLE_OPTIONS) => TEXT_STYLE);
+    constructor(
+        options: TextOptions<TEXT_STYLE, TEXT_STYLE_OPTIONS>,
+        styleClass: new (options: TEXT_STYLE_OPTIONS) => TEXT_STYLE,
+    );
     /**
      * The anchor sets the origin point of the text.
      * The default is `(0,0)`, this means the text's origin is the top left.
@@ -180,4 +196,7 @@ export declare abstract class AbstractText<TEXT_STYLE extends TextStyle = TextSt
  * @template TEXT_STYLE_OPTIONS - The options type for the TextStyle
  * @internal
  */
-export declare function ensureTextOptions<TEXT_STYLE extends TextStyle, TEXT_STYLE_OPTIONS extends TextStyleOptions>(args: any[], name: string): TextOptions<TEXT_STYLE, TEXT_STYLE_OPTIONS>;
+export declare function ensureTextOptions<TEXT_STYLE extends TextStyle, TEXT_STYLE_OPTIONS extends TextStyleOptions>(
+    args: any[],
+    name: string,
+): TextOptions<TEXT_STYLE, TEXT_STYLE_OPTIONS>;

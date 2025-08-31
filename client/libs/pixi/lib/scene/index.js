@@ -167,7 +167,7 @@ var particles = require('./particle-container/shared/shader/particles.frag.js');
 var particles$1 = require('./particle-container/shared/shader/particles.vert.js');
 var particles$2 = require('./particle-container/shared/shader/particles.wgsl.js');
 
-"use strict";
+('use strict');
 
 exports.Bounds = Bounds.Bounds;
 exports.getFastGlobalBounds = getFastGlobalBounds.getFastGlobalBounds;
@@ -268,7 +268,8 @@ exports.RenderLayer = RenderLayer.RenderLayer;
 exports.RenderLayerClass = RenderLayer.RenderLayerClass;
 exports.PerspectiveMesh = PerspectiveMesh.PerspectiveMesh;
 exports.PerspectivePlaneGeometry = PerspectivePlaneGeometry.PerspectivePlaneGeometry;
-exports.applyProjectiveTransformationToPlane = applyProjectiveTransformationToPlane.applyProjectiveTransformationToPlane;
+exports.applyProjectiveTransformationToPlane =
+    applyProjectiveTransformationToPlane.applyProjectiveTransformationToPlane;
 exports.compute2DProjection = compute2DProjections.compute2DProjection;
 exports.MeshPlane = MeshPlane.MeshPlane;
 exports.PlaneGeometry = PlaneGeometry.PlaneGeometry;

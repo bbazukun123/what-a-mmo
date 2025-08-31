@@ -9,7 +9,7 @@ export declare class GpuColorMaskSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "colorMask";
+        readonly name: 'colorMask';
     };
     private readonly _renderer;
     private _colorMaskCache;

@@ -1,143 +1,143 @@
-import { Container, Sprite, Texture } from "pixi.js";
-import { Message, User } from "../../module_bindings";
-import { ChatBar } from "../components/ChatBar";
-import { PlayerEntity } from "../components/PlayerEntity";
-import { GameScene } from "../game/GameScene";
-import { app } from "../utils/app";
-import { LayoutScreen } from "./LayoutScreen";
-import { LayoutContainer, LayoutSprite } from "@pixi/layout/components";
+import { Container, Sprite, Texture } from 'pixi.js';
+import { Message, User } from '../../module_bindings';
+import { ChatBar } from '../components/ChatBar';
+import { PlayerEntity } from '../components/PlayerEntity';
+import { GameScene } from '../game/GameScene';
+import { app } from '../utils/app';
+import { LayoutScreen } from './LayoutScreen';
+import { LayoutContainer, LayoutSprite } from '@pixi/layout/components';
 
 export class MainScreen extends LayoutScreen {
-  private scene!: GameScene;
-  private container!: LayoutContainer;
-  private chatBar!: ChatBar;
-  private playerEntityMap: Map<string, PlayerEntity> = new Map();
+    private scene!: GameScene;
+    private container!: LayoutContainer;
+    private chatBar!: ChatBar;
+    private playerEntityMap: Map<string, PlayerEntity> = new Map();
 
-  public async preload() {
-    return {
-      manifests: ['game'],
-    }
-  }
-
-  public override async init(): Promise<void> {
-    this.view.layout = {
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#1099bb',
-    };
-
-    // Sky background
-    new Sprite({
-      parent: this.view,
-      texture: Texture.from('bg_sky.png'),
-      layout: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-      },
-    });
-
-    // Ground background
-    new Sprite({
-      parent: this.view,
-      texture: Texture.WHITE,
-      tint: 0x008800,
-      layout: {
-        position: 'absolute',
-        width: '100%',
-        height: '50%',
-        bottom: 0,
-        objectFit: 'cover',
-      },
-    });
-
-    const gameContainer = new Container({
-      parent: this.view,
-    });
-
-    this.scene = new GameScene(gameContainer);
-
-    this.container = new LayoutContainer({
-      parent: this.view,
-      layout: {
-        width: '100%',
-        height: 1080,
-      },
-    });
-    // this.chatBar = this.view.addChild(new ChatBar());
-
-    // Initialize content
-    app()
-      .players.getUsers()
-      .forEach((user) => this.onUserAdded(user));
-
-    // Listen for users update
-    const { onUserAdded, onUserUpdated, onUserRemoved } = app().players.signals;
-    onUserAdded.connect((user) => this.onUserAdded(user));
-    onUserUpdated.connect((user) => this.onUserUpdated(user));
-    onUserRemoved.connect((user) => this.onUserRemoved(user));
-
-    // Listen for messages update
-    const { onMessageAdded, onMessageRemoved } = app().messages.signals;
-    onMessageAdded.connect((message) => this.onMessageUpdated(message));
-    onMessageRemoved.connect((message) => this.onMessageUpdated(message));
-  }
-
-  private onUserAdded(user: User) {
-    // Skip if user is already added
-    if (this.playerEntityMap.has(user.identity.toHexString())) return;
-
-    // Skip if user is offline
-    if (!user.online) return;
-
-    const playerEntity = this.container.addChild(new PlayerEntity(user));
-
-    // Store the user view
-    this.playerEntityMap.set(user.identity.toHexString(), playerEntity);
-  }
-
-  private onUserUpdated(user: User) {
-    if (!user.online) {
-      this.onUserRemoved(user);
-      return;
+    public async preload() {
+        return {
+            manifests: ['game'],
+        };
     }
 
-    // Attempt to re-add the user who may have come back online
-    this.onUserAdded(user);
+    public override async init(): Promise<void> {
+        this.view.layout = {
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#1099bb',
+        };
 
-    // Sync user data
-    this.playerEntityMap.get(user.identity.toHexString())?.syncName();
-  }
+        // Sky background
+        new Sprite({
+            parent: this.view,
+            texture: Texture.from('bg_sky.png'),
+            layout: {
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+            },
+        });
 
-  private onUserRemoved(user: User) {
-    // Find the user entity
-    const playerEntity = this.playerEntityMap.get(user.identity.toHexString());
-    if (!playerEntity) return;
+        // Ground background
+        new Sprite({
+            parent: this.view,
+            texture: Texture.WHITE,
+            tint: 0x008800,
+            layout: {
+                position: 'absolute',
+                width: '100%',
+                height: '50%',
+                bottom: 0,
+                objectFit: 'cover',
+            },
+        });
 
-    // Remove the user entity from the container
-    this.container.removeChild(playerEntity);
-    this.playerEntityMap.delete(user.identity.toHexString());
-  }
+        const gameContainer = new Container({
+            parent: this.view,
+        });
 
-  private onMessageUpdated(message: Message) {
-    const playerEntity = this.playerEntityMap.get(message.sender.toHexString());
-    playerEntity?.syncMessages();
-  }
+        this.scene = new GameScene(gameContainer);
 
-  public async show(): Promise<void> {
-    //
-  }
+        this.container = new LayoutContainer({
+            parent: this.view,
+            layout: {
+                width: '100%',
+                height: 1080,
+            },
+        });
+        // this.chatBar = this.view.addChild(new ChatBar());
 
-  public async shown(): Promise<void> {
-    // this.chatBar.start();
-  }
+        // Initialize content
+        app()
+            .players.getUsers()
+            .forEach((user) => this.onUserAdded(user));
 
-  public async hidden(): Promise<void> {
-    // this.chatBar.stop();
-  }
+        // Listen for users update
+        const { onUserAdded, onUserUpdated, onUserRemoved } = app().players.signals;
+        onUserAdded.connect((user) => this.onUserAdded(user));
+        onUserUpdated.connect((user) => this.onUserUpdated(user));
+        onUserRemoved.connect((user) => this.onUserRemoved(user));
 
-  public update(dt: number): void {
-    this.playerEntityMap.forEach((player) => player.update(dt));
-  }
+        // Listen for messages update
+        const { onMessageAdded, onMessageRemoved } = app().messages.signals;
+        onMessageAdded.connect((message) => this.onMessageUpdated(message));
+        onMessageRemoved.connect((message) => this.onMessageUpdated(message));
+    }
+
+    private onUserAdded(user: User) {
+        // Skip if user is already added
+        if (this.playerEntityMap.has(user.identity.toHexString())) return;
+
+        // Skip if user is offline
+        if (!user.online) return;
+
+        const playerEntity = this.container.addChild(new PlayerEntity(user));
+
+        // Store the user view
+        this.playerEntityMap.set(user.identity.toHexString(), playerEntity);
+    }
+
+    private onUserUpdated(user: User) {
+        if (!user.online) {
+            this.onUserRemoved(user);
+            return;
+        }
+
+        // Attempt to re-add the user who may have come back online
+        this.onUserAdded(user);
+
+        // Sync user data
+        this.playerEntityMap.get(user.identity.toHexString())?.syncName();
+    }
+
+    private onUserRemoved(user: User) {
+        // Find the user entity
+        const playerEntity = this.playerEntityMap.get(user.identity.toHexString());
+        if (!playerEntity) return;
+
+        // Remove the user entity from the container
+        this.container.removeChild(playerEntity);
+        this.playerEntityMap.delete(user.identity.toHexString());
+    }
+
+    private onMessageUpdated(message: Message) {
+        const playerEntity = this.playerEntityMap.get(message.sender.toHexString());
+        playerEntity?.syncMessages();
+    }
+
+    public async show(): Promise<void> {
+        //
+    }
+
+    public async shown(): Promise<void> {
+        // this.chatBar.start();
+    }
+
+    public async hidden(): Promise<void> {
+        // this.chatBar.stop();
+    }
+
+    public update(dt: number): void {
+        this.playerEntityMap.forEach((player) => player.update(dt));
+    }
 }

@@ -17,4 +17,7 @@ export interface Session {
  * @param graphicsContext - Optional graphics context to render to
  * @returns The graphics context with the SVG rendered into it
  */
-export declare function SVGParser(svg: string | SVGElement | SVGSVGElement, graphicsContext?: GraphicsContext): GraphicsContext;
+export declare function SVGParser(
+    svg: string | SVGElement | SVGSVGElement,
+    graphicsContext?: GraphicsContext,
+): GraphicsContext;

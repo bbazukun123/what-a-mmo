@@ -13,7 +13,7 @@ export declare class GlEncoderSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "encoder";
+        readonly name: 'encoder';
     };
     readonly commandFinished: Promise<void>;
     private readonly _renderer;

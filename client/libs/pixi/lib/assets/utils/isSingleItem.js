@@ -1,6 +1,6 @@
 'use strict';
 
-"use strict";
+'use strict';
 const isSingleItem = (item) => !Array.isArray(item);
 
 exports.isSingleItem = isSingleItem;

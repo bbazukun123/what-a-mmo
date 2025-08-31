@@ -5,7 +5,26 @@ import type { PointData } from '../../../../maths/point/PointData';
 import type { Bounds } from '../../../container/bounds/Bounds';
 import type { RoundedPoint } from './roundShape';
 export interface PathInstruction {
-    action: 'moveTo' | 'lineTo' | 'quadraticCurveTo' | 'bezierCurveTo' | 'arc' | 'closePath' | 'addPath' | 'arcTo' | 'ellipse' | 'rect' | 'roundRect' | 'arcToSvg' | 'poly' | 'circle' | 'regularPoly' | 'roundPoly' | 'roundShape' | 'filletRect' | 'chamferRect';
+    action:
+        | 'moveTo'
+        | 'lineTo'
+        | 'quadraticCurveTo'
+        | 'bezierCurveTo'
+        | 'arc'
+        | 'closePath'
+        | 'addPath'
+        | 'arcTo'
+        | 'ellipse'
+        | 'rect'
+        | 'roundRect'
+        | 'arcToSvg'
+        | 'poly'
+        | 'circle'
+        | 'regularPoly'
+        | 'roundPoly'
+        | 'roundShape'
+        | 'filletRect'
+        | 'chamferRect';
     data: any[];
 }
 /**
@@ -88,7 +107,15 @@ export declare class GraphicsPath {
      * @param y - The y-coordinate of the arc's end point.
      * @returns The instance of the current object for chaining.
      */
-    arcToSvg(rx: number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number): this;
+    arcToSvg(
+        rx: number,
+        ry: number,
+        xAxisRotation: number,
+        largeArcFlag: number,
+        sweepFlag: number,
+        x: number,
+        y: number,
+    ): this;
     /**
      * Adds a cubic Bezier curve to the path.
      * It requires three points: the first two are control points and the third one is the end point.
@@ -102,7 +129,15 @@ export declare class GraphicsPath {
      * @param smoothness - Optional parameter to adjust the smoothness of the curve.
      * @returns The instance of the current object for chaining.
      */
-    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number, smoothness?: number): this;
+    bezierCurveTo(
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+        smoothness?: number,
+    ): this;
     /**
      * Adds a cubic Bezier curve to the path.
      * It requires two points: the second control point and the end point. The first control point is assumed to be
@@ -282,7 +317,15 @@ export declare class GraphicsPath {
      * This can include rotations, scaling, and translations.
      * @returns The instance of the current object for chaining further drawing commands.
      */
-    star(x: number, y: number, points: number, radius: number, innerRadius?: number, rotation?: number, transform?: Matrix): this;
+    star(
+        x: number,
+        y: number,
+        points: number,
+        radius: number,
+        innerRadius?: number,
+        rotation?: number,
+        transform?: Matrix,
+    ): this;
     /**
      * Creates a copy of the current `GraphicsPath` instance. This method supports both shallow and deep cloning.
      * A shallow clone copies the reference of the instructions array, while a deep clone creates a new array and

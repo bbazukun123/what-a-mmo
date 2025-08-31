@@ -19,4 +19,4 @@ declare class WorkerManagerClass {
     private _next;
 }
 declare const WorkerManager: WorkerManagerClass;
-export { WorkerManager, };
+export { WorkerManager };

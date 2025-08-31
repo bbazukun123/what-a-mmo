@@ -15,18 +15,59 @@ import { GpuTextureSystem } from './texture/GpuTextureSystem';
 import type { ICanvas } from '../../../environment/canvas/ICanvas';
 import type { SharedRendererOptions } from '../shared/system/SharedSystems';
 import type { ExtractRendererOptions, ExtractSystemTypes } from '../shared/system/utils/typeUtils';
-declare const DefaultWebGPUSystems: (typeof import("../..").BackgroundSystem | typeof import("../..").GlobalUniformSystem | typeof import("../..").HelloSystem | typeof import("../..").ViewSystem | typeof import("../../..").RenderGroupSystem | typeof import("../..").TextureGCSystem | typeof import("../..").GenerateTextureSystem | typeof import("../..").ExtractSystem | typeof import("../../..").RendererInitHook | typeof import("../..").RenderableGCSystem | typeof import("../..").SchedulerSystem | typeof GpuUboSystem | typeof GpuEncoderSystem | typeof GpuDeviceSystem | typeof GpuBufferSystem | typeof GpuTextureSystem | typeof GpuRenderTargetSystem | typeof GpuShaderSystem | typeof GpuStateSystem | typeof PipelineSystem | typeof GpuColorMaskSystem | typeof GpuStencilSystem | typeof BindGroupSystem)[];
-declare const DefaultWebGPUPipes: (typeof import("../..").BlendModePipe | typeof import("../..").BatcherPipe | typeof import("../../..").SpritePipe | typeof import("../../..").RenderGroupPipe | typeof import("../..").AlphaMaskPipe | typeof import("../..").StencilMaskPipe | typeof import("../..").ColorMaskPipe | typeof import("../../..").CustomRenderPipe | typeof GpuUniformBatchPipe)[];
-type WebGPUSystems = ExtractSystemTypes<typeof DefaultWebGPUSystems> & PixiMixins.RendererSystems & PixiMixins.WebGPUSystems;
-export type WebGPUPipes = ExtractSystemTypes<typeof DefaultWebGPUPipes> & PixiMixins.RendererPipes & PixiMixins.WebGPUPipes;
+declare const DefaultWebGPUSystems: (
+    | typeof import('../..').BackgroundSystem
+    | typeof import('../..').GlobalUniformSystem
+    | typeof import('../..').HelloSystem
+    | typeof import('../..').ViewSystem
+    | typeof import('../../..').RenderGroupSystem
+    | typeof import('../..').TextureGCSystem
+    | typeof import('../..').GenerateTextureSystem
+    | typeof import('../..').ExtractSystem
+    | typeof import('../../..').RendererInitHook
+    | typeof import('../..').RenderableGCSystem
+    | typeof import('../..').SchedulerSystem
+    | typeof GpuUboSystem
+    | typeof GpuEncoderSystem
+    | typeof GpuDeviceSystem
+    | typeof GpuBufferSystem
+    | typeof GpuTextureSystem
+    | typeof GpuRenderTargetSystem
+    | typeof GpuShaderSystem
+    | typeof GpuStateSystem
+    | typeof PipelineSystem
+    | typeof GpuColorMaskSystem
+    | typeof GpuStencilSystem
+    | typeof BindGroupSystem
+)[];
+declare const DefaultWebGPUPipes: (
+    | typeof import('../..').BlendModePipe
+    | typeof import('../..').BatcherPipe
+    | typeof import('../../..').SpritePipe
+    | typeof import('../../..').RenderGroupPipe
+    | typeof import('../..').AlphaMaskPipe
+    | typeof import('../..').StencilMaskPipe
+    | typeof import('../..').ColorMaskPipe
+    | typeof import('../../..').CustomRenderPipe
+    | typeof GpuUniformBatchPipe
+)[];
+type WebGPUSystems = ExtractSystemTypes<typeof DefaultWebGPUSystems> &
+    PixiMixins.RendererSystems &
+    PixiMixins.WebGPUSystems;
+export type WebGPUPipes = ExtractSystemTypes<typeof DefaultWebGPUPipes> &
+    PixiMixins.RendererPipes &
+    PixiMixins.WebGPUPipes;
 /**
  * Options for WebGPURenderer.
  * @memberof rendering
  */
-export interface WebGPUOptions extends SharedRendererOptions, ExtractRendererOptions<typeof DefaultWebGPUSystems>, PixiMixins.WebGPUOptions {
-}
-export interface WebGPURenderer<T extends ICanvas = HTMLCanvasElement> extends AbstractRenderer<WebGPUPipes, WebGPUOptions, T>, WebGPUSystems {
-}
+export interface WebGPUOptions
+    extends SharedRendererOptions,
+        ExtractRendererOptions<typeof DefaultWebGPUSystems>,
+        PixiMixins.WebGPUOptions {}
+export interface WebGPURenderer<T extends ICanvas = HTMLCanvasElement>
+    extends AbstractRenderer<WebGPUPipes, WebGPUOptions, T>,
+        WebGPUSystems {}
 /**
  * The WebGPU PixiJS Renderer. This renderer allows you to use the next-generation graphics API, WebGPU.
  * ```ts
@@ -85,7 +126,10 @@ export interface WebGPURenderer<T extends ICanvas = HTMLCanvasElement> extends A
  * @property {rendering.BindGroupSystem} bindGroup - BindGroupSystem instance.
  * @extends rendering.AbstractRenderer
  */
-export declare class WebGPURenderer<T extends ICanvas = HTMLCanvasElement> extends AbstractRenderer<WebGPUPipes, WebGPUOptions, T> implements WebGPUSystems {
+export declare class WebGPURenderer<T extends ICanvas = HTMLCanvasElement>
+    extends AbstractRenderer<WebGPUPipes, WebGPUOptions, T>
+    implements WebGPUSystems
+{
     /** The WebGPU Device. */
     gpu: GPU;
     constructor();

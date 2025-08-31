@@ -40,8 +40,7 @@ export interface NineSliceSpriteOptions extends PixiMixins.NineSliceSpriteOption
     /** The anchor point of the NineSliceSprite. */
     anchor?: PointData | number;
 }
-export interface NineSliceSprite extends PixiMixins.NineSliceSprite, ViewContainer {
-}
+export interface NineSliceSprite extends PixiMixins.NineSliceSprite, ViewContainer {}
 /**
  * The NineSliceSprite allows you to stretch a texture using 9-slice scaling. The corners will remain unscaled (useful
  * for buttons with rounded corners for example) and the other areas will be scaled horizontally and or vertically

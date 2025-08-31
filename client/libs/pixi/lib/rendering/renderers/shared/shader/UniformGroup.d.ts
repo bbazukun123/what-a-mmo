@@ -3,7 +3,9 @@ import type { BindResource } from '../../gpu/shader/BindResource';
 import type { Buffer } from '../buffer/Buffer';
 type FLOPS<T = UniformData> = T extends {
     value: infer V;
-} ? V : never;
+}
+    ? V
+    : never;
 type ExtractUniformObject<T = Record<string, UniformData>> = {
     [K in keyof T]: FLOPS<T[K]>;
 };
@@ -76,9 +78,12 @@ export type UniformGroupOptions = {
  *  ```
  * @memberof rendering
  */
-export declare class UniformGroup<UNIFORMS extends {
-    [key: string]: UniformData;
-} = any> implements BindResource {
+export declare class UniformGroup<
+    UNIFORMS extends {
+        [key: string]: UniformData;
+    } = any,
+> implements BindResource
+{
     /** The default options used by the uniform group. */
     static defaultOptions: UniformGroupOptions;
     /** used internally to know if a uniform group was used in the last render pass */

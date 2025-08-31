@@ -12,7 +12,7 @@ export declare class GlUniformGroupSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "uniformGroup";
+        readonly name: 'uniformGroup';
     };
     /**
      * The current WebGL rendering context.
@@ -33,9 +33,13 @@ export declare class GlUniformGroupSystem implements System {
      * @param syncData
      * @param syncData.textureCount
      */
-    updateUniformGroup(group: UniformGroup, program: GlProgram, syncData: {
-        textureCount: number;
-    }): void;
+    updateUniformGroup(
+        group: UniformGroup,
+        program: GlProgram,
+        syncData: {
+            textureCount: number;
+        },
+    ): void;
     /**
      * Overridable by the pixi.js/unsafe-eval package to use static syncUniforms instead.
      * @param group

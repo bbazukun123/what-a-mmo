@@ -9,4 +9,11 @@
  * @param y2
  * @param radius
  */
-export declare function buildArcTo(points: number[], x1: number, y1: number, x2: number, y2: number, radius: number): void;
+export declare function buildArcTo(
+    points: number[],
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    radius: number,
+): void;

@@ -6,30 +6,30 @@ import { CompressedSource } from '../../rendering/renderers/shared/texture/sourc
 import { getSupportedTextureFormats } from '../../rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs';
 import { loadBasisOnWorker } from './worker/loadBasisOnWorker.mjs';
 
-"use strict";
+('use strict');
 const loadBasis = {
-  extension: {
-    type: ExtensionType.LoadParser,
-    priority: LoaderParserPriority.High,
-    name: "loadBasis"
-  },
-  name: "loadBasis",
-  test(url) {
-    return checkExtension(url, [".basis"]);
-  },
-  async load(url, _asset, loader) {
-    const supportedTextures = await getSupportedTextureFormats();
-    const textureOptions = await loadBasisOnWorker(url, supportedTextures);
-    const compressedTextureSource = new CompressedSource(textureOptions);
-    return createTexture(compressedTextureSource, loader, url);
-  },
-  unload(texture) {
-    if (Array.isArray(texture)) {
-      texture.forEach((t) => t.destroy(true));
-    } else {
-      texture.destroy(true);
-    }
-  }
+    extension: {
+        type: ExtensionType.LoadParser,
+        priority: LoaderParserPriority.High,
+        name: 'loadBasis',
+    },
+    name: 'loadBasis',
+    test(url) {
+        return checkExtension(url, ['.basis']);
+    },
+    async load(url, _asset, loader) {
+        const supportedTextures = await getSupportedTextureFormats();
+        const textureOptions = await loadBasisOnWorker(url, supportedTextures);
+        const compressedTextureSource = new CompressedSource(textureOptions);
+        return createTexture(compressedTextureSource, loader, url);
+    },
+    unload(texture) {
+        if (Array.isArray(texture)) {
+            texture.forEach((t) => t.destroy(true));
+        } else {
+            texture.destroy(true);
+        }
+    },
 };
 
 export { loadBasis };

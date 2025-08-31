@@ -57,4 +57,6 @@ export type TypeOrBool<T> = T | boolean;
  * @property {boolean} [style=false] - Destroy the style of the container's children.
  * @memberof scene
  */
-export type DestroyOptions = TypeOrBool<BaseDestroyOptions & ContextDestroyOptions & TextureDestroyOptions & TextDestroyOptions>;
+export type DestroyOptions = TypeOrBool<
+    BaseDestroyOptions & ContextDestroyOptions & TextureDestroyOptions & TextDestroyOptions
+>;

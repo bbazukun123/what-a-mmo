@@ -19,7 +19,7 @@ var RoundedRectangle = require('./shapes/RoundedRectangle.js');
 require('./shapes/ShapePrimitive.js');
 var Triangle = require('./shapes/Triangle.js');
 
-"use strict";
+('use strict');
 
 exports.groupD8 = groupD8.groupD8;
 exports.Matrix = Matrix.Matrix;

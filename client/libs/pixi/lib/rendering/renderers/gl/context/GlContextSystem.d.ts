@@ -72,7 +72,7 @@ export declare class GlContextSystem implements System<ContextSystemOptions> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "context";
+        readonly name: 'context';
     };
     /** The default options for the system. */
     static defaultOptions: ContextSystemOptions;

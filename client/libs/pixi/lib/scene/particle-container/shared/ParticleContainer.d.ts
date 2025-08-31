@@ -34,15 +34,16 @@ export interface ParticleProperties {
  * @property {IParticle[]} particles - An array of particles to add to the container.
  * @memberof scene
  */
-export interface ParticleContainerOptions extends PixiMixins.ParticleContainerOptions, Omit<ViewContainerOptions, 'children'> {
+export interface ParticleContainerOptions
+    extends PixiMixins.ParticleContainerOptions,
+        Omit<ViewContainerOptions, 'children'> {
     dynamicProperties?: Record<string, boolean>;
     shader?: Shader;
     roundPixels?: boolean;
     texture?: Texture;
     particles?: IParticle[];
 }
-export interface ParticleContainer extends PixiMixins.ParticleContainer, ViewContainer {
-}
+export interface ParticleContainer extends PixiMixins.ParticleContainer, ViewContainer {}
 /**
  * The ParticleContainer class is a highly optimized container that can render 1000s or particles at great speed.
  *
@@ -215,7 +216,7 @@ export declare class ParticleContainer extends ViewContainer implements Instruct
      * @param {number} _index
      * @throws {Error} Always throws an error as this method is not available.
      */
-    removeChildAt<U extends (ContainerChild | IRenderLayer)>(_index: number): U;
+    removeChildAt<U extends ContainerChild | IRenderLayer>(_index: number): U;
     /**
      * This method is not available in ParticleContainer.
      *
@@ -223,7 +224,7 @@ export declare class ParticleContainer extends ViewContainer implements Instruct
      * @param {number} _index
      * @throws {Error} Always throws an error as this method is not available.
      */
-    getChildAt<U extends (ContainerChild | IRenderLayer)>(_index: number): U;
+    getChildAt<U extends ContainerChild | IRenderLayer>(_index: number): U;
     /**
      * This method is not available in ParticleContainer.
      *
@@ -249,7 +250,7 @@ export declare class ParticleContainer extends ViewContainer implements Instruct
      * @param {number} _index
      * @throws {Error} Always throws an error as this method is not available.
      */
-    addChildAt<U extends (ContainerChild | IRenderLayer)>(_child: U, _index: number): U;
+    addChildAt<U extends ContainerChild | IRenderLayer>(_child: U, _index: number): U;
     /**
      * This method is not available in ParticleContainer.
      *
@@ -257,7 +258,7 @@ export declare class ParticleContainer extends ViewContainer implements Instruct
      * @param {ContainerChild} _child
      * @param {ContainerChild} _child2
      */
-    swapChildren<U extends (ContainerChild | IRenderLayer)>(_child: U, _child2: U): void;
+    swapChildren<U extends ContainerChild | IRenderLayer>(_child: U, _child2: U): void;
     /**
      * This method is not available in ParticleContainer.
      *

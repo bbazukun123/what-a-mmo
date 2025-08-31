@@ -21,25 +21,29 @@ var GlUniformGroupSystem = require('./shader/GlUniformGroupSystem.js');
 var GlStateSystem = require('./state/GlStateSystem.js');
 var GlTextureSystem = require('./texture/GlTextureSystem.js');
 
-"use strict";
+('use strict');
 const DefaultWebGLSystems = [
-  ...SharedSystems.SharedSystems,
-  GlUboSystem.GlUboSystem,
-  GlBackBufferSystem.GlBackBufferSystem,
-  GlContextSystem.GlContextSystem,
-  GlBufferSystem.GlBufferSystem,
-  GlTextureSystem.GlTextureSystem,
-  GlRenderTargetSystem.GlRenderTargetSystem,
-  GlGeometrySystem.GlGeometrySystem,
-  GlUniformGroupSystem.GlUniformGroupSystem,
-  GlShaderSystem.GlShaderSystem,
-  GlEncoderSystem.GlEncoderSystem,
-  GlStateSystem.GlStateSystem,
-  GlStencilSystem.GlStencilSystem,
-  GlColorMaskSystem.GlColorMaskSystem
+    ...SharedSystems.SharedSystems,
+    GlUboSystem.GlUboSystem,
+    GlBackBufferSystem.GlBackBufferSystem,
+    GlContextSystem.GlContextSystem,
+    GlBufferSystem.GlBufferSystem,
+    GlTextureSystem.GlTextureSystem,
+    GlRenderTargetSystem.GlRenderTargetSystem,
+    GlGeometrySystem.GlGeometrySystem,
+    GlUniformGroupSystem.GlUniformGroupSystem,
+    GlShaderSystem.GlShaderSystem,
+    GlEncoderSystem.GlEncoderSystem,
+    GlStateSystem.GlStateSystem,
+    GlStencilSystem.GlStencilSystem,
+    GlColorMaskSystem.GlColorMaskSystem,
 ];
 const DefaultWebGLPipes = [...SharedSystems.SharedRenderPipes];
-const DefaultWebGLAdapters = [GlBatchAdaptor.GlBatchAdaptor, GlMeshAdaptor.GlMeshAdaptor, GlGraphicsAdaptor.GlGraphicsAdaptor];
+const DefaultWebGLAdapters = [
+    GlBatchAdaptor.GlBatchAdaptor,
+    GlMeshAdaptor.GlMeshAdaptor,
+    GlGraphicsAdaptor.GlGraphicsAdaptor,
+];
 const systems = [];
 const renderPipes = [];
 const renderPipeAdaptors = [];
@@ -48,16 +52,16 @@ Extensions.extensions.handleByNamedList(Extensions.ExtensionType.WebGLPipes, ren
 Extensions.extensions.handleByNamedList(Extensions.ExtensionType.WebGLPipesAdaptor, renderPipeAdaptors);
 Extensions.extensions.add(...DefaultWebGLSystems, ...DefaultWebGLPipes, ...DefaultWebGLAdapters);
 class WebGLRenderer extends AbstractRenderer.AbstractRenderer {
-  constructor() {
-    const systemConfig = {
-      name: "webgl",
-      type: types.RendererType.WEBGL,
-      systems,
-      renderPipes,
-      renderPipeAdaptors
-    };
-    super(systemConfig);
-  }
+    constructor() {
+        const systemConfig = {
+            name: 'webgl',
+            type: types.RendererType.WEBGL,
+            systems,
+            renderPipes,
+            renderPipeAdaptors,
+        };
+        super(systemConfig);
+    }
 }
 
 exports.WebGLRenderer = WebGLRenderer;

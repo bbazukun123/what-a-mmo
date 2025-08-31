@@ -5,26 +5,26 @@ var Extensions = require('../extensions/Extensions.js');
 var path = require('../utils/path.js');
 var GifSource = require('./GifSource.js');
 
-"use strict";
+('use strict');
 const GifAsset = {
-  extension: Extensions.ExtensionType.Asset,
-  detection: {
-    test: async () => true,
-    add: async (formats) => [...formats, "gif"],
-    remove: async (formats) => formats.filter((format) => format !== "gif")
-  },
-  loader: {
-    name: "gifLoader",
-    test: (url) => path.path.extname(url) === ".gif",
-    load: async (url, asset) => {
-      const response = await adapter.DOMAdapter.get().fetch(url);
-      const buffer = await response.arrayBuffer();
-      return GifSource.GifSource.from(buffer, asset?.data);
+    extension: Extensions.ExtensionType.Asset,
+    detection: {
+        test: async () => true,
+        add: async (formats) => [...formats, 'gif'],
+        remove: async (formats) => formats.filter((format) => format !== 'gif'),
     },
-    unload: async (asset) => {
-      asset.destroy();
-    }
-  }
+    loader: {
+        name: 'gifLoader',
+        test: (url) => path.path.extname(url) === '.gif',
+        load: async (url, asset) => {
+            const response = await adapter.DOMAdapter.get().fetch(url);
+            const buffer = await response.arrayBuffer();
+            return GifSource.GifSource.from(buffer, asset?.data);
+        },
+        unload: async (asset) => {
+            asset.destroy();
+        },
+    },
 };
 
 exports.GifAsset = GifAsset;

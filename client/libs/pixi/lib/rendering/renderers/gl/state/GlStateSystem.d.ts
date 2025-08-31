@@ -11,7 +11,7 @@ export declare class GlStateSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "state";
+        readonly name: 'state';
     };
     /**
      * State ID

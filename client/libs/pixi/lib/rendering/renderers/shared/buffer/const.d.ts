@@ -50,5 +50,5 @@ export declare enum BufferUsage {
      */
     QUERY_RESOLVE = 512,
     /** the buffer will not be updated frequently */
-    STATIC = 1024
+    STATIC = 1024,
 }

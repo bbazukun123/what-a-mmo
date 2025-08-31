@@ -8,7 +8,7 @@ export declare class GlUboSystem extends UboSystem {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "ubo";
+        readonly name: 'ubo';
     };
     constructor();
 }

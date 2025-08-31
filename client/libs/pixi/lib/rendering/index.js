@@ -216,7 +216,7 @@ require('./renderers/shared/view/View.js');
 var ViewSystem = require('./renderers/shared/view/ViewSystem.js');
 var types$1 = require('./renderers/types.js');
 
-"use strict";
+('use strict');
 
 exports.GlBatchAdaptor = GlBatchAdaptor.GlBatchAdaptor;
 exports.checkMaxIfStatementsInShader = checkMaxIfStatementsInShader.checkMaxIfStatementsInShader;
@@ -336,7 +336,8 @@ exports.glUploadCompressedTextureResource = glUploadCompressedTextureResource.gl
 exports.glUploadImageResource = glUploadImageResource.glUploadImageResource;
 exports.glUploadVideoResource = glUploadVideoResource.glUploadVideoResource;
 exports.applyStyleParams = applyStyleParams.applyStyleParams;
-exports.getSupportedGlCompressedTextureFormats = getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats;
+exports.getSupportedGlCompressedTextureFormats =
+    getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats;
 exports.mapFormatToGlFormat = mapFormatToGlFormat.mapFormatToGlFormat;
 exports.mapFormatToGlInternalFormat = mapFormatToGlInternalFormat.mapFormatToGlInternalFormat;
 exports.mapFormatToGlType = mapFormatToGlType.mapFormatToGlType;
@@ -382,7 +383,8 @@ exports.blockDataMap = gpuUploadCompressedTextureResource.blockDataMap;
 exports.gpuUploadCompressedTextureResource = gpuUploadCompressedTextureResource.gpuUploadCompressedTextureResource;
 exports.gpuUploadImageResource = gpuUploadImageSource.gpuUploadImageResource;
 exports.gpuUploadVideoResource = gpuUploadVideoSource.gpuUploadVideoResource;
-exports.getSupportedGPUCompressedTextureFormats = getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats;
+exports.getSupportedGPUCompressedTextureFormats =
+    getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats;
 exports.GpuMipmapGenerator = GpuMipmapGenerator.GpuMipmapGenerator;
 exports.WebGPURenderer = WebGPURenderer.WebGPURenderer;
 exports.BackgroundSystem = BackgroundSystem.BackgroundSystem;
@@ -453,7 +455,8 @@ exports.TextureUvs = TextureUvs.TextureUvs;
 exports.generateUID = generateUID.generateUID;
 exports.getCanvasTexture = getCanvasTexture.getCanvasTexture;
 exports.hasCachedCanvasTexture = getCanvasTexture.hasCachedCanvasTexture;
-exports.getSupportedCompressedTextureFormats = getSupportedCompressedTextureFormats.getSupportedCompressedTextureFormats;
+exports.getSupportedCompressedTextureFormats =
+    getSupportedCompressedTextureFormats.getSupportedCompressedTextureFormats;
 exports.getSupportedTextureFormats = getSupportedTextureFormats.getSupportedTextureFormats;
 exports.nonCompressedFormats = getSupportedTextureFormats.nonCompressedFormats;
 exports.autoDetectSource = textureFrom.autoDetectSource;

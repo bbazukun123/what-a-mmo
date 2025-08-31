@@ -15,5 +15,5 @@ require('../scene/sprite-tiling/init.js');
 require('../scene/sprite-nine-slice/init.js');
 require('../filters/init.js');
 
-"use strict";
+('use strict');
 //# sourceMappingURL=browserAll.js.map

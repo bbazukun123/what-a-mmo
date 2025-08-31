@@ -127,7 +127,7 @@ export declare enum DXGI_FORMAT {
     DXGI_FORMAT_V408 = 118,
     DXGI_FORMAT_SAMPLER_FEEDBACK_MIN_MIP_OPAQUE = 119,
     DXGI_FORMAT_SAMPLER_FEEDBACK_MIP_REGION_USED_OPAQUE = 120,
-    DXGI_FORMAT_FORCE_UINT = 121
+    DXGI_FORMAT_FORCE_UINT = 121,
 }
 /**
  * Possible values of the field {@link DDS_DX10_FIELDS.RESOURCE_DIMENSION}
@@ -136,7 +136,7 @@ export declare enum DXGI_FORMAT {
 export declare enum D3D10_RESOURCE_DIMENSION {
     DDS_DIMENSION_TEXTURE1D = 2,
     DDS_DIMENSION_TEXTURE2D = 3,
-    DDS_DIMENSION_TEXTURE3D = 6
+    DDS_DIMENSION_TEXTURE3D = 6,
 }
 export declare enum D3DFMT {
     UNKNOWN = 0,
@@ -192,7 +192,7 @@ export declare enum D3DFMT {
     BC4S,
     BC5U,
     BC5S,
-    DX10
+    DX10,
 }
 /**
  * Maps `FOURCC_*` formats to {@link TEXTURE_FORMATS}.

@@ -38,47 +38,47 @@
  */
 declare enum ExtensionType {
     /** extensions that are registered as Application plugins */
-    Application = "application",
+    Application = 'application',
     /** extensions that are registered as WebGL render pipes */
-    WebGLPipes = "webgl-pipes",
+    WebGLPipes = 'webgl-pipes',
     /** extensions that are registered as WebGL render pipes adaptors */
-    WebGLPipesAdaptor = "webgl-pipes-adaptor",
+    WebGLPipesAdaptor = 'webgl-pipes-adaptor',
     /** extensions that are registered as WebGL render systems */
-    WebGLSystem = "webgl-system",
+    WebGLSystem = 'webgl-system',
     /** extensions that are registered as WebGPU render pipes */
-    WebGPUPipes = "webgpu-pipes",
+    WebGPUPipes = 'webgpu-pipes',
     /** extensions that are registered as WebGPU render pipes adaptors */
-    WebGPUPipesAdaptor = "webgpu-pipes-adaptor",
+    WebGPUPipesAdaptor = 'webgpu-pipes-adaptor',
     /** extensions that are registered as WebGPU render systems */
-    WebGPUSystem = "webgpu-system",
+    WebGPUSystem = 'webgpu-system',
     /** extensions that are registered as Canvas render pipes */
-    CanvasSystem = "canvas-system",
+    CanvasSystem = 'canvas-system',
     /** extensions that are registered as Canvas render pipes adaptors */
-    CanvasPipesAdaptor = "canvas-pipes-adaptor",
+    CanvasPipesAdaptor = 'canvas-pipes-adaptor',
     /** extensions that are registered as Canvas render systems */
-    CanvasPipes = "canvas-pipes",
+    CanvasPipes = 'canvas-pipes',
     /** extensions that combine the other Asset extensions */
-    Asset = "asset",
+    Asset = 'asset',
     /** extensions that are used to load assets through Assets */
-    LoadParser = "load-parser",
+    LoadParser = 'load-parser',
     /** extensions that are used to resolve asset urls through Assets */
-    ResolveParser = "resolve-parser",
+    ResolveParser = 'resolve-parser',
     /** extensions that are used to handle how urls are cached by Assets */
-    CacheParser = "cache-parser",
+    CacheParser = 'cache-parser',
     /** extensions that are used to add/remove available resources from Assets */
-    DetectionParser = "detection-parser",
+    DetectionParser = 'detection-parser',
     /** extensions that are registered with the MaskEffectManager */
-    MaskEffect = "mask-effect",
+    MaskEffect = 'mask-effect',
     /** A type of extension for creating a new advanced blend mode */
-    BlendMode = "blend-mode",
+    BlendMode = 'blend-mode',
     /** A type of extension that will be used to auto detect a resource type */
-    TextureSource = "texture-source",
+    TextureSource = 'texture-source',
     /** A type of extension that will be used to auto detect an environment */
-    Environment = "environment",
+    Environment = 'environment',
     /** A type of extension for building and triangulating custom shapes used in graphics. */
-    ShapeBuilder = "shape-builder",
+    ShapeBuilder = 'shape-builder',
     /** A type of extension for creating custom batchers used in rendering. */
-    Batcher = "batcher"
+    Batcher = 'batcher',
 }
 /**
  * The metadata for an extension.
@@ -192,10 +192,14 @@ declare const extensions: {
      * @param defaultPriority - Fallback priority if none is defined.
      * @returns {extensions} For chaining.
      */
-    handleByNamedList(type: ExtensionType, map: {
-        name: string;
-        value: any;
-    }[], defaultPriority?: number): any;
+    handleByNamedList(
+        type: ExtensionType,
+        map: {
+            name: string;
+            value: any;
+        }[],
+        defaultPriority?: number,
+    ): any;
     /**
      * Handle a type, but using a list of extensions.
      * @param type - Type of extension to handle.
@@ -211,5 +215,11 @@ declare const extensions: {
      */
     mixin(Target: any, ...sources: Parameters<typeof Object.getOwnPropertyDescriptors>[0][]): void;
 };
-export { extensions, ExtensionType, };
-export type { StrictExtensionFormat as ExtensionFormat, ExtensionFormat as ExtensionFormatLoose, ExtensionHandler, ExtensionMetadata, ExtensionMetadataDetails };
+export { extensions, ExtensionType };
+export type {
+    StrictExtensionFormat as ExtensionFormat,
+    ExtensionFormat as ExtensionFormatLoose,
+    ExtensionHandler,
+    ExtensionMetadata,
+    ExtensionMetadataDetails,
+};

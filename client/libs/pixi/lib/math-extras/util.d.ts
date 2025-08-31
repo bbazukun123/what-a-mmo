@@ -55,7 +55,13 @@ export declare function lineIntersection(aStart: PointData, aEnd: PointData, bSt
  * @returns {PointData} The point where the lines intersect or a `NaN` Point.
  * @memberof maths
  */
-export declare function lineIntersection<T extends PointData>(aStart: PointData, aEnd: PointData, bStart: PointData, bEnd: PointData, outPoint: T): T;
+export declare function lineIntersection<T extends PointData>(
+    aStart: PointData,
+    aEnd: PointData,
+    bStart: PointData,
+    bEnd: PointData,
+    outPoint: T,
+): T;
 /**
  * Computes the point where non-coincident and non-parallel segments intersect.
  * Coincident, parallel or non-intersecting segments return a `NaN` point `{x: NaN, y: NaN}`.
@@ -69,7 +75,12 @@ export declare function lineIntersection<T extends PointData>(aStart: PointData,
  * @returns {PointData} The point where the segments intersect.
  * @memberof maths
  */
-export declare function segmentIntersection(aStart: PointData, aEnd: PointData, bStart: PointData, bEnd: PointData): Point;
+export declare function segmentIntersection(
+    aStart: PointData,
+    aEnd: PointData,
+    bStart: PointData,
+    bEnd: PointData,
+): Point;
 /**
  * Computes the point where non-coincident and non-parallel segments intersect.
  * Coincident, parallel or non-intersecting segments return a `NaN` point `{x: NaN, y: NaN}`.
@@ -85,4 +96,10 @@ export declare function segmentIntersection(aStart: PointData, aEnd: PointData, 
  * @returns {PointData} The point where the segments intersect or a `NaN` Point.
  * @memberof maths
  */
-export declare function segmentIntersection<T extends PointData>(aStart: PointData, aEnd: PointData, bStart: PointData, bEnd: PointData, outPoint: T): T;
+export declare function segmentIntersection<T extends PointData>(
+    aStart: PointData,
+    aEnd: PointData,
+    bStart: PointData,
+    bEnd: PointData,
+    outPoint: T,
+): T;

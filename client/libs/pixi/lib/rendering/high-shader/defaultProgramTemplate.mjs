@@ -1,7 +1,7 @@
-"use strict";
-const vertexGPUTemplate = (
-  /* wgsl */
-  `
+'use strict';
+const vertexGPUTemplate =
+    /* wgsl */
+    `
     @in aPosition: vec2<f32>;
     @in aUV: vec2<f32>;
 
@@ -45,11 +45,10 @@ const vertexGPUTemplate = (
 
         {{return}}
     };
-`
-);
-const fragmentGPUTemplate = (
-  /* wgsl */
-  `
+`;
+const fragmentGPUTemplate =
+    /* wgsl */
+    `
     @in vUV : vec2<f32>;
     @in vColor : vec4<f32>;
    
@@ -72,11 +71,10 @@ const fragmentGPUTemplate = (
 
         return finalColor;
       };
-`
-);
-const vertexGlTemplate = (
-  /* glsl */
-  `
+`;
+const vertexGlTemplate =
+    /* glsl */
+    `
     in vec2 aPosition;
     in vec2 aUV;
 
@@ -112,11 +110,10 @@ const vertexGlTemplate = (
 
         {{end}}
     }
-`
-);
-const fragmentGlTemplate = (
-  /* glsl */
-  `
+`;
+const fragmentGlTemplate =
+    /* glsl */
+    `
    
     in vec4 vColor;
     in vec2 vUV;
@@ -137,8 +134,7 @@ const fragmentGlTemplate = (
         
         {{end}}
     }
-`
-);
+`;
 
 export { fragmentGPUTemplate, fragmentGlTemplate, vertexGPUTemplate, vertexGlTemplate };
 //# sourceMappingURL=defaultProgramTemplate.mjs.map

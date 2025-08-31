@@ -16,7 +16,7 @@ export interface StencilMaskInstruction extends Instruction {
 export declare class StencilMaskPipe implements InstructionPipe<StencilMaskInstruction> {
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "stencilMask";
+        readonly name: 'stencilMask';
     };
     private _renderer;
     private _maskStackHash;

@@ -23,7 +23,7 @@ export declare class BatcherPipe implements InstructionPipe<Batch>, BatchPipe {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "batch";
+        readonly name: 'batch';
     };
     state: State;
     renderer: Renderer;

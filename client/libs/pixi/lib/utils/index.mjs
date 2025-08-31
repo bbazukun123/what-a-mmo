@@ -26,5 +26,5 @@ export { sayHello } from './sayHello.mjs';
 import './types.mjs';
 import './utils.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

@@ -132,7 +132,17 @@ export declare class Matrix {
      * @param skewY - Skew on the y axis
      * @returns This matrix. Good for chaining method calls.
      */
-    setTransform(x: number, y: number, pivotX: number, pivotY: number, scaleX: number, scaleY: number, rotation: number, skewX: number, skewY: number): this;
+    setTransform(
+        x: number,
+        y: number,
+        pivotX: number,
+        pivotY: number,
+        scaleX: number,
+        scaleY: number,
+        rotation: number,
+        skewX: number,
+        skewY: number,
+    ): this;
     /**
      * Prepends the given Matrix to this Matrix.
      * @param matrix - The matrix to prepend

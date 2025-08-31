@@ -17,118 +17,111 @@ var getTemporaryCanvasFromImage = require('./utils/getTemporaryCanvasFromImage.j
 var loadSVGImage = require('./utils/loadSVGImage.js');
 var measureHtmlText = require('./utils/measureHtmlText.js');
 
-"use strict";
+('use strict');
 class HTMLTextSystem {
-  constructor(renderer) {
-    this._activeTextures = {};
-    this._renderer = renderer;
-    this._createCanvas = renderer.type === types.RendererType.WEBGPU;
-  }
-  getTexture(options) {
-    return this._buildTexturePromise(
-      options.text,
-      options.resolution,
-      options.style
-    );
-  }
-  getManagedTexture(text, resolution, style, textKey) {
-    if (this._activeTextures[textKey]) {
-      this._increaseReferenceCount(textKey);
-      return this._activeTextures[textKey].promise;
+    constructor(renderer) {
+        this._activeTextures = {};
+        this._renderer = renderer;
+        this._createCanvas = renderer.type === types.RendererType.WEBGPU;
     }
-    const promise = this._buildTexturePromise(text, resolution, style).then((texture) => {
-      this._activeTextures[textKey].texture = texture;
-      return texture;
-    });
-    this._activeTextures[textKey] = {
-      texture: null,
-      promise,
-      usageCount: 1
-    };
-    return promise;
-  }
-  async _buildTexturePromise(text, resolution, style) {
-    const htmlTextData = PoolGroup.BigPool.get(HTMLTextRenderData.HTMLTextRenderData);
-    const fontFamilies = extractFontFamilies.extractFontFamilies(text, style);
-    const fontCSS = await getFontCss.getFontCss(
-      fontFamilies,
-      style,
-      HTMLTextStyle.HTMLTextStyle.defaultTextStyle
-    );
-    const measured = measureHtmlText.measureHtmlText(text, style, fontCSS, htmlTextData);
-    const width = Math.ceil(Math.ceil(Math.max(1, measured.width) + style.padding * 2) * resolution);
-    const height = Math.ceil(Math.ceil(Math.max(1, measured.height) + style.padding * 2) * resolution);
-    const image = htmlTextData.image;
-    const uvSafeOffset = 2;
-    image.width = (width | 0) + uvSafeOffset;
-    image.height = (height | 0) + uvSafeOffset;
-    const svgURL = getSVGUrl.getSVGUrl(text, style, resolution, fontCSS, htmlTextData);
-    await loadSVGImage.loadSVGImage(image, svgURL, isSafari.isSafari() && fontFamilies.length > 0);
-    const resource = image;
-    let canvasAndContext;
-    if (this._createCanvas) {
-      canvasAndContext = getTemporaryCanvasFromImage.getTemporaryCanvasFromImage(image, resolution);
+    getTexture(options) {
+        return this._buildTexturePromise(options.text, options.resolution, options.style);
     }
-    const texture = getPo2TextureFromSource.getPo2TextureFromSource(
-      canvasAndContext ? canvasAndContext.canvas : resource,
-      image.width - uvSafeOffset,
-      image.height - uvSafeOffset,
-      resolution
-    );
-    if (this._createCanvas) {
-      this._renderer.texture.initSource(texture.source);
-      CanvasPool.CanvasPool.returnCanvasAndContext(canvasAndContext);
-    }
-    PoolGroup.BigPool.return(htmlTextData);
-    return texture;
-  }
-  _increaseReferenceCount(textKey) {
-    this._activeTextures[textKey].usageCount++;
-  }
-  decreaseReferenceCount(textKey) {
-    const activeTexture = this._activeTextures[textKey];
-    if (!activeTexture)
-      return;
-    activeTexture.usageCount--;
-    if (activeTexture.usageCount === 0) {
-      if (activeTexture.texture) {
-        this._cleanUp(activeTexture);
-      } else {
-        activeTexture.promise.then((texture) => {
-          activeTexture.texture = texture;
-          this._cleanUp(activeTexture);
-        }).catch(() => {
-          warn.warn("HTMLTextSystem: Failed to clean texture");
+    getManagedTexture(text, resolution, style, textKey) {
+        if (this._activeTextures[textKey]) {
+            this._increaseReferenceCount(textKey);
+            return this._activeTextures[textKey].promise;
+        }
+        const promise = this._buildTexturePromise(text, resolution, style).then((texture) => {
+            this._activeTextures[textKey].texture = texture;
+            return texture;
         });
-      }
-      this._activeTextures[textKey] = null;
+        this._activeTextures[textKey] = {
+            texture: null,
+            promise,
+            usageCount: 1,
+        };
+        return promise;
     }
-  }
-  _cleanUp(activeTexture) {
-    TexturePool.TexturePool.returnTexture(activeTexture.texture);
-    activeTexture.texture.source.resource = null;
-    activeTexture.texture.source.uploadMethodId = "unknown";
-  }
-  getReferenceCount(textKey) {
-    return this._activeTextures[textKey].usageCount;
-  }
-  destroy() {
-    this._activeTextures = null;
-  }
+    async _buildTexturePromise(text, resolution, style) {
+        const htmlTextData = PoolGroup.BigPool.get(HTMLTextRenderData.HTMLTextRenderData);
+        const fontFamilies = extractFontFamilies.extractFontFamilies(text, style);
+        const fontCSS = await getFontCss.getFontCss(fontFamilies, style, HTMLTextStyle.HTMLTextStyle.defaultTextStyle);
+        const measured = measureHtmlText.measureHtmlText(text, style, fontCSS, htmlTextData);
+        const width = Math.ceil(Math.ceil(Math.max(1, measured.width) + style.padding * 2) * resolution);
+        const height = Math.ceil(Math.ceil(Math.max(1, measured.height) + style.padding * 2) * resolution);
+        const image = htmlTextData.image;
+        const uvSafeOffset = 2;
+        image.width = (width | 0) + uvSafeOffset;
+        image.height = (height | 0) + uvSafeOffset;
+        const svgURL = getSVGUrl.getSVGUrl(text, style, resolution, fontCSS, htmlTextData);
+        await loadSVGImage.loadSVGImage(image, svgURL, isSafari.isSafari() && fontFamilies.length > 0);
+        const resource = image;
+        let canvasAndContext;
+        if (this._createCanvas) {
+            canvasAndContext = getTemporaryCanvasFromImage.getTemporaryCanvasFromImage(image, resolution);
+        }
+        const texture = getPo2TextureFromSource.getPo2TextureFromSource(
+            canvasAndContext ? canvasAndContext.canvas : resource,
+            image.width - uvSafeOffset,
+            image.height - uvSafeOffset,
+            resolution,
+        );
+        if (this._createCanvas) {
+            this._renderer.texture.initSource(texture.source);
+            CanvasPool.CanvasPool.returnCanvasAndContext(canvasAndContext);
+        }
+        PoolGroup.BigPool.return(htmlTextData);
+        return texture;
+    }
+    _increaseReferenceCount(textKey) {
+        this._activeTextures[textKey].usageCount++;
+    }
+    decreaseReferenceCount(textKey) {
+        const activeTexture = this._activeTextures[textKey];
+        if (!activeTexture) return;
+        activeTexture.usageCount--;
+        if (activeTexture.usageCount === 0) {
+            if (activeTexture.texture) {
+                this._cleanUp(activeTexture);
+            } else {
+                activeTexture.promise
+                    .then((texture) => {
+                        activeTexture.texture = texture;
+                        this._cleanUp(activeTexture);
+                    })
+                    .catch(() => {
+                        warn.warn('HTMLTextSystem: Failed to clean texture');
+                    });
+            }
+            this._activeTextures[textKey] = null;
+        }
+    }
+    _cleanUp(activeTexture) {
+        TexturePool.TexturePool.returnTexture(activeTexture.texture);
+        activeTexture.texture.source.resource = null;
+        activeTexture.texture.source.uploadMethodId = 'unknown';
+    }
+    getReferenceCount(textKey) {
+        return this._activeTextures[textKey].usageCount;
+    }
+    destroy() {
+        this._activeTextures = null;
+    }
 }
 /** @ignore */
 HTMLTextSystem.extension = {
-  type: [
-    Extensions.ExtensionType.WebGLSystem,
-    Extensions.ExtensionType.WebGPUSystem,
-    Extensions.ExtensionType.CanvasSystem
-  ],
-  name: "htmlText"
+    type: [
+        Extensions.ExtensionType.WebGLSystem,
+        Extensions.ExtensionType.WebGPUSystem,
+        Extensions.ExtensionType.CanvasSystem,
+    ],
+    name: 'htmlText',
 };
 HTMLTextSystem.defaultFontOptions = {
-  fontFamily: "Arial",
-  fontStyle: "normal",
-  fontWeight: "normal"
+    fontFamily: 'Arial',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
 };
 
 exports.HTMLTextSystem = HTMLTextSystem;

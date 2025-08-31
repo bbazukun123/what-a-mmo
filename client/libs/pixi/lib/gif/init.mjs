@@ -4,7 +4,7 @@ import './index.mjs';
 export { GifSource } from './GifSource.mjs';
 export { GifSprite } from './GifSprite.mjs';
 
-"use strict";
+('use strict');
 extensions.add(GifAsset);
 
 export { GifAsset };

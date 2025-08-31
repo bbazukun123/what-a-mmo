@@ -2,9 +2,9 @@
 
 var EventEmitter = require('eventemitter3');
 
-"use strict";
+('use strict');
 const DATA_URI = /^\s*data:(?:([\w-]+)\/([\w+.-]+))?(?:;charset=([\w-]+))?(?:;(base64))?,(.*)/i;
-const VERSION = "8.8.0";
+const VERSION = '8.8.0';
 
 exports.EventEmitter = EventEmitter;
 exports.DATA_URI = DATA_URI;

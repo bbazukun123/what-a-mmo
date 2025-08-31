@@ -10,8 +10,7 @@ import type { HTMLTextStyleOptions } from './HTMLTextStyle';
  * @memberof text
  */
 export type HTMLTextOptions = TextOptions<HTMLTextStyle, HTMLTextStyleOptions> & PixiMixins.HTMLTextOptions;
-export interface HTMLText extends PixiMixins.HTMLText, AbstractText<HTMLTextStyle, HTMLTextStyleOptions> {
-}
+export interface HTMLText extends PixiMixins.HTMLText, AbstractText<HTMLTextStyle, HTMLTextStyleOptions> {}
 /**
  * A HTMLText Object will create a line or multiple lines of text.
  *

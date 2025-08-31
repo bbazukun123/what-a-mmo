@@ -25,19 +25,19 @@ export declare class ParticleContainerPipe implements RenderPipe<ParticleContain
     readonly localUniforms: UniformGroup<{
         uTranslationMatrix: {
             value: Matrix;
-            type: "mat3x3<f32>";
+            type: 'mat3x3<f32>';
         };
         uColor: {
             value: Float32Array;
-            type: "vec4<f32>";
+            type: 'vec4<f32>';
         };
         uRound: {
             value: number;
-            type: "f32";
+            type: 'f32';
         };
         uResolution: {
             value: number[];
-            type: "vec2<f32>";
+            type: 'vec2<f32>';
         };
     }>;
     /**

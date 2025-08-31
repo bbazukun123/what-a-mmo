@@ -18,17 +18,28 @@ export declare class GpuRenderTargetAdaptor implements RenderTargetAdaptor<GpuRe
     private _renderTargetSystem;
     private _renderer;
     init(renderer: WebGPURenderer, renderTargetSystem: RenderTargetSystem<GpuRenderTarget>): void;
-    copyToTexture(sourceRenderSurfaceTexture: RenderTarget, destinationTexture: Texture, originSrc: {
-        x: number;
-        y: number;
-    }, size: {
-        width: number;
-        height: number;
-    }, originDest: {
-        x: number;
-        y: number;
-    }): Texture<TextureSource<any>>;
-    startRenderPass(renderTarget: RenderTarget, clear?: CLEAR_OR_BOOL, clearColor?: RgbaArray, viewport?: Rectangle): void;
+    copyToTexture(
+        sourceRenderSurfaceTexture: RenderTarget,
+        destinationTexture: Texture,
+        originSrc: {
+            x: number;
+            y: number;
+        },
+        size: {
+            width: number;
+            height: number;
+        },
+        originDest: {
+            x: number;
+            y: number;
+        },
+    ): Texture<TextureSource<any>>;
+    startRenderPass(
+        renderTarget: RenderTarget,
+        clear?: CLEAR_OR_BOOL,
+        clearColor?: RgbaArray,
+        viewport?: Rectangle,
+    ): void;
     finishRenderPass(): void;
     /**
      * returns the gpu texture for the first color texture in the render target

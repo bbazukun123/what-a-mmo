@@ -1,9 +1,6 @@
-declare global
-{
-    namespace PixiMixins
-    {
-        interface RendererPipes
-        {
+declare global {
+    namespace PixiMixins {
+        interface RendererPipes {
             bitmapText: import('./BitmapTextPipe').BitmapTextPipe;
         }
     }

@@ -8,7 +8,7 @@ export declare class GpuUboSystem extends UboSystem {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "ubo";
+        readonly name: 'ubo';
     };
     constructor();
 }

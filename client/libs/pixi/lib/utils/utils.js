@@ -3,7 +3,7 @@
 var EventEmitter = require('eventemitter3');
 var earcut = require('earcut');
 
-"use strict";
+('use strict');
 
 exports.EventEmitter = EventEmitter;
 exports.earcut = earcut;

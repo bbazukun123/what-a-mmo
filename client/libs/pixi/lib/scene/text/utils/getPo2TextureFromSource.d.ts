@@ -9,4 +9,9 @@ import type { Texture } from '../../../rendering/renderers/shared/texture/Textur
  * @param resolution - The resolution of the texture
  * @returns - The texture
  */
-export declare function getPo2TextureFromSource(image: HTMLImageElement | HTMLCanvasElement | ICanvas, width: number, height: number, resolution: number): Texture;
+export declare function getPo2TextureFromSource(
+    image: HTMLImageElement | HTMLCanvasElement | ICanvas,
+    width: number,
+    height: number,
+    resolution: number,
+): Texture;

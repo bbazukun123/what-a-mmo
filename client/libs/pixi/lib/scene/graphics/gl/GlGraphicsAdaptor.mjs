@@ -10,67 +10,57 @@ import { getBatchSamplersUniformGroup } from '../../../rendering/renderers/gl/sh
 import { Shader } from '../../../rendering/renderers/shared/shader/Shader.mjs';
 import { UniformGroup } from '../../../rendering/renderers/shared/shader/UniformGroup.mjs';
 
-"use strict";
+('use strict');
 class GlGraphicsAdaptor {
-  init() {
-    const uniforms = new UniformGroup({
-      uColor: { value: new Float32Array([1, 1, 1, 1]), type: "vec4<f32>" },
-      uTransformMatrix: { value: new Matrix(), type: "mat3x3<f32>" },
-      uRound: { value: 0, type: "f32" }
-    });
-    const maxTextures = getMaxTexturesPerBatch();
-    const glProgram = compileHighShaderGlProgram({
-      name: "graphics",
-      bits: [
-        colorBitGl,
-        generateTextureBatchBitGl(maxTextures),
-        localUniformBitGl,
-        roundPixelsBitGl
-      ]
-    });
-    this.shader = new Shader({
-      glProgram,
-      resources: {
-        localUniforms: uniforms,
-        batchSamplers: getBatchSamplersUniformGroup(maxTextures)
-      }
-    });
-  }
-  execute(graphicsPipe, renderable) {
-    const context = renderable.context;
-    const shader = context.customShader || this.shader;
-    const renderer = graphicsPipe.renderer;
-    const contextSystem = renderer.graphicsContext;
-    const {
-      batcher,
-      instructions
-    } = contextSystem.getContextRenderData(context);
-    shader.groups[0] = renderer.globalUniforms.bindGroup;
-    renderer.state.set(graphicsPipe.state);
-    renderer.shader.bind(shader);
-    renderer.geometry.bind(batcher.geometry, shader.glProgram);
-    const batches = instructions.instructions;
-    for (let i = 0; i < instructions.instructionSize; i++) {
-      const batch = batches[i];
-      if (batch.size) {
-        for (let j = 0; j < batch.textures.count; j++) {
-          renderer.texture.bind(batch.textures.textures[j], j);
-        }
-        renderer.geometry.draw(batch.topology, batch.size, batch.start);
-      }
+    init() {
+        const uniforms = new UniformGroup({
+            uColor: { value: new Float32Array([1, 1, 1, 1]), type: 'vec4<f32>' },
+            uTransformMatrix: { value: new Matrix(), type: 'mat3x3<f32>' },
+            uRound: { value: 0, type: 'f32' },
+        });
+        const maxTextures = getMaxTexturesPerBatch();
+        const glProgram = compileHighShaderGlProgram({
+            name: 'graphics',
+            bits: [colorBitGl, generateTextureBatchBitGl(maxTextures), localUniformBitGl, roundPixelsBitGl],
+        });
+        this.shader = new Shader({
+            glProgram,
+            resources: {
+                localUniforms: uniforms,
+                batchSamplers: getBatchSamplersUniformGroup(maxTextures),
+            },
+        });
     }
-  }
-  destroy() {
-    this.shader.destroy(true);
-    this.shader = null;
-  }
+    execute(graphicsPipe, renderable) {
+        const context = renderable.context;
+        const shader = context.customShader || this.shader;
+        const renderer = graphicsPipe.renderer;
+        const contextSystem = renderer.graphicsContext;
+        const { batcher, instructions } = contextSystem.getContextRenderData(context);
+        shader.groups[0] = renderer.globalUniforms.bindGroup;
+        renderer.state.set(graphicsPipe.state);
+        renderer.shader.bind(shader);
+        renderer.geometry.bind(batcher.geometry, shader.glProgram);
+        const batches = instructions.instructions;
+        for (let i = 0; i < instructions.instructionSize; i++) {
+            const batch = batches[i];
+            if (batch.size) {
+                for (let j = 0; j < batch.textures.count; j++) {
+                    renderer.texture.bind(batch.textures.textures[j], j);
+                }
+                renderer.geometry.draw(batch.topology, batch.size, batch.start);
+            }
+        }
+    }
+    destroy() {
+        this.shader.destroy(true);
+        this.shader = null;
+    }
 }
 /** @ignore */
 GlGraphicsAdaptor.extension = {
-  type: [
-    ExtensionType.WebGLPipesAdaptor
-  ],
-  name: "graphics"
+    type: [ExtensionType.WebGLPipesAdaptor],
+    name: 'graphics',
 };
 
 export { GlGraphicsAdaptor };

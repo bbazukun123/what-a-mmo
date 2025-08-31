@@ -44,7 +44,7 @@ export declare class TextureGCSystem implements System<TextureGCSystemOptions> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "textureGC";
+        readonly name: 'textureGC';
     };
     /** default options for the TextureGCSystem */
     static defaultOptions: TextureGCSystemOptions;

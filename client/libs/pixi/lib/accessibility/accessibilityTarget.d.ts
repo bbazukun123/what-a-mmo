@@ -16,7 +16,18 @@ import type { Container } from '../scene/container/Container';
  * @memberof accessibility
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
  */
-export type PointerEvents = 'auto' | 'none' | 'visiblePainted' | 'visibleFill' | 'visibleStroke' | 'visible' | 'painted' | 'fill' | 'stroke' | 'all' | 'inherit';
+export type PointerEvents =
+    | 'auto'
+    | 'none'
+    | 'visiblePainted'
+    | 'visibleFill'
+    | 'visibleStroke'
+    | 'visible'
+    | 'painted'
+    | 'fill'
+    | 'stroke'
+    | 'all'
+    | 'inherit';
 /**
  * When `accessible` is enabled on any display object, these properties will affect its accessibility.
  * @memberof accessibility

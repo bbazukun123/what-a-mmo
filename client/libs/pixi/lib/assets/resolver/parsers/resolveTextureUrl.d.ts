@@ -8,7 +8,11 @@ export declare const resolveTextureUrl: {
         type: ExtensionType.ResolveParser;
         name: string;
     };
-    test: (url: string, resolvedAsset?: import("../..").ResolvedAsset<import("../../..").TextureSourceOptions<any>>, loader?: import("../..").Loader) => boolean;
+    test: (
+        url: string,
+        resolvedAsset?: import('../..').ResolvedAsset<import('../../..').TextureSourceOptions<any>>,
+        loader?: import('../..').Loader,
+    ) => boolean;
     parse: (value: string) => {
         resolution: number;
         format: string;

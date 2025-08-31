@@ -107,7 +107,17 @@ export declare class CanvasTextMetrics {
      * @param maxLineWidth - the maximum line width for all measured lines
      * @param {FontMetrics} fontProperties - the font properties object from TextMetrics.measureFont
      */
-    constructor(text: string, style: TextStyle, width: number, height: number, lines: string[], lineWidths: number[], lineHeight: number, maxLineWidth: number, fontProperties: FontMetrics);
+    constructor(
+        text: string,
+        style: TextStyle,
+        width: number,
+        height: number,
+        lines: string[],
+        lineWidths: number[],
+        lineHeight: number,
+        maxLineWidth: number,
+        fontProperties: FontMetrics,
+    );
     /**
      * Measures the supplied string of text and returns a Rectangle.
      * @param text - The text to measure.
@@ -209,7 +219,13 @@ export declare class CanvasTextMetrics {
      * @param _breakWords - The style attr break words
      * @returns whether to break word or not
      */
-    static canBreakChars(_char: string, _nextChar: string, _token: string, _index: number, _breakWords: boolean): boolean;
+    static canBreakChars(
+        _char: string,
+        _nextChar: string,
+        _token: string,
+        _index: number,
+        _breakWords: boolean,
+    ): boolean;
     /**
      * Overridable helper method used internally by TextMetrics, exposed to allow customizing the class's behavior.
      *

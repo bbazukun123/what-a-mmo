@@ -1,7 +1,5 @@
 import type { TEXTURE_FORMATS } from '../../rendering/renderers/shared/texture/const';
-export type LIBKTXModuleCreator = (config: {
-    locateFile: (file: string) => string;
-}) => {
+export type LIBKTXModuleCreator = (config: { locateFile: (file: string) => string }) => {
     then: (result: (libktx: LIBKTXModule) => void) => void;
 };
 export interface KTXTexture {

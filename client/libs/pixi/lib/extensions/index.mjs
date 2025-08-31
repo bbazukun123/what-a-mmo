@@ -1,4 +1,4 @@
 export { ExtensionType, extensions, normalizeExtensionPriority } from './Extensions.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

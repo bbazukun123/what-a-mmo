@@ -76,7 +76,15 @@ export declare class ShapePath {
      * @param y - The y-coordinate of the arc's end point.
      * @returns The instance of the current object for chaining.
      */
-    arcToSvg(rx: number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number): this;
+    arcToSvg(
+        rx: number,
+        ry: number,
+        xAxisRotation: number,
+        largeArcFlag: number,
+        sweepFlag: number,
+        x: number,
+        y: number,
+    ): this;
     /**
      * Adds a cubic Bezier curve to the path.
      * It requires three points: the first two are control points and the third one is the end point.
@@ -90,7 +98,15 @@ export declare class ShapePath {
      * @param smoothness - Optional parameter to adjust the smoothness of the curve.
      * @returns The instance of the current object for chaining.
      */
-    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number, smoothness?: number): this;
+    bezierCurveTo(
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+        smoothness?: number,
+    ): this;
     /**
      * Adds a quadratic curve to the path. It requires two points: the control point and the end point.
      * The starting point is the last point in the current path.
@@ -171,7 +187,15 @@ export declare class ShapePath {
      * @param smoothness - Optional parameter to adjust the smoothness of the rounding.
      * @returns The instance of the current object for chaining.
      */
-    roundPoly(x: number, y: number, radius: number, sides: number, corner: number, rotation?: number, smoothness?: number): this;
+    roundPoly(
+        x: number,
+        y: number,
+        radius: number,
+        sides: number,
+        corner: number,
+        rotation?: number,
+        smoothness?: number,
+    ): this;
     /**
      * Draws a shape with rounded corners. This function supports custom radius for each corner of the shape.
      * Optionally, corners can be rounded using a quadratic curve instead of an arc, providing a different aesthetic.

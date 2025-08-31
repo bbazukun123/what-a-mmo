@@ -9,4 +9,8 @@ import { type Container } from '../Container';
  * @deprecated since version 8.7.0
  * @see container.collectRenderables
  */
-export declare function collectAllRenderables(container: Container, instructionSet: InstructionSet, rendererOrPipes: Renderer | RenderPipes): void;
+export declare function collectAllRenderables(
+    container: Container,
+    instructionSet: InstructionSet,
+    rendererOrPipes: Renderer | RenderPipes,
+): void;

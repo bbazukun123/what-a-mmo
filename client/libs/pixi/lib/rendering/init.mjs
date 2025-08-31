@@ -9,6 +9,6 @@ import { VideoSource } from './renderers/shared/texture/sources/VideoSource.mjs'
 import './renderers/shared/texture/utils/textureFrom.mjs';
 import './mask/MaskEffectManager.mjs';
 
-"use strict";
+('use strict');
 extensions.add(AlphaMask, ColorMask, StencilMask, VideoSource, ImageSource, CanvasSource, BufferImageSource);
 //# sourceMappingURL=init.mjs.map

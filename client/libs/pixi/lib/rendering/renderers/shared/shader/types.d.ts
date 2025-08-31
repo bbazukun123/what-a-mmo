@@ -1,7 +1,28 @@
-export declare const UNIFORM_TYPES_VALUES: readonly ["f32", "i32", "vec2<f32>", "vec3<f32>", "vec4<f32>", "mat2x2<f32>", "mat3x3<f32>", "mat4x4<f32>", "mat3x2<f32>", "mat4x2<f32>", "mat2x3<f32>", "mat4x3<f32>", "mat2x4<f32>", "mat3x4<f32>", "vec2<i32>", "vec3<i32>", "vec4<i32>", "sampler2D", "samplerCube", "sampler2DArray"];
+export declare const UNIFORM_TYPES_VALUES: readonly [
+    'f32',
+    'i32',
+    'vec2<f32>',
+    'vec3<f32>',
+    'vec4<f32>',
+    'mat2x2<f32>',
+    'mat3x3<f32>',
+    'mat4x4<f32>',
+    'mat3x2<f32>',
+    'mat4x2<f32>',
+    'mat2x3<f32>',
+    'mat4x3<f32>',
+    'mat2x4<f32>',
+    'mat3x4<f32>',
+    'vec2<i32>',
+    'vec3<i32>',
+    'vec4<i32>',
+    'sampler2D',
+    'samplerCube',
+    'sampler2DArray',
+];
 /** useful for checking if a type is supported - a map of supported types with a true value. */
 export declare const UNIFORM_TYPES_MAP: Record<UNIFORM_TYPES, boolean>;
-export type UNIFORM_TYPES_SINGLE = typeof UNIFORM_TYPES_VALUES[number];
+export type UNIFORM_TYPES_SINGLE = (typeof UNIFORM_TYPES_VALUES)[number];
 type OPTIONAL_SPACE = ' ' | '';
 export type UNIFORM_TYPES_ARRAY = `array<${UNIFORM_TYPES_SINGLE},${OPTIONAL_SPACE}${number}>`;
 export type UNIFORM_TYPES_SAMPLE = 'sampler2D' | 'samplerCube' | 'sampler2DArray';

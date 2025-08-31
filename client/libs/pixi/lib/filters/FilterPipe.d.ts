@@ -8,7 +8,7 @@ import type { FilterInstruction } from './FilterSystem';
 export declare class FilterPipe implements InstructionPipe<FilterInstruction> {
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "filter";
+        readonly name: 'filter';
     };
     private _renderer;
     constructor(renderer: Renderer);

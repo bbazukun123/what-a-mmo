@@ -6,7 +6,7 @@ import type { RenderGroup } from './RenderGroup';
 export declare class RenderGroupPipe implements InstructionPipe<RenderGroup> {
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "renderGroup";
+        readonly name: 'renderGroup';
     };
     private _renderer;
     constructor(renderer: Renderer);

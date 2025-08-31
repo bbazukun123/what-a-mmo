@@ -1,12 +1,12 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 
-"use strict";
+('use strict');
 class SoftLightBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float softLight(float base, float blend)
                 {
                     return (blend < 0.5) ? (2.0 * base * blend + base * base * (1.0 - 2.0 * blend)) : (sqrt(base) * (2.0 * blend - 1.0) + 2.0 * base * (1.0 - blend));
@@ -23,12 +23,12 @@ class SoftLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 finalColor = vec4(blendSoftLight(back.rgb, front.rgb, front.a), blendedAlpha) * uBlend;
-                `
-      },
-      gpu: {
-        functions: `
+                `,
+            },
+            gpu: {
+                functions: `
                 fn softLight(base: f32, blend: f32) -> f32
                 {
                     return select(2.0 * base * blend + base * base * (1.0 - 2.0 * blend), sqrt(base) * (2.0 * blend - 1.0) + 2.0 * base * (1.0 - blend), blend < 0.5);
@@ -45,17 +45,17 @@ class SoftLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 out = vec4<f32>(blendSoftLight(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-                `
-      }
-    });
-  }
+                `,
+            },
+        });
+    }
 }
 /** @ignore */
 SoftLightBlend.extension = {
-  name: "soft-light",
-  type: ExtensionType.BlendMode
+    name: 'soft-light',
+    type: ExtensionType.BlendMode,
 };
 
 export { SoftLightBlend };

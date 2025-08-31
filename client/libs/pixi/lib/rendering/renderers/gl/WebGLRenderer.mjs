@@ -19,22 +19,22 @@ import { GlUniformGroupSystem } from './shader/GlUniformGroupSystem.mjs';
 import { GlStateSystem } from './state/GlStateSystem.mjs';
 import { GlTextureSystem } from './texture/GlTextureSystem.mjs';
 
-"use strict";
+('use strict');
 const DefaultWebGLSystems = [
-  ...SharedSystems,
-  GlUboSystem,
-  GlBackBufferSystem,
-  GlContextSystem,
-  GlBufferSystem,
-  GlTextureSystem,
-  GlRenderTargetSystem,
-  GlGeometrySystem,
-  GlUniformGroupSystem,
-  GlShaderSystem,
-  GlEncoderSystem,
-  GlStateSystem,
-  GlStencilSystem,
-  GlColorMaskSystem
+    ...SharedSystems,
+    GlUboSystem,
+    GlBackBufferSystem,
+    GlContextSystem,
+    GlBufferSystem,
+    GlTextureSystem,
+    GlRenderTargetSystem,
+    GlGeometrySystem,
+    GlUniformGroupSystem,
+    GlShaderSystem,
+    GlEncoderSystem,
+    GlStateSystem,
+    GlStencilSystem,
+    GlColorMaskSystem,
 ];
 const DefaultWebGLPipes = [...SharedRenderPipes];
 const DefaultWebGLAdapters = [GlBatchAdaptor, GlMeshAdaptor, GlGraphicsAdaptor];
@@ -46,16 +46,16 @@ extensions.handleByNamedList(ExtensionType.WebGLPipes, renderPipes);
 extensions.handleByNamedList(ExtensionType.WebGLPipesAdaptor, renderPipeAdaptors);
 extensions.add(...DefaultWebGLSystems, ...DefaultWebGLPipes, ...DefaultWebGLAdapters);
 class WebGLRenderer extends AbstractRenderer {
-  constructor() {
-    const systemConfig = {
-      name: "webgl",
-      type: RendererType.WEBGL,
-      systems,
-      renderPipes,
-      renderPipeAdaptors
-    };
-    super(systemConfig);
-  }
+    constructor() {
+        const systemConfig = {
+            name: 'webgl',
+            type: RendererType.WEBGL,
+            systems,
+            renderPipes,
+            renderPipeAdaptors,
+        };
+        super(systemConfig);
+    }
 }
 
 export { WebGLRenderer };

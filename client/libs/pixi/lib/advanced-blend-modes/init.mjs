@@ -21,28 +21,28 @@ import { SoftLightBlend } from './SoftLightBlend.mjs';
 import { SubtractBlend } from './SubtractBlend.mjs';
 import { VividLightBlend } from './VividLightBlend.mjs';
 
-"use strict";
+('use strict');
 extensions.add(
-  ColorBlend,
-  ColorBurnBlend,
-  ColorDodgeBlend,
-  DarkenBlend,
-  DifferenceBlend,
-  DivideBlend,
-  ExclusionBlend,
-  HardLightBlend,
-  HardMixBlend,
-  LightenBlend,
-  LinearBurnBlend,
-  LinearLightBlend,
-  LinearDodgeBlend,
-  LuminosityBlend,
-  NegationBlend,
-  OverlayBlend,
-  PinLightBlend,
-  SaturationBlend,
-  SoftLightBlend,
-  SubtractBlend,
-  VividLightBlend
+    ColorBlend,
+    ColorBurnBlend,
+    ColorDodgeBlend,
+    DarkenBlend,
+    DifferenceBlend,
+    DivideBlend,
+    ExclusionBlend,
+    HardLightBlend,
+    HardMixBlend,
+    LightenBlend,
+    LinearBurnBlend,
+    LinearLightBlend,
+    LinearDodgeBlend,
+    LuminosityBlend,
+    NegationBlend,
+    OverlayBlend,
+    PinLightBlend,
+    SaturationBlend,
+    SoftLightBlend,
+    SubtractBlend,
+    VividLightBlend,
 );
 //# sourceMappingURL=init.mjs.map

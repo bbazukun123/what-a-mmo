@@ -20,5 +20,5 @@ export { SoftLightBlend } from './SoftLightBlend.mjs';
 export { SubtractBlend } from './SubtractBlend.mjs';
 export { VividLightBlend } from './VividLightBlend.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

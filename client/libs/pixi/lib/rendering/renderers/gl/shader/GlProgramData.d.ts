@@ -37,9 +37,12 @@ export declare class GlProgramData {
      * @param program - webgl program
      * @param uniformData - uniforms
      */
-    constructor(program: WebGLProgram, uniformData: {
-        [key: string]: IGLUniformData;
-    });
+    constructor(
+        program: WebGLProgram,
+        uniformData: {
+            [key: string]: IGLUniformData;
+        },
+    );
     /** Destroys this program. */
     destroy(): void;
 }

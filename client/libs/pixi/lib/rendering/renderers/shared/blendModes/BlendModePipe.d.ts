@@ -26,7 +26,7 @@ export declare class BlendModePipe implements InstructionPipe<AdvancedBlendInstr
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "blendMode";
+        readonly name: 'blendMode';
     };
     private _renderer;
     private _renderableList;

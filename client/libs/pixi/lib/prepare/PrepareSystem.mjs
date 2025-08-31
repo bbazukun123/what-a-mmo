@@ -1,23 +1,20 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { PrepareUpload } from './PrepareUpload.mjs';
 
-"use strict";
+('use strict');
 class PrepareSystem extends PrepareUpload {
-  /** Destroys the plugin, don't use after this. */
-  destroy() {
-    clearTimeout(this.timeout);
-    this.renderer = null;
-    this.queue = null;
-    this.resolves = null;
-  }
+    /** Destroys the plugin, don't use after this. */
+    destroy() {
+        clearTimeout(this.timeout);
+        this.renderer = null;
+        this.queue = null;
+        this.resolves = null;
+    }
 }
 /** @ignore */
 PrepareSystem.extension = {
-  type: [
-    ExtensionType.WebGLSystem,
-    ExtensionType.WebGPUSystem
-  ],
-  name: "prepare"
+    type: [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem],
+    name: 'prepare',
 };
 
 export { PrepareSystem };

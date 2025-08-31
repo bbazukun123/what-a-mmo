@@ -11,7 +11,7 @@ export declare class GlStencilSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "stencil";
+        readonly name: 'stencil';
     };
     private _gl;
     private readonly _stencilCache;

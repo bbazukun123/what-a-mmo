@@ -18,29 +18,29 @@ import { RenderableGCSystem } from '../texture/RenderableGCSystem.mjs';
 import { TextureGCSystem } from '../texture/TextureGCSystem.mjs';
 import { ViewSystem } from '../view/ViewSystem.mjs';
 
-"use strict";
+('use strict');
 const SharedSystems = [
-  BackgroundSystem,
-  GlobalUniformSystem,
-  HelloSystem,
-  ViewSystem,
-  RenderGroupSystem,
-  TextureGCSystem,
-  GenerateTextureSystem,
-  ExtractSystem,
-  RendererInitHook,
-  RenderableGCSystem,
-  SchedulerSystem
+    BackgroundSystem,
+    GlobalUniformSystem,
+    HelloSystem,
+    ViewSystem,
+    RenderGroupSystem,
+    TextureGCSystem,
+    GenerateTextureSystem,
+    ExtractSystem,
+    RendererInitHook,
+    RenderableGCSystem,
+    SchedulerSystem,
 ];
 const SharedRenderPipes = [
-  BlendModePipe,
-  BatcherPipe,
-  SpritePipe,
-  RenderGroupPipe,
-  AlphaMaskPipe,
-  StencilMaskPipe,
-  ColorMaskPipe,
-  CustomRenderPipe
+    BlendModePipe,
+    BatcherPipe,
+    SpritePipe,
+    RenderGroupPipe,
+    AlphaMaskPipe,
+    StencilMaskPipe,
+    ColorMaskPipe,
+    CustomRenderPipe,
 ];
 
 export { SharedRenderPipes, SharedSystems };

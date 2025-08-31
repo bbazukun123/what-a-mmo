@@ -36,7 +36,7 @@ export declare class RoundedRectangle implements ShapePrimitive {
      * The type of the object, mainly used to avoid `instanceof` checks
      * @default 'roundedRectangle'
      */
-    readonly type = "roundedRectangle";
+    readonly type = 'roundedRectangle';
     /**
      * @param x - The X coordinate of the upper-left corner of the rounded rectangle
      * @param y - The Y coordinate of the upper-left corner of the rounded rectangle

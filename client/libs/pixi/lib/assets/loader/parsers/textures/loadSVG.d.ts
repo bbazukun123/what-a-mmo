@@ -23,4 +23,8 @@ export interface LoadSVGConfig {
  * A simple loader plugin for loading json data
  * @memberof assets
  */
-export declare const loadSvg: LoaderParser<Texture | GraphicsContext, TextureSourceOptions & LoadSVGConfig, LoadSVGConfig>;
+export declare const loadSvg: LoaderParser<
+    Texture | GraphicsContext,
+    TextureSourceOptions & LoadSVGConfig,
+    LoadSVGConfig
+>;

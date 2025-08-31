@@ -23,8 +23,7 @@ export type ProgressCallback = (progress: number) => void;
  * @since 7.2.0
  * @memberof assets
  */
-export interface AssetsPreferences extends LoadTextureConfig, LoadSVGConfig, PixiMixins.AssetsPreferences {
-}
+export interface AssetsPreferences extends LoadTextureConfig, LoadSVGConfig, PixiMixins.AssetsPreferences {}
 /**
  * Initialization options object for the Assets Class.
  * @memberof assets
@@ -307,7 +306,7 @@ export declare class AssetsClass {
      * const bunny = await Assets.load('bunnyBooBoo'); // Will try to load WebP if available
      * @param assets - the unresolved assets to add to the resolver
      */
-    add(assets: (ArrayOr<UnresolvedAsset>)): void;
+    add(assets: ArrayOr<UnresolvedAsset>): void;
     /**
      * Loads your assets! You pass in a key or URL and it will return a promise that
      * resolves to the loaded asset. If multiple assets a requested, it will return a hash of assets.

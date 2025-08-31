@@ -1,12 +1,12 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 
-"use strict";
+('use strict');
 class HardLightBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float hardLight(float base, float blend)
                 {
                     return (blend < 0.5) ? 2.0 * base * blend : 1.0 - 2.0 * (1.0 - base) * (1.0 - blend);
@@ -23,12 +23,12 @@ class HardLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 finalColor = vec4(blendHardLight(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-            `
-      },
-      gpu: {
-        functions: `
+            `,
+            },
+            gpu: {
+                functions: `
                 fn hardLight(base: f32, blend: f32) -> f32
                 {
                     return select(1.0 - 2.0 * (1.0 - base) * (1.0 - blend), 2.0 * base * blend, blend < 0.5);
@@ -44,17 +44,17 @@ class HardLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 out = vec4<f32>(blendHardLight(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-                `
-      }
-    });
-  }
+                `,
+            },
+        });
+    }
 }
 /** @ignore */
 HardLightBlend.extension = {
-  name: "hard-light",
-  type: ExtensionType.BlendMode
+    name: 'hard-light',
+    type: ExtensionType.BlendMode,
 };
 
 export { HardLightBlend };

@@ -24,7 +24,7 @@ export declare class RendererInitHook implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "initHook";
+        readonly name: 'initHook';
         readonly priority: -10;
     };
     private _renderer;

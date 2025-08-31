@@ -12,7 +12,7 @@ export declare class GpuStateSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "state";
+        readonly name: 'state';
     };
     /**
      * State ID

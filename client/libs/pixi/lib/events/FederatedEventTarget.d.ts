@@ -15,7 +15,43 @@ import type { FederatedWheelEvent } from './FederatedWheelEvent';
  *  `nwseresize`, `rowresize`, `allscroll`, `zoomin`, `zoomout`, `grab`, `grabbing`
  * @memberof events
  */
-export type Cursor = 'auto' | 'default' | 'none' | 'context-menu' | 'help' | 'pointer' | 'progress' | 'wait' | 'cell' | 'crosshair' | 'text' | 'vertical-text' | 'alias' | 'copy' | 'move' | 'no-drop' | 'not-allowed' | 'e-resize' | 'n-resize' | 'ne-resize' | 'nw-resize' | 's-resize' | 'se-resize' | 'sw-resize' | 'w-resize' | 'ns-resize' | 'ew-resize' | 'nesw-resize' | 'col-resize' | 'nwse-resize' | 'row-resize' | 'all-scroll' | 'zoom-in' | 'zoom-out' | 'grab' | 'grabbing';
+export type Cursor =
+    | 'auto'
+    | 'default'
+    | 'none'
+    | 'context-menu'
+    | 'help'
+    | 'pointer'
+    | 'progress'
+    | 'wait'
+    | 'cell'
+    | 'crosshair'
+    | 'text'
+    | 'vertical-text'
+    | 'alias'
+    | 'copy'
+    | 'move'
+    | 'no-drop'
+    | 'not-allowed'
+    | 'e-resize'
+    | 'n-resize'
+    | 'ne-resize'
+    | 'nw-resize'
+    | 's-resize'
+    | 'se-resize'
+    | 'sw-resize'
+    | 'w-resize'
+    | 'ns-resize'
+    | 'ew-resize'
+    | 'nesw-resize'
+    | 'col-resize'
+    | 'nwse-resize'
+    | 'row-resize'
+    | 'all-scroll'
+    | 'zoom-in'
+    | 'zoom-out'
+    | 'grab'
+    | 'grabbing';
 /**
  * The hit area specifies the area for which pointer events should be captured by this event target.
  * @memberof events
@@ -144,10 +180,22 @@ export interface IFederatedContainer extends FederatedOptions {
     _internalEventMode: EventMode;
     /** Returns true if the Container has interactive 'static' or 'dynamic' */
     isInteractive: () => boolean;
-    addEventListener<K extends keyof AllFederatedEventMap>(type: K, listener: (e: AllFederatedEventMap[K]) => any, options?: AddListenerOptions): void;
+    addEventListener<K extends keyof AllFederatedEventMap>(
+        type: K,
+        listener: (e: AllFederatedEventMap[K]) => any,
+        options?: AddListenerOptions,
+    ): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: AddListenerOptions): void;
-    removeEventListener<K extends keyof AllFederatedEventMap>(type: K, listener: (e: AllFederatedEventMap[K]) => any, options?: RemoveListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: RemoveListenerOptions): void;
+    removeEventListener<K extends keyof AllFederatedEventMap>(
+        type: K,
+        listener: (e: AllFederatedEventMap[K]) => any,
+        options?: RemoveListenerOptions,
+    ): void;
+    removeEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: RemoveListenerOptions,
+    ): void;
     dispatchEvent(e: FederatedEvent): boolean;
 }
 export declare const FederatedContainer: IFederatedContainer;

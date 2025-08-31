@@ -83,7 +83,7 @@ export declare class ExtractSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "extract";
+        readonly name: 'extract';
     };
     /** Default options for creating an image. */
     static defaultImageOptions: ImageOptions;
@@ -131,9 +131,14 @@ export declare class ExtractSystem implements System {
      * Logs the target to the console as an image. This is a useful way to debug what's happening in the renderer.
      * @param options - The options for logging the image, or the target to log
      */
-    log(options: (ExtractOptions & {
-        width?: number;
-    }) | Container | Texture): void;
+    log(
+        options:
+            | (ExtractOptions & {
+                  width?: number;
+              })
+            | Container
+            | Texture,
+    ): void;
     destroy(): void;
 }
 export {};

@@ -6,6 +6,9 @@ import type { GlUniformData } from '../GlProgram';
  * @param gl - the WebGL context
  * @returns {object} the uniform data for this program
  */
-export declare function getUniformData(program: WebGLProgram, gl: WebGLRenderingContextBase): {
+export declare function getUniformData(
+    program: WebGLProgram,
+    gl: WebGLRenderingContextBase,
+): {
     [key: string]: GlUniformData;
 };

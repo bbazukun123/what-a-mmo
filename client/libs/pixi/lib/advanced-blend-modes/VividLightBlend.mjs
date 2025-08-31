@@ -1,12 +1,12 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 
-"use strict";
+('use strict');
 class VividLightBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float colorBurn(float base, float blend)
                 {
                     return max((1.0-((1.0-base)/blend)),0.0);
@@ -33,12 +33,12 @@ class VividLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 finalColor = vec4(blendVividLight(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-            `
-      },
-      gpu: {
-        functions: `
+            `,
+            },
+            gpu: {
+                functions: `
                 fn colorBurn(base:f32, blend:f32) -> f32
                 {
                     return max((1.0-((1.0-base)/blend)),0.0);
@@ -65,17 +65,17 @@ class VividLightBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 out = vec4<f32>(blendVividLight(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-                `
-      }
-    });
-  }
+                `,
+            },
+        });
+    }
 }
 /** @ignore */
 VividLightBlend.extension = {
-  name: "vivid-light",
-  type: ExtensionType.BlendMode
+    name: 'vivid-light',
+    type: ExtensionType.BlendMode,
 };
 
 export { VividLightBlend };

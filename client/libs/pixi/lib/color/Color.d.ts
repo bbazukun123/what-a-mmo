@@ -64,7 +64,21 @@ export type RgbaArray = [number, number, number, number];
  * @since 7.2.0
  * @memberof color
  */
-export type ColorSource = string | number | number[] | Float32Array | Uint8Array | Uint8ClampedArray | HslColor | HslaColor | HsvColor | HsvaColor | RgbColor | RgbaColor | Color | number;
+export type ColorSource =
+    | string
+    | number
+    | number[]
+    | Float32Array
+    | Uint8Array
+    | Uint8ClampedArray
+    | HslColor
+    | HslaColor
+    | HsvColor
+    | HsvaColor
+    | RgbColor
+    | RgbaColor
+    | Color
+    | number;
 /**
  * Color utility class. Can accept any {@link color.ColorSource} format in its constructor.
  * ```js

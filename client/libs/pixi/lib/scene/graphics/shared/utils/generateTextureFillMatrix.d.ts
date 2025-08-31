@@ -19,4 +19,9 @@ import type { FillStyle } from '../FillTypes';
  * // textureMatrix now contains the proper UV mapping for the texture
  * ```
  */
-export declare function generateTextureMatrix(out: Matrix, style: FillStyle, shape: ShapePrimitive, matrix?: Matrix): Matrix;
+export declare function generateTextureMatrix(
+    out: Matrix,
+    style: FillStyle,
+    shape: ShapePrimitive,
+    matrix?: Matrix,
+): Matrix;

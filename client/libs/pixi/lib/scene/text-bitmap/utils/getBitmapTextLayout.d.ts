@@ -13,4 +13,9 @@ export interface BitmapTextLayoutData {
         spacesIndex: number[];
     }[];
 }
-export declare function getBitmapTextLayout(chars: string[], style: TextStyle, font: AbstractBitmapFont<any>, trimEnd: boolean): BitmapTextLayoutData;
+export declare function getBitmapTextLayout(
+    chars: string[],
+    style: TextStyle,
+    font: AbstractBitmapFont<any>,
+    trimEnd: boolean,
+): BitmapTextLayoutData;

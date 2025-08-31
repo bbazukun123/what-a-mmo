@@ -3,12 +3,12 @@
 var Extensions = require('../extensions/Extensions.js');
 var BlendModeFilter = require('../filters/blend-modes/BlendModeFilter.js');
 
-"use strict";
+('use strict');
 class LinearDodgeBlend extends BlendModeFilter.BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float linearDodge(float base, float blend) {
                     return min(1.0, base + blend);
                 }
@@ -22,12 +22,12 @@ class LinearDodgeBlend extends BlendModeFilter.BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 finalColor = vec4(blendLinearDodge(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-                `
-      },
-      gpu: {
-        functions: `
+                `,
+            },
+            gpu: {
+                functions: `
                 fn linearDodge(base: f32, blend: f32) -> f32
                 {
                     return min(1, base + blend);
@@ -44,17 +44,17 @@ class LinearDodgeBlend extends BlendModeFilter.BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
             `,
-        main: `
+                main: `
                 out = vec4<f32>(blendLinearDodge(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-            `
-      }
-    });
-  }
+            `,
+            },
+        });
+    }
 }
 /** @ignore */
 LinearDodgeBlend.extension = {
-  name: "linear-dodge",
-  type: Extensions.ExtensionType.BlendMode
+    name: 'linear-dodge',
+    type: Extensions.ExtensionType.BlendMode,
 };
 
 exports.LinearDodgeBlend = LinearDodgeBlend;

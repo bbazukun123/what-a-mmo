@@ -11,9 +11,7 @@ export declare class AlphaMask implements Effect, PoolItem {
     inverse: boolean;
     pipe: string;
     renderMaskToTexture: boolean;
-    constructor(options?: {
-        mask: Container;
-    });
+    constructor(options?: { mask: Container });
     init(mask: Container): void;
     reset(): void;
     addBounds(bounds: Bounds, skipUpdateTransform?: boolean): void;

@@ -8,7 +8,7 @@ export declare class BitmapTextPipe implements RenderPipe<BitmapText> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "bitmapText";
+        readonly name: 'bitmapText';
     };
     private _renderer;
     private _gpuBitmapText;

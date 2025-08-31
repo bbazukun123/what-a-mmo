@@ -8,4 +8,11 @@ import type { StrokeAttributes } from '../FillTypes';
  * @param vertices
  * @param indices
  */
-export declare function buildLine(points: number[], lineStyle: StrokeAttributes, flipAlignment: boolean, closed: boolean, vertices: number[], indices: number[]): void;
+export declare function buildLine(
+    points: number[],
+    lineStyle: StrokeAttributes,
+    flipAlignment: boolean,
+    closed: boolean,
+    vertices: number[],
+    indices: number[],
+): void;

@@ -9,9 +9,7 @@ export declare class StencilMask implements Effect, PoolItem {
     priority: number;
     mask: Container;
     pipe: string;
-    constructor(options: {
-        mask: Container;
-    });
+    constructor(options: { mask: Container });
     init(mask: Container): void;
     reset(): void;
     addBounds(bounds: Bounds, skipUpdateTransform: boolean): void;

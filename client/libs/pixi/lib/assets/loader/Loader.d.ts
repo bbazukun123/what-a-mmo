@@ -48,7 +48,10 @@ export declare class Loader {
      * to detect when assets are complete and available, instead use the Promise returned by this function.
      */
     load<T = any>(assetsToLoadIn: string | ResolvedAsset, onProgress?: (progress: number) => void): Promise<T>;
-    load<T = any>(assetsToLoadIn: string[] | ResolvedAsset[], onProgress?: (progress: number) => void): Promise<Record<string, T>>;
+    load<T = any>(
+        assetsToLoadIn: string[] | ResolvedAsset[],
+        onProgress?: (progress: number) => void,
+    ): Promise<Record<string, T>>;
     /**
      * Unloads one or more assets. Any unloaded assets will be destroyed, freeing up memory for your app.
      * The parser that created the asset, will be the one that unloads it.

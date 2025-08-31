@@ -18,17 +18,28 @@ export declare class GlRenderTargetAdaptor implements RenderTargetAdaptor<GlRend
     private _viewPortCache;
     init(renderer: WebGLRenderer, renderTargetSystem: RenderTargetSystem<GlRenderTarget>): void;
     contextChange(): void;
-    copyToTexture(sourceRenderSurfaceTexture: RenderTarget, destinationTexture: Texture, originSrc: {
-        x: number;
-        y: number;
-    }, size: {
-        width: number;
-        height: number;
-    }, originDest: {
-        x: number;
-        y: number;
-    }): Texture<import("../../..").TextureSource<any>>;
-    startRenderPass(renderTarget: RenderTarget, clear?: CLEAR_OR_BOOL, clearColor?: RgbaArray, viewport?: Rectangle): void;
+    copyToTexture(
+        sourceRenderSurfaceTexture: RenderTarget,
+        destinationTexture: Texture,
+        originSrc: {
+            x: number;
+            y: number;
+        },
+        size: {
+            width: number;
+            height: number;
+        },
+        originDest: {
+            x: number;
+            y: number;
+        },
+    ): Texture<import('../../..').TextureSource<any>>;
+    startRenderPass(
+        renderTarget: RenderTarget,
+        clear?: CLEAR_OR_BOOL,
+        clearColor?: RgbaArray,
+        viewport?: Rectangle,
+    ): void;
     finishRenderPass(renderTarget?: RenderTarget): void;
     initGpuRenderTarget(renderTarget: RenderTarget): GlRenderTarget;
     destroyGpuRenderTarget(gpuRenderTarget: GlRenderTarget): void;

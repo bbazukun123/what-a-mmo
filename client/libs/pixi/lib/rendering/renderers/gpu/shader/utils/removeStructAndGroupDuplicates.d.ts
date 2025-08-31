@@ -1,5 +1,8 @@
 import type { StructsAndGroups } from './extractStructAndGroups';
-export declare function removeStructAndGroupDuplicates(vertexStructsAndGroups: StructsAndGroups, fragmentStructsAndGroups: StructsAndGroups): {
+export declare function removeStructAndGroupDuplicates(
+    vertexStructsAndGroups: StructsAndGroups,
+    fragmentStructsAndGroups: StructsAndGroups,
+): {
     structs: {
         name: string;
         members: Record<string, string>;

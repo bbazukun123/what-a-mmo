@@ -9,7 +9,7 @@ export declare class CanvasTextPipe implements RenderPipe<Text> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "text";
+        readonly name: 'text';
     };
     private _renderer;
     private _gpuText;
@@ -25,7 +25,7 @@ export declare class CanvasTextPipe implements RenderPipe<Text> {
     private _updateGpuText;
     private _getGpuText;
     initGpuText(text: Text): {
-        texture: Texture<import("../../..").TextureSource<any>>;
+        texture: Texture<import('../../..').TextureSource<any>>;
         currentKey: string;
         batchableSprite: BatchableSprite;
     };

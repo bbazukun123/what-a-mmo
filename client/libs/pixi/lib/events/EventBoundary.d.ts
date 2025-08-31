@@ -96,10 +96,13 @@ export declare class EventBoundary {
      * "pointerout", "pointerleave", "pointerover", "pointerup", and "pointerupoutside" by default.
      * @see EventBoundary#addEventMapping
      */
-    protected mappingTable: Record<string, Array<{
-        fn: (e: FederatedEvent) => void;
-        priority: number;
-    }>>;
+    protected mappingTable: Record<
+        string,
+        Array<{
+            fn: (e: FederatedEvent) => void;
+            priority: number;
+        }>
+    >;
     /**
      * State object for mapping methods.
      * @see EventBoundary#trackingData
@@ -168,14 +171,25 @@ export declare class EventBoundary {
      * @param type - The listeners to notify.
      * @param targets - The targets to notify.
      */
-    all(e: FederatedEvent, type?: string | string[], targets?: Container<import("../scene/container/Container").ContainerChild>[]): void;
+    all(
+        e: FederatedEvent,
+        type?: string | string[],
+        targets?: Container<import('../scene/container/Container').ContainerChild>[],
+    ): void;
     /**
      * Finds the propagation path from {@link EventBoundary.rootTarget rootTarget} to the passed
      * {@code target}. The last element in the path is {@code target}.
      * @param target - The target to find the propagation path to.
      */
     propagationPath(target: Container): Container[];
-    protected hitTestMoveRecursive(currentTarget: Container, eventMode: EventMode, location: Point, testFn: (object: Container, pt: Point) => boolean, pruneFn: (object: Container, pt: Point) => boolean, ignore?: boolean): Container[];
+    protected hitTestMoveRecursive(
+        currentTarget: Container,
+        eventMode: EventMode,
+        location: Point,
+        testFn: (object: Container, pt: Point) => boolean,
+        pruneFn: (object: Container, pt: Point) => boolean,
+        ignore?: boolean,
+    ): Container[];
     /**
      * Recursive implementation for {@link EventBoundary.hitTest hitTest}.
      * @param currentTarget - The Container that is to be hit tested.
@@ -190,7 +204,13 @@ export declare class EventBoundary {
      *  is the target itself and the last is {@link EventBoundary.rootTarget rootTarget}. This is the opposite
      *  order w.r.t. the propagation path. If no hit testing target is found, null is returned.
      */
-    protected hitTestRecursive(currentTarget: Container, eventMode: EventMode, location: Point, testFn: (object: Container, pt: Point) => boolean, pruneFn: (object: Container, pt: Point) => boolean): Container[];
+    protected hitTestRecursive(
+        currentTarget: Container,
+        eventMode: EventMode,
+        location: Point,
+        testFn: (object: Container, pt: Point) => boolean,
+        pruneFn: (object: Container, pt: Point) => boolean,
+    ): Container[];
     private _isInteractive;
     private _interactivePrune;
     /**
@@ -385,9 +405,7 @@ export declare class EventBoundary {
      * boundary.
      * @param constructor - The event's constructor.
      */
-    protected allocateEvent<T extends FederatedEvent>(constructor: {
-        new (boundary: EventBoundary): T;
-    }): T;
+    protected allocateEvent<T extends FederatedEvent>(constructor: { new (boundary: EventBoundary): T }): T;
     /**
      * Frees the event and puts it back into the event pool.
      *

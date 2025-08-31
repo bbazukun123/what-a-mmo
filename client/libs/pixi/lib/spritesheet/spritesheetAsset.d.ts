@@ -65,12 +65,16 @@ export declare const spritesheetAsset: {
             name: string;
         };
         testParse(asset: SpriteSheetJson, options: ResolvedAsset): Promise<boolean>;
-        parse<T>(asset: SpriteSheetJson, options: ResolvedAsset<{
-            texture?: Texture;
-            imageFilename?: string;
-            ignoreMultiPack?: boolean;
-            textureOptions?: TextureSourceOptions;
-        }>, loader?: Loader): Promise<Spritesheet>;
+        parse<T>(
+            asset: SpriteSheetJson,
+            options: ResolvedAsset<{
+                texture?: Texture;
+                imageFilename?: string;
+                ignoreMultiPack?: boolean;
+                textureOptions?: TextureSourceOptions;
+            }>,
+            loader?: Loader,
+        ): Promise<Spritesheet>;
         unload(spritesheet: Spritesheet, _resolvedAsset: ResolvedAsset<any>, loader: Loader): Promise<void>;
     };
 };

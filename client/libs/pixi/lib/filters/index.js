@@ -38,7 +38,7 @@ var mask = require('./mask/mask.frag.js');
 var mask$1 = require('./mask/mask.vert.js');
 var mask$2 = require('./mask/mask.wgsl.js');
 
-"use strict";
+('use strict');
 
 exports.BlendModeFilter = BlendModeFilter.BlendModeFilter;
 exports.hslgl = GLhls.hslgl;

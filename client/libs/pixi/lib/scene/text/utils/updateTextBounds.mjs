@@ -1,14 +1,14 @@
 import { updateQuadBounds } from '../../../utils/data/updateQuadBounds.mjs';
 
-"use strict";
+('use strict');
 function updateTextBounds(batchableSprite, text) {
-  const { texture, bounds } = batchableSprite;
-  updateQuadBounds(bounds, text._anchor, texture);
-  const padding = text._style.getFinalPadding();
-  bounds.minX -= padding;
-  bounds.minY -= padding;
-  bounds.maxX -= padding;
-  bounds.maxY -= padding;
+    const { texture, bounds } = batchableSprite;
+    updateQuadBounds(bounds, text._anchor, texture);
+    const padding = text._style.getFinalPadding();
+    bounds.minX -= padding;
+    bounds.minY -= padding;
+    bounds.maxX -= padding;
+    bounds.maxY -= padding;
 }
 
 export { updateTextBounds };

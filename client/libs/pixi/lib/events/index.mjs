@@ -10,5 +10,5 @@ export { FederatedMouseEvent } from './FederatedMouseEvent.mjs';
 export { FederatedPointerEvent } from './FederatedPointerEvent.mjs';
 export { FederatedWheelEvent } from './FederatedWheelEvent.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

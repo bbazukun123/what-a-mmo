@@ -1,12 +1,12 @@
 import { ExtensionType } from '../extensions/Extensions.mjs';
 import { BlendModeFilter } from '../filters/blend-modes/BlendModeFilter.mjs';
 
-"use strict";
+('use strict');
 class ColorDodgeBlend extends BlendModeFilter {
-  constructor() {
-    super({
-      gl: {
-        functions: `
+    constructor() {
+        super({
+            gl: {
+                functions: `
                 float colorDodge(float base, float blend)
                 {
                     return base / (1.0 - blend);
@@ -23,12 +23,12 @@ class ColorDodgeBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                 finalColor = vec4(blendColorDodge(back.rgb, front.rgb,front.a), blendedAlpha) * uBlend;
-                `
-      },
-      gpu: {
-        functions: `
+                `,
+            },
+            gpu: {
+                functions: `
                 fn colorDodge(base: f32, blend: f32) -> f32
                 {
                     return base / (1.0 - blend);
@@ -45,17 +45,17 @@ class ColorDodgeBlend extends BlendModeFilter {
                     return (blended * opacity + base * (1.0 - opacity));
                 }
                 `,
-        main: `
+                main: `
                     out = vec4<f32>(blendColorDodge(back.rgb, front.rgb, front.a), blendedAlpha) * blendUniforms.uBlend;
-                `
-      }
-    });
-  }
+                `,
+            },
+        });
+    }
 }
 /** @ignore */
 ColorDodgeBlend.extension = {
-  name: "color-dodge",
-  type: ExtensionType.BlendMode
+    name: 'color-dodge',
+    type: ExtensionType.BlendMode,
 };
 
 export { ColorDodgeBlend };

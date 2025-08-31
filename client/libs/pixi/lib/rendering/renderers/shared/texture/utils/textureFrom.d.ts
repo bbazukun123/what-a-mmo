@@ -5,7 +5,11 @@ import type { CanvasSourceOptions } from '../sources/CanvasSource';
 import type { ImageResource } from '../sources/ImageSource';
 import type { TextureSourceOptions } from '../sources/TextureSource';
 import type { TextureSourceLike } from '../Texture';
-export type TextureResourceOrOptions = ImageResource | TextureSourceOptions<ImageResource> | BufferSourceOptions | CanvasSourceOptions;
+export type TextureResourceOrOptions =
+    | ImageResource
+    | TextureSourceOptions<ImageResource>
+    | BufferSourceOptions
+    | CanvasSourceOptions;
 /**
  * @param options
  * @deprecated since v8.2.0

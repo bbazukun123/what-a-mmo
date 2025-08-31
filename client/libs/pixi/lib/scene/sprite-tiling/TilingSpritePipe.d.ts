@@ -7,7 +7,7 @@ export declare class TilingSpritePipe implements RenderPipe<TilingSprite> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "tilingSprite";
+        readonly name: 'tilingSprite';
     };
     private _renderer;
     private readonly _state;

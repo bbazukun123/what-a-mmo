@@ -18,13 +18,36 @@ import { RenderableGCSystem } from '../texture/RenderableGCSystem';
 import { TextureGCSystem } from '../texture/TextureGCSystem';
 import { ViewSystem } from '../view/ViewSystem';
 import type { ExtractRendererOptions } from './utils/typeUtils';
-export declare const SharedSystems: (typeof BackgroundSystem | typeof GlobalUniformSystem | typeof HelloSystem | typeof ViewSystem | typeof RenderGroupSystem | typeof TextureGCSystem | typeof GenerateTextureSystem | typeof ExtractSystem | typeof RendererInitHook | typeof RenderableGCSystem | typeof SchedulerSystem)[];
-export declare const SharedRenderPipes: (typeof BlendModePipe | typeof BatcherPipe | typeof SpritePipe | typeof RenderGroupPipe | typeof AlphaMaskPipe | typeof StencilMaskPipe | typeof ColorMaskPipe | typeof CustomRenderPipe)[];
+export declare const SharedSystems: (
+    | typeof BackgroundSystem
+    | typeof GlobalUniformSystem
+    | typeof HelloSystem
+    | typeof ViewSystem
+    | typeof RenderGroupSystem
+    | typeof TextureGCSystem
+    | typeof GenerateTextureSystem
+    | typeof ExtractSystem
+    | typeof RendererInitHook
+    | typeof RenderableGCSystem
+    | typeof SchedulerSystem
+)[];
+export declare const SharedRenderPipes: (
+    | typeof BlendModePipe
+    | typeof BatcherPipe
+    | typeof SpritePipe
+    | typeof RenderGroupPipe
+    | typeof AlphaMaskPipe
+    | typeof StencilMaskPipe
+    | typeof ColorMaskPipe
+    | typeof CustomRenderPipe
+)[];
 /**
  * Options for the shared systems of a renderer.
  * @memberof rendering
  */
-export interface SharedRendererOptions extends ExtractRendererOptions<typeof SharedSystems>, PixiMixins.RendererOptions {
+export interface SharedRendererOptions
+    extends ExtractRendererOptions<typeof SharedSystems>,
+        PixiMixins.RendererOptions {
     /**
      * Whether to stop PixiJS from dynamically importing default extensions for the renderer.
      * It is false by default, and means PixiJS will load all the default extensions, based

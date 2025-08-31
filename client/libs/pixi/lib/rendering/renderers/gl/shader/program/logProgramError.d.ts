@@ -7,4 +7,9 @@
  * @param fragmentShader - the vertex WebGL shader program
  * @private
  */
-export declare function logProgramError(gl: WebGLRenderingContext, program: WebGLProgram, vertexShader: WebGLShader, fragmentShader: WebGLShader): void;
+export declare function logProgramError(
+    gl: WebGLRenderingContext,
+    program: WebGLProgram,
+    vertexShader: WebGLShader,
+    fragmentShader: WebGLShader,
+): void;

@@ -11,4 +11,7 @@ import type { ExtractedAttributeData } from './extractAttributesFromGlProgram';
  * @param geometry - the geometry to ensure attributes for
  * @param extractedData - the extracted data from the shader
  */
-export declare function ensureAttributes(geometry: Geometry, extractedData: Record<string, ExtractedAttributeData>): void;
+export declare function ensureAttributes(
+    geometry: Geometry,
+    extractedData: Record<string, ExtractedAttributeData>,
+): void;

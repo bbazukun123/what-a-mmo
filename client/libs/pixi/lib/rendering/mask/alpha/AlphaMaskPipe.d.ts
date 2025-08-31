@@ -38,7 +38,7 @@ export declare class AlphaMaskPipe implements InstructionPipe<AlphaMaskInstructi
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "alphaMask";
+        readonly name: 'alphaMask';
     };
     private _renderer;
     private _activeMaskStage;

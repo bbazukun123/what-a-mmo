@@ -2,14 +2,14 @@
 
 var TextureSource = require('./TextureSource.js');
 
-"use strict";
+('use strict');
 class CompressedSource extends TextureSource.TextureSource {
-  constructor(options) {
-    super(options);
-    this.uploadMethodId = "compressed";
-    this.resource = options.resource;
-    this.mipLevelCount = this.resource.length;
-  }
+    constructor(options) {
+        super(options);
+        this.uploadMethodId = 'compressed';
+        this.resource = options.resource;
+        this.mipLevelCount = this.resource.length;
+    }
 }
 
 exports.CompressedSource = CompressedSource;

@@ -23,7 +23,18 @@ export interface RenderLayerOptions {
     sortFunction?: (a: Container, b: Container) => number;
 }
 type ContainerKeys = keyof Container;
-type PartialContainerKeys = Exclude<ContainerKeys, 'parent' | 'didChange' | '_updateFlags' | keyof EventEmitter | 'parentRenderLayer' | 'destroyed' | 'layerParentId' | 'sortableChildren' | 'getFastGlobalBounds'>;
+type PartialContainerKeys = Exclude<
+    ContainerKeys,
+    | 'parent'
+    | 'didChange'
+    | '_updateFlags'
+    | keyof EventEmitter
+    | 'parentRenderLayer'
+    | 'destroyed'
+    | 'layerParentId'
+    | 'sortableChildren'
+    | 'getFastGlobalBounds'
+>;
 export type IRenderLayer = Omit<RenderLayerClass, PartialContainerKeys>;
 /**
  * The RenderLayer API provides a way to control the rendering order of objects independently

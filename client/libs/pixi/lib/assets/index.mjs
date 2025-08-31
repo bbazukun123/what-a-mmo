@@ -20,7 +20,12 @@ export { loadTxt } from './loader/parsers/loadTxt.mjs';
 export { getFontFamilyName, loadWebFont } from './loader/parsers/loadWebFont.mjs';
 export { loadSvg } from './loader/parsers/textures/loadSVG.mjs';
 export { loadImageBitmap, loadTextures } from './loader/parsers/textures/loadTextures.mjs';
-export { crossOrigin, determineCrossOrigin, loadVideoTextures, preloadVideo } from './loader/parsers/textures/loadVideoTextures.mjs';
+export {
+    crossOrigin,
+    determineCrossOrigin,
+    loadVideoTextures,
+    preloadVideo,
+} from './loader/parsers/textures/loadVideoTextures.mjs';
 export { createTexture } from './loader/parsers/textures/utils/createTexture.mjs';
 import './loader/types.mjs';
 export { WorkerManager } from './loader/workers/WorkerManager.mjs';
@@ -36,5 +41,5 @@ export { copySearchParams } from './utils/copySearchParams.mjs';
 export { createStringVariations } from './utils/createStringVariations.mjs';
 export { isSingleItem } from './utils/isSingleItem.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

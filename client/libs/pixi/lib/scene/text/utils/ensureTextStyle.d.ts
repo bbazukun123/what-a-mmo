@@ -9,4 +9,7 @@ import type { TextStyleOptions } from '../TextStyle';
  * @param style - The style to use
  * @returns - The style class
  */
-export declare function ensureTextStyle(renderMode: string, style: TextStyle | HTMLTextStyle | TextStyleOptions | HTMLTextStyleOptions): TextStyle;
+export declare function ensureTextStyle(
+    renderMode: string,
+    style: TextStyle | HTMLTextStyle | TextStyleOptions | HTMLTextStyleOptions,
+): TextStyle;

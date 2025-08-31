@@ -21,9 +21,12 @@ import type { Buffer } from './Buffer';
  * });
  * @memberof rendering
  */
-export declare class BufferResource extends EventEmitter<{
-    change: BindResource;
-}> implements BindResource {
+export declare class BufferResource
+    extends EventEmitter<{
+        change: BindResource;
+    }>
+    implements BindResource
+{
     /**
      * emits when the underlying buffer has changed shape (i.e. resized)
      * letting the renderer know that it needs to discard the old buffer on the GPU and create a new one
@@ -36,7 +39,7 @@ export declare class BufferResource extends EventEmitter<{
      * @internal
      * @ignore
      */
-    readonly _resourceType = "bufferResource";
+    readonly _resourceType = 'bufferResource';
     /**
      * used internally to know if a uniform group was used in the last render pass
      * @internal
@@ -75,11 +78,7 @@ export declare class BufferResource extends EventEmitter<{
      * @param options.size - The size of the buffer this resource is using.
      * If not provided, then it will use the size of the buffer.
      */
-    constructor({ buffer, offset, size }: {
-        buffer: Buffer;
-        offset?: number;
-        size?: number;
-    });
+    constructor({ buffer, offset, size }: { buffer: Buffer; offset?: number; size?: number });
     protected onBufferChange(): void;
     /**
      * Destroys this resource. Make sure the underlying buffer is not used anywhere else

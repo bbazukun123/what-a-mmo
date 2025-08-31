@@ -44,10 +44,13 @@ export declare class PoolGroupClass {
      */
     getPool<T extends PoolItem>(ClassType: PoolItemConstructor<T>): Pool<T>;
     /** gets the usage stats of each pool in the system */
-    stats(): Record<string, {
-        free: number;
-        used: number;
-        size: number;
-    }>;
+    stats(): Record<
+        string,
+        {
+            free: number;
+            used: number;
+            size: number;
+        }
+    >;
 }
 export declare const BigPool: PoolGroupClass;

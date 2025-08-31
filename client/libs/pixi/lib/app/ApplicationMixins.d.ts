@@ -2,13 +2,10 @@ import type { Ticker } from '../ticker/Ticker';
 import type { ResizePluginOptions } from './ResizePlugin';
 import type { TickerPluginOptions } from './TickerPlugin';
 
-declare global
-{
-    namespace PixiMixins
-    {
+declare global {
+    namespace PixiMixins {
         // Extend the Application interface with resize and ticker functionalities
-        interface Application
-        {
+        interface Application {
             resizeTo: Window | HTMLElement;
             resize(): void;
             queueResize(): void;

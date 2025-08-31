@@ -7,47 +7,47 @@ import blendTemplateFrag from './blend-template.frag.mjs';
 import blendTemplateVert from './blend-template.vert.mjs';
 import blendTemplate from './blend-template.wgsl.mjs';
 
-"use strict";
+('use strict');
 class BlendModeFilter extends Filter {
-  constructor(options) {
-    const gpuOptions = options.gpu;
-    const gpuSource = compileBlendModeShader({ source: blendTemplate, ...gpuOptions });
-    const gpuProgram = GpuProgram.from({
-      vertex: {
-        source: gpuSource,
-        entryPoint: "mainVertex"
-      },
-      fragment: {
-        source: gpuSource,
-        entryPoint: "mainFragment"
-      }
-    });
-    const glOptions = options.gl;
-    const glSource = compileBlendModeShader({ source: blendTemplateFrag, ...glOptions });
-    const glProgram = GlProgram.from({
-      vertex: blendTemplateVert,
-      fragment: glSource
-    });
-    const uniformGroup = new UniformGroup({
-      uBlend: {
-        value: 1,
-        type: "f32"
-      }
-    });
-    super({
-      gpuProgram,
-      glProgram,
-      blendRequired: true,
-      resources: {
-        blendUniforms: uniformGroup,
-        uBackTexture: Texture.EMPTY
-      }
-    });
-  }
+    constructor(options) {
+        const gpuOptions = options.gpu;
+        const gpuSource = compileBlendModeShader({ source: blendTemplate, ...gpuOptions });
+        const gpuProgram = GpuProgram.from({
+            vertex: {
+                source: gpuSource,
+                entryPoint: 'mainVertex',
+            },
+            fragment: {
+                source: gpuSource,
+                entryPoint: 'mainFragment',
+            },
+        });
+        const glOptions = options.gl;
+        const glSource = compileBlendModeShader({ source: blendTemplateFrag, ...glOptions });
+        const glProgram = GlProgram.from({
+            vertex: blendTemplateVert,
+            fragment: glSource,
+        });
+        const uniformGroup = new UniformGroup({
+            uBlend: {
+                value: 1,
+                type: 'f32',
+            },
+        });
+        super({
+            gpuProgram,
+            glProgram,
+            blendRequired: true,
+            resources: {
+                blendUniforms: uniformGroup,
+                uBackTexture: Texture.EMPTY,
+            },
+        });
+    }
 }
 function compileBlendModeShader(options) {
-  const { source, functions, main } = options;
-  return source.replace("{FUNCTIONS}", functions).replace("{MAIN}", main);
+    const { source, functions, main } = options;
+    return source.replace('{FUNCTIONS}', functions).replace('{MAIN}', main);
 }
 
 export { BlendModeFilter };

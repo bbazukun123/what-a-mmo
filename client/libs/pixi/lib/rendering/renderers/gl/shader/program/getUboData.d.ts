@@ -6,4 +6,7 @@ import type { GlUniformBlockData } from '../GlProgram';
  * @param gl - the WebGL context
  * @returns {object} the uniform data for this program
  */
-export declare function getUboData(program: WebGLProgram, gl: WebGL2RenderingContext): Record<string, GlUniformBlockData>;
+export declare function getUboData(
+    program: WebGLProgram,
+    gl: WebGL2RenderingContext,
+): Record<string, GlUniformBlockData>;

@@ -5,26 +5,26 @@ var isWebGPUSupported = require('../../../../../utils/browser/isWebGPUSupported.
 var getSupportedGlCompressedTextureFormats = require('../../../gl/texture/utils/getSupportedGlCompressedTextureFormats.js');
 var getSupportedGPUCompressedTextureFormats = require('../../../gpu/texture/utils/getSupportedGPUCompressedTextureFormats.js');
 
-"use strict";
+('use strict');
 let supportedCompressedTextureFormats;
 async function getSupportedCompressedTextureFormats() {
-  if (supportedCompressedTextureFormats !== void 0)
+    if (supportedCompressedTextureFormats !== void 0) return supportedCompressedTextureFormats;
+    supportedCompressedTextureFormats = await (async () => {
+        const _isWebGPUSupported = await isWebGPUSupported.isWebGPUSupported();
+        const _isWebGLSupported = isWebGLSupported.isWebGLSupported();
+        if (_isWebGPUSupported && _isWebGLSupported) {
+            const gpuTextureFormats =
+                await getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats();
+            const glTextureFormats = getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats();
+            return gpuTextureFormats.filter((format) => glTextureFormats.includes(format));
+        } else if (_isWebGPUSupported) {
+            return await getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats();
+        } else if (_isWebGLSupported) {
+            return getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats();
+        }
+        return [];
+    })();
     return supportedCompressedTextureFormats;
-  supportedCompressedTextureFormats = await (async () => {
-    const _isWebGPUSupported = await isWebGPUSupported.isWebGPUSupported();
-    const _isWebGLSupported = isWebGLSupported.isWebGLSupported();
-    if (_isWebGPUSupported && _isWebGLSupported) {
-      const gpuTextureFormats = await getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats();
-      const glTextureFormats = getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats();
-      return gpuTextureFormats.filter((format) => glTextureFormats.includes(format));
-    } else if (_isWebGPUSupported) {
-      return await getSupportedGPUCompressedTextureFormats.getSupportedGPUCompressedTextureFormats();
-    } else if (_isWebGLSupported) {
-      return getSupportedGlCompressedTextureFormats.getSupportedGlCompressedTextureFormats();
-    }
-    return [];
-  })();
-  return supportedCompressedTextureFormats;
 }
 
 exports.getSupportedCompressedTextureFormats = getSupportedCompressedTextureFormats;

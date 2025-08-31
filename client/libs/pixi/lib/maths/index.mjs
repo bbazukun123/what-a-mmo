@@ -17,5 +17,5 @@ export { RoundedRectangle } from './shapes/RoundedRectangle.mjs';
 import './shapes/ShapePrimitive.mjs';
 export { Triangle } from './shapes/Triangle.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

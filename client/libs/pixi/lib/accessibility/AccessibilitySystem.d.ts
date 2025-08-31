@@ -51,7 +51,7 @@ export declare class AccessibilitySystem implements System<AccessibilitySystemOp
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "accessibility";
+        readonly name: 'accessibility';
     };
     /** default options used by the system */
     static defaultOptions: AccessibilityOptions;

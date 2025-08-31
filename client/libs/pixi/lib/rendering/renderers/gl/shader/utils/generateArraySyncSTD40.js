@@ -2,13 +2,13 @@
 
 var createUboElementsSTD40 = require('./createUboElementsSTD40.js');
 
-"use strict";
+('use strict');
 function generateArraySyncSTD40(uboElement, offsetToAdd) {
-  const rowSize = Math.max(createUboElementsSTD40.WGSL_TO_STD40_SIZE[uboElement.data.type] / 16, 1);
-  const elementSize = uboElement.data.value.length / uboElement.data.size;
-  const remainder = (4 - elementSize % 4) % 4;
-  const data = uboElement.data.type.indexOf("i32") >= 0 ? "dataInt32" : "data";
-  return `
+    const rowSize = Math.max(createUboElementsSTD40.WGSL_TO_STD40_SIZE[uboElement.data.type] / 16, 1);
+    const elementSize = uboElement.data.value.length / uboElement.data.size;
+    const remainder = (4 - (elementSize % 4)) % 4;
+    const data = uboElement.data.type.indexOf('i32') >= 0 ? 'dataInt32' : 'data';
+    return `
         v = uv.${uboElement.data.name};
         offset += ${offsetToAdd};
 
@@ -22,7 +22,7 @@ function generateArraySyncSTD40(uboElement, offsetToAdd) {
             {
                 ${data}[arrayOffset++] = v[t++];
             }
-            ${remainder !== 0 ? `arrayOffset += ${remainder};` : ""}
+            ${remainder !== 0 ? `arrayOffset += ${remainder};` : ''}
         }
     `;
 }

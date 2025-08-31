@@ -6,9 +6,7 @@ export declare class ColorMask implements Effect, PoolItem {
     priority: number;
     mask: number;
     pipe: string;
-    constructor(options: {
-        mask: number;
-    });
+    constructor(options: { mask: number });
     init(mask: number): void;
     destroy(): void;
     static test(mask: any): boolean;

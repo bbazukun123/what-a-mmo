@@ -73,7 +73,7 @@ export declare class RenderableGCSystem implements System<RenderableGCSystemOpti
      */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "renderableGC";
+        readonly name: 'renderableGC';
         readonly priority: 0;
     };
     /**

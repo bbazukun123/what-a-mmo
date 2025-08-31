@@ -2,7 +2,7 @@
 
 var Extensions = require('./Extensions.js');
 
-"use strict";
+('use strict');
 
 exports.ExtensionType = Extensions.ExtensionType;
 exports.extensions = Extensions.extensions;

@@ -8,30 +8,30 @@ var CompressedSource = require('../../rendering/renderers/shared/texture/sources
 var getSupportedTextureFormats = require('../../rendering/renderers/shared/texture/utils/getSupportedTextureFormats.js');
 var loadKTX2onWorker = require('./worker/loadKTX2onWorker.js');
 
-"use strict";
+('use strict');
 const loadKTX2 = {
-  extension: {
-    type: Extensions.ExtensionType.LoadParser,
-    priority: LoaderParser.LoaderParserPriority.High,
-    name: "loadKTX2"
-  },
-  name: "loadKTX2",
-  test(url) {
-    return checkExtension.checkExtension(url, ".ktx2");
-  },
-  async load(url, _asset, loader) {
-    const supportedTextures = await getSupportedTextureFormats.getSupportedTextureFormats();
-    const textureOptions = await loadKTX2onWorker.loadKTX2onWorker(url, supportedTextures);
-    const compressedTextureSource = new CompressedSource.CompressedSource(textureOptions);
-    return createTexture.createTexture(compressedTextureSource, loader, url);
-  },
-  async unload(texture) {
-    if (Array.isArray(texture)) {
-      texture.forEach((t) => t.destroy(true));
-    } else {
-      texture.destroy(true);
-    }
-  }
+    extension: {
+        type: Extensions.ExtensionType.LoadParser,
+        priority: LoaderParser.LoaderParserPriority.High,
+        name: 'loadKTX2',
+    },
+    name: 'loadKTX2',
+    test(url) {
+        return checkExtension.checkExtension(url, '.ktx2');
+    },
+    async load(url, _asset, loader) {
+        const supportedTextures = await getSupportedTextureFormats.getSupportedTextureFormats();
+        const textureOptions = await loadKTX2onWorker.loadKTX2onWorker(url, supportedTextures);
+        const compressedTextureSource = new CompressedSource.CompressedSource(textureOptions);
+        return createTexture.createTexture(compressedTextureSource, loader, url);
+    },
+    async unload(texture) {
+        if (Array.isArray(texture)) {
+            texture.forEach((t) => t.destroy(true));
+        } else {
+            texture.destroy(true);
+        }
+    },
 };
 
 exports.loadKTX2 = loadKTX2;

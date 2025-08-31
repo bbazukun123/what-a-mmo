@@ -6,7 +6,7 @@ var Rectangle = require('../maths/shapes/Rectangle.js');
 var pointExtras = require('./pointExtras.js');
 var rectangleExtras = require('./rectangleExtras.js');
 
-"use strict";
+('use strict');
 Object.assign(Point.Point.prototype, pointExtras.pointExtraMixins);
 Object.assign(ObservablePoint.ObservablePoint.prototype, pointExtras.pointExtraMixins);
 Object.assign(Rectangle.Rectangle.prototype, rectangleExtras.rectangleExtraMixins);

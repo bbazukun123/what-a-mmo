@@ -16,7 +16,7 @@ export declare class GlTextureSystem implements System, CanvasGenerator {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem];
-        readonly name: "texture";
+        readonly name: 'texture';
     };
     readonly managedTextures: TextureSource[];
     private readonly _renderer;

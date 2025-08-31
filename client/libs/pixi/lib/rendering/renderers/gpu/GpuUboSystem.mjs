@@ -3,19 +3,19 @@ import { UboSystem } from '../shared/shader/UboSystem.mjs';
 import { createUboElementsWGSL } from './shader/utils/createUboElementsWGSL.mjs';
 import { createUboSyncFunctionWGSL } from './shader/utils/createUboSyncFunctionWGSL.mjs';
 
-"use strict";
+('use strict');
 class GpuUboSystem extends UboSystem {
-  constructor() {
-    super({
-      createUboElements: createUboElementsWGSL,
-      generateUboSync: createUboSyncFunctionWGSL
-    });
-  }
+    constructor() {
+        super({
+            createUboElements: createUboElementsWGSL,
+            generateUboSync: createUboSyncFunctionWGSL,
+        });
+    }
 }
 /** @ignore */
 GpuUboSystem.extension = {
-  type: [ExtensionType.WebGPUSystem],
-  name: "ubo"
+    type: [ExtensionType.WebGPUSystem],
+    name: 'ubo',
 };
 
 export { GpuUboSystem };

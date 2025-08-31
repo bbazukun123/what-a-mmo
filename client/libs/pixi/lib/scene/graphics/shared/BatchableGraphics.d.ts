@@ -35,7 +35,7 @@ export declare class BatchableGraphics implements DefaultBatchableMeshElement {
     get uvs(): number[];
     get positions(): number[];
     get indices(): number[];
-    get blendMode(): import("../../..").BLEND_MODES;
+    get blendMode(): import('../../..').BLEND_MODES;
     get color(): number;
     get transform(): Matrix;
     copyTo(gpuBuffer: BatchableGraphics): void;

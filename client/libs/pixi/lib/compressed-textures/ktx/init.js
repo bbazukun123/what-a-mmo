@@ -5,7 +5,7 @@ var detectCompressed = require('../shared/detectCompressed.js');
 var resolveCompressedTextureUrl = require('../shared/resolveCompressedTextureUrl.js');
 var loadKTX = require('./loadKTX.js');
 
-"use strict";
+('use strict');
 Extensions.extensions.add(loadKTX.loadKTX);
 Extensions.extensions.add(resolveCompressedTextureUrl.resolveCompressedTextureUrl);
 Extensions.extensions.add(detectCompressed.detectCompressed);

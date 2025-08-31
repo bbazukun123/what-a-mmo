@@ -20,4 +20,9 @@ export type RoundedPoint = PointData & {
  * @param radius - Corners default radius.
  * @ignore
  */
-export declare function roundedShapeQuadraticCurve(g: ShapePath, points: RoundedPoint[], radius: number, smoothness?: number): void;
+export declare function roundedShapeQuadraticCurve(
+    g: ShapePath,
+    points: RoundedPoint[],
+    radius: number,
+    smoothness?: number,
+): void;

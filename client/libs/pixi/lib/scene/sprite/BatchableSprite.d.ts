@@ -25,7 +25,7 @@ export declare class BatchableSprite implements DefaultBatchableQuadElement {
     _attributeStart: number;
     _batcher: Batcher;
     _batch: Batch;
-    get blendMode(): import("../..").BLEND_MODES;
+    get blendMode(): import('../..').BLEND_MODES;
     get color(): number;
     reset(): void;
 }

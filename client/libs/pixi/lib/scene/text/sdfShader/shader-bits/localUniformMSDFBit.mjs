@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 const localUniformMSDFBit = {
-  name: "local-uniform-msdf-bit",
-  vertex: {
-    header: (
-      /* wgsl */
-      `
+    name: 'local-uniform-msdf-bit',
+    vertex: {
+        header:
+            /* wgsl */
+            `
             struct LocalUniforms {
                 uColor:vec4<f32>,
                 uTransformMatrix:mat3x3<f32>,
@@ -13,29 +13,26 @@ const localUniformMSDFBit = {
             }
 
             @group(2) @binding(0) var<uniform> localUniforms : LocalUniforms;
-        `
-    ),
-    main: (
-      /* wgsl */
-      `
+        `,
+        main:
+            /* wgsl */
+            `
             vColor *= localUniforms.uColor;
             modelMatrix *= localUniforms.uTransformMatrix;
-        `
-    ),
-    end: (
-      /* wgsl */
-      `
+        `,
+        end:
+            /* wgsl */
+            `
             if(localUniforms.uRound == 1)
             {
                 vPosition = vec4(roundPixels(vPosition.xy, globalUniforms.uResolution), vPosition.zw);
             }
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* wgsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* wgsl */
+            `
             struct LocalUniforms {
                 uColor:vec4<f32>,
                 uTransformMatrix:mat3x3<f32>,
@@ -43,58 +40,51 @@ const localUniformMSDFBit = {
             }
 
             @group(2) @binding(0) var<uniform> localUniforms : LocalUniforms;
-         `
-    ),
-    main: (
-      /* wgsl */
-      ` 
+         `,
+        main:
+            /* wgsl */
+            ` 
             outColor = vec4<f32>(calculateMSDFAlpha(outColor, localUniforms.uColor, localUniforms.uDistance));
-        `
-    )
-  }
+        `,
+    },
 };
 const localUniformMSDFBitGl = {
-  name: "local-uniform-msdf-bit",
-  vertex: {
-    header: (
-      /* glsl */
-      `
+    name: 'local-uniform-msdf-bit',
+    vertex: {
+        header:
+            /* glsl */
+            `
             uniform mat3 uTransformMatrix;
             uniform vec4 uColor;
             uniform float uRound;
-        `
-    ),
-    main: (
-      /* glsl */
-      `
+        `,
+        main:
+            /* glsl */
+            `
             vColor *= uColor;
             modelMatrix *= uTransformMatrix;
-        `
-    ),
-    end: (
-      /* glsl */
-      `
+        `,
+        end:
+            /* glsl */
+            `
             if(uRound == 1.)
             {
                 gl_Position.xy = roundPixels(gl_Position.xy, uResolution);
             }
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* glsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* glsl */
+            `
             uniform float uDistance;
-         `
-    ),
-    main: (
-      /* glsl */
-      ` 
+         `,
+        main:
+            /* glsl */
+            ` 
             outColor = vec4(calculateMSDFAlpha(outColor, vColor, uDistance));
-        `
-    )
-  }
+        `,
+    },
 };
 
 export { localUniformMSDFBit, localUniformMSDFBitGl };

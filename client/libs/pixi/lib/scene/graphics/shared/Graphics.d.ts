@@ -27,8 +27,7 @@ export interface GraphicsOptions extends PixiMixins.GraphicsOptions, ViewContain
     /** Whether or not to round the x/y position. */
     roundPixels?: boolean;
 }
-export interface Graphics extends PixiMixins.Graphics, ViewContainer {
-}
+export interface Graphics extends PixiMixins.Graphics, ViewContainer {}
 /**
  * The Graphics class is primarily used to render primitive shapes such as lines, circles and
  * rectangles to the display, and to color and fill them.  However, you can also use a Graphics
@@ -179,7 +178,15 @@ export declare class Graphics extends ViewContainer implements Instruction {
      * @param y - The y-coordinate of the arc's end point.
      * @returns The instance of the current object for chaining.
      */
-    arcToSvg(rx: number, ry: number, xAxisRotation: number, largeArcFlag: number, sweepFlag: number, x: number, y: number): this;
+    arcToSvg(
+        rx: number,
+        ry: number,
+        xAxisRotation: number,
+        largeArcFlag: number,
+        sweepFlag: number,
+        x: number,
+        y: number,
+    ): this;
     /**
      * Adds a cubic Bezier curve to the path.
      * It requires three points: the first two are control points and the third one is the end point.
@@ -193,7 +200,15 @@ export declare class Graphics extends ViewContainer implements Instruction {
      * @param smoothness - Optional parameter to adjust the smoothness of the curve.
      * @returns The instance of the current object for chaining.
      */
-    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number, smoothness?: number): this;
+    bezierCurveTo(
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+        smoothness?: number,
+    ): this;
     /**
      * Closes the current path by drawing a straight line back to the start.
      * If the shape is already closed or there are no points in the path, this method does nothing.

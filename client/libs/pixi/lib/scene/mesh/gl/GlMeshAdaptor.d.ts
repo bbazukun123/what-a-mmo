@@ -9,7 +9,7 @@ import type { MeshAdaptor, MeshPipe } from '../shared/MeshPipe';
 export declare class GlMeshAdaptor implements MeshAdaptor {
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipesAdaptor];
-        readonly name: "mesh";
+        readonly name: 'mesh';
     };
     private _shader;
     init(): void;

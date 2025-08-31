@@ -3,7 +3,7 @@
 var WebWorkerAdapter = require('./WebWorkerAdapter.js');
 var webworkerExt = require('./webworkerExt.js');
 
-"use strict";
+('use strict');
 
 exports.WebWorkerAdapter = WebWorkerAdapter.WebWorkerAdapter;
 exports.webworkerExt = webworkerExt.webworkerExt;

@@ -1,12 +1,11 @@
 'use strict';
 
-"use strict";
+'use strict';
 function addProgramDefines(src, isES300, isFragment) {
-  if (isES300)
-    return src;
-  if (isFragment) {
-    src = src.replace("out vec4 finalColor;", "");
-    return `
+    if (isES300) return src;
+    if (isFragment) {
+        src = src.replace('out vec4 finalColor;', '');
+        return `
         
         #ifdef GL_ES // This checks if it is WebGL1
         #define in varying
@@ -15,8 +14,8 @@ function addProgramDefines(src, isES300, isFragment) {
         #endif
         ${src}
         `;
-  }
-  return `
+    }
+    return `
         
         #ifdef GL_ES // This checks if it is WebGL1
         #define in attribute

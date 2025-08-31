@@ -20,29 +20,29 @@ var RenderableGCSystem = require('../texture/RenderableGCSystem.js');
 var TextureGCSystem = require('../texture/TextureGCSystem.js');
 var ViewSystem = require('../view/ViewSystem.js');
 
-"use strict";
+('use strict');
 const SharedSystems = [
-  BackgroundSystem.BackgroundSystem,
-  GlobalUniformSystem.GlobalUniformSystem,
-  HelloSystem.HelloSystem,
-  ViewSystem.ViewSystem,
-  RenderGroupSystem.RenderGroupSystem,
-  TextureGCSystem.TextureGCSystem,
-  GenerateTextureSystem.GenerateTextureSystem,
-  ExtractSystem.ExtractSystem,
-  globalHooks.RendererInitHook,
-  RenderableGCSystem.RenderableGCSystem,
-  SchedulerSystem.SchedulerSystem
+    BackgroundSystem.BackgroundSystem,
+    GlobalUniformSystem.GlobalUniformSystem,
+    HelloSystem.HelloSystem,
+    ViewSystem.ViewSystem,
+    RenderGroupSystem.RenderGroupSystem,
+    TextureGCSystem.TextureGCSystem,
+    GenerateTextureSystem.GenerateTextureSystem,
+    ExtractSystem.ExtractSystem,
+    globalHooks.RendererInitHook,
+    RenderableGCSystem.RenderableGCSystem,
+    SchedulerSystem.SchedulerSystem,
 ];
 const SharedRenderPipes = [
-  BlendModePipe.BlendModePipe,
-  BatcherPipe.BatcherPipe,
-  SpritePipe.SpritePipe,
-  RenderGroupPipe.RenderGroupPipe,
-  AlphaMaskPipe.AlphaMaskPipe,
-  StencilMaskPipe.StencilMaskPipe,
-  ColorMaskPipe.ColorMaskPipe,
-  CustomRenderPipe.CustomRenderPipe
+    BlendModePipe.BlendModePipe,
+    BatcherPipe.BatcherPipe,
+    SpritePipe.SpritePipe,
+    RenderGroupPipe.RenderGroupPipe,
+    AlphaMaskPipe.AlphaMaskPipe,
+    StencilMaskPipe.StencilMaskPipe,
+    ColorMaskPipe.ColorMaskPipe,
+    CustomRenderPipe.CustomRenderPipe,
 ];
 
 exports.SharedRenderPipes = SharedRenderPipes;

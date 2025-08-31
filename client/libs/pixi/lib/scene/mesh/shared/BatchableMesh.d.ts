@@ -29,7 +29,7 @@ export declare class BatchableMesh implements DefaultBatchableMeshElement {
     _textureMatrixUpdateId: number;
     private _transformedUvs;
     private _uvUpdateId;
-    get blendMode(): import("../../..").BLEND_MODES;
+    get blendMode(): import('../../..').BLEND_MODES;
     get topology(): Topology;
     set topology(value: Topology);
     reset(): void;

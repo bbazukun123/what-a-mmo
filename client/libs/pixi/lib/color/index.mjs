@@ -1,4 +1,4 @@
 export { Color } from './Color.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

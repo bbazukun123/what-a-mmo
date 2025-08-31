@@ -58,16 +58,14 @@ export type ShaderWith = GlShaderWith | GpuShaderWith;
  * @memberof rendering
  */
 export type ShaderWithGroups = ShaderWithGroupsDescriptor & ShaderWith;
-export interface IShaderWithGroups extends ShaderWithGroupsDescriptor, ShaderBase {
-}
+export interface IShaderWithGroups extends ShaderWithGroupsDescriptor, ShaderBase {}
 /**
  * A descriptor for a shader with resources. This is an easier way to work with uniforms.
  * especially when you are not working with bind groups
  * @memberof rendering
  */
 export type ShaderWithResources = ShaderWithResourcesDescriptor & ShaderWith;
-export interface IShaderWithResources extends ShaderWithResourcesDescriptor, ShaderBase {
-}
+export interface IShaderWithResources extends ShaderWithResourcesDescriptor, ShaderBase {}
 export type ShaderDescriptor = ShaderWithGroups & ShaderWithResources;
 type GlShaderFromWith = {
     gpu?: GpuProgramOptions;
@@ -77,8 +75,10 @@ type GpuShaderFromWith = {
     gpu: GpuProgramOptions;
     gl?: GlProgramOptions;
 };
-export type ShaderFromGroups = (GlShaderFromWith | GpuShaderFromWith) & Omit<ShaderWithGroups, 'glProgram' | 'gpuProgram'>;
-export type ShaderFromResources = (GlShaderFromWith | GpuShaderFromWith) & Omit<ShaderWithResources, 'glProgram' | 'gpuProgram'>;
+export type ShaderFromGroups = (GlShaderFromWith | GpuShaderFromWith) &
+    Omit<ShaderWithGroups, 'glProgram' | 'gpuProgram'>;
+export type ShaderFromResources = (GlShaderFromWith | GpuShaderFromWith) &
+    Omit<ShaderWithResources, 'glProgram' | 'gpuProgram'>;
 /**
  * The Shader class is an integral part of the PixiJS graphics pipeline.
  * Central to rendering in PixiJS are two key elements: A [shader] and a [geometry].
@@ -116,7 +116,7 @@ export type ShaderFromResources = (GlShaderFromWith | GpuShaderFromWith) & Omit<
  * @memberof rendering
  */
 export declare class Shader extends EventEmitter<{
-    'destroy': Shader;
+    destroy: Shader;
 }> {
     /** A unique identifier for the shader */
     readonly uid: number;

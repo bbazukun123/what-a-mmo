@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 const basisTranscoderUrls = {
-  jsUrl: "https://files.pixijs.download/transcoders/basis/basis_transcoder.js",
-  wasmUrl: "https://files.pixijs.download/transcoders/basis/basis_transcoder.wasm"
+    jsUrl: 'https://files.pixijs.download/transcoders/basis/basis_transcoder.js',
+    wasmUrl: 'https://files.pixijs.download/transcoders/basis/basis_transcoder.wasm',
 };
 function setBasisTranscoderPath(config) {
-  Object.assign(basisTranscoderUrls, config);
+    Object.assign(basisTranscoderUrls, config);
 }
 
 export { basisTranscoderUrls, setBasisTranscoderPath };

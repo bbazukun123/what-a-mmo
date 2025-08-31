@@ -2,54 +2,54 @@
 
 var _const = require('../../shared/state/const.js');
 
-"use strict";
+('use strict');
 const GpuStencilModesToPixi = [];
 GpuStencilModesToPixi[_const.STENCIL_MODES.NONE] = void 0;
 GpuStencilModesToPixi[_const.STENCIL_MODES.DISABLED] = {
-  stencilWriteMask: 0,
-  stencilReadMask: 0
+    stencilWriteMask: 0,
+    stencilReadMask: 0,
 };
 GpuStencilModesToPixi[_const.STENCIL_MODES.RENDERING_MASK_ADD] = {
-  stencilFront: {
-    compare: "equal",
-    passOp: "increment-clamp"
-  },
-  stencilBack: {
-    compare: "equal",
-    passOp: "increment-clamp"
-  }
+    stencilFront: {
+        compare: 'equal',
+        passOp: 'increment-clamp',
+    },
+    stencilBack: {
+        compare: 'equal',
+        passOp: 'increment-clamp',
+    },
 };
 GpuStencilModesToPixi[_const.STENCIL_MODES.RENDERING_MASK_REMOVE] = {
-  stencilFront: {
-    compare: "equal",
-    passOp: "decrement-clamp"
-  },
-  stencilBack: {
-    compare: "equal",
-    passOp: "decrement-clamp"
-  }
+    stencilFront: {
+        compare: 'equal',
+        passOp: 'decrement-clamp',
+    },
+    stencilBack: {
+        compare: 'equal',
+        passOp: 'decrement-clamp',
+    },
 };
 GpuStencilModesToPixi[_const.STENCIL_MODES.MASK_ACTIVE] = {
-  stencilWriteMask: 0,
-  stencilFront: {
-    compare: "equal",
-    passOp: "keep"
-  },
-  stencilBack: {
-    compare: "equal",
-    passOp: "keep"
-  }
+    stencilWriteMask: 0,
+    stencilFront: {
+        compare: 'equal',
+        passOp: 'keep',
+    },
+    stencilBack: {
+        compare: 'equal',
+        passOp: 'keep',
+    },
 };
 GpuStencilModesToPixi[_const.STENCIL_MODES.INVERSE_MASK_ACTIVE] = {
-  stencilWriteMask: 0,
-  stencilFront: {
-    compare: "not-equal",
-    passOp: "replace"
-  },
-  stencilBack: {
-    compare: "not-equal",
-    passOp: "replace"
-  }
+    stencilWriteMask: 0,
+    stencilFront: {
+        compare: 'not-equal',
+        passOp: 'replace',
+    },
+    stencilBack: {
+        compare: 'not-equal',
+        passOp: 'replace',
+    },
 };
 
 exports.GpuStencilModesToPixi = GpuStencilModesToPixi;

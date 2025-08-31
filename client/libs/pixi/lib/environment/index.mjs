@@ -3,5 +3,5 @@ export { autoDetectEnvironment, loadEnvironmentExtensions } from './autoDetectEn
 import './canvas/ICanvas.mjs';
 import './canvas/ICanvasRenderingContext2D.mjs';
 
-"use strict";
+('use strict');
 //# sourceMappingURL=index.mjs.map

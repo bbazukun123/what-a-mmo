@@ -237,7 +237,13 @@ export declare abstract class Batcher {
      * @param index - The starting index in the views.
      * @param textureId - The texture ID to use.
      */
-    abstract packAttributes(element: BatchableMeshElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number): void;
+    abstract packAttributes(
+        element: BatchableMeshElement,
+        float32View: Float32Array,
+        uint32View: Uint32Array,
+        index: number,
+        textureId: number,
+    ): void;
     /**
      * Packs the attributes of a BatchableQuadElement into the provided views.
      * Must be implemented by subclasses.
@@ -247,7 +253,13 @@ export declare abstract class Batcher {
      * @param index - The starting index in the views.
      * @param textureId - The texture ID to use.
      */
-    abstract packQuadAttributes(element: BatchableQuadElement, float32View: Float32Array, uint32View: Uint32Array, index: number, textureId: number): void;
+    abstract packQuadAttributes(
+        element: BatchableQuadElement,
+        float32View: Float32Array,
+        uint32View: Uint32Array,
+        index: number,
+        textureId: number,
+    ): void;
     constructor(options?: BatcherOptions);
     begin(): void;
     add(batchableObject: BatchableElement): void;

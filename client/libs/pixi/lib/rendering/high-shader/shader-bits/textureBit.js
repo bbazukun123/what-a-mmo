@@ -1,77 +1,69 @@
 'use strict';
 
-"use strict";
+'use strict';
 const textureBit = {
-  name: "texture-bit",
-  vertex: {
-    header: (
-      /* wgsl */
-      `
+    name: 'texture-bit',
+    vertex: {
+        header:
+            /* wgsl */
+            `
 
         struct TextureUniforms {
             uTextureMatrix:mat3x3<f32>,
         }
 
         @group(2) @binding(2) var<uniform> textureUniforms : TextureUniforms;
-        `
-    ),
-    main: (
-      /* wgsl */
-      `
+        `,
+        main:
+            /* wgsl */
+            `
             uv = (textureUniforms.uTextureMatrix * vec3(uv, 1.0)).xy;
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* wgsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* wgsl */
+            `
             @group(2) @binding(0) var uTexture: texture_2d<f32>;
             @group(2) @binding(1) var uSampler: sampler;
 
          
-        `
-    ),
-    main: (
-      /* wgsl */
-      `
+        `,
+        main:
+            /* wgsl */
+            `
             outColor = textureSample(uTexture, uSampler, vUV);
-        `
-    )
-  }
+        `,
+    },
 };
 const textureBitGl = {
-  name: "texture-bit",
-  vertex: {
-    header: (
-      /* glsl */
-      `
+    name: 'texture-bit',
+    vertex: {
+        header:
+            /* glsl */
+            `
             uniform mat3 uTextureMatrix;
-        `
-    ),
-    main: (
-      /* glsl */
-      `
+        `,
+        main:
+            /* glsl */
+            `
             uv = (uTextureMatrix * vec3(uv, 1.0)).xy;
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* glsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* glsl */
+            `
         uniform sampler2D uTexture;
 
          
-        `
-    ),
-    main: (
-      /* glsl */
-      `
+        `,
+        main:
+            /* glsl */
+            `
             outColor = texture(uTexture, vUV);
-        `
-    )
-  }
+        `,
+    },
 };
 
 exports.textureBit = textureBit;

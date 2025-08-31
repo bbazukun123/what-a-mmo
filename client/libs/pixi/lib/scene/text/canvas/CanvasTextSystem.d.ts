@@ -19,12 +19,16 @@ export declare class CanvasTextSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem];
-        readonly name: "canvasText";
+        readonly name: 'canvasText';
     };
     private _activeTextures;
     private readonly _renderer;
     constructor(_renderer: Renderer);
-    getTextureSize(text: string, resolution: number, style: TextStyle): {
+    getTextureSize(
+        text: string,
+        resolution: number,
+        style: TextStyle,
+    ): {
         width: number;
         height: number;
     };
@@ -40,15 +44,11 @@ export declare class CanvasTextSystem implements System {
     /** @deprecated since 8.0.0 */
     getTexture(text: string, resolution: number, style: TextStyle, textKey: string): Texture;
     getTexture(options: TextOptions): Texture;
-    createTextureAndCanvas(options: {
-        text: string;
-        style: TextStyle;
-        resolution?: number;
-    }): {
-        texture: Texture<import("../../..").TextureSource<any>>;
-        canvasAndContext: import("../../../rendering/renderers/shared/texture/CanvasPool").CanvasAndContext;
+    createTextureAndCanvas(options: { text: string; style: TextStyle; resolution?: number }): {
+        texture: Texture<import('../../..').TextureSource<any>>;
+        canvasAndContext: import('../../../rendering/renderers/shared/texture/CanvasPool').CanvasAndContext;
     };
-    getManagedTexture(text: Text): Texture<import("../../..").TextureSource<any>>;
+    getManagedTexture(text: Text): Texture<import('../../..').TextureSource<any>>;
     private _increaseReferenceCount;
     /**
      * Returns a texture that was created wit the above `getTexture` function.
@@ -70,7 +70,13 @@ export declare class CanvasTextSystem implements System {
      * @param resolution
      * @param canvasAndContext
      */
-    renderTextToCanvas(text: string, style: TextStyle, padding: number, resolution: number, canvasAndContext: CanvasAndContext): void;
+    renderTextToCanvas(
+        text: string,
+        style: TextStyle,
+        padding: number,
+        resolution: number,
+        canvasAndContext: CanvasAndContext,
+    ): void;
     /**
      * Render the text with letter-spacing.
      * @param text - The text to draw

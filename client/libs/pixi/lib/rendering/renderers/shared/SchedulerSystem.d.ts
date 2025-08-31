@@ -8,7 +8,7 @@ export declare class SchedulerSystem implements System<null> {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem, ExtensionType.CanvasSystem];
-        readonly name: "scheduler";
+        readonly name: 'scheduler';
         readonly priority: 0;
     };
     private readonly _tasks;

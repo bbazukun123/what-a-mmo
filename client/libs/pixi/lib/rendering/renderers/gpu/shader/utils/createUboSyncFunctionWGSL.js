@@ -4,14 +4,14 @@ var createUboSyncFunction = require('../../../shared/shader/utils/createUboSyncF
 var uboSyncFunctions = require('../../../shared/shader/utils/uboSyncFunctions.js');
 var generateArraySyncWGSL = require('./generateArraySyncWGSL.js');
 
-"use strict";
+('use strict');
 function createUboSyncFunctionWGSL(uboElements) {
-  return createUboSyncFunction.createUboSyncFunction(
-    uboElements,
-    "uboWgsl",
-    generateArraySyncWGSL.generateArraySyncWGSL,
-    uboSyncFunctions.uboSyncFunctionsWGSL
-  );
+    return createUboSyncFunction.createUboSyncFunction(
+        uboElements,
+        'uboWgsl',
+        generateArraySyncWGSL.generateArraySyncWGSL,
+        uboSyncFunctions.uboSyncFunctionsWGSL,
+    );
 }
 
 exports.createUboSyncFunctionWGSL = createUboSyncFunctionWGSL;

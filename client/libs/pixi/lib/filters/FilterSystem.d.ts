@@ -49,7 +49,7 @@ export declare class FilterSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLSystem, ExtensionType.WebGPUSystem];
-        readonly name: "filter";
+        readonly name: 'filter';
     };
     readonly renderer: Renderer;
     private _filterStackIndex;
@@ -91,12 +91,13 @@ export declare class FilterSystem implements System {
      * 1. padding is not currently supported here - so clipping may occur with filters that use padding.
      * 2. If all filters are disabled or skipped, the original texture is returned.
      */
-    generateFilteredTexture({ texture, filters }: {
-        texture: Texture;
-        filters: Filter[];
-    }): Texture;
+    generateFilteredTexture({ texture, filters }: { texture: Texture; filters: Filter[] }): Texture;
     pop(): void;
-    getBackTexture(lastRenderSurface: RenderTarget, bounds: Bounds, previousBounds?: Bounds): Texture<import("..").TextureSource<any>>;
+    getBackTexture(
+        lastRenderSurface: RenderTarget,
+        bounds: Bounds,
+        previousBounds?: Bounds,
+    ): Texture<import('..').TextureSource<any>>;
     applyFilter(filter: Filter, input: Texture, output: RenderSurface, clear: boolean): void;
     /**
      * Multiply _input normalized coordinates_ to this matrix to get _sprite texture normalized coordinates_.

@@ -67,8 +67,7 @@ export interface TilingSpriteOptions extends PixiMixins.TilingSpriteOptions, Vie
     /** Whether or not to round the x/y position. */
     roundPixels?: boolean;
 }
-export interface TilingSprite extends PixiMixins.TilingSprite, ViewContainer {
-}
+export interface TilingSprite extends PixiMixins.TilingSprite, ViewContainer {}
 /**
  * A tiling sprite is a fast way of rendering a tiling image.
  * @example

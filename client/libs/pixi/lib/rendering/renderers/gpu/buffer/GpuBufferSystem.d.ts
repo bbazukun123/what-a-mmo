@@ -12,7 +12,7 @@ export declare class GpuBufferSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "buffer";
+        readonly name: 'buffer';
     };
     protected CONTEXT_UID: number;
     private _gpuBuffers;

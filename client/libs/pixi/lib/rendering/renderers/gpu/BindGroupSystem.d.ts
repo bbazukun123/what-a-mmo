@@ -13,7 +13,7 @@ export declare class BindGroupSystem implements System {
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGPUSystem];
-        readonly name: "bindGroup";
+        readonly name: 'bindGroup';
     };
     private readonly _renderer;
     private _hash;

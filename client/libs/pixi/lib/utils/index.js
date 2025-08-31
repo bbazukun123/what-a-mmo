@@ -28,7 +28,7 @@ var sayHello = require('./sayHello.js');
 require('./types.js');
 require('./utils.js');
 
-"use strict";
+('use strict');
 
 exports.detectVideoAlphaMode = detectVideoAlphaMode.detectVideoAlphaMode;
 exports.isMobile = isMobile.isMobile;

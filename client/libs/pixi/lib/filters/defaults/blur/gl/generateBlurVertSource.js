@@ -1,6 +1,6 @@
 'use strict';
 
-"use strict";
+'use strict';
 const vertTemplate = `
     in vec2 aPosition;
 
@@ -37,25 +37,25 @@ const vertTemplate = `
         %blur%
     }`;
 function generateBlurVertSource(kernelSize, x) {
-  const halfLength = Math.ceil(kernelSize / 2);
-  let vertSource = vertTemplate;
-  let blurLoop = "";
-  let template;
-  if (x) {
-    template = "vBlurTexCoords[%index%] =  textureCoord + vec2(%sampleIndex% * pixelStrength, 0.0);";
-  } else {
-    template = "vBlurTexCoords[%index%] =  textureCoord + vec2(0.0, %sampleIndex% * pixelStrength);";
-  }
-  for (let i = 0; i < kernelSize; i++) {
-    let blur = template.replace("%index%", i.toString());
-    blur = blur.replace("%sampleIndex%", `${i - (halfLength - 1)}.0`);
-    blurLoop += blur;
-    blurLoop += "\n";
-  }
-  vertSource = vertSource.replace("%blur%", blurLoop);
-  vertSource = vertSource.replace("%size%", kernelSize.toString());
-  vertSource = vertSource.replace("%dimension%", x ? "z" : "w");
-  return vertSource;
+    const halfLength = Math.ceil(kernelSize / 2);
+    let vertSource = vertTemplate;
+    let blurLoop = '';
+    let template;
+    if (x) {
+        template = 'vBlurTexCoords[%index%] =  textureCoord + vec2(%sampleIndex% * pixelStrength, 0.0);';
+    } else {
+        template = 'vBlurTexCoords[%index%] =  textureCoord + vec2(0.0, %sampleIndex% * pixelStrength);';
+    }
+    for (let i = 0; i < kernelSize; i++) {
+        let blur = template.replace('%index%', i.toString());
+        blur = blur.replace('%sampleIndex%', `${i - (halfLength - 1)}.0`);
+        blurLoop += blur;
+        blurLoop += '\n';
+    }
+    vertSource = vertSource.replace('%blur%', blurLoop);
+    vertSource = vertSource.replace('%size%', kernelSize.toString());
+    vertSource = vertSource.replace('%dimension%', x ? 'z' : 'w');
+    return vertSource;
 }
 
 exports.generateBlurVertSource = generateBlurVertSource;

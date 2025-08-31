@@ -7,7 +7,7 @@ export declare class NineSliceSpritePipe implements RenderPipe<NineSliceSprite> 
     /** @ignore */
     static extension: {
         readonly type: readonly [ExtensionType.WebGLPipes, ExtensionType.WebGPUPipes, ExtensionType.CanvasPipes];
-        readonly name: "nineSliceSprite";
+        readonly name: 'nineSliceSprite';
     };
     private readonly _renderer;
     private readonly _gpuSpriteHash;

@@ -3,7 +3,7 @@
 var AccessibilitySystem = require('./AccessibilitySystem.js');
 var accessibilityTarget = require('./accessibilityTarget.js');
 
-"use strict";
+('use strict');
 
 exports.AccessibilitySystem = AccessibilitySystem.AccessibilitySystem;
 exports.accessibilityTarget = accessibilityTarget.accessibilityTarget;

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 const tilingBit = {
-  name: "tiling-bit",
-  vertex: {
-    header: (
-      /* wgsl */
-      `
+    name: 'tiling-bit',
+    vertex: {
+        header:
+            /* wgsl */
+            `
             struct TilingUniforms {
                 uMapCoord:mat3x3<f32>,
                 uClampFrame:vec4<f32>,
@@ -16,21 +16,19 @@ const tilingBit = {
             @group(2) @binding(0) var<uniform> tilingUniforms: TilingUniforms;
             @group(2) @binding(1) var uTexture: texture_2d<f32>;
             @group(2) @binding(2) var uSampler: sampler;
-        `
-    ),
-    main: (
-      /* wgsl */
-      `
+        `,
+        main:
+            /* wgsl */
+            `
             uv = (tilingUniforms.uTextureTransform * vec3(uv, 1.0)).xy;
 
             position = (position - tilingUniforms.uSizeAnchor.zw) * tilingUniforms.uSizeAnchor.xy;
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* wgsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* wgsl */
+            `
             struct TilingUniforms {
                 uMapCoord:mat3x3<f32>,
                 uClampFrame:vec4<f32>,
@@ -42,11 +40,10 @@ const tilingBit = {
             @group(2) @binding(0) var<uniform> tilingUniforms: TilingUniforms;
             @group(2) @binding(1) var uTexture: texture_2d<f32>;
             @group(2) @binding(2) var uSampler: sampler;
-        `
-    ),
-    main: (
-      /* wgsl */
-      `
+        `,
+        main:
+            /* wgsl */
+            `
 
             var coord = vUV + ceil(tilingUniforms.uClampOffset - vUV);
             coord = (tilingUniforms.uMapCoord * vec3(coord, 1.0)).xy;
@@ -61,43 +58,39 @@ const tilingBit = {
             } 
 
             outColor = textureSampleBias(uTexture, uSampler, coord, bias);
-        `
-    )
-  }
+        `,
+    },
 };
 const tilingBitGl = {
-  name: "tiling-bit",
-  vertex: {
-    header: (
-      /* glsl */
-      `
+    name: 'tiling-bit',
+    vertex: {
+        header:
+            /* glsl */
+            `
             uniform mat3 uTextureTransform;
             uniform vec4 uSizeAnchor;
         
-        `
-    ),
-    main: (
-      /* glsl */
-      `
+        `,
+        main:
+            /* glsl */
+            `
             uv = (uTextureTransform * vec3(aUV, 1.0)).xy;
 
             position = (position - uSizeAnchor.zw) * uSizeAnchor.xy;
-        `
-    )
-  },
-  fragment: {
-    header: (
-      /* glsl */
-      `
+        `,
+    },
+    fragment: {
+        header:
+            /* glsl */
+            `
             uniform sampler2D uTexture;
             uniform mat3 uMapCoord;
             uniform vec4 uClampFrame;
             uniform vec2 uClampOffset;
-        `
-    ),
-    main: (
-      /* glsl */
-      `
+        `,
+        main:
+            /* glsl */
+            `
 
         vec2 coord = vUV + ceil(uClampOffset - vUV);
         coord = (uMapCoord * vec3(coord, 1.0)).xy;
@@ -106,9 +99,8 @@ const tilingBitGl = {
         
         outColor = texture(uTexture, coord, unclamped == coord ? 0.0 : -32.0);// lod-bias very negative to force lod 0
     
-        `
-    )
-  }
+        `,
+    },
 };
 
 export { tilingBit, tilingBitGl };
