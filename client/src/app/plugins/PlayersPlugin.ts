@@ -22,6 +22,10 @@ export class PlayersPlugin extends Plugin {
     );
   }
 
+  public getUserById(id: string): User | undefined {
+    return this.users.find((u) => u.identity.toHexString() === id);
+  }
+
   /**
    * Astro plugin lifecycle: initialize and subscribe to SpacetimeDB events
    */
@@ -53,7 +57,7 @@ export class PlayersPlugin extends Plugin {
     const index = this.users.findIndex(
       (u) => u.identity.toHexString() === user.identity.toHexString(),
     );
-    if (index === -1) return;
+    if (index === -1 || !this.users[index]) return;
 
     this.users[index].online = user.online;
     this.users[index].name = user.name;

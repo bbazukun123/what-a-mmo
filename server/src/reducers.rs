@@ -114,7 +114,7 @@ pub fn move_all_players(ctx: &ReducerContext, _timer: MoveAllPlayersTimer) -> Re
         let final_x = if x_collides { player.position.x } else { new_x };
 
         // Clamp Y
-        new_y = new_y.clamp(PLAYER_SIZE as f32, world_size as f32);
+        new_y = new_y.clamp(min, max);
         // Check Y collision (only online players)
         let mut y_collides = false;
         for other in online_players.iter() {

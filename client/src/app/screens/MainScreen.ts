@@ -1,44 +1,71 @@
+import { Container, Sprite, Texture } from "pixi.js";
 import { Message, User } from "../../module_bindings";
 import { ChatBar } from "../components/ChatBar";
 import { PlayerEntity } from "../components/PlayerEntity";
+import { GameScene } from "../game/GameScene";
 import { app } from "../utils/app";
 import { LayoutScreen } from "./LayoutScreen";
-import { LayoutContainer } from "@pixi/layout/components";
+import { LayoutContainer, LayoutSprite } from "@pixi/layout/components";
 
 export class MainScreen extends LayoutScreen {
+  private scene!: GameScene;
   private container!: LayoutContainer;
   private chatBar!: ChatBar;
   private playerEntityMap: Map<string, PlayerEntity> = new Map();
 
   public async preload() {
-    //
+    return {
+      manifests: ['game'],
+    }
   }
 
-  public async init(): Promise<void> {
+  public override async init(): Promise<void> {
     this.view.layout = {
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#1099bb",
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#1099bb',
     };
 
-    new LayoutContainer({
+    // Sky background
+    new Sprite({
       parent: this.view,
+      texture: Texture.from('bg_sky.png'),
       layout: {
-        position: "absolute",
-        width: "100%",
-        height: 1080,
-        backgroundColor: "#1099bb",
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
       },
     });
+
+    // Ground background
+    new Sprite({
+      parent: this.view,
+      texture: Texture.WHITE,
+      tint: 0x008800,
+      layout: {
+        position: 'absolute',
+        width: '100%',
+        height: '50%',
+        bottom: 0,
+        objectFit: 'cover',
+      },
+    });
+
+    const gameContainer = new Container({
+      parent: this.view,
+    });
+
+    this.scene = new GameScene(gameContainer);
 
     this.container = new LayoutContainer({
       parent: this.view,
       layout: {
-        width: "100%",
+        width: '100%',
         height: 1080,
       },
     });
-    this.chatBar = this.view.addChild(new ChatBar());
+    // this.chatBar = this.view.addChild(new ChatBar());
 
     // Initialize content
     app()
@@ -103,11 +130,11 @@ export class MainScreen extends LayoutScreen {
   }
 
   public async shown(): Promise<void> {
-    this.chatBar.start();
+    // this.chatBar.start();
   }
 
   public async hidden(): Promise<void> {
-    this.chatBar.stop();
+    // this.chatBar.stop();
   }
 
   public update(dt: number): void {

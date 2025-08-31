@@ -3,7 +3,9 @@ import {
   BusyPlugin,
   KeyboardPlugin,
   ResizePlugin,
+  ResourcePlugin,
   ScreensPlugin,
+  SetupPlugin,
   StagePlugin,
   VisibilityPlugin,
 } from "@play-co/astro";
@@ -16,13 +18,18 @@ import { MessagesPlugin } from "./plugins/MessagesPlugin";
 import { MonstersPlugin } from "./plugins/MonstersPlugin";
 import { PlayerControllerPlugin } from "./plugins/PlayerControllerPlugin";
 import { GameControllerPlugin } from "./plugins/GameControllerPlugin";
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - dynamically created file, so is not always present in the repo
+import manifest from '../manifest.json';
+import { WorldPlugin } from "./plugins/WorldPlugin";
 export class Application extends AstroApplication {
+  public resources!: ResourcePlugin;
   public stagePlugin!: StagePlugin;
   public resize!: ResizePlugin;
   public screens!: ScreensPlugin<typeof screens>;
   public busy!: BusyPlugin;
   public spacetimeDB!: SpacetimeDBPlugin;
+  public world!: WorldPlugin;
   public players!: PlayersPlugin;
   public messages!: MessagesPlugin;
   public monsters!: MonstersPlugin;
@@ -47,17 +54,26 @@ export class Application extends AstroApplication {
   }
 
   private initPlugins(): void {
+    this.resources = this.add(ResourcePlugin, {
+      name: 'resources',
+      manifest,
+      basePath: 'assets',
+    });
+
+    // Preload initial assets.
+    this.add(SetupPlugin, { name: 'setup' });
+  
     // Set up Pixi stage and append it to the DOM.
-    this.stagePlugin = this.add(StagePlugin, { name: "stage" });
+    this.stagePlugin = this.add(StagePlugin, { name: 'stage' });
 
     // Set up browser resize handler.
-    this.resize = this.add(ResizePlugin, { name: "resize" });
+    this.resize = this.add(ResizePlugin, { name: 'resize' });
 
     // Set up browser visibility handler.
     this.add(VisibilityPlugin);
 
     // Set up a blocker screen with a busy spinner that can be shown and hidden on demand.
-    this.busy = this.add(BusyPlugin, { name: "busy" });
+    this.busy = this.add(BusyPlugin, { name: 'busy' });
 
     this._initScreens();
 
@@ -65,6 +81,7 @@ export class Application extends AstroApplication {
     this.spacetimeDB = this.add(SpacetimeDBPlugin);
 
     // Set up players, messages, monsters, player controller, and game controller plugins.
+    this.world = this.add(WorldPlugin);
     this.players = this.add(PlayersPlugin);
     this.messages = this.add(MessagesPlugin);
     this.monsters = this.add(MonstersPlugin);

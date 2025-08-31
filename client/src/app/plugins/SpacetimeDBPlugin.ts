@@ -64,6 +64,7 @@ export class SpacetimeDBPlugin extends Plugin {
     });
 
     this.subscribeToQueries(conn, [
+      "SELECT * FROM config",
       "SELECT * FROM message",
       "SELECT * FROM user",
     ]);

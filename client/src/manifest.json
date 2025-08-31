@@ -1,0 +1,151 @@
+{
+  "bundles": [
+    {
+      "name": "default",
+      "assets": []
+    },
+    {
+      "name": "game",
+      "assets": [
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_X.jpg",
+            "TEXTURE_CUBE_MAP_NEGATIVE_X.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_X@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_X.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_X.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_X-83sq.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Y.jpg",
+            "TEXTURE_CUBE_MAP_NEGATIVE_Y.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Y@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Y.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Y.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Y-31rE8A.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Z.jpg",
+            "TEXTURE_CUBE_MAP_NEGATIVE_Z.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Z@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Z.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Z.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_NEGATIVE_Z-l_2Hfw.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_X.jpg",
+            "TEXTURE_CUBE_MAP_POSITIVE_X.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_X@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_X.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_X.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_X-N11mXA.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Y.jpg",
+            "TEXTURE_CUBE_MAP_POSITIVE_Y.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Y@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Y.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Y.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Y-78j3qQ.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Z.jpg",
+            "TEXTURE_CUBE_MAP_POSITIVE_Z.jpg"
+          ],
+          "src": [
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Z@0.5x.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Z.webp",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Z.jpg",
+            "game/skybox/TEXTURE_CUBE_MAP_POSITIVE_Z-iPGIbA.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/environment/bg_sky.png",
+            "bg_sky.png"
+          ],
+          "src": [
+            "game/environment/bg_sky@0.5x.png",
+            "game/environment/bg_sky.webp",
+            "game/environment/bg_sky.png",
+            "game/environment/bg_sky.png",
+            "game/environment/bg_sky-cdTUYw.png"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        },
+        {
+          "alias": [
+            "game/environment/texture_water.png",
+            "texture_water.png"
+          ],
+          "src": [
+            "game/environment/texture_water@0.5x.png",
+            "game/environment/texture_water.webp",
+            "game/environment/texture_water.png",
+            "game/environment/texture_water.png",
+            "game/environment/texture_water-UhxORg.png"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
