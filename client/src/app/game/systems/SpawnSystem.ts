@@ -1,20 +1,24 @@
 import { QueriesObject, QueryResults, System, View3DComponent } from '@play-co/odie';
-import { app } from '../../utils/app';
-import { createPlayerEntity } from '../entities/PlayerEntity';
 import { User } from '../../../module_bindings';
-import { PlayerEntityTag } from '../defs/tags';
+import { app } from '../../utils/app';
 import { GameScene } from '../GameScene';
+import { PlayerComponent } from '../components/PlayerComponent';
+import { createPlayerEntity, PlayerEntityType } from '../entities/PlayerEntity';
 
 export class SpawnSystem implements System<void, GameScene> {
     public static readonly NAME = 'spawnSystem';
     public static readonly Queries: QueriesObject = {
-        default: {
-            components: [PlayerEntityTag, View3DComponent],
+        players: {
+            components: [PlayerComponent, View3DComponent],
         },
     };
 
     public queries!: QueryResults;
     public scene!: GameScene;
+
+    private get players() {
+        return this.queries.players!.entities as unknown as PlayerEntityType[];
+    }
 
     public start() {
         this.initPlayers();
@@ -38,18 +42,19 @@ export class SpawnSystem implements System<void, GameScene> {
     }
 
     private addPlayerEntity(user: User) {
-        const entity = createPlayerEntity({ user });
+        if (!user.online) return;
+        const entity = createPlayerEntity({ user, self: app().playerController.isSelf(user) });
         this.scene.addToScene(entity);
     }
 
     private removePlayerEntity(user: User) {
-        const entity = this.queries.default!.entities.find((e) => e.name === user.identity.toHexString());
+        const entity = this.players.find((e) => e.c.player.user.identity.isEqual(user.identity));
         if (!entity) return;
         this.scene.removeFromScene(entity);
     }
 
     private onUserUpdated(user: User) {
-        const entity = this.queries.default!.entities.find((e) => e.name === user.identity.toHexString());
+        const entity = this.players.find((e) => e.c.player.user.identity.isEqual(user.identity));
 
         if (user.online && !entity) {
             this.addPlayerEntity(user);

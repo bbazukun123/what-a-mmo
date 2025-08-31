@@ -11,14 +11,14 @@ import {
     Vector3,
     View3DComponent,
 } from '@play-co/odie';
-import { PlayerEntityTag } from '../defs/tags';
 import { GameScene } from '../GameScene';
+import { PlayerComponent } from '../components/PlayerComponent';
 
 export class CameraControllerSystem implements System<void, GameScene> {
     public static readonly NAME = 'cameraControllerSystem';
     public static readonly Queries: QueriesObject = {
         default: {
-            components: [PlayerEntityTag, View3DComponent],
+            components: [PlayerComponent, View3DComponent],
             added: true,
             removed: true,
         },
@@ -64,9 +64,9 @@ export class CameraControllerSystem implements System<void, GameScene> {
         if (!this.target) return;
         const { x, y, z } = this.target;
 
-        this.camera.x = lerp(this.camera.x, x + this.offset.x, 0.1);
-        this.camera.y = lerp(this.camera.y, y + this.offset.y, 0.1);
-        this.camera.z = lerp(this.camera.z, z + this.offset.z, 0.1);
+        this.camera.x = lerp(this.camera.x, x + this.offset.x, 0.5);
+        this.camera.y = lerp(this.camera.y, y + this.offset.y, 0.5);
+        this.camera.z = lerp(this.camera.z, z + this.offset.z, 0.5);
         this.camera.c.camera.lookAtTarget!.set(x, y, z);
     }
 }
