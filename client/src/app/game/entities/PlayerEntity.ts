@@ -1,6 +1,8 @@
 import type { EntityType } from '@play-co/odie';
-import { createEntity, DefineEntity, Entity3D, PhongMaterial, SphereGeometry } from '@play-co/odie';
+import { createEntity, DefineEntity, Entity3D, OverlayComponent, PhongMaterial, SphereGeometry } from '@play-co/odie';
+import { Container } from 'pixi.js';
 import { User } from '../../../module_bindings';
+import { HudComponent } from '../components/HudComponent';
 import { PlayerComponent } from '../components/PlayerComponent';
 import { ShadowTag } from '../defs/tags';
 import { worldSizeRatio } from '../defs/world';
@@ -10,7 +12,7 @@ interface PlayerEntityOptions {
     self?: boolean;
 }
 
-export const PlayerEntity = DefineEntity(Entity3D, PlayerComponent, ShadowTag);
+export const PlayerEntity = DefineEntity(Entity3D, PlayerComponent, ShadowTag, HudComponent, OverlayComponent);
 
 export type PlayerEntityType = EntityType<typeof PlayerEntity>;
 
@@ -18,6 +20,7 @@ const playerSize = 100;
 
 export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType {
     const radius = playerSize * 0.5 * worldSizeRatio;
+    const hudView = new Container();
     const entity = createEntity(PlayerEntity, {
         view3d: {
             geometry: new SphereGeometry(radius),
@@ -33,6 +36,13 @@ export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType 
                 y: radius,
                 z: 0,
             },
+        },
+        hud: {
+            type: 'player',
+            view: hudView,
+        },
+        overlay: {
+            view: hudView,
         },
     });
 

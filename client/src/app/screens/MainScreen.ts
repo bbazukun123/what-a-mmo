@@ -1,17 +1,10 @@
-import { Container, Sprite, Texture } from 'pixi.js';
-import { Message, User } from '../../module_bindings';
-import { ChatBar } from '../components/ChatBar';
-import { PlayerEntity } from '../components/PlayerEntity';
+import { Container } from 'pixi.js';
 import { GameScene } from '../game/GameScene';
-import { app } from '../utils/app';
 import { LayoutScreen } from './LayoutScreen';
-import { LayoutContainer } from '@pixi/layout/components';
 
 export class MainScreen extends LayoutScreen {
-    private scene!: GameScene;
-    private container!: LayoutContainer;
-    private chatBar!: ChatBar;
-    private playerEntityMap: Map<string, PlayerEntity> = new Map();
+    private game!: GameScene;
+    // private chatBar!: ChatBar;
 
     public async preload() {
         return {
@@ -26,107 +19,17 @@ export class MainScreen extends LayoutScreen {
             backgroundColor: '#1099bb',
         };
 
-        // Sky background
-        new Sprite({
-            parent: this.view,
-            texture: Texture.from('bg_sky.png'),
-            layout: {
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-            },
-        });
-
-        // Ground background
-        new Sprite({
-            parent: this.view,
-            texture: Texture.WHITE,
-            tint: 0x008800,
-            layout: {
-                position: 'absolute',
-                width: '100%',
-                height: '50%',
-                bottom: 0,
-                objectFit: 'cover',
-            },
-        });
-
         const gameContainer = new Container({
             parent: this.view,
         });
 
-        this.scene = new GameScene(gameContainer);
+        this.game = new GameScene(gameContainer);
 
-        this.container = new LayoutContainer({
-            parent: this.view,
-            layout: {
-                width: '100%',
-                height: 1080,
-            },
-        });
-        // this.chatBar = this.view.addChild(new ChatBar());
-
-        // Initialize content
-        app()
-            .players.getUsers()
-            .forEach((user) => this.onUserAdded(user));
-
-        // Listen for users update
-        const { onUserAdded, onUserUpdated, onUserRemoved } = app().players.signals;
-        onUserAdded.connect((user) => this.onUserAdded(user));
-        onUserUpdated.connect((user) => this.onUserUpdated(user));
-        onUserRemoved.connect((user) => this.onUserRemoved(user));
-
-        // Listen for messages update
-        const { onMessageAdded, onMessageRemoved } = app().messages.signals;
-        onMessageAdded.connect((message) => this.onMessageUpdated(message));
-        onMessageRemoved.connect((message) => this.onMessageUpdated(message));
-    }
-
-    private onUserAdded(user: User) {
-        // Skip if user is already added
-        if (this.playerEntityMap.has(user.identity.toHexString())) return;
-
-        // Skip if user is offline
-        if (!user.online) return;
-
-        const playerEntity = this.container.addChild(new PlayerEntity(user));
-
-        // Store the user view
-        this.playerEntityMap.set(user.identity.toHexString(), playerEntity);
-    }
-
-    private onUserUpdated(user: User) {
-        if (!user.online) {
-            this.onUserRemoved(user);
-            return;
-        }
-
-        // Attempt to re-add the user who may have come back online
-        this.onUserAdded(user);
-
-        // Sync user data
-        this.playerEntityMap.get(user.identity.toHexString())?.syncName();
-    }
-
-    private onUserRemoved(user: User) {
-        // Find the user entity
-        const playerEntity = this.playerEntityMap.get(user.identity.toHexString());
-        if (!playerEntity) return;
-
-        // Remove the user entity from the container
-        this.container.removeChild(playerEntity);
-        this.playerEntityMap.delete(user.identity.toHexString());
-    }
-
-    private onMessageUpdated(message: Message) {
-        const playerEntity = this.playerEntityMap.get(message.sender.toHexString());
-        playerEntity?.syncMessages();
+        await this.game.init();
     }
 
     public async show(): Promise<void> {
-        //
+        this.game.start();
     }
 
     public async shown(): Promise<void> {
@@ -138,6 +41,6 @@ export class MainScreen extends LayoutScreen {
     }
 
     public update(dt: number): void {
-        this.playerEntityMap.forEach((player) => player.update(dt));
+        //
     }
 }

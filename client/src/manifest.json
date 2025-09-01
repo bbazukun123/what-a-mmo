@@ -9,23 +9,6 @@
       "assets": [
         {
           "alias": [
-            "game/environment/bg_sky.png",
-            "bg_sky.png"
-          ],
-          "src": [
-            "game/environment/bg_sky@0.5x.png",
-            "game/environment/bg_sky.webp",
-            "game/environment/bg_sky.png",
-            "game/environment/bg_sky-cdTUYw.png"
-          ],
-          "data": {
-            "tags": {
-              "m": true
-            }
-          }
-        },
-        {
-          "alias": [
             "game/environment/texture_water.png",
             "texture_water.png"
           ],
