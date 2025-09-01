@@ -19,13 +19,16 @@ export type PlayerEntityType = EntityType<typeof PlayerEntity>;
 const playerSize = 100;
 
 export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType {
+    const id = opts.user.identity.toHexString();
     const radius = playerSize * 0.5 * worldSizeRatio;
     const hudView = new Container();
+    const color = getRandomColor(id);
+
     const entity = createEntity(PlayerEntity, {
         view3d: {
             geometry: new SphereGeometry(radius),
             material: new PhongMaterial({
-                color: 0xff0000,
+                color,
                 receiveShadows: false,
             }),
         },
@@ -46,7 +49,14 @@ export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType 
         },
     });
 
-    entity.name = opts.user.identity.toHexString();
+    entity.name = id;
 
     return entity;
+}
+
+function getRandomColor(seed: string) {
+    const hash = [...seed].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const random = (hash * 9301 + 49297) % 233280;
+    const color = (random / 233280) * 0xffffff;
+    return color;
 }
