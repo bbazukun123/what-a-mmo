@@ -1,3 +1,5 @@
+// Global flag to toggle collision checks
+const PASSTHROUGH: bool = true;
 use std::time::Duration;
 use crate::models::{Config, User};
 use crate::math::DbVector2;
@@ -99,35 +101,43 @@ pub fn move_all_players(ctx: &ReducerContext, _timer: MoveAllPlayersTimer) -> Re
         let max = world_size as f32 - PLAYER_SIZE as f32 / 2.0;
         // Clamp X
         new_x = new_x.clamp(min, max);
-        // Check X collision (only online players)
-        let mut x_collides = false;
-        for other in online_players.iter() {
-            if other.identity == player.identity { continue; }
-            let dx = new_x - other.position.x;
-            let dy = player.position.y - other.position.y;
-            let dist = (dx * dx + dy * dy).sqrt();
-            if dist < PLAYER_SIZE as f32 {
-                x_collides = true;
-                break;
+        let final_x = if PASSTHROUGH {
+            new_x
+        } else {
+            // Check X collision (only online players)
+            let mut x_collides = false;
+            for other in online_players.iter() {
+                if other.identity == player.identity { continue; }
+                let dx = new_x - other.position.x;
+                let dy = player.position.y - other.position.y;
+                let dist = (dx * dx + dy * dy).sqrt();
+                if dist < PLAYER_SIZE as f32 {
+                    x_collides = true;
+                    break;
+                }
             }
-        }
-        let final_x = if x_collides { player.position.x } else { new_x };
+            if x_collides { player.position.x } else { new_x }
+        };
 
         // Clamp Y
         new_y = new_y.clamp(min, max);
-        // Check Y collision (only online players)
-        let mut y_collides = false;
-        for other in online_players.iter() {
-            if other.identity == player.identity { continue; }
-            let dx = final_x - other.position.x;
-            let dy = new_y - other.position.y;
-            let dist = (dx * dx + dy * dy).sqrt();
-            if dist < PLAYER_SIZE as f32 {
-                y_collides = true;
-                break;
+        let final_y = if PASSTHROUGH {
+            new_y
+        } else {
+            // Check Y collision (only online players)
+            let mut y_collides = false;
+            for other in online_players.iter() {
+                if other.identity == player.identity { continue; }
+                let dx = final_x - other.position.x;
+                let dy = new_y - other.position.y;
+                let dist = (dx * dx + dy * dy).sqrt();
+                if dist < PLAYER_SIZE as f32 {
+                    y_collides = true;
+                    break;
+                }
             }
-        }
-        let final_y = if y_collides { player.position.y } else { new_y };
+            if y_collides { player.position.y } else { new_y }
+        };
 
         updated_positions.push((player.identity, DbVector2 { x: final_x, y: final_y }));
     }

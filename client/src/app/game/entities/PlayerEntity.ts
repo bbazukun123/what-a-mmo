@@ -43,6 +43,8 @@ export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType 
         },
     });
 
+    entity.c.view3d!.state.blend = true;
+
     entity.name = id;
 
     return entity;
