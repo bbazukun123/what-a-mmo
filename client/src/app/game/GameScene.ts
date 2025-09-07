@@ -1,4 +1,4 @@
-import { OrbitalCameraSystem, OverlaySystem, Scene, Scene3D, ShadowSystem, SystemClass } from '@play-co/odie';
+import { OrbitalCameraSystem, Scene, Scene3D, ShadowSystem, SystemClass } from '@play-co/odie';
 import { type Container, type Renderer } from 'pixi.js';
 import { app } from '../utils/app';
 import { System } from './defs/types';
@@ -30,14 +30,13 @@ export class GameScene extends Scene3D {
         this.addSystem(ShadowSystem, {
             useBatching: true,
         });
-        this.addSystem(OverlaySystem, { stage: this.stage });
         this.addSystem(OrbitalCameraSystem);
         this.addSystem(CameraControllerSystem);
         this.addSystem(GameLightSystem);
         this.addSystem(WorldSystem);
         this.addSystem(SpawnSystem);
         this.addSystem(PlayersSystem);
-        this.addSystem(HudSystem);
+        this.addSystem(HudSystem, { stage: this.stage });
     }
 
     public override addSystem<S extends System<any, any, any, any>>(

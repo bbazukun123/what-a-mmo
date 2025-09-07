@@ -6,21 +6,19 @@ import { HudResourceBar } from './hud/HudResourceBar';
 
 export interface HudOptions {
     type: 'player';
-    view: Container;
 }
 
 const width = 160;
 
 export class HudComponent implements Component<HudOptions> {
     public static readonly NAME = 'hud';
-    private container!: LayoutContainer;
+    public view = new Container();
     public healthBar!: HudResourceBar;
     public manaBar!: HudResourceBar;
     public nameLabel!: HudNameLabel;
 
-    public init(opts: HudOptions) {
-        const { view } = opts;
-        this.container = view.addChild(
+    public init() {
+        const container = this.view.addChild(
             new LayoutContainer({
                 layout: {
                     width,
@@ -33,8 +31,8 @@ export class HudComponent implements Component<HudOptions> {
             }),
         );
 
-        this.healthBar = this.container.addChild(new HudResourceBar('health'));
-        this.manaBar = this.container.addChild(new HudResourceBar('mana'));
-        this.nameLabel = this.container.addChild(new HudNameLabel());
+        this.healthBar = container.addChild(new HudResourceBar('health'));
+        this.manaBar = container.addChild(new HudResourceBar('mana'));
+        this.nameLabel = container.addChild(new HudNameLabel());
     }
 }
