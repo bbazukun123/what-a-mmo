@@ -54,7 +54,7 @@ export class HudSystem implements System<HudSystemOptions, GameScene> {
         });
     }
 
-    public render() {
+    public postrender() {
         this.queries.players!.forEach((entity: PlayerEntityType) => {
             this.mapOverlayViewToEntity(entity);
         });
