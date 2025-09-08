@@ -27,7 +27,7 @@ export class HudComponent implements Component<HudOptions> {
                     alignItems: 'center',
                 },
                 x: -width / 2,
-                y: 90,
+                y: 35,
             }),
         );
 

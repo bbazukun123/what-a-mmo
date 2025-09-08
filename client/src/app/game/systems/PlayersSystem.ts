@@ -21,7 +21,10 @@ export class PlayersSystem implements System<void, GameScene> {
     public scene!: GameScene;
 
     public addedToQuery(entity: PlayerEntityType) {
-        const { player } = entity.c;
+        const { player, playerView } = entity.c;
+
+        entity.addChild(playerView.createView(player.playerId));
+
         if (player.isSelf) {
             entity.position.x = player.user.position.x * worldSizeRatio;
             entity.position.z = player.user.position.y * worldSizeRatio;

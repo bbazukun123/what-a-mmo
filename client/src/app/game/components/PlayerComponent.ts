@@ -1,4 +1,4 @@
-import type { Component } from '@play-co/odie';
+import { Entity3D, type Component } from '@play-co/odie';
 import { User } from '../../../module_bindings';
 
 export interface PlayerOptions {
@@ -8,6 +8,7 @@ export interface PlayerOptions {
 
 export class PlayerComponent implements Component<PlayerOptions> {
     public static readonly NAME = 'player';
+    public view!: Entity3D;
     private data!: PlayerOptions;
 
     public get user(): User {
