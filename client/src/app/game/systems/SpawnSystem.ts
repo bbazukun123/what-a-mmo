@@ -2,7 +2,7 @@ import { QueriesObject, QueryResults, System, View3DComponent } from '@play-co/o
 import { User } from '../../../module_bindings';
 import { app } from '../../utils/app';
 import { GameScene } from '../GameScene';
-import { PlayerComponent } from '../components/PlayerComponent';
+import { PlayerComponent } from '../components/player/PlayerComponent';
 import { createPlayerEntity, PlayerEntityType } from '../entities/PlayerEntity';
 
 export class SpawnSystem implements System<void, GameScene> {

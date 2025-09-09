@@ -1,5 +1,5 @@
 import { Entity3D, type Component } from '@play-co/odie';
-import { User } from '../../../module_bindings';
+import { User } from '../../../../module_bindings';
 
 export interface PlayerOptions {
     user: User;

@@ -1,23 +1,23 @@
-import { QueriesObject, QueryResults, Vector2, Vector3 } from '@play-co/odie';
+import { QueriesObject, QueryResults, Time, Vector2, Vector3 } from '@play-co/odie';
 import { Container } from 'pixi.js';
 import { app } from '../../utils/app';
-import { HudComponent } from '../components/hud/HudComponent';
+import { EyesComponent } from '../components/player/EyesComponent';
 import { System } from '../defs/types';
 import { PlayerEntityType } from '../entities/PlayerEntity';
 import { GameScene } from '../GameScene';
 
-type HudSystemOptions = {
+type EyesSystemOptions = {
     stage: Container;
 };
 
 const inPos = new Vector3();
 const outPos = new Vector2();
 
-export class HudSystem implements System<HudSystemOptions, GameScene> {
-    public static readonly NAME = 'hudSystem';
+export class EyesSystem implements System<EyesSystemOptions, GameScene> {
+    public static readonly NAME = 'eyesSystem';
     public static readonly Queries: QueriesObject = {
         players: {
-            components: [HudComponent],
+            components: [EyesComponent],
             added: true,
             removed: true,
         },
@@ -27,29 +27,25 @@ export class HudSystem implements System<HudSystemOptions, GameScene> {
     public scene!: GameScene;
     private view = new Container();
 
-    public init(opts: HudSystemOptions) {
+    public init(opts: EyesSystemOptions) {
         opts.stage.addChild(this.view);
     }
 
     public addedToQuery(entity: PlayerEntityType) {
-        const { view } = entity.c.hud;
+        const { view } = entity.c.eyes;
         this.view.addChild(view);
     }
 
     public removedFromQuery(entity: PlayerEntityType) {
-        const { view } = entity.c.hud;
+        const { view } = entity.c.eyes;
         this.view.removeChild(view);
     }
 
-    public update() {
+    public update(time: Time) {
         this.queries.players!.forEach((entity: PlayerEntityType) => {
-            const { player, hud } = entity.c;
-
-            hud.nameLabel.setName(player.user.name ?? 'Creating...');
-            hud.healthBar.visible = player.isSelf;
-            hud.manaBar.visible = player.isSelf;
-
-            // TODO: Handle resource bars
+            const { eyes } = entity.c;
+            eyes.eyes.setDirection(entity.rotation.y);
+            eyes.eyes.update(time.deltaTime);
         });
     }
 
@@ -61,10 +57,10 @@ export class HudSystem implements System<HudSystemOptions, GameScene> {
 
     private mapOverlayViewToEntity(entity: PlayerEntityType) {
         const view3d = this.scene.view3d;
-        const { hud } = entity.c;
-        const { view } = hud;
+        const { eyes } = entity.c;
+        const { view } = eyes;
         if (view.visible) {
-            const wt = entity.c.transform.worldTransform.elements;
+            const wt = entity.c.playerView.view.c.transform.worldTransform.elements;
             inPos.x = wt[12] ?? 0;
             inPos.y = wt[13] ?? 0;
             inPos.z = wt[14] ?? 0;

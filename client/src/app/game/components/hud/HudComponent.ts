@@ -1,8 +1,8 @@
 import { LayoutContainer } from '@pixi/layout/components';
 import { type Component } from '@play-co/odie';
 import { Container } from 'pixi.js';
-import { HudNameLabel } from './hud/HudNameLabel';
-import { HudResourceBar } from './hud/HudResourceBar';
+import { HudNameLabel } from './HudNameLabel';
+import { HudResourceBar } from './HudResourceBar';
 
 export interface HudOptions {
     type: 'player';

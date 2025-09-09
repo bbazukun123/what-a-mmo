@@ -29,9 +29,10 @@ pub fn client_connected(ctx: &ReducerContext) {
     } else {
         ctx.db.user().insert(User {
             name: None,
+            class: None,
             identity: ctx.sender,
             position: DbVector2 { x: 540.0, y: 540.0 },
-            direction: DbVector2 { x: 0.0, y: 0.0 },
+            direction: DbVector2 { x: 0.0, y: -1.0 }, // Default facing down
             speed: 0.0,
             online: true,
         });
@@ -52,9 +53,13 @@ pub fn identity_disconnected(ctx: &ReducerContext) {
 pub fn update_player_input(ctx: &ReducerContext, x: i32, y: i32) -> Result<(), String> {
     let mut user = ctx.db.user().identity().find(ctx.sender)
         .ok_or("User not found")?;
-    user.direction.x = x as f32;
-    user.direction.y = y as f32;
-    user.speed = user.direction.magnitude().clamp(0.0, 1.0);
+    if x != 0 || y != 0 {
+        user.direction.x = x as f32;
+        user.direction.y = y as f32;
+        user.speed = user.direction.magnitude().clamp(0.0, 1.0);
+    } else {
+        user.speed = 0.0;
+    }
     ctx.db.user().identity().update(user);
     Ok(())
 }

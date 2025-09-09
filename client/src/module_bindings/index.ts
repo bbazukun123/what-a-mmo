@@ -7,335 +7,321 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-    AlgebraicType,
-    AlgebraicValue,
-    BinaryReader,
-    BinaryWriter,
-    ConnectionId,
-    DbConnectionBuilder,
-    DbConnectionImpl,
-    Identity,
-    ProductType,
-    ProductTypeElement,
-    SubscriptionBuilderImpl,
-    SumType,
-    SumTypeVariant,
-    TableCache,
-    TimeDuration,
-    Timestamp,
-    deepEqual,
-    type CallReducerFlags,
-    type DbContext,
-    type ErrorContextInterface,
-    type Event,
-    type EventContextInterface,
-    type ReducerEventContextInterface,
-    type SubscriptionEventContextInterface,
-} from '@clockworklabs/spacetimedb-sdk';
+  AlgebraicType,
+  AlgebraicValue,
+  BinaryReader,
+  BinaryWriter,
+  ConnectionId,
+  DbConnectionBuilder,
+  DbConnectionImpl,
+  Identity,
+  ProductType,
+  ProductTypeElement,
+  SubscriptionBuilderImpl,
+  SumType,
+  SumTypeVariant,
+  TableCache,
+  TimeDuration,
+  Timestamp,
+  deepEqual,
+  type CallReducerFlags,
+  type DbContext,
+  type ErrorContextInterface,
+  type Event,
+  type EventContextInterface,
+  type ReducerEventContextInterface,
+  type SubscriptionEventContextInterface,
+} from "@clockworklabs/spacetimedb-sdk";
 
 // Import and reexport all reducer arg types
-import { ClientConnected } from './client_connected_reducer.ts';
+import { ClientConnected } from "./client_connected_reducer.ts";
 export { ClientConnected };
-import { IdentityDisconnected } from './identity_disconnected_reducer.ts';
+import { IdentityDisconnected } from "./identity_disconnected_reducer.ts";
 export { IdentityDisconnected };
-import { MoveAllPlayers } from './move_all_players_reducer.ts';
+import { MoveAllPlayers } from "./move_all_players_reducer.ts";
 export { MoveAllPlayers };
-import { SendMessage } from './send_message_reducer.ts';
+import { SendMessage } from "./send_message_reducer.ts";
 export { SendMessage };
-import { SetName } from './set_name_reducer.ts';
+import { SetName } from "./set_name_reducer.ts";
 export { SetName };
-import { UpdatePlayerInput } from './update_player_input_reducer.ts';
+import { UpdatePlayerInput } from "./update_player_input_reducer.ts";
 export { UpdatePlayerInput };
 
 // Import and reexport all table handle types
-import { ConfigTableHandle } from './config_table.ts';
+import { ConfigTableHandle } from "./config_table.ts";
 export { ConfigTableHandle };
-import { MessageTableHandle } from './message_table.ts';
+import { MessageTableHandle } from "./message_table.ts";
 export { MessageTableHandle };
-import { MonsterTableHandle } from './monster_table.ts';
+import { MonsterTableHandle } from "./monster_table.ts";
 export { MonsterTableHandle };
-import { MoveAllPlayersTimerTableHandle } from './move_all_players_timer_table.ts';
+import { MoveAllPlayersTimerTableHandle } from "./move_all_players_timer_table.ts";
 export { MoveAllPlayersTimerTableHandle };
-import { UserTableHandle } from './user_table.ts';
+import { UserTableHandle } from "./user_table.ts";
 export { UserTableHandle };
 
 // Import and reexport all types
-import { Config } from './config_type.ts';
+import { Config } from "./config_type.ts";
 export { Config };
-import { DbVector2 } from './db_vector_2_type.ts';
+import { DbVector2 } from "./db_vector_2_type.ts";
 export { DbVector2 };
-import { Message } from './message_type.ts';
+import { Message } from "./message_type.ts";
 export { Message };
-import { Monster } from './monster_type.ts';
+import { Monster } from "./monster_type.ts";
 export { Monster };
-import { MoveAllPlayersTimer } from './move_all_players_timer_type.ts';
+import { MoveAllPlayersTimer } from "./move_all_players_timer_type.ts";
 export { MoveAllPlayersTimer };
-import { User } from './user_type.ts';
+import { PlayerClass } from "./player_class_type.ts";
+export { PlayerClass };
+import { User } from "./user_type.ts";
 export { User };
 
 const REMOTE_MODULE = {
-    tables: {
-        config: {
-            tableName: 'config',
-            rowType: Config.getTypeScriptAlgebraicType(),
-            primaryKey: 'id',
-            primaryKeyInfo: {
-                colName: 'id',
-                colType: Config.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
-            },
-        },
-        message: {
-            tableName: 'message',
-            rowType: Message.getTypeScriptAlgebraicType(),
-        },
-        monster: {
-            tableName: 'monster',
-            rowType: Monster.getTypeScriptAlgebraicType(),
-            primaryKey: 'identity',
-            primaryKeyInfo: {
-                colName: 'identity',
-                colType: Monster.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
-            },
-        },
-        move_all_players_timer: {
-            tableName: 'move_all_players_timer',
-            rowType: MoveAllPlayersTimer.getTypeScriptAlgebraicType(),
-            primaryKey: 'scheduledId',
-            primaryKeyInfo: {
-                colName: 'scheduledId',
-                colType: MoveAllPlayersTimer.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
-            },
-        },
-        user: {
-            tableName: 'user',
-            rowType: User.getTypeScriptAlgebraicType(),
-            primaryKey: 'identity',
-            primaryKeyInfo: {
-                colName: 'identity',
-                colType: User.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
-            },
-        },
+  tables: {
+    config: {
+      tableName: "config",
+      rowType: Config.getTypeScriptAlgebraicType(),
+      primaryKey: "id",
+      primaryKeyInfo: {
+        colName: "id",
+        colType: Config.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
     },
-    reducers: {
-        client_connected: {
-            reducerName: 'client_connected',
-            argsType: ClientConnected.getTypeScriptAlgebraicType(),
-        },
-        identity_disconnected: {
-            reducerName: 'identity_disconnected',
-            argsType: IdentityDisconnected.getTypeScriptAlgebraicType(),
-        },
-        move_all_players: {
-            reducerName: 'move_all_players',
-            argsType: MoveAllPlayers.getTypeScriptAlgebraicType(),
-        },
-        send_message: {
-            reducerName: 'send_message',
-            argsType: SendMessage.getTypeScriptAlgebraicType(),
-        },
-        set_name: {
-            reducerName: 'set_name',
-            argsType: SetName.getTypeScriptAlgebraicType(),
-        },
-        update_player_input: {
-            reducerName: 'update_player_input',
-            argsType: UpdatePlayerInput.getTypeScriptAlgebraicType(),
-        },
+    message: {
+      tableName: "message",
+      rowType: Message.getTypeScriptAlgebraicType(),
     },
-    versionInfo: {
-        cliVersion: '1.3.0',
+    monster: {
+      tableName: "monster",
+      rowType: Monster.getTypeScriptAlgebraicType(),
+      primaryKey: "identity",
+      primaryKeyInfo: {
+        colName: "identity",
+        colType: Monster.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
     },
-    // Constructors which are used by the DbConnectionImpl to
-    // extract type information from the generated RemoteModule.
-    //
-    // NOTE: This is not strictly necessary for `eventContextConstructor` because
-    // all we do is build a TypeScript object which we could have done inside the
-    // SDK, but if in the future we wanted to create a class this would be
-    // necessary because classes have methods, so we'll keep it.
-    eventContextConstructor: (imp: DbConnectionImpl, event: Event<Reducer>) => {
-        return {
-            ...(imp as DbConnection),
-            event,
-        };
+    move_all_players_timer: {
+      tableName: "move_all_players_timer",
+      rowType: MoveAllPlayersTimer.getTypeScriptAlgebraicType(),
+      primaryKey: "scheduledId",
+      primaryKeyInfo: {
+        colName: "scheduledId",
+        colType: MoveAllPlayersTimer.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
     },
-    dbViewConstructor: (imp: DbConnectionImpl) => {
-        return new RemoteTables(imp);
+    user: {
+      tableName: "user",
+      rowType: User.getTypeScriptAlgebraicType(),
+      primaryKey: "identity",
+      primaryKeyInfo: {
+        colName: "identity",
+        colType: User.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
     },
-    reducersConstructor: (imp: DbConnectionImpl, setReducerFlags: SetReducerFlags) => {
-        return new RemoteReducers(imp, setReducerFlags);
+  },
+  reducers: {
+    client_connected: {
+      reducerName: "client_connected",
+      argsType: ClientConnected.getTypeScriptAlgebraicType(),
     },
-    setReducerFlagsConstructor: () => {
-        return new SetReducerFlags();
+    identity_disconnected: {
+      reducerName: "identity_disconnected",
+      argsType: IdentityDisconnected.getTypeScriptAlgebraicType(),
     },
-};
+    move_all_players: {
+      reducerName: "move_all_players",
+      argsType: MoveAllPlayers.getTypeScriptAlgebraicType(),
+    },
+    send_message: {
+      reducerName: "send_message",
+      argsType: SendMessage.getTypeScriptAlgebraicType(),
+    },
+    set_name: {
+      reducerName: "set_name",
+      argsType: SetName.getTypeScriptAlgebraicType(),
+    },
+    update_player_input: {
+      reducerName: "update_player_input",
+      argsType: UpdatePlayerInput.getTypeScriptAlgebraicType(),
+    },
+  },
+  versionInfo: {
+    cliVersion: "1.3.0",
+  },
+  // Constructors which are used by the DbConnectionImpl to
+  // extract type information from the generated RemoteModule.
+  //
+  // NOTE: This is not strictly necessary for `eventContextConstructor` because
+  // all we do is build a TypeScript object which we could have done inside the
+  // SDK, but if in the future we wanted to create a class this would be
+  // necessary because classes have methods, so we'll keep it.
+  eventContextConstructor: (imp: DbConnectionImpl, event: Event<Reducer>) => {
+    return {
+      ...(imp as DbConnection),
+      event
+    }
+  },
+  dbViewConstructor: (imp: DbConnectionImpl) => {
+    return new RemoteTables(imp);
+  },
+  reducersConstructor: (imp: DbConnectionImpl, setReducerFlags: SetReducerFlags) => {
+    return new RemoteReducers(imp, setReducerFlags);
+  },
+  setReducerFlagsConstructor: () => {
+    return new SetReducerFlags();
+  }
+}
 
 // A type representing all the possible variants of a reducer.
-export type Reducer =
-    | never
-    | { name: 'ClientConnected'; args: ClientConnected }
-    | { name: 'IdentityDisconnected'; args: IdentityDisconnected }
-    | { name: 'MoveAllPlayers'; args: MoveAllPlayers }
-    | { name: 'SendMessage'; args: SendMessage }
-    | { name: 'SetName'; args: SetName }
-    | { name: 'UpdatePlayerInput'; args: UpdatePlayerInput };
+export type Reducer = never
+| { name: "ClientConnected", args: ClientConnected }
+| { name: "IdentityDisconnected", args: IdentityDisconnected }
+| { name: "MoveAllPlayers", args: MoveAllPlayers }
+| { name: "SendMessage", args: SendMessage }
+| { name: "SetName", args: SetName }
+| { name: "UpdatePlayerInput", args: UpdatePlayerInput }
+;
 
 export class RemoteReducers {
-    constructor(
-        private connection: DbConnectionImpl,
-        private setCallReducerFlags: SetReducerFlags,
-    ) {}
+  constructor(private connection: DbConnectionImpl, private setCallReducerFlags: SetReducerFlags) {}
 
-    onClientConnected(callback: (ctx: ReducerEventContext) => void) {
-        this.connection.onReducer('client_connected', callback);
-    }
+  onClientConnected(callback: (ctx: ReducerEventContext) => void) {
+    this.connection.onReducer("client_connected", callback);
+  }
 
-    removeOnClientConnected(callback: (ctx: ReducerEventContext) => void) {
-        this.connection.offReducer('client_connected', callback);
-    }
+  removeOnClientConnected(callback: (ctx: ReducerEventContext) => void) {
+    this.connection.offReducer("client_connected", callback);
+  }
 
-    onIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
-        this.connection.onReducer('identity_disconnected', callback);
-    }
+  onIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
+    this.connection.onReducer("identity_disconnected", callback);
+  }
 
-    removeOnIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
-        this.connection.offReducer('identity_disconnected', callback);
-    }
+  removeOnIdentityDisconnected(callback: (ctx: ReducerEventContext) => void) {
+    this.connection.offReducer("identity_disconnected", callback);
+  }
 
-    moveAllPlayers(timer: MoveAllPlayersTimer) {
-        const __args = { timer };
-        let __writer = new BinaryWriter(1024);
-        MoveAllPlayers.getTypeScriptAlgebraicType().serialize(__writer, __args);
-        let __argsBuffer = __writer.getBuffer();
-        this.connection.callReducer('move_all_players', __argsBuffer, this.setCallReducerFlags.moveAllPlayersFlags);
-    }
+  moveAllPlayers(timer: MoveAllPlayersTimer) {
+    const __args = { timer };
+    let __writer = new BinaryWriter(1024);
+    MoveAllPlayers.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("move_all_players", __argsBuffer, this.setCallReducerFlags.moveAllPlayersFlags);
+  }
 
-    onMoveAllPlayers(callback: (ctx: ReducerEventContext, timer: MoveAllPlayersTimer) => void) {
-        this.connection.onReducer('move_all_players', callback);
-    }
+  onMoveAllPlayers(callback: (ctx: ReducerEventContext, timer: MoveAllPlayersTimer) => void) {
+    this.connection.onReducer("move_all_players", callback);
+  }
 
-    removeOnMoveAllPlayers(callback: (ctx: ReducerEventContext, timer: MoveAllPlayersTimer) => void) {
-        this.connection.offReducer('move_all_players', callback);
-    }
+  removeOnMoveAllPlayers(callback: (ctx: ReducerEventContext, timer: MoveAllPlayersTimer) => void) {
+    this.connection.offReducer("move_all_players", callback);
+  }
 
-    sendMessage(text: string) {
-        const __args = { text };
-        let __writer = new BinaryWriter(1024);
-        SendMessage.getTypeScriptAlgebraicType().serialize(__writer, __args);
-        let __argsBuffer = __writer.getBuffer();
-        this.connection.callReducer('send_message', __argsBuffer, this.setCallReducerFlags.sendMessageFlags);
-    }
+  sendMessage(text: string) {
+    const __args = { text };
+    let __writer = new BinaryWriter(1024);
+    SendMessage.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("send_message", __argsBuffer, this.setCallReducerFlags.sendMessageFlags);
+  }
 
-    onSendMessage(callback: (ctx: ReducerEventContext, text: string) => void) {
-        this.connection.onReducer('send_message', callback);
-    }
+  onSendMessage(callback: (ctx: ReducerEventContext, text: string) => void) {
+    this.connection.onReducer("send_message", callback);
+  }
 
-    removeOnSendMessage(callback: (ctx: ReducerEventContext, text: string) => void) {
-        this.connection.offReducer('send_message', callback);
-    }
+  removeOnSendMessage(callback: (ctx: ReducerEventContext, text: string) => void) {
+    this.connection.offReducer("send_message", callback);
+  }
 
-    setName(name: string) {
-        const __args = { name };
-        let __writer = new BinaryWriter(1024);
-        SetName.getTypeScriptAlgebraicType().serialize(__writer, __args);
-        let __argsBuffer = __writer.getBuffer();
-        this.connection.callReducer('set_name', __argsBuffer, this.setCallReducerFlags.setNameFlags);
-    }
+  setName(name: string) {
+    const __args = { name };
+    let __writer = new BinaryWriter(1024);
+    SetName.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("set_name", __argsBuffer, this.setCallReducerFlags.setNameFlags);
+  }
 
-    onSetName(callback: (ctx: ReducerEventContext, name: string) => void) {
-        this.connection.onReducer('set_name', callback);
-    }
+  onSetName(callback: (ctx: ReducerEventContext, name: string) => void) {
+    this.connection.onReducer("set_name", callback);
+  }
 
-    removeOnSetName(callback: (ctx: ReducerEventContext, name: string) => void) {
-        this.connection.offReducer('set_name', callback);
-    }
+  removeOnSetName(callback: (ctx: ReducerEventContext, name: string) => void) {
+    this.connection.offReducer("set_name", callback);
+  }
 
-    updatePlayerInput(x: number, y: number) {
-        const __args = { x, y };
-        let __writer = new BinaryWriter(1024);
-        UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(__writer, __args);
-        let __argsBuffer = __writer.getBuffer();
-        this.connection.callReducer(
-            'update_player_input',
-            __argsBuffer,
-            this.setCallReducerFlags.updatePlayerInputFlags,
-        );
-    }
+  updatePlayerInput(x: number, y: number) {
+    const __args = { x, y };
+    let __writer = new BinaryWriter(1024);
+    UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("update_player_input", __argsBuffer, this.setCallReducerFlags.updatePlayerInputFlags);
+  }
 
-    onUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
-        this.connection.onReducer('update_player_input', callback);
-    }
+  onUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
+    this.connection.onReducer("update_player_input", callback);
+  }
 
-    removeOnUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
-        this.connection.offReducer('update_player_input', callback);
-    }
+  removeOnUpdatePlayerInput(callback: (ctx: ReducerEventContext, x: number, y: number) => void) {
+    this.connection.offReducer("update_player_input", callback);
+  }
+
 }
 
 export class SetReducerFlags {
-    moveAllPlayersFlags: CallReducerFlags = 'FullUpdate';
-    moveAllPlayers(flags: CallReducerFlags) {
-        this.moveAllPlayersFlags = flags;
-    }
+  moveAllPlayersFlags: CallReducerFlags = 'FullUpdate';
+  moveAllPlayers(flags: CallReducerFlags) {
+    this.moveAllPlayersFlags = flags;
+  }
 
-    sendMessageFlags: CallReducerFlags = 'FullUpdate';
-    sendMessage(flags: CallReducerFlags) {
-        this.sendMessageFlags = flags;
-    }
+  sendMessageFlags: CallReducerFlags = 'FullUpdate';
+  sendMessage(flags: CallReducerFlags) {
+    this.sendMessageFlags = flags;
+  }
 
-    setNameFlags: CallReducerFlags = 'FullUpdate';
-    setName(flags: CallReducerFlags) {
-        this.setNameFlags = flags;
-    }
+  setNameFlags: CallReducerFlags = 'FullUpdate';
+  setName(flags: CallReducerFlags) {
+    this.setNameFlags = flags;
+  }
 
-    updatePlayerInputFlags: CallReducerFlags = 'FullUpdate';
-    updatePlayerInput(flags: CallReducerFlags) {
-        this.updatePlayerInputFlags = flags;
-    }
+  updatePlayerInputFlags: CallReducerFlags = 'FullUpdate';
+  updatePlayerInput(flags: CallReducerFlags) {
+    this.updatePlayerInputFlags = flags;
+  }
+
 }
 
 export class RemoteTables {
-    constructor(private connection: DbConnectionImpl) {}
+  constructor(private connection: DbConnectionImpl) {}
 
-    get config(): ConfigTableHandle {
-        return new ConfigTableHandle(this.connection.clientCache.getOrCreateTable<Config>(REMOTE_MODULE.tables.config));
-    }
+  get config(): ConfigTableHandle {
+    return new ConfigTableHandle(this.connection.clientCache.getOrCreateTable<Config>(REMOTE_MODULE.tables.config));
+  }
 
-    get message(): MessageTableHandle {
-        return new MessageTableHandle(
-            this.connection.clientCache.getOrCreateTable<Message>(REMOTE_MODULE.tables.message),
-        );
-    }
+  get message(): MessageTableHandle {
+    return new MessageTableHandle(this.connection.clientCache.getOrCreateTable<Message>(REMOTE_MODULE.tables.message));
+  }
 
-    get monster(): MonsterTableHandle {
-        return new MonsterTableHandle(
-            this.connection.clientCache.getOrCreateTable<Monster>(REMOTE_MODULE.tables.monster),
-        );
-    }
+  get monster(): MonsterTableHandle {
+    return new MonsterTableHandle(this.connection.clientCache.getOrCreateTable<Monster>(REMOTE_MODULE.tables.monster));
+  }
 
-    get moveAllPlayersTimer(): MoveAllPlayersTimerTableHandle {
-        return new MoveAllPlayersTimerTableHandle(
-            this.connection.clientCache.getOrCreateTable<MoveAllPlayersTimer>(
-                REMOTE_MODULE.tables.move_all_players_timer,
-            ),
-        );
-    }
+  get moveAllPlayersTimer(): MoveAllPlayersTimerTableHandle {
+    return new MoveAllPlayersTimerTableHandle(this.connection.clientCache.getOrCreateTable<MoveAllPlayersTimer>(REMOTE_MODULE.tables.move_all_players_timer));
+  }
 
-    get user(): UserTableHandle {
-        return new UserTableHandle(this.connection.clientCache.getOrCreateTable<User>(REMOTE_MODULE.tables.user));
-    }
+  get user(): UserTableHandle {
+    return new UserTableHandle(this.connection.clientCache.getOrCreateTable<User>(REMOTE_MODULE.tables.user));
+  }
 }
 
-export class SubscriptionBuilder extends SubscriptionBuilderImpl<RemoteTables, RemoteReducers, SetReducerFlags> {}
+export class SubscriptionBuilder extends SubscriptionBuilderImpl<RemoteTables, RemoteReducers, SetReducerFlags> { }
 
 export class DbConnection extends DbConnectionImpl<RemoteTables, RemoteReducers, SetReducerFlags> {
-    static builder = (): DbConnectionBuilder<DbConnection, ErrorContext, SubscriptionEventContext> => {
-        return new DbConnectionBuilder<DbConnection, ErrorContext, SubscriptionEventContext>(
-            REMOTE_MODULE,
-            (imp: DbConnectionImpl) => imp as DbConnection,
-        );
-    };
-    subscriptionBuilder = (): SubscriptionBuilder => {
-        return new SubscriptionBuilder(this);
-    };
+  static builder = (): DbConnectionBuilder<DbConnection, ErrorContext, SubscriptionEventContext> => {
+    return new DbConnectionBuilder<DbConnection, ErrorContext, SubscriptionEventContext>(REMOTE_MODULE, (imp: DbConnectionImpl) => imp as DbConnection);
+  }
+  subscriptionBuilder = (): SubscriptionBuilder => {
+    return new SubscriptionBuilder(this);
+  }
 }
 
 export type EventContext = EventContextInterface<RemoteTables, RemoteReducers, SetReducerFlags, Reducer>;

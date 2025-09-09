@@ -7,57 +7,59 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-    AlgebraicType,
-    AlgebraicValue,
-    BinaryReader,
-    BinaryWriter,
-    ConnectionId,
-    DbConnectionBuilder,
-    DbConnectionImpl,
-    Identity,
-    ProductType,
-    ProductTypeElement,
-    SubscriptionBuilderImpl,
-    SumType,
-    SumTypeVariant,
-    TableCache,
-    TimeDuration,
-    Timestamp,
-    deepEqual,
-    type CallReducerFlags,
-    type DbContext,
-    type ErrorContextInterface,
-    type Event,
-    type EventContextInterface,
-    type ReducerEventContextInterface,
-    type SubscriptionEventContextInterface,
-} from '@clockworklabs/spacetimedb-sdk';
+  AlgebraicType,
+  AlgebraicValue,
+  BinaryReader,
+  BinaryWriter,
+  ConnectionId,
+  DbConnectionBuilder,
+  DbConnectionImpl,
+  Identity,
+  ProductType,
+  ProductTypeElement,
+  SubscriptionBuilderImpl,
+  SumType,
+  SumTypeVariant,
+  TableCache,
+  TimeDuration,
+  Timestamp,
+  deepEqual,
+  type CallReducerFlags,
+  type DbContext,
+  type ErrorContextInterface,
+  type Event,
+  type EventContextInterface,
+  type ReducerEventContextInterface,
+  type SubscriptionEventContextInterface,
+} from "@clockworklabs/spacetimedb-sdk";
 
 export type UpdatePlayerInput = {
-    x: number;
-    y: number;
+  x: number,
+  y: number,
 };
 
 /**
  * A namespace for generated helper functions.
  */
 export namespace UpdatePlayerInput {
-    /**
-     * A function which returns this type represented as an AlgebraicType.
-     * This function is derived from the AlgebraicType used to generate this type.
-     */
-    export function getTypeScriptAlgebraicType(): AlgebraicType {
-        return AlgebraicType.createProductType([
-            new ProductTypeElement('x', AlgebraicType.createI32Type()),
-            new ProductTypeElement('y', AlgebraicType.createI32Type()),
-        ]);
-    }
+  /**
+  * A function which returns this type represented as an AlgebraicType.
+  * This function is derived from the AlgebraicType used to generate this type.
+  */
+  export function getTypeScriptAlgebraicType(): AlgebraicType {
+    return AlgebraicType.createProductType([
+      new ProductTypeElement("x", AlgebraicType.createI32Type()),
+      new ProductTypeElement("y", AlgebraicType.createI32Type()),
+    ]);
+  }
 
-    export function serialize(writer: BinaryWriter, value: UpdatePlayerInput): void {
-        UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(writer, value);
-    }
+  export function serialize(writer: BinaryWriter, value: UpdatePlayerInput): void {
+    UpdatePlayerInput.getTypeScriptAlgebraicType().serialize(writer, value);
+  }
 
-    export function deserialize(reader: BinaryReader): UpdatePlayerInput {
-        return UpdatePlayerInput.getTypeScriptAlgebraicType().deserialize(reader);
-    }
+  export function deserialize(reader: BinaryReader): UpdatePlayerInput {
+    return UpdatePlayerInput.getTypeScriptAlgebraicType().deserialize(reader);
+  }
+
 }
+

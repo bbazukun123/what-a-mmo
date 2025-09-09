@@ -12,7 +12,7 @@ import {
     View3DComponent,
 } from '@play-co/odie';
 import { GameScene } from '../GameScene';
-import { PlayerComponent } from '../components/PlayerComponent';
+import { PlayerComponent } from '../components/player/PlayerComponent';
 
 export class CameraControllerSystem implements System<void, GameScene> {
     public static readonly NAME = 'cameraControllerSystem';

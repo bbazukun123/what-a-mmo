@@ -1,6 +1,6 @@
-import { lerp, QueriesObject, QueryResults, View3DComponent } from '@play-co/odie';
+import { lerp, QueriesObject, QueryResults } from '@play-co/odie';
 import { app } from '../../utils/app';
-import { PlayerComponent } from '../components/PlayerComponent';
+import { PlayerComponent } from '../components/player/PlayerComponent';
 import { System } from '../defs/types';
 import { worldSizeRatio } from '../defs/world';
 import { PlayerEntityType } from '../entities/PlayerEntity';
@@ -11,7 +11,7 @@ export class PlayersSystem implements System<void, GameScene> {
     public static readonly NAME = 'playerSystem';
     public static readonly Queries: QueriesObject = {
         default: {
-            components: [PlayerComponent, View3DComponent],
+            components: [PlayerComponent],
             added: true,
             removed: true,
         },
@@ -21,10 +21,7 @@ export class PlayersSystem implements System<void, GameScene> {
     public scene!: GameScene;
 
     public addedToQuery(entity: PlayerEntityType) {
-        const { player, playerView } = entity.c;
-
-        entity.addChild(playerView.createView(player.playerId));
-
+        const { player } = entity.c;
         if (player.isSelf) {
             entity.position.x = player.user.position.x * worldSizeRatio;
             entity.position.z = player.user.position.y * worldSizeRatio;

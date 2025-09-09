@@ -1,29 +1,25 @@
 import { LayoutContainer } from '@pixi/layout/components';
-import { app } from '../utils/app';
-import { LayoutScreen } from './LayoutScreen';
-import { Sprite, Text, Texture } from 'pixi.js';
-import { TextInput } from '../components/TextInput';
 import { FancyButton } from '@pixi/ui';
+import { Sprite, Text, Texture } from 'pixi.js';
+import { PlayerClass } from '../../module_bindings';
+import { CreationClassCard } from '../components/CreationClassCard';
+import { TextInput } from '../components/TextInput';
+import { app } from '../utils/app';
 import { toMain } from '../utils/navigation';
+import { LayoutScreen } from './LayoutScreen';
 
 export class CreationScreen extends LayoutScreen {
+    private content!: LayoutContainer;
     private panel!: Sprite;
     private placeholder!: Text;
     private textInput!: TextInput;
     private submitButton!: FancyButton;
 
-    public async init() {
-        new LayoutContainer({
-            parent: this.view,
-            layout: {
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                backgroundColor: '#1099bb',
-            },
-        });
+    public override async init() {
+        this.createBackground();
 
-        const content = new LayoutContainer({
+        // Add content container
+        this.content = new LayoutContainer({
             parent: this.view,
             layout: {
                 position: 'absolute',
@@ -35,7 +31,25 @@ export class CreationScreen extends LayoutScreen {
             },
         });
 
-        const text = content.addChild(
+        this.createTitle();
+        this.createNameInputRow();
+        this.createClassSelectionRow();
+    }
+
+    private createBackground() {
+        new LayoutContainer({
+            parent: this.view,
+            layout: {
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                backgroundColor: '#1099bb',
+            },
+        });
+    }
+
+    private createTitle() {
+        const text = this.content.addChild(
             new Text({
                 text: 'CHARACTER CREATION',
                 style: {
@@ -50,9 +64,11 @@ export class CreationScreen extends LayoutScreen {
         text.layout = {
             height: 200,
         };
+    }
 
+    private createNameInputRow() {
         const row = new LayoutContainer({
-            parent: content,
+            parent: this.content,
             layout: {
                 width: '100%',
                 height: 100,
@@ -124,6 +140,25 @@ export class CreationScreen extends LayoutScreen {
             height: 100,
         };
         this.submitButton.onPress.connect(this.onSubmit.bind(this));
+    }
+
+    private createClassSelectionRow() {
+        const row = new LayoutContainer({
+            parent: this.content,
+            layout: {
+                width: '100%',
+                marginTop: 75,
+                justifyContent: 'center',
+            },
+        });
+
+        const playerClasses = Object.values(PlayerClass)
+            .map(({ tag }: any) => tag)
+            .filter((v) => v !== undefined)
+            .forEach((playerClass) => {
+                // Create a card for each class
+                row.addChild(new CreationClassCard({ playerClass }));
+            });
     }
 
     private onSubmit() {

@@ -1,9 +1,10 @@
 import type { EntityType } from '@play-co/odie';
 import { BoxGeometry, createEntity, DefineEntity, Entity3D, PhongMaterial } from '@play-co/odie';
 import { User } from '../../../module_bindings';
-import { HudComponent } from '../components/HudComponent';
-import { PlayerComponent } from '../components/PlayerComponent';
-import { PlayerViewComponent } from '../components/PlayerViewComponent';
+import { HudComponent } from '../components/hud/HudComponent';
+import { EyesComponent } from '../components/player/EyesComponent';
+import { PlayerComponent } from '../components/player/PlayerComponent';
+import { PlayerViewComponent } from '../components/player/PlayerViewComponent';
 import { ShadowTag } from '../defs/tags';
 
 interface PlayerEntityOptions {
@@ -11,7 +12,14 @@ interface PlayerEntityOptions {
     self?: boolean;
 }
 
-export const PlayerEntity = DefineEntity(Entity3D, PlayerComponent, PlayerViewComponent, ShadowTag, HudComponent);
+export const PlayerEntity = DefineEntity(
+    Entity3D,
+    PlayerComponent,
+    PlayerViewComponent,
+    EyesComponent,
+    ShadowTag,
+    HudComponent,
+);
 
 export type PlayerEntityType = EntityType<typeof PlayerEntity>;
 

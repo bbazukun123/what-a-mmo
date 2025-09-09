@@ -7,66 +7,72 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-    AlgebraicType,
-    AlgebraicValue,
-    BinaryReader,
-    BinaryWriter,
-    ConnectionId,
-    DbConnectionBuilder,
-    DbConnectionImpl,
-    Identity,
-    ProductType,
-    ProductTypeElement,
-    SubscriptionBuilderImpl,
-    SumType,
-    SumTypeVariant,
-    TableCache,
-    TimeDuration,
-    Timestamp,
-    deepEqual,
-    type CallReducerFlags,
-    type DbContext,
-    type ErrorContextInterface,
-    type Event,
-    type EventContextInterface,
-    type ReducerEventContextInterface,
-    type SubscriptionEventContextInterface,
-} from '@clockworklabs/spacetimedb-sdk';
-import { DbVector2 as __DbVector2 } from './db_vector_2_type';
+  AlgebraicType,
+  AlgebraicValue,
+  BinaryReader,
+  BinaryWriter,
+  ConnectionId,
+  DbConnectionBuilder,
+  DbConnectionImpl,
+  Identity,
+  ProductType,
+  ProductTypeElement,
+  SubscriptionBuilderImpl,
+  SumType,
+  SumTypeVariant,
+  TableCache,
+  TimeDuration,
+  Timestamp,
+  deepEqual,
+  type CallReducerFlags,
+  type DbContext,
+  type ErrorContextInterface,
+  type Event,
+  type EventContextInterface,
+  type ReducerEventContextInterface,
+  type SubscriptionEventContextInterface,
+} from "@clockworklabs/spacetimedb-sdk";
+import { DbVector2 as __DbVector2 } from "./db_vector_2_type";
+import { PlayerClass as __PlayerClass } from "./player_class_type";
 
 export type User = {
-    identity: Identity;
-    name: string | undefined;
-    position: __DbVector2;
-    direction: __DbVector2;
-    speed: number;
-    online: boolean;
+  identity: Identity,
+  name: string | undefined,
+  position: __DbVector2,
+  direction: __DbVector2,
+  speed: number,
+  online: boolean,
+  class: __PlayerClass | undefined,
 };
 
 /**
  * A namespace for generated helper functions.
  */
 export namespace User {
-    /**
-     * A function which returns this type represented as an AlgebraicType.
-     * This function is derived from the AlgebraicType used to generate this type.
-     */
-    export function getTypeScriptAlgebraicType(): AlgebraicType {
-        return AlgebraicType.createProductType([
-            new ProductTypeElement('identity', AlgebraicType.createIdentityType()),
-            new ProductTypeElement('name', AlgebraicType.createOptionType(AlgebraicType.createStringType())),
-            new ProductTypeElement('position', __DbVector2.getTypeScriptAlgebraicType()),
-            new ProductTypeElement('direction', __DbVector2.getTypeScriptAlgebraicType()),
-            new ProductTypeElement('speed', AlgebraicType.createF32Type()),
-            new ProductTypeElement('online', AlgebraicType.createBoolType()),
-        ]);
-    }
+  /**
+  * A function which returns this type represented as an AlgebraicType.
+  * This function is derived from the AlgebraicType used to generate this type.
+  */
+  export function getTypeScriptAlgebraicType(): AlgebraicType {
+    return AlgebraicType.createProductType([
+      new ProductTypeElement("identity", AlgebraicType.createIdentityType()),
+      new ProductTypeElement("name", AlgebraicType.createOptionType(AlgebraicType.createStringType())),
+      new ProductTypeElement("position", __DbVector2.getTypeScriptAlgebraicType()),
+      new ProductTypeElement("direction", __DbVector2.getTypeScriptAlgebraicType()),
+      new ProductTypeElement("speed", AlgebraicType.createF32Type()),
+      new ProductTypeElement("online", AlgebraicType.createBoolType()),
+      new ProductTypeElement("class", AlgebraicType.createOptionType(__PlayerClass.getTypeScriptAlgebraicType())),
+    ]);
+  }
 
-    export function serialize(writer: BinaryWriter, value: User): void {
-        User.getTypeScriptAlgebraicType().serialize(writer, value);
-    }
+  export function serialize(writer: BinaryWriter, value: User): void {
+    User.getTypeScriptAlgebraicType().serialize(writer, value);
+  }
 
-    export function deserialize(reader: BinaryReader): User {
-        return User.getTypeScriptAlgebraicType().deserialize(reader);
-    }
+  export function deserialize(reader: BinaryReader): User {
+    return User.getTypeScriptAlgebraicType().deserialize(reader);
+  }
+
 }
+
+

@@ -12,6 +12,13 @@ pub struct Config {
     pub world_size: u64,
 }
 
+/// Player class type.
+#[derive(spacetimedb::SpacetimeType, Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PlayerClass {
+    Ranger,
+    Melee,
+}
+
 /// User table representing a player.
 #[table(name = user, public)]
 pub struct User {
@@ -28,6 +35,8 @@ pub struct User {
     pub speed: f32,
     /// Online status.
     pub online: bool,
+    /// Player class (ranger or melee).
+    pub class: Option<PlayerClass>,
 }
 
 /// Message table for chat messages.

@@ -3,9 +3,11 @@ import { type Container, type Renderer } from 'pixi.js';
 import { app } from '../utils/app';
 import { System } from './defs/types';
 import { CameraControllerSystem } from './systems/CameraControllerSystem';
+import { EyesSystem } from './systems/EyesSystem';
 import { GameLightSystem } from './systems/GameLightSystem';
 import { HudSystem } from './systems/HudSystem';
 import { PlayersSystem } from './systems/PlayersSystem';
+import { PlayerViewSystem } from './systems/PlayerViewSystem';
 import { SpawnSystem } from './systems/SpawnSystem';
 import { WorldSystem } from './systems/WorldSystem';
 
@@ -36,6 +38,8 @@ export class GameScene extends Scene3D {
         this.addSystem(WorldSystem);
         this.addSystem(SpawnSystem);
         this.addSystem(PlayersSystem);
+        this.addSystem(PlayerViewSystem);
+        this.addSystem(EyesSystem, { stage: this.stage });
         this.addSystem(HudSystem, { stage: this.stage });
     }
 

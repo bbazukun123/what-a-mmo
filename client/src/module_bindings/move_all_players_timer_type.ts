@@ -7,56 +7,59 @@
 /* tslint:disable */
 // @ts-nocheck
 import {
-    AlgebraicType,
-    AlgebraicValue,
-    BinaryReader,
-    BinaryWriter,
-    ConnectionId,
-    DbConnectionBuilder,
-    DbConnectionImpl,
-    Identity,
-    ProductType,
-    ProductTypeElement,
-    SubscriptionBuilderImpl,
-    SumType,
-    SumTypeVariant,
-    TableCache,
-    TimeDuration,
-    Timestamp,
-    deepEqual,
-    type CallReducerFlags,
-    type DbContext,
-    type ErrorContextInterface,
-    type Event,
-    type EventContextInterface,
-    type ReducerEventContextInterface,
-    type SubscriptionEventContextInterface,
-} from '@clockworklabs/spacetimedb-sdk';
+  AlgebraicType,
+  AlgebraicValue,
+  BinaryReader,
+  BinaryWriter,
+  ConnectionId,
+  DbConnectionBuilder,
+  DbConnectionImpl,
+  Identity,
+  ProductType,
+  ProductTypeElement,
+  SubscriptionBuilderImpl,
+  SumType,
+  SumTypeVariant,
+  TableCache,
+  TimeDuration,
+  Timestamp,
+  deepEqual,
+  type CallReducerFlags,
+  type DbContext,
+  type ErrorContextInterface,
+  type Event,
+  type EventContextInterface,
+  type ReducerEventContextInterface,
+  type SubscriptionEventContextInterface,
+} from "@clockworklabs/spacetimedb-sdk";
 export type MoveAllPlayersTimer = {
-    scheduledId: bigint;
-    scheduledAt: { tag: 'Interval'; value: TimeDuration } | { tag: 'Time'; value: Timestamp };
+  scheduledId: bigint,
+  scheduledAt: { tag: "Interval", value: TimeDuration } | { tag: "Time", value: Timestamp },
 };
 
 /**
  * A namespace for generated helper functions.
  */
 export namespace MoveAllPlayersTimer {
-    /**
-     * A function which returns this type represented as an AlgebraicType.
-     * This function is derived from the AlgebraicType used to generate this type.
-     */
-    export function getTypeScriptAlgebraicType(): AlgebraicType {
-        return AlgebraicType.createProductType([
-            new ProductTypeElement('scheduledId', AlgebraicType.createU64Type()),
-            new ProductTypeElement('scheduledAt', AlgebraicType.createScheduleAtType()),
-        ]);
-    }
+  /**
+  * A function which returns this type represented as an AlgebraicType.
+  * This function is derived from the AlgebraicType used to generate this type.
+  */
+  export function getTypeScriptAlgebraicType(): AlgebraicType {
+    return AlgebraicType.createProductType([
+      new ProductTypeElement("scheduledId", AlgebraicType.createU64Type()),
+      new ProductTypeElement("scheduledAt", AlgebraicType.createScheduleAtType()),
+    ]);
+  }
 
-    export function serialize(writer: BinaryWriter, value: MoveAllPlayersTimer): void {
-        MoveAllPlayersTimer.getTypeScriptAlgebraicType().serialize(writer, value);
-    }
+  export function serialize(writer: BinaryWriter, value: MoveAllPlayersTimer): void {
+    MoveAllPlayersTimer.getTypeScriptAlgebraicType().serialize(writer, value);
+  }
 
-    export function deserialize(reader: BinaryReader): MoveAllPlayersTimer {
-        return MoveAllPlayersTimer.getTypeScriptAlgebraicType().deserialize(reader);
-    }
+  export function deserialize(reader: BinaryReader): MoveAllPlayersTimer {
+    return MoveAllPlayersTimer.getTypeScriptAlgebraicType().deserialize(reader);
+  }
+
 }
+
+
