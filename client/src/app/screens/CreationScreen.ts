@@ -13,7 +13,9 @@ export class CreationScreen extends LayoutScreen {
     private panel!: Sprite;
     private placeholder!: Text;
     private textInput!: TextInput;
-    private submitButton!: FancyButton;
+    private startButton!: FancyButton;
+    private classCards: CreationClassCard[] = [];
+    private selectedClass!: PlayerClass;
 
     public override async init() {
         this.createBackground();
@@ -34,6 +36,32 @@ export class CreationScreen extends LayoutScreen {
         this.createTitle();
         this.createNameInputRow();
         this.createClassSelectionRow();
+
+        this.startButton = this.content.addChild(
+            new FancyButton({
+                defaultView: new Sprite({
+                    texture: Texture.WHITE,
+                    tint: 0x00ff00,
+                    width: 350,
+                    height: 120,
+                }),
+                text: new Text({
+                    text: 'START',
+                    style: {
+                        fontSize: 40,
+                        fontWeight: 'bold',
+                    },
+                }),
+            }),
+        );
+        this.startButton.layout = {
+            marginTop: 100,
+            width: 350,
+            height: 120,
+        };
+        this.startButton.enabled = false;
+        this.startButton.alpha = 0.5;
+        this.startButton.onPress.connect(this.onStart.bind(this));
     }
 
     private createBackground() {
@@ -110,36 +138,14 @@ export class CreationScreen extends LayoutScreen {
             size: 35,
             padding: 10,
             onUpdate: (text) => {
-                this.submitButton.enabled = text.length > 0;
+                this.startButton.enabled = text.length > 0;
+                this.startButton.alpha = text.length > 0 ? 1 : 0.5;
             },
             onFocusChange: (focus) => {
                 this.placeholder.visible = !focus && !this.textInput.value;
             },
-            onSubmit: this.onSubmit.bind(this),
+            onSubmit: this.onStart.bind(this),
         });
-
-        this.submitButton = row.addChild(
-            new FancyButton({
-                defaultView: new Sprite({
-                    texture: Texture.WHITE,
-                    tint: 0x00ff00,
-                    width: 200,
-                    height: 100,
-                }),
-                text: new Text({
-                    text: 'Submit',
-                    style: {
-                        fontSize: 35,
-                        fontWeight: 'bold',
-                    },
-                }),
-            }),
-        );
-        this.submitButton.layout = {
-            width: 200,
-            height: 100,
-        };
-        this.submitButton.onPress.connect(this.onSubmit.bind(this));
     }
 
     private createClassSelectionRow() {
@@ -148,20 +154,35 @@ export class CreationScreen extends LayoutScreen {
             layout: {
                 width: '100%',
                 marginTop: 75,
+                paddingInline: 30,
                 justifyContent: 'center',
             },
         });
 
-        const playerClasses = Object.values(PlayerClass)
+        this.classCards = Object.values(PlayerClass)
             .map(({ tag }: any) => tag)
             .filter((v) => v !== undefined)
-            .forEach((playerClass) => {
+            .map((playerClass, i) => {
                 // Create a card for each class
-                row.addChild(new CreationClassCard({ playerClass }));
+                return row.addChild(
+                    new CreationClassCard({
+                        playerClass,
+                        onSelect: this.handleCardSelect.bind(this, i),
+                    }),
+                );
             });
+
+        this.handleCardSelect(0);
     }
 
-    private onSubmit() {
+    private handleCardSelect(index: number) {
+        this.classCards.forEach((c, i) => {
+            c.setSelected(i === index);
+            if (i === index) this.selectedClass = c.playerClass;
+        });
+    }
+
+    private onStart() {
         const text = this.textInput.value;
 
         // Skip empty name
@@ -169,6 +190,7 @@ export class CreationScreen extends LayoutScreen {
 
         // Handle setting the player name
         app().playerController.setName(text);
+        app().playerController.setClass(this.selectedClass);
 
         // Navigate to the main screen
         toMain();

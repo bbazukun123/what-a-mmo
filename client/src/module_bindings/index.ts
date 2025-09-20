@@ -42,6 +42,8 @@ import { MoveAllPlayers } from "./move_all_players_reducer.ts";
 export { MoveAllPlayers };
 import { SendMessage } from "./send_message_reducer.ts";
 export { SendMessage };
+import { SetClass } from "./set_class_reducer.ts";
+export { SetClass };
 import { SetName } from "./set_name_reducer.ts";
 export { SetName };
 import { UpdatePlayerInput } from "./update_player_input_reducer.ts";
@@ -135,6 +137,10 @@ const REMOTE_MODULE = {
       reducerName: "send_message",
       argsType: SendMessage.getTypeScriptAlgebraicType(),
     },
+    set_class: {
+      reducerName: "set_class",
+      argsType: SetClass.getTypeScriptAlgebraicType(),
+    },
     set_name: {
       reducerName: "set_name",
       argsType: SetName.getTypeScriptAlgebraicType(),
@@ -177,6 +183,7 @@ export type Reducer = never
 | { name: "IdentityDisconnected", args: IdentityDisconnected }
 | { name: "MoveAllPlayers", args: MoveAllPlayers }
 | { name: "SendMessage", args: SendMessage }
+| { name: "SetClass", args: SetClass }
 | { name: "SetName", args: SetName }
 | { name: "UpdatePlayerInput", args: UpdatePlayerInput }
 ;
@@ -232,6 +239,22 @@ export class RemoteReducers {
     this.connection.offReducer("send_message", callback);
   }
 
+  setClass(playerClass: PlayerClass) {
+    const __args = { playerClass };
+    let __writer = new BinaryWriter(1024);
+    SetClass.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("set_class", __argsBuffer, this.setCallReducerFlags.setClassFlags);
+  }
+
+  onSetClass(callback: (ctx: ReducerEventContext, playerClass: PlayerClass) => void) {
+    this.connection.onReducer("set_class", callback);
+  }
+
+  removeOnSetClass(callback: (ctx: ReducerEventContext, playerClass: PlayerClass) => void) {
+    this.connection.offReducer("set_class", callback);
+  }
+
   setName(name: string) {
     const __args = { name };
     let __writer = new BinaryWriter(1024);
@@ -275,6 +298,11 @@ export class SetReducerFlags {
   sendMessageFlags: CallReducerFlags = 'FullUpdate';
   sendMessage(flags: CallReducerFlags) {
     this.sendMessageFlags = flags;
+  }
+
+  setClassFlags: CallReducerFlags = 'FullUpdate';
+  setClass(flags: CallReducerFlags) {
+    this.setClassFlags = flags;
   }
 
   setNameFlags: CallReducerFlags = 'FullUpdate';

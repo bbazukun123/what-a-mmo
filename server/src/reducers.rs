@@ -1,7 +1,7 @@
 // Global flag to toggle collision checks
 const PASSTHROUGH: bool = true;
 use std::time::Duration;
-use crate::models::{Config, User};
+use crate::models::{Config, User, PlayerClass};
 use crate::math::DbVector2;
 
 /// Initializes the database and schedules player movement.
@@ -184,3 +184,15 @@ pub fn set_name(ctx: &ReducerContext, name: String) -> Result<(), String> {
     ctx.db.user().identity().update(user);
     Ok(())
 }
+
+/// Clients invoke this reducer to set their class.
+#[reducer]
+pub fn set_class(ctx: &ReducerContext, player_class: PlayerClass) -> Result<(), String> {
+    let mut user = ctx.db.user().identity().find(ctx.sender)
+        .ok_or("User not found")?;
+    user.class = Some(player_class);
+    ctx.db.user().identity().update(user);
+    Ok(())
+}
+
+

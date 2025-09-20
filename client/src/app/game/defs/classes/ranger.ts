@@ -1,12 +1,10 @@
 import { Vector3 } from '@play-co/commons';
 import { createEntity, Entity3D, lerp, PhongMaterial, SphereGeometry } from '@play-co/odie';
-import { getRandomColor } from '../../../utils/misc';
 import { PlayerViewComponent } from '../../components/player/PlayerViewComponent';
 import { PlayerEntityType } from '../../entities/PlayerEntity';
 import { worldSizeRatio } from '../world';
 
-export function createRangerView({ id, size }: { id: string; size: number }) {
-    const color = getRandomColor(id);
+export function createRangerView({ color, size }: { color: number; size: number }) {
     const radius = size * 0.5;
 
     const view = createEntity(Entity3D, {

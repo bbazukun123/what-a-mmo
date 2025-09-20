@@ -1,5 +1,5 @@
 import { Plugin } from '@play-co/astro';
-import { User } from '../../module_bindings';
+import { PlayerClass, User } from '../../module_bindings';
 import { app } from '../utils/app';
 
 export class PlayerControllerPlugin extends Plugin {
@@ -75,6 +75,14 @@ export class PlayerControllerPlugin extends Plugin {
 
     public setName(name: string) {
         app().spacetimeDB.reducers?.setName(name);
+    }
+
+    public getClass() {
+        return this.player?.class;
+    }
+
+    public setClass(playerClass: PlayerClass) {
+        app().spacetimeDB.reducers?.setClass((PlayerClass as any)[playerClass as any]);
     }
 
     public sendMessage(message: string) {

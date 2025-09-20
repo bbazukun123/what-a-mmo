@@ -1,7 +1,7 @@
-import { Plugin } from '@play-co/astro';
-import { User, DbConnection, EventContext } from '../../module_bindings';
-import { Signal } from 'typed-signals';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
+import { Plugin } from '@play-co/astro';
+import { Signal } from 'typed-signals';
+import { DbConnection, EventContext, User } from '../../module_bindings';
 import { app } from '../utils/app';
 
 export class PlayersPlugin extends Plugin {
@@ -56,6 +56,7 @@ export class PlayersPlugin extends Plugin {
         this.users[index].position = user.position;
         this.users[index].direction = user.direction;
         this.users[index].speed = user.speed;
+        this.users[index].class = user.class;
 
         this.signals.onUserUpdated.emit(user);
     }

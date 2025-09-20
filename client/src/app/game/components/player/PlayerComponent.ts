@@ -16,7 +16,11 @@ export class PlayerComponent implements Component<PlayerOptions> {
     }
 
     public get playerId() {
-        return this.data.user.identity.toHexString();
+        return this.user.identity.toHexString();
+    }
+
+    public get playerClass() {
+        return this.user.class!.tag;
     }
 
     public get isSelf() {

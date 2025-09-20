@@ -1,11 +1,12 @@
 import { QueriesObject, QueryResults, Time } from '@play-co/odie';
+import { getRandomColor } from '../../utils/misc';
 import { PlayerViewComponent } from '../components/player/PlayerViewComponent';
-import { createRangerView, stepRangerAnimation } from '../defs/classes/ranger';
 import { playerSize } from '../defs/player';
 import { System } from '../defs/types';
 import { worldSizeRatio } from '../defs/world';
 import { PlayerEntityType } from '../entities/PlayerEntity';
 import { GameScene } from '../GameScene';
+import { createPlayerView, stepPlayerAnimation } from '../utils/playerViewUtils';
 
 export class PlayerViewSystem implements System<void, GameScene> {
     public static readonly NAME = 'playerViewSystem';
@@ -23,7 +24,8 @@ export class PlayerViewSystem implements System<void, GameScene> {
     public addedToQuery(entity: PlayerEntityType) {
         const { player, playerView } = entity.c;
         const size = playerSize * worldSizeRatio;
-        const view = (playerView.view = createRangerView({ id: player.playerId, size }));
+        const color = getRandomColor(player.playerId);
+        const view = (playerView.view = createPlayerView({ playerClass: player.playerClass, color, size }));
         playerView.size.set(size, size, size);
         playerView.basePosition.x = view.x;
         playerView.basePosition.y = view.y;
@@ -52,6 +54,7 @@ export class PlayerViewSystem implements System<void, GameScene> {
     }
 
     private updateView(entity: PlayerEntityType, dt: number) {
-        stepRangerAnimation(entity, dt);
+        const { player } = entity.c;
+        stepPlayerAnimation({ playerClass: player.playerClass, entity, dt });
     }
 }
