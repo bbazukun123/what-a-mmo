@@ -13,6 +13,8 @@ export class AnimatingEyes2D extends Container {
     private leftEye: Graphics;
     private rightEye: Graphics;
     private opts: AnimatingEyes2DOptions;
+    private type: 'circle' | 'square' = 'circle';
+    private direction = 0;
     private tick = 0;
 
     constructor(options: AnimatingEyes2DOptions) {
@@ -25,10 +27,17 @@ export class AnimatingEyes2D extends Container {
         this.rightEye = this.addChild(new Graphics().ellipse(0, 0, width * 0.5, height * 0.5).fill(color));
     }
 
+    public setType(value: 'circle' | 'square') {
+        this.type = value;
+        this.setDirection(this.direction);
+    }
+
     public setDirection(value: number) {
         this.visible = true;
+        this.direction = value;
 
         const { width, height } = this.opts;
+        const isCircular = this.type === 'circle';
         let { gap } = this.opts;
         let offsetX = 0;
         let offsetYLeft = 0;
@@ -37,16 +46,26 @@ export class AnimatingEyes2D extends Container {
 
         switch (value) {
             // Down
-            case 0:
+            case 0: {
+                if (!isCircular) {
+                    offsetYLeft = height * 1.2;
+                    offsetYRight = height * 1.2;
+                }
                 break;
+            }
             // Down-right
             case Math.PI / 4:
                 gap *= 0.85;
-                offsetX = width * 1.5;
-                offsetYRight = -height * 0.1;
+                offsetX = width * (isCircular ? 1.5 : 3.5);
+                offsetYRight = isCircular ? -height * 0.1 : height * 0.5;
+                if (!isCircular) offsetYLeft = height * 1;
                 break;
             // Right
             case Math.PI / 2:
+                if (!isCircular) {
+                    visible = false;
+                    break;
+                }
                 gap *= 0.75;
                 offsetX = width * 2.5;
                 offsetYRight = -height * 0.15;
@@ -54,11 +73,16 @@ export class AnimatingEyes2D extends Container {
             // Down-left
             case -Math.PI / 4:
                 gap *= 0.85;
-                offsetX = -width * 1.5;
-                offsetYLeft = -height * 0.1;
+                offsetX = -width * (isCircular ? 1.5 : 3.5);
+                if (!isCircular) offsetYRight = height * 1;
+                offsetYLeft = isCircular ? -height * 0.1 : height * 0.5;
                 break;
             // Left
             case -Math.PI / 2:
+                if (!isCircular) {
+                    visible = false;
+                    break;
+                }
                 gap *= 0.75;
                 offsetX = -width * 2.5;
                 offsetYLeft = -height * 0.15;

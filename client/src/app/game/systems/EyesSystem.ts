@@ -32,7 +32,8 @@ export class EyesSystem implements System<EyesSystemOptions, GameScene> {
     }
 
     public addedToQuery(entity: PlayerEntityType) {
-        const { view } = entity.c.eyes;
+        const { view, eyes } = entity.c.eyes;
+        eyes.setType(entity.c.player.playerClass === 'Ranger' ? 'circle' : 'square');
         this.view.addChild(view);
     }
 
