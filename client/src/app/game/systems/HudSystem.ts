@@ -45,11 +45,17 @@ export class HudSystem implements System<HudSystemOptions, GameScene> {
         this.queries.players!.forEach((entity: PlayerEntityType) => {
             const { player, hud } = entity.c;
 
-            hud.nameLabel.setName(player.data.name ?? 'Creating...');
-            hud.healthBar.visible = player.isSelf;
-            hud.manaBar.visible = player.isSelf;
+            hud.nameLabel?.setName(player.data.name ?? 'Creating...');
 
             // TODO: Handle resource bars
+
+            if (hud.healthBar) {
+                hud.healthBar.visible = hud.type === 'monster' || player.isSelf;
+            }
+
+            if (hud.manaBar) {
+                hud.manaBar.visible = hud.type === 'player' && player.isSelf;
+            }
         });
     }
 

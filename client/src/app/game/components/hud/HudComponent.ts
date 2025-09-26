@@ -4,8 +4,10 @@ import { Container } from 'pixi.js';
 import { HudNameLabel } from './HudNameLabel';
 import { HudResourceBar } from './HudResourceBar';
 
+type HudType = 'player' | 'monster';
+
 export interface HudOptions {
-    type: 'player' | 'monster';
+    type: HudType;
 }
 
 const width = 160;
@@ -16,8 +18,11 @@ export class HudComponent implements Component<HudOptions> {
     public healthBar!: HudResourceBar;
     public manaBar!: HudResourceBar;
     public nameLabel!: HudNameLabel;
+    public type!: HudType;
 
     public init(opts: HudOptions) {
+        this.type = opts.type;
+
         const container = this.view.addChild(
             new LayoutContainer({
                 layout: {

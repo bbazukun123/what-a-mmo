@@ -55,6 +55,7 @@ pub struct Message {
 pub struct Monster {
     /// Primary key: monster identity.
     #[primary_key]
+    #[auto_inc]
     pub monster_id: u32,
     /// Monster position in the world.
     pub position: DbVector2,

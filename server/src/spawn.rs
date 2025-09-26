@@ -3,7 +3,7 @@ use crate::models::{Monster, user, config, monster};
 use spacetimedb::{reducer, table, ReducerContext, ScheduleAt, Table};
 use spacetimedb::rand::Rng;
 
-const TARGET_MONSTER_COUNT: usize = 10;
+const TARGET_MONSTER_COUNT: usize = 5;
 
 #[reducer]
 pub fn spawn_monster(ctx: &ReducerContext, _timer: SpawnMonsterTimer) -> Result<(), String> {

@@ -25,7 +25,7 @@ export class MonstersPlugin extends Plugin {
     public init() {
         app().spacetimeDB.signals.onConnected.connect((connection: DbConnection) => {
             connection.db.monster.onInsert(this.onMonsterAdd.bind(this));
-            connection.db.monster.onUpdate(this.onMonsterUpdate.bind(this));
+            connection.db.monster.onUpdate((ctx, _, newMonster) => this.onMonsterUpdate(ctx, newMonster));
             connection.db.monster.onDelete(this.onMonsterRemove.bind(this));
         });
     }

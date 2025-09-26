@@ -1,7 +1,7 @@
-import { Plugin } from '@play-co/astro';
-import { DbConnection, ErrorContext } from '../../module_bindings';
 import { Identity } from '@clockworklabs/spacetimedb-sdk';
+import { Plugin } from '@play-co/astro';
 import { Signal } from 'typed-signals';
+import { DbConnection, ErrorContext } from '../../module_bindings';
 
 export class SpacetimeDBPlugin extends Plugin {
     private identity: Identity | null = null;
@@ -60,7 +60,12 @@ export class SpacetimeDBPlugin extends Plugin {
             console.log('Message sent:', text);
         });
 
-        this.subscribeToQueries(conn, ['SELECT * FROM config', 'SELECT * FROM message', 'SELECT * FROM user']);
+        this.subscribeToQueries(conn, [
+            'SELECT * FROM config',
+            'SELECT * FROM message',
+            'SELECT * FROM user',
+            'SELECT * FROM monster',
+        ]);
 
         this.signals.onConnected.emit(conn);
     }
