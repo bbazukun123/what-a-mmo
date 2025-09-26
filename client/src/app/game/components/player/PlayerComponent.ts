@@ -1,33 +1,33 @@
 import { Entity3D, type Component } from '@play-co/odie';
 import { User } from '../../../../module_bindings';
 
-export interface PlayerOptions {
-    user: User;
+export type PlayerOptions = {
+    data: User;
     self?: boolean;
-}
+};
 
 export class PlayerComponent implements Component<PlayerOptions> {
     public static readonly NAME = 'player';
     public view!: Entity3D;
-    private data!: PlayerOptions;
+    private options!: PlayerOptions;
 
-    public get user(): User {
-        return this.data.user;
+    public get data(): User {
+        return this.options.data;
     }
 
     public get playerId() {
-        return this.user.identity.toHexString();
+        return this.data.identity.toHexString();
     }
 
     public get playerClass() {
-        return this.user.class!.tag;
+        return this.data.class!.tag;
     }
 
     public get isSelf() {
-        return !!this.data.self;
+        return !!this.options.self;
     }
 
     public init(data: PlayerOptions) {
-        this.data = data;
+        this.options = data;
     }
 }

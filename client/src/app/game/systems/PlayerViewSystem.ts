@@ -47,7 +47,7 @@ export class PlayerViewSystem implements System<void, GameScene> {
 
     private updateState(entity: PlayerEntityType) {
         const { player, playerView } = entity.c;
-        const { direction, speed } = player.user;
+        const { direction, speed } = player.data;
         const targetRotation = Math.atan2(direction.x, direction.y);
         playerView.state = speed > 0 ? 'walking' : 'idle';
         entity.rotation.y = targetRotation;

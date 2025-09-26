@@ -6,6 +6,8 @@ import { CameraControllerSystem } from './systems/CameraControllerSystem';
 import { EyesSystem } from './systems/EyesSystem';
 import { GameLightSystem } from './systems/GameLightSystem';
 import { HudSystem } from './systems/HudSystem';
+import { MonstersSystem } from './systems/MonstersSystem';
+import { MonsterViewSystem } from './systems/MonstersViewSystem';
 import { PlayersSystem } from './systems/PlayersSystem';
 import { PlayerViewSystem } from './systems/PlayerViewSystem';
 import { SpawnSystem } from './systems/SpawnSystem';
@@ -40,6 +42,8 @@ export class GameScene extends Scene3D {
         this.addSystem(PlayersSystem);
         this.addSystem(PlayerViewSystem);
         this.addSystem(EyesSystem, { stage: this.stage });
+        this.addSystem(MonstersSystem);
+        this.addSystem(MonsterViewSystem);
         this.addSystem(HudSystem, { stage: this.stage });
     }
 

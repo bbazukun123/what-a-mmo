@@ -7,10 +7,10 @@ import { PlayerComponent } from '../components/player/PlayerComponent';
 import { PlayerViewComponent } from '../components/player/PlayerViewComponent';
 import { ShadowTag } from '../defs/tags';
 
-interface PlayerEntityOptions {
-    user: User;
+type PlayerEntityOptions = {
+    data: User;
     self?: boolean;
-}
+};
 
 export const PlayerEntity = DefineEntity(
     Entity3D,
@@ -24,7 +24,7 @@ export const PlayerEntity = DefineEntity(
 export type PlayerEntityType = EntityType<typeof PlayerEntity>;
 
 export function createPlayerEntity(opts: PlayerEntityOptions): PlayerEntityType {
-    const id = opts.user.identity.toHexString();
+    const id = opts.data.identity.toHexString();
     const entity = createEntity(PlayerEntity, {
         view3d: {
             geometry: new BoxGeometry(1, 1, 1),

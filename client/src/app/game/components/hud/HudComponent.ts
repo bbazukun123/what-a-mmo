@@ -5,7 +5,7 @@ import { HudNameLabel } from './HudNameLabel';
 import { HudResourceBar } from './HudResourceBar';
 
 export interface HudOptions {
-    type: 'player';
+    type: 'player' | 'monster';
 }
 
 const width = 160;
@@ -17,7 +17,7 @@ export class HudComponent implements Component<HudOptions> {
     public manaBar!: HudResourceBar;
     public nameLabel!: HudNameLabel;
 
-    public init() {
+    public init(opts: HudOptions) {
         const container = this.view.addChild(
             new LayoutContainer({
                 layout: {
@@ -31,8 +31,11 @@ export class HudComponent implements Component<HudOptions> {
             }),
         );
 
-        this.healthBar = container.addChild(new HudResourceBar('health'));
-        this.manaBar = container.addChild(new HudResourceBar('mana'));
-        this.nameLabel = container.addChild(new HudNameLabel());
+        this.healthBar = container.addChild(new HudResourceBar(opts.type === 'monster' ? 'monsterHealth' : 'health'));
+
+        if (opts.type === 'player') {
+            this.manaBar = container.addChild(new HudResourceBar('mana'));
+            this.nameLabel = container.addChild(new HudNameLabel());
+        }
     }
 }

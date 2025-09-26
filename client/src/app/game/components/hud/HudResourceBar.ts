@@ -1,9 +1,10 @@
 import { LayoutContainer } from '@pixi/layout/components';
 
-type ResourceType = 'health' | 'mana';
+type ResourceType = 'health' | 'mana' | 'monsterHealth';
 
 const height = 15;
 const colorMap: Record<ResourceType, number> = {
+    monsterHealth: 0xff0000,
     health: 0x00ff00,
     mana: 0x0000ff,
 };

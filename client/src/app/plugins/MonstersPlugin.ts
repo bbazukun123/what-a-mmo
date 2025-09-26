@@ -33,20 +33,25 @@ export class MonstersPlugin extends Plugin {
     /**
      * Handler for monster insert event
      */
-    public onMonsterAdd(ctx: any, monster: Monster): void {
+    public onMonsterAdd(_ctx: any, monster: Monster): void {
+        if (this.getMonster(monster.monsterId)) return;
         this.monsters.push(monster);
-        // TODO: Add visual representation for monsters in the game world
+        this.signals.onMonsterAdded.emit(monster);
     }
 
     /**
      * Handler for monster update event
      */
-    public onMonsterUpdate(ctx: any, monster: Monster): void {
+    public onMonsterUpdate(_ctx: any, monster: Monster): void {
         const index = this.monsters.findIndex((m) => m.monsterId === monster.monsterId);
+        if (index === -1 || !this.monsters[index]) return;
 
-        if (index !== -1) {
-            this.monsters[index] = monster;
-        }
+        this.monsters[index].position = monster.position;
+        this.monsters[index].direction = monster.direction;
+        this.monsters[index].speed = monster.speed;
+        this.monsters[index].health = monster.health;
+
+        this.signals.onMonsterUpdated.emit(monster);
     }
 
     /**
@@ -54,5 +59,6 @@ export class MonstersPlugin extends Plugin {
      */
     public onMonsterRemove(ctx: any, monster: Monster): void {
         this.monsters = this.monsters.filter((m) => m.monsterId !== monster.monsterId);
+        this.signals.onMonsterRemoved.emit(monster);
     }
 }

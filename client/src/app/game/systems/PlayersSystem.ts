@@ -22,9 +22,10 @@ export class PlayersSystem implements System<void, GameScene> {
 
     public addedToQuery(entity: PlayerEntityType) {
         const { player } = entity.c;
+        entity.position.x = player.data.position.x * worldSizeRatio;
+        entity.position.z = player.data.position.y * worldSizeRatio;
+
         if (player.isSelf) {
-            entity.position.x = player.user.position.x * worldSizeRatio;
-            entity.position.z = player.user.position.y * worldSizeRatio;
             this.scene.getSystem(CameraControllerSystem).setTarget(entity, true);
         }
     }
@@ -39,14 +40,14 @@ export class PlayersSystem implements System<void, GameScene> {
         for (const entity of this.queries.default!.entities as PlayerEntityType[]) {
             const { player } = entity.c;
 
-            if (!player.user.online) {
+            if (!player.data.online) {
                 entity.c.view3d!.renderable = false;
                 continue;
             }
 
             entity.c.view3d!.renderable = true;
-            entity.position.x = lerp(entity.position.x, player.user.position.x * worldSizeRatio, 0.1);
-            entity.position.z = lerp(entity.position.z, player.user.position.y * worldSizeRatio, 0.1);
+            entity.position.x = lerp(entity.position.x, player.data.position.x * worldSizeRatio, 0.1);
+            entity.position.z = lerp(entity.position.z, player.data.position.y * worldSizeRatio, 0.1);
         }
     }
 }
