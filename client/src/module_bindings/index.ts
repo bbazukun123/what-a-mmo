@@ -46,6 +46,8 @@ import { SetClass } from "./set_class_reducer.ts";
 export { SetClass };
 import { SetName } from "./set_name_reducer.ts";
 export { SetName };
+import { SpawnMonster } from "./spawn_monster_reducer.ts";
+export { SpawnMonster };
 import { UpdatePlayerInput } from "./update_player_input_reducer.ts";
 export { UpdatePlayerInput };
 
@@ -58,6 +60,8 @@ import { MonsterTableHandle } from "./monster_table.ts";
 export { MonsterTableHandle };
 import { MoveAllPlayersTimerTableHandle } from "./move_all_players_timer_table.ts";
 export { MoveAllPlayersTimerTableHandle };
+import { SpawnMonsterTimerTableHandle } from "./spawn_monster_timer_table.ts";
+export { SpawnMonsterTimerTableHandle };
 import { UserTableHandle } from "./user_table.ts";
 export { UserTableHandle };
 
@@ -74,6 +78,8 @@ import { MoveAllPlayersTimer } from "./move_all_players_timer_type.ts";
 export { MoveAllPlayersTimer };
 import { PlayerClass } from "./player_class_type.ts";
 export { PlayerClass };
+import { SpawnMonsterTimer } from "./spawn_monster_timer_type.ts";
+export { SpawnMonsterTimer };
 import { User } from "./user_type.ts";
 export { User };
 
@@ -95,9 +101,9 @@ const REMOTE_MODULE = {
     monster: {
       tableName: "monster",
       rowType: Monster.getTypeScriptAlgebraicType(),
-      primaryKey: "identity",
+      primaryKey: "monsterId",
       primaryKeyInfo: {
-        colName: "identity",
+        colName: "monsterId",
         colType: Monster.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
       },
     },
@@ -108,6 +114,15 @@ const REMOTE_MODULE = {
       primaryKeyInfo: {
         colName: "scheduledId",
         colType: MoveAllPlayersTimer.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
+      },
+    },
+    spawn_monster_timer: {
+      tableName: "spawn_monster_timer",
+      rowType: SpawnMonsterTimer.getTypeScriptAlgebraicType(),
+      primaryKey: "scheduledId",
+      primaryKeyInfo: {
+        colName: "scheduledId",
+        colType: SpawnMonsterTimer.getTypeScriptAlgebraicType().product.elements[0].algebraicType,
       },
     },
     user: {
@@ -144,6 +159,10 @@ const REMOTE_MODULE = {
     set_name: {
       reducerName: "set_name",
       argsType: SetName.getTypeScriptAlgebraicType(),
+    },
+    spawn_monster: {
+      reducerName: "spawn_monster",
+      argsType: SpawnMonster.getTypeScriptAlgebraicType(),
     },
     update_player_input: {
       reducerName: "update_player_input",
@@ -185,6 +204,7 @@ export type Reducer = never
 | { name: "SendMessage", args: SendMessage }
 | { name: "SetClass", args: SetClass }
 | { name: "SetName", args: SetName }
+| { name: "SpawnMonster", args: SpawnMonster }
 | { name: "UpdatePlayerInput", args: UpdatePlayerInput }
 ;
 
@@ -271,6 +291,22 @@ export class RemoteReducers {
     this.connection.offReducer("set_name", callback);
   }
 
+  spawnMonster(timer: SpawnMonsterTimer) {
+    const __args = { timer };
+    let __writer = new BinaryWriter(1024);
+    SpawnMonster.getTypeScriptAlgebraicType().serialize(__writer, __args);
+    let __argsBuffer = __writer.getBuffer();
+    this.connection.callReducer("spawn_monster", __argsBuffer, this.setCallReducerFlags.spawnMonsterFlags);
+  }
+
+  onSpawnMonster(callback: (ctx: ReducerEventContext, timer: SpawnMonsterTimer) => void) {
+    this.connection.onReducer("spawn_monster", callback);
+  }
+
+  removeOnSpawnMonster(callback: (ctx: ReducerEventContext, timer: SpawnMonsterTimer) => void) {
+    this.connection.offReducer("spawn_monster", callback);
+  }
+
   updatePlayerInput(x: number, y: number) {
     const __args = { x, y };
     let __writer = new BinaryWriter(1024);
@@ -310,6 +346,11 @@ export class SetReducerFlags {
     this.setNameFlags = flags;
   }
 
+  spawnMonsterFlags: CallReducerFlags = 'FullUpdate';
+  spawnMonster(flags: CallReducerFlags) {
+    this.spawnMonsterFlags = flags;
+  }
+
   updatePlayerInputFlags: CallReducerFlags = 'FullUpdate';
   updatePlayerInput(flags: CallReducerFlags) {
     this.updatePlayerInputFlags = flags;
@@ -334,6 +375,10 @@ export class RemoteTables {
 
   get moveAllPlayersTimer(): MoveAllPlayersTimerTableHandle {
     return new MoveAllPlayersTimerTableHandle(this.connection.clientCache.getOrCreateTable<MoveAllPlayersTimer>(REMOTE_MODULE.tables.move_all_players_timer));
+  }
+
+  get spawnMonsterTimer(): SpawnMonsterTimerTableHandle {
+    return new SpawnMonsterTimerTableHandle(this.connection.clientCache.getOrCreateTable<SpawnMonsterTimer>(REMOTE_MODULE.tables.spawn_monster_timer));
   }
 
   get user(): UserTableHandle {

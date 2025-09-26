@@ -1,7 +1,6 @@
 import { Plugin } from '@play-co/astro';
-import { Monster, DbConnection, EventContext } from '../../module_bindings';
 import { Signal } from 'typed-signals';
-import { Identity } from '@clockworklabs/spacetimedb-sdk';
+import { DbConnection, Monster } from '../../module_bindings';
 import { app } from '../utils/app';
 
 export class MonstersPlugin extends Plugin {
@@ -16,8 +15,8 @@ export class MonstersPlugin extends Plugin {
         return this.monsters;
     }
 
-    public getMonster(identity: Identity): Monster | undefined {
-        return this.monsters.find((m) => m.identity.toHexString() === identity.toHexString());
+    public getMonster(monsterId: number): Monster | undefined {
+        return this.monsters.find((m) => m.monsterId === monsterId);
     }
 
     /**
@@ -34,27 +33,26 @@ export class MonstersPlugin extends Plugin {
     /**
      * Handler for monster insert event
      */
-    private onMonsterAdd(_ctx: EventContext, monster: Monster) {
-        if (this.getMonster(monster.identity)) return;
+    public onMonsterAdd(ctx: any, monster: Monster): void {
         this.monsters.push(monster);
-        this.signals.onMonsterAdded.emit(monster);
+        // TODO: Add visual representation for monsters in the game world
     }
 
     /**
      * Handler for monster update event
      */
-    private onMonsterUpdate(_ctx: EventContext, monster: Monster) {
-        const index = this.monsters.findIndex((m) => m.identity.toHexString() === monster.identity.toHexString());
-        if (index === -1) return;
-        this.monsters[index] = monster;
-        this.signals.onMonsterUpdated.emit(monster);
+    public onMonsterUpdate(ctx: any, monster: Monster): void {
+        const index = this.monsters.findIndex((m) => m.monsterId === monster.monsterId);
+
+        if (index !== -1) {
+            this.monsters[index] = monster;
+        }
     }
 
     /**
      * Handler for monster delete event
      */
-    private onMonsterRemove(_ctx: EventContext, monster: Monster) {
-        this.monsters = this.monsters.filter((m) => m.identity.toHexString() !== monster.identity.toHexString());
-        this.signals.onMonsterRemoved.emit(monster);
+    public onMonsterRemove(ctx: any, monster: Monster): void {
+        this.monsters = this.monsters.filter((m) => m.monsterId !== monster.monsterId);
     }
 }

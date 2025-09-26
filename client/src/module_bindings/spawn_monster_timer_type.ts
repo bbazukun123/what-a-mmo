@@ -32,40 +32,32 @@ import {
   type ReducerEventContextInterface,
   type SubscriptionEventContextInterface,
 } from "@clockworklabs/spacetimedb-sdk";
-import { DbVector2 as __DbVector2 } from "./db_vector_2_type";
-
-export type Monster = {
-  monsterId: number,
-  position: __DbVector2,
-  direction: __DbVector2,
-  speed: number,
-  health: number,
+export type SpawnMonsterTimer = {
+  scheduledId: bigint,
+  scheduledAt: { tag: "Interval", value: TimeDuration } | { tag: "Time", value: Timestamp },
 };
 
 /**
  * A namespace for generated helper functions.
  */
-export namespace Monster {
+export namespace SpawnMonsterTimer {
   /**
   * A function which returns this type represented as an AlgebraicType.
   * This function is derived from the AlgebraicType used to generate this type.
   */
   export function getTypeScriptAlgebraicType(): AlgebraicType {
     return AlgebraicType.createProductType([
-      new ProductTypeElement("monsterId", AlgebraicType.createU32Type()),
-      new ProductTypeElement("position", __DbVector2.getTypeScriptAlgebraicType()),
-      new ProductTypeElement("direction", __DbVector2.getTypeScriptAlgebraicType()),
-      new ProductTypeElement("speed", AlgebraicType.createF32Type()),
-      new ProductTypeElement("health", AlgebraicType.createF32Type()),
+      new ProductTypeElement("scheduledId", AlgebraicType.createU64Type()),
+      new ProductTypeElement("scheduledAt", AlgebraicType.createScheduleAtType()),
     ]);
   }
 
-  export function serialize(writer: BinaryWriter, value: Monster): void {
-    Monster.getTypeScriptAlgebraicType().serialize(writer, value);
+  export function serialize(writer: BinaryWriter, value: SpawnMonsterTimer): void {
+    SpawnMonsterTimer.getTypeScriptAlgebraicType().serialize(writer, value);
   }
 
-  export function deserialize(reader: BinaryReader): Monster {
-    return Monster.getTypeScriptAlgebraicType().deserialize(reader);
+  export function deserialize(reader: BinaryReader): SpawnMonsterTimer {
+    return SpawnMonsterTimer.getTypeScriptAlgebraicType().deserialize(reader);
   }
 
 }

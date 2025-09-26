@@ -5,5 +5,6 @@ pub mod traits;
 pub mod player;
 pub mod monster;
 pub mod reducers;
+pub mod spawn;
 pub mod validation;
 pub mod math;

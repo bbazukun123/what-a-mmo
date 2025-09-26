@@ -32,25 +32,23 @@ import {
   type ReducerEventContextInterface,
   type SubscriptionEventContextInterface,
 } from "@clockworklabs/spacetimedb-sdk";
-import { Monster } from "./monster_type";
-import { DbVector2 as __DbVector2 } from "./db_vector_2_type";
-
+import { SpawnMonsterTimer } from "./spawn_monster_timer_type";
 import { type EventContext, type Reducer, RemoteReducers, RemoteTables } from ".";
 
 /**
- * Table handle for the table `monster`.
+ * Table handle for the table `spawn_monster_timer`.
  *
- * Obtain a handle from the [`monster`] property on [`RemoteTables`],
- * like `ctx.db.monster`.
+ * Obtain a handle from the [`spawnMonsterTimer`] property on [`RemoteTables`],
+ * like `ctx.db.spawnMonsterTimer`.
  *
  * Users are encouraged not to explicitly reference this type,
  * but to directly chain method calls,
- * like `ctx.db.monster.on_insert(...)`.
+ * like `ctx.db.spawnMonsterTimer.on_insert(...)`.
  */
-export class MonsterTableHandle {
-  tableCache: TableCache<Monster>;
+export class SpawnMonsterTimerTableHandle {
+  tableCache: TableCache<SpawnMonsterTimer>;
 
-  constructor(tableCache: TableCache<Monster>) {
+  constructor(tableCache: TableCache<SpawnMonsterTimer>) {
     this.tableCache = tableCache;
   }
 
@@ -58,53 +56,53 @@ export class MonsterTableHandle {
     return this.tableCache.count();
   }
 
-  iter(): Iterable<Monster> {
+  iter(): Iterable<SpawnMonsterTimer> {
     return this.tableCache.iter();
   }
   /**
-   * Access to the `monsterId` unique index on the table `monster`,
+   * Access to the `scheduledId` unique index on the table `spawn_monster_timer`,
    * which allows point queries on the field of the same name
-   * via the [`MonsterMonsterIdUnique.find`] method.
+   * via the [`SpawnMonsterTimerScheduledIdUnique.find`] method.
    *
    * Users are encouraged not to explicitly reference this type,
    * but to directly chain method calls,
-   * like `ctx.db.monster.monsterId().find(...)`.
+   * like `ctx.db.spawnMonsterTimer.scheduledId().find(...)`.
    *
-   * Get a handle on the `monsterId` unique index on the table `monster`.
+   * Get a handle on the `scheduledId` unique index on the table `spawn_monster_timer`.
    */
-  monsterId = {
-    // Find the subscribed row whose `monsterId` column value is equal to `col_val`,
+  scheduledId = {
+    // Find the subscribed row whose `scheduledId` column value is equal to `col_val`,
     // if such a row is present in the client cache.
-    find: (col_val: number): Monster | undefined => {
+    find: (col_val: bigint): SpawnMonsterTimer | undefined => {
       for (let row of this.tableCache.iter()) {
-        if (deepEqual(row.monsterId, col_val)) {
+        if (deepEqual(row.scheduledId, col_val)) {
           return row;
         }
       }
     },
   };
 
-  onInsert = (cb: (ctx: EventContext, row: Monster) => void) => {
+  onInsert = (cb: (ctx: EventContext, row: SpawnMonsterTimer) => void) => {
     return this.tableCache.onInsert(cb);
   }
 
-  removeOnInsert = (cb: (ctx: EventContext, row: Monster) => void) => {
+  removeOnInsert = (cb: (ctx: EventContext, row: SpawnMonsterTimer) => void) => {
     return this.tableCache.removeOnInsert(cb);
   }
 
-  onDelete = (cb: (ctx: EventContext, row: Monster) => void) => {
+  onDelete = (cb: (ctx: EventContext, row: SpawnMonsterTimer) => void) => {
     return this.tableCache.onDelete(cb);
   }
 
-  removeOnDelete = (cb: (ctx: EventContext, row: Monster) => void) => {
+  removeOnDelete = (cb: (ctx: EventContext, row: SpawnMonsterTimer) => void) => {
     return this.tableCache.removeOnDelete(cb);
   }
 
   // Updates are only defined for tables with primary keys.
-  onUpdate = (cb: (ctx: EventContext, oldRow: Monster, newRow: Monster) => void) => {
+  onUpdate = (cb: (ctx: EventContext, oldRow: SpawnMonsterTimer, newRow: SpawnMonsterTimer) => void) => {
     return this.tableCache.onUpdate(cb);
   }
 
-  removeOnUpdate = (cb: (ctx: EventContext, onRow: Monster, newRow: Monster) => void) => {
+  removeOnUpdate = (cb: (ctx: EventContext, onRow: SpawnMonsterTimer, newRow: SpawnMonsterTimer) => void) => {
     return this.tableCache.removeOnUpdate(cb);
   }}

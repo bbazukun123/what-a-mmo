@@ -10,7 +10,11 @@ pub fn init(ctx: &ReducerContext) -> Result<(), String> {
     log::info!("Initializing...");
     ctx.db.config().try_insert(Config {
         id: 0,
-        world_size: 1080,
+        world_size: 2160,
+    })?;
+    ctx.db.spawn_monster_timer().try_insert(SpawnMonsterTimer {
+        scheduled_id: 0,
+        scheduled_at: ScheduleAt::Interval(Duration::from_millis(500).into()),
     })?;
     ctx.db
         .move_all_players_timer()
@@ -27,12 +31,16 @@ pub fn client_connected(ctx: &ReducerContext) {
     if let Some(user) = ctx.db.user().identity().find(ctx.sender) {
         ctx.db.user().identity().update(User { online: true, ..user });
     } else {
+        let world_size = ctx.db.config().id().find(0)
+            .ok_or("Config not found")
+            .unwrap()
+            .world_size;
         ctx.db.user().insert(User {
             name: None,
             class: None,
             identity: ctx.sender,
-            position: DbVector2 { x: 540.0, y: 540.0 },
-            direction: DbVector2 { x: 0.0, y: -1.0 }, // Default facing down
+            position: DbVector2 { x: world_size as f32 / 2.0, y: world_size as f32 / 2.0 },
+            direction: DbVector2 { x: 0.0, y: 1.0 }, // Default facing down
             speed: 0.0,
             online: true,
         });
@@ -69,6 +77,7 @@ use spacetimedb::{table, ScheduleAt, ReducerContext, Table};
 use spacetimedb::reducer;
 use crate::models::{Message};
 use crate::models::{config, user, message};
+use crate::spawn::{spawn_monster_timer, SpawnMonsterTimer};
 
 const PLAYER_SIZE: u32 = 100;
 const MAX_PLAYER_SPEED: u32 = 10;

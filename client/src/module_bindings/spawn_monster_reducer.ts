@@ -32,42 +32,34 @@ import {
   type ReducerEventContextInterface,
   type SubscriptionEventContextInterface,
 } from "@clockworklabs/spacetimedb-sdk";
-import { DbVector2 as __DbVector2 } from "./db_vector_2_type";
 
-export type Monster = {
-  monsterId: number,
-  position: __DbVector2,
-  direction: __DbVector2,
-  speed: number,
-  health: number,
+import { SpawnMonsterTimer as __SpawnMonsterTimer } from "./spawn_monster_timer_type";
+
+export type SpawnMonster = {
+  timer: __SpawnMonsterTimer,
 };
 
 /**
  * A namespace for generated helper functions.
  */
-export namespace Monster {
+export namespace SpawnMonster {
   /**
   * A function which returns this type represented as an AlgebraicType.
   * This function is derived from the AlgebraicType used to generate this type.
   */
   export function getTypeScriptAlgebraicType(): AlgebraicType {
     return AlgebraicType.createProductType([
-      new ProductTypeElement("monsterId", AlgebraicType.createU32Type()),
-      new ProductTypeElement("position", __DbVector2.getTypeScriptAlgebraicType()),
-      new ProductTypeElement("direction", __DbVector2.getTypeScriptAlgebraicType()),
-      new ProductTypeElement("speed", AlgebraicType.createF32Type()),
-      new ProductTypeElement("health", AlgebraicType.createF32Type()),
+      new ProductTypeElement("timer", __SpawnMonsterTimer.getTypeScriptAlgebraicType()),
     ]);
   }
 
-  export function serialize(writer: BinaryWriter, value: Monster): void {
-    Monster.getTypeScriptAlgebraicType().serialize(writer, value);
+  export function serialize(writer: BinaryWriter, value: SpawnMonster): void {
+    SpawnMonster.getTypeScriptAlgebraicType().serialize(writer, value);
   }
 
-  export function deserialize(reader: BinaryReader): Monster {
-    return Monster.getTypeScriptAlgebraicType().deserialize(reader);
+  export function deserialize(reader: BinaryReader): SpawnMonster {
+    return SpawnMonster.getTypeScriptAlgebraicType().deserialize(reader);
   }
 
 }
-
 
